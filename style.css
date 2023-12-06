@@ -393,28 +393,16 @@ hr {
   font-family: damgaregular;
   } 
   
-.main-inner{
-  padding-top:1px;
-  }
-
-.content-inner{
-  background-color:#fefefe;
-  padding:1%;
-  }
-
-.header-outer
-{
-width:700px;
-max-width:100%;
-}
 
 button {
   font-weight:bold;
   }
   
 .content { 
+  max-width:700px;
+  padding-left:3%;
+  padding-right:3%;
   background-color:#fefefe;
-  height:100%;   
   }
 
   @media only screen and (min-width: 600px) {
