@@ -7,7 +7,7 @@ html, body {
 
   
 body {
-	background-color:#f0f0f0;
+  background-color:#fefefe;
 	margin:0;
 }
 
@@ -402,7 +402,6 @@ button {
   max-width:700px;
   padding-left:3%;
   padding-right:3%;
-  background-color:#fefefe;
   }
 
   @media only screen and (min-width: 600px) {
@@ -410,3 +409,11 @@ button {
   padding-left:10%;
   }
 }  
+
+.content { 
+  padding-left:20%;
+  padding-top:2em;
+  padding-bottom:2em;
+  }
+
+
