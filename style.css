@@ -125,7 +125,6 @@ h1 {
 	font-size: 1.6em;
 }
 
-
 h1, h2, h3 {
 	color:#333;
     margin-top:10px;  
@@ -221,10 +220,8 @@ td {
    
 .pagetabs {
     background-color: #E3E9f6;
-    text-size-adjust: none;
     font-size:1rem;
-    margin-top: 10px;
-    padding-bottom: 3px;
+    padding-top: 6px;
     padding-left: 0.5em;  
 }      
 
@@ -482,6 +479,11 @@ hr {
   font-family: damgaregular;
   } 
   
+.twitter {
+  font-weight:bold;
+  padding:1%;
+  float:right;
+}
 
 button {
   font-weight:bold;
@@ -507,5 +509,4 @@ button {
   background-color:#ddd; 
   background-image: linear-gradient(180deg, #DDD, #FFF);
   }
-
 

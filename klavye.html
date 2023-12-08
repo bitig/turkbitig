@@ -12,16 +12,8 @@
     <body>
 
 <div class="header">
-<table>
-<tr><td>
-<a href="index.html"><img alt="Türk Bitig" height="39px" width="204px" src="logo.png"></a>
-</td>
-<td>
-<div style="float:right;">
-<a href="https://twitter.com/turkbitigcom" target="_blank"><big><b>@twitter-𝕏 </b></big></a>&nbsp;&nbsp;
-</div></td>
-</tr>
-</table>
+<div class="twitter"><a href="https://twitter.com/turkbitigcom" target="_blank">@twitter-𝕏</a></div>
+<div><a href="index.html"><img alt="Türk Bitig" height="39px" width="204px" src="logo.png"></a></div>
 </div>
 
 <script>
@@ -886,7 +878,6 @@ function lto(str) {
           // Replace the current character with its correspondinginceSoz or kalinSoz, depending on the ince/kalin status of the next character.
           if (cs == 1) {
 
-
                 if (chra[i + 2] == "k") {
                 ret += inceSoz[ch] + vowelsDict[chn];;
               } else if  (chra[i - 1] == "i") {
@@ -1212,7 +1203,6 @@ font-weight:bold;
 <textarea maxlength="80" hidden id="gtext"></textarea>
 </div> <!-- div yazici biter-->
 
-
 <table border="0" class="fonttable">
 <tr>
   <td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked>1</label></td>
@@ -1378,7 +1368,6 @@ var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
 var ltn = document.getElementById("ltn");
 var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
 
-
 function getParameterFromURL(paramName) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(paramName);
@@ -1395,8 +1384,6 @@ if (urlValue) {
 updateCanvas();
 
 // ... rest of the script
-
-
 
 ltn.addEventListener("input", () => {
   clearTimeout(debounceTimer);
@@ -1416,7 +1403,6 @@ minusButton.addEventListener("click", () => {
       updateCanvas();
     }
   });
-
 
 plusButton.addEventListener("click", () => {
     if (fontSize < 800) {
