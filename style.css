@@ -302,17 +302,14 @@ td {
   border: 1px solid #999;
 	}
 
-.nav a:hover {
-	}
-
 .nav a:active {
     background: #fff;
     box-shadow: inset 1px 1px 2px #ccc;
 	}
 
 .nav a.this {
-    background: #fff;
-    border: 1px solid #ccc;
+  background: #fff;
+  border: 1px solid #666;
 	color:#000;
 	padding-bottom:5px;
 	}      
