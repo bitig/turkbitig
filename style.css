@@ -195,7 +195,6 @@ td {
 	padding:1px 3px 1px 3px;
 	border:1px solid #eee;
 }
-
   
 .pagetitle{
 	color:#555;
@@ -220,13 +219,23 @@ td {
   background-color: #FEFEFE;
 }
  
-.pagetabs {
+.sitenav {
+  background-color: #fcfcfc;
+  position:sticky;
+  top: 0;
+  border-bottom:3px solid #f6f6f6;
+}      
+
+.tabs {
+  position:sticky;
+  top: 0;
   background-color: #E3E9f6;
   padding-top: 6px;  
   padding-left: 2%;  
+  border-bottom:5px solid #58D;
 }      
 
-.pagetabs a {
+.tabs a {
     white-space: nowrap;
     color: #555;
     text-shadow: 1px 1px 2px #fff;
@@ -240,15 +249,15 @@ td {
     border-bottom:0;
 }
 
-.pagetabs a:hover {
+.tabs a:hover {
 	}
 
-.pagetabs a:active {
+.tabs a:active {
     background: #f6f6f6;
     box-shadow: inset 1px 2px 3px #ccc;
 	}
 
-.pagetabs a.current {
+.tabs a.current {
     font-weight:bold;  
     color: #333;
     border: 1px solid #36c;
@@ -257,7 +266,7 @@ td {
     background:#fefefe;  
 }     
 
-.pagetabs a.parent {
+.tabs a.parent {
     font-weight:bold;  
     color: #333;
     border: 1px solid #36c;
@@ -267,28 +276,23 @@ td {
     background: linear-gradient(#fff, #ddd, #f9f9f9);
 }     
 
-.pagetabs a.bas {
+.tabs a.bas {
     font-weight:bold;  
     text-transform: uppercase;
 }
 
-.pagetabshr {
-     bbackground: linear-gradient(to right, #f32, #fcfcfc);
-     background: linear-gradient(to right, #36c, #fcfcfc);
-     height:4px ;  
-     margin: 0;
-     margin-bottom: 20px;
-     padding: 0;
-     border: 0;
-  }
-
 .nav {
   font-size:90%;
-  padding-left:0.5em;
+  padding-left:2%;
   margin-top:1em;
-  margin-bottom:20px;
   }
-         
+
+  @media only screen and (min-width: 600px) {
+.nav {
+  padding-left:6%;
+  }
+}  
+
 .nav a{
   font-weight:bold;
 	color:#555;
