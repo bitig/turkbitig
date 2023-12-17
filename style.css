@@ -223,7 +223,9 @@ td {
   background-color: #fcfcfc;
   position:sticky;
   top: 0;
-  border-bottom:3px solid #f6f6f6;
+  bborder-bottom:1px solid #f6f6f6;
+  box-shadow: 3px 3px 5px #ccc; 
+  padding-bottom: 8px;  
 }      
 
 .tabs {
@@ -263,7 +265,7 @@ td {
     border: 1px solid #36c;
     padding-bottom: 6x;
     border-bottom: 6px solid #fcfcfc;
-    background:#fefefe;  
+    background:#fcfcfc;  
 }     
 
 .tabs a.parent {
