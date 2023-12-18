@@ -90,6 +90,12 @@ html, body {
   font-family: Arial, sans-serif;
   }
 
+@media only screen and (max-width: 600px) {
+  body {
+  font-size:90%;
+  }
+}
+
 
 body {
   background-color:#fefefe;
@@ -99,11 +105,11 @@ body {
 
 a:link 	{
 	text-decoration:underline;
-	color:#36B;
+	color:#259;
 	}
 	
 a:visited 	{
-	color:#36B;
+	color:#259;
 	}
 
 a:active 	{
@@ -209,8 +215,6 @@ td {
 
 .leftpad {
   font-style: oblique;
-  padding-left: 6%;
-  width: 100%;
 }
 
 .header {
