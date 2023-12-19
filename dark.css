@@ -27,6 +27,14 @@ th	{
 background:#505050;
 }
 
+.pad td {
+border:1px solid #555;
+}
+
+.mpad td {
+border:1px solid #555;
+}
+
 .table2 td {
 border: 1px solid #666;
 }
@@ -130,7 +138,7 @@ border:1px dashed #cccccc;
 }
 
 .tr a {
-color:#006600;
+color:#EEE;
 }
 
 .trans {

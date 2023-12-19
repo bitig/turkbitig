@@ -374,6 +374,7 @@ float:right;
 }
 
 button {
+cursor: pointer;
 font-weight:bold;
 }
 
