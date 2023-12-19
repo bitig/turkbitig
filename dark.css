@@ -54,17 +54,14 @@ iframe {
   }
 
 table {
-  border: 1px solid #666;
 	}
 
 
 th	{
   background:#505050;
-  border: 1px solid #666;
 	}
 
 td {
-  border: 1px solid #666;
 }
 
 .pad td {
@@ -77,6 +74,7 @@ td {
 }
 
 .table2 td {
+  border: 1px solid #666;
 }
 
   .pagetitle{
