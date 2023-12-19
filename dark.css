@@ -1,18 +1,18 @@
 html, body {
-  background-color:#26262C;
-   color:#EEE;
-   }
+  background-color:#162029;
+  color:#DDD;
+}
 
  
    body {
 }
 
 a:link 	{
-	color:#EEE;
+	color:#DDD;
 	}
 	
 a:visited 	{
-	color:#EEE;
+	color:#DDD;
 	}
 
 a:active 	{
@@ -26,7 +26,7 @@ img {
 }
 
 code {
-	color:#EEE;
+	color:#DDD;
 }
 
 h1 {
@@ -90,12 +90,12 @@ td {
 }
 
  .sitenav {
-  background-color: #333;
-  border-bottom:1px solid #666;
+  background-color: #30363C;
+  border-bottom:1px solid #60666C;
 }
 
   .tabs {
-  background-color: #555;
+  background-color: #50565C;
   border-bottom:3px solid #999;
 }
 
@@ -117,14 +117,14 @@ td {
   color: #EEE;
   border: 1px solid #CCC;
   border-bottom: 6px solid #333;
-  background:#333;
+  background:#30363C;
   }
 
   .tabs a.parent {
   color: #EEE;
   border: 1px solid #CCC;
   border-bottom: 6px solid #333;
-  background:#393939;
+  background:#30363C;
 }
 
   .tabs a.bas {
@@ -134,8 +134,9 @@ td {
   }
 
 .nav a{
+  font-weight:normal;
 	color:#EEE;
-  background-color: #555;
+  background-color: #303639;
   border: 1px solid #999;
 	}
 
@@ -145,6 +146,7 @@ td {
 	}
 
 .nav a.this {
+  font-weight:bold;
   background: #666;
   border: 1px solid #FFF;
 	color:#FFF;
@@ -241,7 +243,7 @@ td {
 	}
 
 .mu  {
-  background-color:#555;
+  background-color:#293339;
   }
 
 .mt {
@@ -261,7 +263,7 @@ td {
 
 .rs {
   border:1px solid #999;
-  background:#555;
+  background:#50565C;
 }
 
 .ince {
@@ -301,7 +303,7 @@ td {
 
 .damga  {
  color: #EEE;
- background-color:#555; 
+ background-color:#505659; 
 }
 
    .twitter {
@@ -316,5 +318,5 @@ button {
    }
 
 .footer {
-   background-color:#333;
+   background-color:#263039;
    }
