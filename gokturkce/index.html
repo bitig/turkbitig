@@ -2,8 +2,10 @@
 <html lang="tr-TR">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../fonts.css"/>
+    <link rel="stylesheet" href="../base.css"/>
+    <link rel="stylesheet" id="theme-stylesheet" href="style.css"/>
     <link rel="shortcut icon" href="../favicon.ico" type="image/png" />
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
 
@@ -12,8 +14,8 @@
     <body>
 
 <div class="header">
-<div class="twitter"><a href="https://twitter.com/turkbitigcom" target="_blank">@twitter-𝕏</a></div>
-<div><a href="../"><img alt="Türk Bitig" height="39" src="../logo.png"></a></div>
+<div class="twitter"><button id="theme-toggle">AK</button> <a href="https://twitter.com/turkbitigcom" target="_blank">@twitter-𝕏</a></div>
+<div><a href="../"><img alt="Türk Bitig" height="39" src="../logo.png" /></a><a class="turkbitig" href="../">Türk Bitig</a></div>
 </div>
 
 <script>
@@ -946,235 +948,6 @@ function eski() {
 
 </script>
 
-<style>
-
-#keyboard {
-}
- 
-.key {
-   width:100%;
-   border:1px solid #666;
-   border-radius:5px;
-   font-family:'tbkeys';
-   font-weight:normal;
-   padding-top:3px;
-   padding-bottom:3px;
-   cursor:pointer;
- }
-  
-button {padding:3px;}  
-
-@media only screen and (min-width: 600px) {
-.key {
-   font-size:22px;
-  }
-}  
-  
-  
-.key:active {
-   border:1px solid #ccc;
-}
-
-.radios {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-		}
-
-.radio {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-.buttons {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-	}
-
-.button {
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px;
-  font-size: 20px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.button:hover {
-  background-color: #e6e6e6;
-}
-
-#canvas {
-  max-width:100%;
-  font-family:'damgab';
-  direction:rtl;
-  unicode-bidi: bidi-override;
-  border: 1px solid #ddd;
-}
-		
-.gtext {
-  min-height:50px;
-  width: 600px;
-  max-width: 96%;
-  font-size:180%;
-  font-family:'tbldamga';
-  direction:rtl;
-  text-align:right;
-  border:0px solid #eee;
-  background:#fdfdfd;
-}	
-
-.kalin {
-  background-color:#d5e5ff;
-  }
-  
-.ince {
-  background-color:#ffd5d5;
-  }
-
-.ae {
-  background: linear-gradient(to right,
-      #eee,
-      #eee 0%,
-      #d5e5ff 0%,
-      #d5e5ff 50%,
-      #ffd5d5 0%);
-  }
-  
-.ii {
-  background: linear-gradient(to right,
-      #eee,
-      #eee 0%,
-      #d5e5ff 0%,
-      #d5e5ff 50%,
-      #ffd5d5 0%);
-  }
- 
-.normal {
-  background-color:#eee;
-  }
-
-.space {
-  height:2rem;
-  font-size:1em;
-  font-family:'arial';
-  background-color:#eee;
-  color:red;
-  }
-  
- .dots {
-  background-color:#eee;
-  }
-
- .sil {
-  background-color:#eee;
-  color:red;
-  }
-
-@media only screen and (max-width: 600px) {
-.hideelement {
-  display:none;
-  }
-}  
-
-.sfont {
-  }
-
-/* Style for the radio buttons */
-input[type="radio"] {
-  display: none;
-  }
-
-.rs2 {
-text-align:center;
-padding:2px; cursor:pointer; 
-border:1px solid #ddd; 
-background-color:#eee;
-border-radius: 3px;
-font-weight:bold;
-}
-
-.rs {
-display:block;
-text-align:center;
-padding:2px; cursor:pointer; 
-border:1px solid #ddd; 
-background-color:#eee;
-border-radius: 3px;
-font-size:14px;  
-font-weight:bold;  
-}
-
- .rby {text-shadow: 1px 1px #000; color: #FFF;}
- .rsi {color: #000;}
- .rk {color: #C00;}
- .rsa {color: #FB0;}
- .rl {color: #14A;}
- .rg {color: #1BE;}
- .rb {color: #A25;}
- .ry {color: #096;}
- .rm {color: #23F;}
- .rt {color: #F60;}
- .rp {color: #909;}	
-
- .bby {text-shadow: 1px 1px #000; color: #FFF;}
- .bsi {color: #000;}
- .bk {color: #C00;}
- .bsa {color: #FB0;}
- .bl {color: #14A;}
- .bg {color: #1BE;}
- .bb {color: #A25;}
- .by {color: #096;}
- .bm {color: #23F;}
- .bt {color: #F60;}
- .bp {color: #909;}
- 	
-#ltn {
-  width:98%;
-  padding:1%;
-  padding-right:0;
-  margin-bottom:1%;
-  font-family:Arial, sans-serif;
-  font-size:130%;
-}
-
-.uu {
-  outline: none;
-  border:1px solid #ccc; 
-  width:98%;
-  padding-left:0;
-  font-size:120%;
-  direction: rtl;
-  unicode-bidi: bidi-override;
-  text-align: right;
-  font-family: 'tbg';
-  background:transparent;
-}
-
-.fonttable {
- max-width:510px;
-}
-
-.keytable {
- margin-top: 10px;
- max-width:510px;
-}
-
-.keytable td {
-  padding:2px;
-  }  
-
-#plus, #minus {
-  padding-left:6px;
-  padding-right:6px;
-  font-weight:bold;
-  }  
-</style>
-
 <div class="sitenav">
 
 <div class="tabs">
@@ -1512,6 +1285,7 @@ keyboardContainer.addEventListener("click", function(event) {
 <div class="footer">
 <a href="../icerik.html">içerik</a> | <a href="../iletisim.html">iletişim</a>
 </div>
+  <script src="../theme.js"></script>
 </body>
 </html>
 
