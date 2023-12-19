@@ -346,13 +346,27 @@ hr {
   font-family:monospace;
   }
 
-.damga  {
-  direction:rtl;
-  unicode-bidi:bidi-override;
-  text-align:right;
-  font-family: damgaregular;
-  }
 
+.turuk  {
+direction:rtl;
+unicode-bidi:bidi-override;
+text-align:right;
+font-family: 'damgaregular';
+font-size: 1.3em;
+color: #000;
+}
+
+.damga  {
+direction:rtl;
+unicode-bidi:bidi-override;
+font-family: 'damgaregular';
+text-align:center;
+font-size: 1.2em;
+color: #000;
+background-color:#eee; 
+padding:5px; 
+} 
+  
 .twitter {
   font-weight:bold;
   padding:1%;
