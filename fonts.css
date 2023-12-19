@@ -167,36 +167,6 @@ button {padding:3px;}
   background:#fdfdfd;
 }	
 
-.kalin {
-  background-color:#d5e5ff;
-  }
-  
-.ince {
-  background-color:#ffd5d5;
-  }
-
-.ae {
-  background: linear-gradient(to right,
-      #eee,
-      #eee 0%,
-      #d5e5ff 0%,
-      #d5e5ff 50%,
-      #ffd5d5 0%);
-  }
-  
-.ii {
-  background: linear-gradient(to right,
-      #eee,
-      #eee 0%,
-      #d5e5ff 0%,
-      #d5e5ff 50%,
-      #ffd5d5 0%);
-  }
- 
-.normal {
-  background-color:#eee;
-  }
-
 .space {
   height:2rem;
   font-size:1em;
