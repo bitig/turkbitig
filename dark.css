@@ -15,12 +15,6 @@ a:active 	{
 color:#FFF;
 }
 
-a:hover {
-}
-
-img {
-}
-
 code {
 color:#DDD;
 }
@@ -29,26 +23,8 @@ h1 {
 font-size: 1.6em;
 }
 
-h1, h2, h3 {
-}
-
-p {
-}
-
-iframe {
-border:0;
-max-width:100%
-}
-
-table {
-}
-
-
 th	{
 background:#505050;
-}
-
-td {
 }
 
 .table2 td {
@@ -166,9 +142,7 @@ background: linear-gradient(to right, #666, #222);
 }
 
 .d {
-margin-top:1em;
-font-size:14px;
-font-weight:bold;
+color:#DDD;
 }
 
 .mu  {
