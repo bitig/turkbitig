@@ -18,7 +18,7 @@
 
 <div class="header">
 <div class="twitter"><button id="theme-toggle">AK</button>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/turkbitigcom" target="_blank">@𝕏</a></div>
-<div><a href="../"><img alt="Türk Bitig" height="39" src="../logo.png" /></a><a class="turkbitig" href="../">Türk Bitig</a></div>
+<div><a href="../"><img class="logo" alt="Türk Bitig" src="../logo.png" /></a><a class="turkbitig" href="../">Türk Bitig</a></div>
 </div>
 
 <script>
@@ -804,8 +804,8 @@ function lto(str) {
     // Leave spaces and colons as they are.
       ret += ch;
       continue;
-      }  
-      
+      }
+
     // Check if the current and previous characters make up a cift-gokturk kelimeleri pair.
     if (eik in ciftGokturk) {
       // Replace the previous character and current character with their corresponding cift-gokturk kelimeleri.
@@ -832,8 +832,8 @@ function lto(str) {
           // Replace the current character with its correspondinginceSoz or kalinSoz, depending on the ince/kalin status of the next character.
           if (cs == 1) {
                 if (
-                chra[i - 1] == "a"  
-                || chra[i - 1] == "e"  
+                chra[i - 1] == "a"
+                || chra[i - 1] == "e"
                 ) {
                 ret += inceSoz[ch];
               } else {
@@ -841,15 +841,15 @@ function lto(str) {
               }
           } else if (cs == 0) {
                 if (
-                chra[i - 1] == "a"  
-                || chra[i - 1] == "e"  
+                chra[i - 1] == "a"
+                || chra[i - 1] == "e"
                 ) {
                 ret += kalinSoz[ch];
               } else {
                 ret += kalinSoz[ch] + vowelsDict[chn];
               }
           }
-        } else 
+        } else
         if ((chn == "ı" || chn == "ü" || chn == "ö") && (chra[i + 2] != " "   && chra[i + 2] != "\n")) {
           // Check the ince/kalin status of the next character.
           var cs = inceKalin[chn];
@@ -865,7 +865,7 @@ function lto(str) {
               }
 
           } else if (cs == 0) {
-          
+
                 if (chra[i + 2] == "k") {
                 ret += kalinSoz[ch] + vowelsDict[chn];;
               } else if  (chra[i - 1] == "ı") {
@@ -876,7 +876,7 @@ function lto(str) {
 
           }
 
-        } else 
+        } else
         if ((chn == "i" || chn == "o" || chn == "u") && (chra[i + 2] != " "   && chra[i + 2] != "\n")) {
           // Check the ince/kalin status of the next character.
           var cs = inceKalin[chn];
@@ -892,7 +892,7 @@ function lto(str) {
               }
 
           } else if (cs == 0) {
-          
+
                 if (chra[i + 2] == "k") {
                 ret += kalinSoz[ch] + vowelsDict[chn];;
               } else if  (chra[i - 1] == "o" || chra[i - 1] == "u") {
@@ -951,18 +951,17 @@ function eski() {
 
 </script>
 
-
 <div class="sitenav">
 
 <div class="tabs">
-  <a href="../" class="bas">BAŞ</a> 
-  <a href="alfabe.html" class="parent">Göktürk Alfabesi</a> 
+  <a href="../" class="bas">BAŞ</a>
+  <a href="alfabe.html" class="parent">Göktürk Alfabesi</a>
 </div>
 
 <div class="nav">
-  <a href="alfabe.html">Alfabe</a> 
-  <a href="./">Çeviri</a> 
-  <a class="this">Klavye</a> 
+  <a href="alfabe.html">Alfabe</a>
+  <a href="./">Çeviri</a>
+  <a class="this">Klavye</a>
 </div>
 
 </div>
@@ -997,7 +996,7 @@ function eski() {
   <td><label class="rs"><input type="radio" name="fontRadio" value="irkbitig">9</label></td>
   <td align="right" style="white-space:nowrap;"><button id="plus">+</button>&nbsp;<button id="minus">-</button></td>
 </tr>
-  
+
 <tr>
   <td><label class="rs rby"><input type="radio" name="colorRadio" value="#FFF">B</label></td>
   <td><label class="rs rsi"><input type="radio" name="colorRadio" value="#000">S</label></td>
@@ -1027,27 +1026,27 @@ function eski() {
 <table border="0" id="keyboard" class="keytable">
 <tr>
 
-<td><button class="key ae" data-value="𐰀">𐰀</button></td> 
-<td><button class="key ii" data-value="𐰃">𐰃</button></td> 
-
-<td rowspan="7">&nbsp;</td>
-  
-<td><button class="key kalin" data-value="𐰆">𐰆</button></td> 
-<td><button class="key ince" data-value="𐰇">𐰇</button></td> 
+<td><button class="key ae" data-value="𐰀">𐰀</button></td>
+<td><button class="key ii" data-value="𐰃">𐰃</button></td>
 
 <td rowspan="7">&nbsp;</td>
 
-<td><button class="key normal" data-value="𐰲">𐰲</button></td> 
+<td><button class="key kalin" data-value="𐰆">𐰆</button></td>
+<td><button class="key ince" data-value="𐰇">𐰇</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key normal" data-value="𐰲">𐰲</button></td>
 <td><button class="key sil" data-value="x">X</button></td>
 
 </tr>
 <tr>
- 
-<td><button class="key kalin" data-value="𐰉">𐰉</button></td> 
-<td><button class="key ince" data-value="𐰋">𐰋</button></td> 
 
-<td><button class="key kalin" data-value="𐰺">𐰺</button></td> 
-<td><button class="key ince" data-value="𐰼">𐰼</button></td> 
+<td><button class="key kalin" data-value="𐰉">𐰉</button></td>
+<td><button class="key ince" data-value="𐰋">𐰋</button></td>
+
+<td><button class="key kalin" data-value="𐰺">𐰺</button></td>
+<td><button class="key ince" data-value="𐰼">𐰼</button></td>
 
 <td><button class="key normal" data-value="𐰢">𐰢</button></td>
 <td><big><button class="delete key sil" data-value="-">&gt;</button></big></td>
@@ -1055,63 +1054,63 @@ function eski() {
 </tr>
 <tr>
 
-<td><button class="key kalin" data-value="𐰑">𐰑</button></td> 
-<td><button class="key ince" data-value="𐰓">𐰓</button></td> 
+<td><button class="key kalin" data-value="𐰑">𐰑</button></td>
+<td><button class="key ince" data-value="𐰓">𐰓</button></td>
 
-<td><button class="key kalin" data-value="𐰽">𐰽</button></td> 
-<td><button class="key ince" data-value="𐰾">𐰾</button></td> 
+<td><button class="key kalin" data-value="𐰽">𐰽</button></td>
+<td><button class="key ince" data-value="𐰾">𐰾</button></td>
 
 <td><button class="key normal" data-value="𐰯">𐰯</button></td>
- 
-<td><button class="key normal" data-value="&nbsp; "> &nbsp; </button></td> 
+
+<td><button class="key normal" data-value="&nbsp; "> &nbsp; </button></td>
 
 </tr>
 <tr>
- 
+
 <td><button class="key kalin" data-value="𐰍">𐰍</button></td>
-<td><button class="key ince" data-value="𐰏">𐰏</button></td> 
- 
-<td><button class="key kalin" data-value="𐱃">𐱃</button></td> 
-<td><button class="key ince" data-value="𐱅">𐱅</button></td> 
+<td><button class="key ince" data-value="𐰏">𐰏</button></td>
+
+<td><button class="key kalin" data-value="𐱃">𐱃</button></td>
+<td><button class="key ince" data-value="𐱅">𐱅</button></td>
 
 <td><button class="key normal" data-value="𐱁">𐱁</button></td>
 <td><button class="key normal" data-value=": ">: </button></td>
- 
+
 </tr>
 <tr>
- 
-<td><button class="key kalin" data-value="𐰴">𐰴</button></td> 
-<td><button class="key ince" data-value="𐰚">𐰚</button></td> 
 
-<td><button class="key kalin" data-value="𐰖">𐰖</button></td> 
-<td><button class="key ince" data-value="𐰘">𐰘</button></td> 
+<td><button class="key kalin" data-value="𐰴">𐰴</button></td>
+<td><button class="key ince" data-value="𐰚">𐰚</button></td>
+
+<td><button class="key kalin" data-value="𐰖">𐰖</button></td>
+<td><button class="key ince" data-value="𐰘">𐰘</button></td>
 
 <td><button class="key normal" data-value="𐰔">𐰔</button></td>
-<td><button class="key normal" data-value="𐰪">𐰪</button></td> 
+<td><button class="key normal" data-value="𐰪">𐰪</button></td>
 
 </tr>
 <tr>
- 
-<td><button class="key kalin" data-value="𐰞">𐰞</button></td> 
-<td><button class="key ince" data-value="𐰠">𐰠</button></td> 
 
-<td><button class="key kalin" data-value="𐰶">𐰶</button></td> 
-<td><button class="key ince" data-value="𐰱">𐰱</button></td> 
- 
-<td><button class="key normal" data-value="𐰨">𐰨</button></td> 
+<td><button class="key kalin" data-value="𐰞">𐰞</button></td>
+<td><button class="key ince" data-value="𐰠">𐰠</button></td>
+
+<td><button class="key kalin" data-value="𐰶">𐰶</button></td>
+<td><button class="key ince" data-value="𐰱">𐰱</button></td>
+
+<td><button class="key normal" data-value="𐰨">𐰨</button></td>
 
 <td><button class="key normal" data-value="𐰦">𐰦</button></td>
 
 </tr>
 <tr>
- 
-<td><button class="key kalin" data-value="𐰣">𐰣</button></td> 
-<td><button class="key ince" data-value="𐰤">𐰤</button></td> 
 
-<td><button class="key kalin" data-value="𐰸">𐰸</button></td> 
-<td><button class="key ince" data-value="𐰜">𐰜</button></td> 
+<td><button class="key kalin" data-value="𐰣">𐰣</button></td>
+<td><button class="key ince" data-value="𐰤">𐰤</button></td>
 
-<td><button class="key normal" data-value="𐰭">𐰭</button></td> 
+<td><button class="key kalin" data-value="𐰸">𐰸</button></td>
+<td><button class="key ince" data-value="𐰜">𐰜</button></td>
+
+<td><button class="key normal" data-value="𐰭">𐰭</button></td>
 <td><button class="key normal" data-value="𐰡">𐰡</button></td>
 
 </tr>
@@ -1127,7 +1126,7 @@ function eski() {
 <ul>
   <li>Klavye <small>&#9664; &nbsp;&#9654;</small> tuşları ile font boyutu ayarlanır.</li>
   <li><a href="alfabe.html">Göktürk alfabesi kuralları ...</a> <span style="font-family:'damgab';">&nbsp;</span><span style="font-family:'damgab2';">&nbsp;</span><span style="font-family:'bitig';">&nbsp;</span><span style="font-family:'cizgi';">&nbsp;</span><span style="font-family:'tbg';">&nbsp;</span><span style="font-family:'tonyukuk2';">&nbsp;</span><span style="font-family:'gokturkkurgu';">&nbsp;</span><span style="font-family:'kultigin';">&nbsp;</span><span style="font-family:'irkbitig';">&nbsp;</span></li>
-  <li><a href="font.html">Font ve klavye indir</a></li>   
+  <li><a href="font.html">Font ve klavye indir</a></li>
 </ul>
 
 <script>
@@ -1375,7 +1374,7 @@ keyboardContainer.addEventListener("click", function(event) {
         document.execCommand("copy");
         console.log("Copied to clipboard: " + input.value);
       }
-  
+
 </script>
 
  </div>

@@ -30,6 +30,14 @@ th	{
 background-color:#ececec;
 }
 
+#canvas {
+filter: none;
+}
+
+img {
+filter: none;
+}
+
 .pad td {
 border:1px solid #eee;
 }
@@ -188,7 +196,7 @@ background:#FEFEFE;
 .kalin {
   background:#d5e5ff;
   }
-  
+
 .ince {
   background:#ffd5d5;
   }
@@ -210,7 +218,7 @@ background:#FEFEFE;
       #d5e5ff 50%,
       #ffd5d5 0%);
   }
-  
+
 .ii {
   background: linear-gradient(to right,
       #eee,
@@ -219,9 +227,9 @@ background:#FEFEFE;
       #d5e5ff 50%,
       #ffd5d5 0%);
   }
- 
+
 .rs {
-border:1px solid #CCC; 
+border:1px solid #CCC;
 background-color:#EEE;
 }
 
@@ -230,10 +238,13 @@ color: #900;
 }
 
 .damga  {
-color: #333;
-background-color:#EEE; 
+color: #222;
+background-color:#EEE;
 }
 
+.turuk  {
+color: #222;
+}
 button {
 color:#333;
 background-color:#EEE;

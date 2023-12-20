@@ -20,8 +20,13 @@ text-decoration:none;
 a:hover {
 }
 
+.logo {
+height:39px;
+width:39px;
+}
+
 .turkbitig {
-font-size: 2em;
+font-size: 1.8em;
 font-weight: bold;
 font-style: italic;
 text-decoration: none;
@@ -238,7 +243,6 @@ width:58%;
 padding-bottom:1em;
 }
 
-
 .osm-rtl {
 padding-left:0.5em;
 padding-right:0.5em;
@@ -268,7 +272,6 @@ unicode-bidi:bidi-override;
 text-align:right;
 font-family:damgaregular;
 }
-
 
 .t {
 padding:0.5em;
@@ -346,7 +349,6 @@ font-weight: bold;
 font-family:monospace;
 }
 
-
 .turuk  {
 direction:rtl;
 unicode-bidi:bidi-override;
@@ -363,9 +365,9 @@ font-family: 'damgaregular';
 text-align:center;
 font-size: 1.2em;
 color: #000;
-background-color:#eee; 
-padding:5px; 
-} 
+background-color:#eee;
+padding:5px;
+}
 
 .twitter {
 font-weight:bold;
@@ -397,4 +399,5 @@ padding-top:3em;
 padding-bottom:3em;
 background-color:#DDD;
 }
+
 

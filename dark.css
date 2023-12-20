@@ -27,6 +27,14 @@ th	{
 background:#505050;
 }
 
+#canvas {
+filter: brightness(90%);
+}
+
+img {
+filter: brightness(93%);
+}
+
 .pad td {
 border:1px solid #555;
 }
@@ -37,6 +45,10 @@ border:1px solid #555;
 
 .table2 td {
 border: 1px solid #666;
+}
+
+.logo {
+filter: drop-shadow(1px 1px 0px #FFF);
 }
 
 .sitenav {
@@ -202,7 +214,7 @@ color: #EEE;
 
 .damga  {
 color: #DDD;
-background-color:#505659; 
+background-color:#505659;
 }
 
 button {
