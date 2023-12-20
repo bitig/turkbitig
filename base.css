@@ -370,9 +370,8 @@ background-color:#eee;
 padding:5px;
 }
 
-.twitter {
-font-weight:bold;
-padding:1%;
+#theme-toggle {
+margin-right:1%;
 float:right;
 }
 
