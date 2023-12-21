@@ -971,13 +971,11 @@ function eski() {
 <h3>Göktürkçe Çeviri Yazıcı</h3>
 <div> <!-- div yazici baslar-->
 <form method="POST" autocomplete="off" spellcheck="false">
-<input maxlength="80" type="text" placeholder="Buna yaz: Türük &gt; Türk" id="ltn">
-
-<table><tr><td>
-  <button onclick="copyToClipboard(event)">Yazıyı kopyala</button>
-  </td>
-<td><input type="text" class="uu" id="orhn"></td></tr></table>
-<canvas width="800" id="canvas"></canvas>
+<table>
+ <tr><td colspan="2"><input maxlength="80" type="text" placeholder="Buna yaz: Türük &gt; Türk" id="ltn"></td></tr>
+ <tr><td nowrap><button onclick="copyToClipboard(event)">Yazıyı kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="orhn"></td></tr> 
+ <tr><td colspan="2"><canvas width="800" id="canvas"></canvas></td></tr>
+</table>
 </form>
 
 <textarea maxlength="80" hidden id="gtext"></textarea>
