@@ -35,6 +35,9 @@ img {
 filter: brightness(93%);
 }
 
+.alfabe_img {
+filter: invert(88%);
+}
 .pad td {
 border:1px solid #555;
 }
