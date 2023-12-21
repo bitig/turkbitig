@@ -16,6 +16,9 @@ if (!currentTheme) {
 // Apply the initial theme preference
 setTheme(currentTheme);
 
+// Update the theme toggle button text
+updateThemeToggleText(currentTheme);
+
 // Listen for click events on the theme toggle button
 themeToggle.addEventListener('click', () => {
   // Toggle the theme between light and dark
@@ -34,19 +37,25 @@ function toggleTheme() {
 
 // Function to set the theme
 function setTheme(theme) {
+  // Get the base URL of the current page
+  const baseUrl = window.location.origin + window.location.pathname;
+
   // Update the stylesheet href based on the theme
   styleSheet.setAttribute('href', `../${theme}.css`);
 
+
   // Update the current theme
   currentTheme = theme;
+
+  // Update the theme toggle button text
+  updateThemeToggleText(theme);
 
   // Store the theme preference in local storage
   localStorage.setItem('themePreference', theme);
 }
 
-// Check if the default theme is set to 'light'
-if (currentTheme === 'light') {
-  // Set the default theme on page load
-  setTheme('light');
-}  
-
+// Function to update the theme toggle button text
+function updateThemeToggleText(theme) {
+  const switchText = theme === 'light' ? 'gece' : 'beyaz';
+  themeToggle.textContent = `${switchText}`;
+}
