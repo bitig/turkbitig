@@ -91,6 +91,7 @@
 </tr>
 </table>
 
+<div id="keydiv">
 <table border="0" id="keyboard" class="keytable">
 <tr>
 
@@ -183,13 +184,35 @@
 
 </tr>
 </table>
+</div>
+
 <hr>
-<button><a style="text-decoration:none" href="../">Sanal Klavyeyi Kapat</a></button>
+
+<button id="toggleButton">KLAVYEYİ AÇ</button>
 
 <ul>
   <li>Klavyenizden <small>&#9664; &nbsp;&#9654;</small> tuşları ile font boyu ayarlanır.</li>
   <li><a href="../alfabe.html">Göktürk alfabesi kuralları ...</a> <span style="font-family:'damgab';">&nbsp;</span><span style="font-family:'damgab2';">&nbsp;</span><span style="font-family:'bitig';">&nbsp;</span><span style="font-family:'cizgi';">&nbsp;</span><span style="font-family:'tbg';">&nbsp;</span><span style="font-family:'tonyukuk2';">&nbsp;</span><span style="font-family:'gokturkkurgu';">&nbsp;</span><span style="font-family:'kultigin';">&nbsp;</span><span style="font-family:'irkbitig';">&nbsp;</span></li>
 </ul>
+
+<script>
+    const toggleButton = document.getElementById('toggleButton');
+    const keyDiv = document.getElementById('keydiv');
+
+    toggleButton.addEventListener('click', () => {
+      if (keyDiv.style.display === 'none') {
+        keyDiv.style.display = 'block';
+        toggleButton.textContent = 'KLAVYEYİ KAPA';
+      } else {
+        keyDiv.style.display = 'none';
+        toggleButton.textContent = 'KLAVYEYİ AÇ';
+      }
+    });
+
+    // Hide the keydiv by default
+    keyDiv.style.display = 'none';
+    toggleButton.textContent = 'KLAVYEYİ AÇ';
+</script>
 
 <script>
 
