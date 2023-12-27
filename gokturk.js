@@ -753,7 +753,7 @@ function lto(str) {
     } else if (ch in inceunsuz) {
       // Check if the current character is an ince harf.
       if (chn in kalinince) {
-        // Check if the next character is a kalin harf that can form a pair with the current character.
+        // Check if the next character is a kalin that can form a pair with the current character.
         if ((chn == "a" || chn == "e") && (chra[i + 2] != " "   && chra[i + 2] != "\n")) {
           // Check the kalin/ince status of the next character.
           var cs = kalinince[chn];
@@ -812,9 +812,7 @@ function lto(str) {
           var cs = kalinince[chn];
           // Replace the current character with its corresponding inceunsuz or kalinunsuz, depending on the kalin/ince status of the next character.
           if (cs == 1) {
-              if  (chra[i - 1] == "i") {
-                ret += inceunsuz[ch];
-              } else if  (chra[i - 1] == "i" || chra[i - 1] == "ı") {
+                if  (chra[i - 1] == "i" || chra[i - 1] == "ı") {
                 ret += inceunsuz[ch];
               } else {
                 ret += inceunsuz[ch] + unluler[chn];
@@ -833,7 +831,7 @@ function lto(str) {
           }
         } else {
 
-          // If the next character is not a kalin harf that can form a pair with the current character, replace the current and next characters with their corresponding kalinince.
+          // If the next character is not a kalin that can form a pair with the current character, replace the current and next characters with their corresponding kalinince.
           var cs = kalinince[chn];
           if (cs == 1) {
             ret += inceunsuz[ch] + unluler[chn];
@@ -847,11 +845,11 @@ function lto(str) {
         lki = cs;
         continue;
       } else {
-        // If the current character is an ince harf and the previous character is kalin, replace the current character with its corresponding inceunsuz.
+        // If the current character is an ince and the previous character is kalin, replace the current character with its corresponding inceunsuz.
         if (lki == 1) {
           ret += inceunsuz[ch];
         }
-        // If the current character is an ince harf and the previous character is also ince, replace the current character with its corresponding kalinunsuz.
+        // If the current character is an ince and the previous character is also ince, replace the current character with its corresponding kalinunsuz.
         if (lki == 0) {
           ret += kalinunsuz[ch];
         }
