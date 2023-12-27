@@ -1,4 +1,4 @@
-var inceKalin = {
+var kalinince = {
    "A": 0,
    "a": 0,
    "А": 0, //A
@@ -55,7 +55,7 @@ var inceKalin = {
    "آ": 0, //ӗ - İran
    "ا": 0, //ӗ - İran
 };
-var vowelsDict = {
+var unluler = {
    "A": "&#x10C00;",
    "a": "&#x10C00;",
    "А": "&#x10C00;", //A
@@ -116,19 +116,8 @@ var vowelsDict = {
    "ي": "&#x10C03;", //ye-i-y-ir
    "ی": "&#x10C03;", //ye-i-y-ir
 };
-var odictu0 = {
-   "&#x10C00;": "a",
-   "&#x10C03;": "ı",
-   "&#x10C06;": "o",
-   "&#x10C06;": "u",
-};
-var odictu1 = {
-   "&#x10C00;": "e",
-   "&#x10C03;": "i",
-   "&#x10C07;": "ö",
-   "&#x10C07;": "ü"
-};
-var kalinSoz = { //kalınlar
+
+var kalinunsuz = {
    "B": "&#x10C09;",
    "b": "&#x10C09;",
    "V": "&#x10C09;",
@@ -235,7 +224,7 @@ var kalinSoz = { //kalınlar
    "z": "&#x10C14;",
    "З": "&#x10C14;", //Z
    "з": "&#x10C14;", //z
-   // Iran - Arap - kalınlar
+   // Iran - Arap - kalınunsuz
    "د": "&#x10C11;", //dal-d-ir
    "ﺩ": "&#x10C11;", //dal-d-ir
    "ق": "&#x10C34;", //qaf-q-ir
@@ -344,22 +333,9 @@ var kalinSoz = { //kalınlar
    "ﺯ": "&#x10C14;", //ze-z-ir
    "ژ": "&#x10C14;", //že-z-ir
    "ژ": "&#x10C14;", //že-z-ir
-}; // kalınlar biter
-var suz = {
-   "Ş": "&#x10C41;",
-   "ş": "&#x10C41;",
-   "J": "&#x10C41;",
-   "j": "&#x10C41;",
-};
-var osuz = {
-   "&#x10C32;": "ç",
-   "&#x10C22;": "m",
-   "&#x10C2F;": "p",
-   "&#x10C41;": "ş",
-   "&#x10C15;": "z",
-   "&#x10C2D;": "ŋ"
-};
-var inceSoz = { // inceler
+}; // kalınunsuzler biter
+
+var inceunsuz = { 
    "B": "&#x10C0B;",
    "b": "&#x10C0B;",
    "V": "&#x10C0B;",
@@ -466,7 +442,7 @@ var inceSoz = { // inceler
    "z": "&#x10C14;",
    "З": "&#x10C14;", //Z
    "з": "&#x10C14;", //z
-   // Iran - Arap - inceler
+   // Iran - Arap - inceunsuz
    "د": "&#x10C13;", //dal-d-ir
    "ﺩ": "&#x10C13;", //dal-d-ir
    "ق": "&#x10C34;", //qaf-q-ir
@@ -575,8 +551,9 @@ var inceSoz = { // inceler
    "ﺯ": "&#x10C14;", //ze-z-ir
    "ژ": "&#x10C14;", //že-z-ir
    "ژ": "&#x10C14;", //že-z-ir
-}; // inceler biter
-var ciftGokturk = {
+}; // inceunsuz biter
+
+var ciftsesli = {
    "İC": "&#x10C31;",
    "iç": "&#x10C31;",
    "İç": "&#x10C31;",
@@ -625,25 +602,9 @@ var ciftGokturk = {
    "үк": "&#x10C1C;", //ük
    "Үк": "&#x10C1C;", //Ük
    "үК": "&#x10C1C;" //üK
-};
-var obirlun0 = {
-   "&#x10C36;": "ik",
-   "&#x10C31;": "iç",
-   "&#x10C1C;": "ök",
-};
-var obirlun1 = {
-   "&#x10C36;": "ık",
-   "&#x10C38;": "ok",
-   "&#x10C38;": "uk",
-   "&#x10C31;": "ıç"
-};
-var obirluns = {
-   "&#x10C36;": "k",
-   "&#x10C31;": "ç",
-   "&#x10C38;": "k",
-   "&#x10C38;": "k"
-};
-var birlsuz = {
+}; // ciftsesli biter
+
+var birlunsuz = {
    //    "LT" : "&#x10C21;",
    //    "lt" : "&#x10C21;",
    //    "Lt" : "&#x10C21;",
@@ -700,16 +661,7 @@ var birlsuz = {
    "нд": "&#x10C26;", //nd
    "Нд": "&#x10C26;", //Nd
    "нД": "&#x10C26;" //nD
-};
-var obirlsuz = {
-   "&#x10C21;": "ld",
-   //    "&#x10C21;" : "lt",
-   "&#x10C28;": "nç",
-   "&#x10C2D;": "ng",
-   "&#x10C2A;": "ny",
-   "&#x10C26;": "nd",
-   //    "&#x10C26;" : "nt"
-};
+}; // birlunsuz biter
 
 // This function takes a string input and returns an array of its individual characters.
 function strToArr(str) {
@@ -748,7 +700,7 @@ function lto(str) {
   var chra = strToArr(str);
   // Get the length of the input string.
   var sz = chra.length;
-  // This variable keeps track of the previous character's ince/kalin status.
+  // This variable keeps track of the previous character's kalin/ince status.
   var lki = 0;
   // Loop through each character in the input string.
   for (var i = 0; i < sz; i++) {
@@ -782,125 +734,126 @@ function lto(str) {
       continue;
       }
 
-    // Check if the current and previous characters make up a cift-gokturk kelimeleri pair.
-    if (eik in ciftGokturk) {
-      // Replace the previous character and current character with their corresponding cift-gokturk kelimeleri.
+    // Check if the current and previous characters make up a cift-gokturk pair.
+    if (eik in ciftsesli) {
+      // Replace the previous character and current character with their corresponding ciftsesli.
       ret = ret.slice(0, -9);
-      ret += ciftGokturk[eik];
-    } else if (ch in vowelsDict) {
-      // Replace the current character with its corresponding vowelsDict.
-      ret += vowelsDict[ch];
-      // Update the previous character's ince/kalin status.
-      lki = inceKalin[ch];
+      ret += ciftsesli[eik];
+    } else if (ch in unluler) {
+      // Replace the current character with its corresponding unluler.
+      ret += unluler[ch];
+      // Update the previous character's kalin/ince status.
+      lki = kalinince[ch];
       continue;
-    } else if (ikili in birlsuz) {
-      // Replace the current and next characters with their corresponding birlsuz kelimeleri.
-      ret += birlsuz[ikili];
+    } else if (ikili in birlunsuz) {
+      // Replace the current and next characters with their corresponding birlunsuz.
+      ret += birlunsuz[ikili];
       i++;
       continue;
-    } else if (ch in inceSoz) {
+    } else if (ch in inceunsuz) {
       // Check if the current character is an ince harf.
-      if (chn in inceKalin) {
+      if (chn in kalinince) {
         // Check if the next character is a kalin harf that can form a pair with the current character.
         if ((chn == "a" || chn == "e") && (chra[i + 2] != " "   && chra[i + 2] != "\n")) {
-          // Check the ince/kalin status of the next character.
-          var cs = inceKalin[chn];
-          // Replace the current character with its correspondinginceSoz or kalinSoz, depending on the ince/kalin status of the next character.
+          // Check the kalin/ince status of the next character.
+          var cs = kalinince[chn];
+          // Replace the current character with its corresponding inceunsuz or kalinunsuz, depending on the kalin/ince status of the next character.
           if (cs == 1) {
                 if (
                 chra[i - 1] == "a"
                 || chra[i - 1] == "e"
                 ) {
-                ret += inceSoz[ch];
+                ret += inceunsuz[ch];
               } else {
-                ret += inceSoz[ch] + vowelsDict[chn];
+                ret += inceunsuz[ch] + unluler[chn];
               }
           } else if (cs == 0) {
                 if (
                 chra[i - 1] == "a"
                 || chra[i - 1] == "e"
                 ) {
-                ret += kalinSoz[ch];
+                ret += kalinunsuz[ch];
               } else {
-                ret += kalinSoz[ch] + vowelsDict[chn];
+                ret += kalinunsuz[ch] + unluler[chn];
               }
           }
         } else
         if ((chn == "ı" || chn == "ü" || chn == "ö") && (chra[i + 2] != " "   && chra[i + 2] != "\n")) {
-          // Check the ince/kalin status of the next character.
-          var cs = inceKalin[chn];
-          // Replace the current character with its correspondinginceSoz or kalinSoz, depending on the ince/kalin status of the next character.
+          // Check the kalin/ince status of the next character.
+          var cs = kalinince[chn];
+          // Replace the current character with its corresponding inceunsuz or kalinunsuz, depending on the kalin/ince status of the next character.
           if (cs == 1) {
 
                 if (chra[i + 2] == "k") {
-                ret += inceSoz[ch] + vowelsDict[chn];;
+                ret += inceunsuz[ch] + unluler[chn];
               } else if  (chra[i - 1] == "ö" || chra[i - 1] == "ü") {
-                ret += inceSoz[ch];
+                ret += inceunsuz[ch];
               } else {
-                ret += inceSoz[ch] + vowelsDict[chn];
+                ret += inceunsuz[ch] + unluler[chn];
               }
 
           } else if (cs == 0) {
 
                 if (chra[i + 2] == "k") {
-                ret += kalinSoz[ch] + vowelsDict[chn];;
+                ret += kalinunsuz[ch] + unluler[chn];
               } else if  (chra[i - 1] == "ı") {
-                ret += kalinSoz[ch];
+                ret += kalinunsuz[ch];
+              } else if  (chra[i - 1] == "ı" || chra[i - 1] == "i") {
+                ret += kalinunsuz[ch];
               } else {
-                ret += kalinSoz[ch] + vowelsDict[chn];
+                ret += kalinunsuz[ch] + unluler[chn];
               }
 
           }
 
         } else
         if ((chn == "i" || chn == "o" || chn == "u") && (chra[i + 2] != " "   && chra[i + 2] != "\n")) {
-          // Check the ince/kalin status of the next character.
-          var cs = inceKalin[chn];
-          // Replace the current character with its correspondinginceSoz or kalinSoz, depending on the ince/kalin status of the next character.
+          // Check the kalin/ince status of the next character.
+          var cs = kalinince[chn];
+          // Replace the current character with its corresponding inceunsuz or kalinunsuz, depending on the kalin/ince status of the next character.
           if (cs == 1) {
-
-                if (chra[i + 2] == "k") {
-                ret += inceSoz[ch] + vowelsDict[chn];;
-              } else if  (chra[i - 1] == "i") {
-                ret += inceSoz[ch];
+              if  (chra[i - 1] == "i") {
+                ret += inceunsuz[ch];
+              } else if  (chra[i - 1] == "i" || chra[i - 1] == "ı") {
+                ret += inceunsuz[ch];
               } else {
-                ret += inceSoz[ch] + vowelsDict[chn];
+                ret += inceunsuz[ch] + unluler[chn];
               }
 
           } else if (cs == 0) {
 
                 if (chra[i + 2] == "k") {
-                ret += kalinSoz[ch] + vowelsDict[chn];;
+                ret += kalinunsuz[ch] + unluler[chn];
               } else if  (chra[i - 1] == "o" || chra[i - 1] == "u") {
-                ret += kalinSoz[ch];
+                ret += kalinunsuz[ch];
               } else {
-                ret += kalinSoz[ch] + vowelsDict[chn];
+                ret += kalinunsuz[ch] + unluler[chn];
               }
 
           }
         } else {
 
-          // If the next character is not a kalin harf that can form a pair with the current character, replace the current and next characters with their corresponding ince/kalin kelimeleri.
-          var cs = inceKalin[chn];
+          // If the next character is not a kalin harf that can form a pair with the current character, replace the current and next characters with their corresponding kalinince.
+          var cs = kalinince[chn];
           if (cs == 1) {
-            ret += inceSoz[ch] + vowelsDict[chn];
+            ret += inceunsuz[ch] + unluler[chn];
           } else if (cs == 0) {
-            ret += kalinSoz[ch] + vowelsDict[chn];
+            ret += kalinunsuz[ch] + unluler[chn];
           }
         }
         // Move the loop's counter to skip the next character.
         i++;
-        // Update the previous character's ince/kalin status.
+        // Update the previous character's kalin/ince status.
         lki = cs;
         continue;
       } else {
-        // If the current character is an ince harf and the previous character is kalin, replace the current character with its corresponding inceSoz.
+        // If the current character is an ince harf and the previous character is kalin, replace the current character with its corresponding inceunsuz.
         if (lki == 1) {
-          ret += inceSoz[ch];
+          ret += inceunsuz[ch];
         }
-        // If the current character is an ince harf and the previous character is also ince, replace the current character with its corresponding kalinSoz.
+        // If the current character is an ince harf and the previous character is also ince, replace the current character with its corresponding kalinunsuz.
         if (lki == 0) {
-          ret += kalinSoz[ch];
+          ret += kalinunsuz[ch];
         }
       }
     }
@@ -909,18 +862,29 @@ function lto(str) {
   return ret;
 }
 
-// This function is called when the user inputs text into an HTML element with an id of "ltn".
-$(document).ready(function() {
-  $('#ltn').on('input', function() {
+// Wait for the DOM content to be loaded
+document.addEventListener('DOMContentLoaded', function() {
+  var ltnInput = document.getElementById('ltn');
+  ltnInput.addEventListener('input', function() {
     eski();
   });
 });
 
-// This function takes the value of the "ltn" input element, passes it to the "lto" function, and sets the value of two other HTML elements to the modified output.
+// Function to handle the transformation
 function eski() {
-  var str = $("#ltn").val() + " ";
+  var ltnInput = document.getElementById('ltn');
+  var orhnInput = document.getElementById('orhn');
+  var gtextInput = document.getElementById('gtext');
+  var str = ltnInput.value + " ";
   var data = lto(str);
-  data = $("<div/>").html(data).text().trim().replace(/\./g, "\n");
-  $("#orhn").val(data);
-  $("#gtext").val(data);
+  data = decodeEntities(data).trim().replace(/\./g, "\n");
+  orhnInput.value = data;
+  gtextInput.value = data;
+}
+
+// Function to decode HTML entities
+function decodeEntities(encodedString) {
+  var element = document.createElement('div');
+  element.innerHTML = encodedString;
+  return element.textContent || element.innerText;
 }

@@ -7,11 +7,11 @@ const toggleButton = document.getElementById('toggleButton');
     toggleButton.addEventListener('click', () => {
       if (keyDiv.style.display === 'none') {
         keyDiv.style.display = 'block';
-        toggleButton.textContent = 'KLAVYEYİ KAPAT';
+        toggleButton.textContent = 'KAPAT';
         localStorage.setItem(storageKey, 'visible');
       } else {
         keyDiv.style.display = 'none';
-        toggleButton.textContent = 'KLAVYEYİ AÇ';
+        toggleButton.textContent = 'GÖKTÜRK KLAVYE';
         localStorage.setItem(storageKey, 'hidden');
       }
     });
@@ -20,10 +20,10 @@ const toggleButton = document.getElementById('toggleButton');
     const userPreference = localStorage.getItem(storageKey);
     if (userPreference === 'visible') {
       keyDiv.style.display = 'block';
-      toggleButton.textContent = 'KLAVYEYİ KAPAT';
+      toggleButton.textContent = 'KAPAT';
     } else {
       keyDiv.style.display = 'none';
-      toggleButton.textContent = 'KLAVYEYİ AÇ';
+      toggleButton.textContent = 'GÖKTÜRK KLAVYE';
     }
 // keyboard hide ends
 

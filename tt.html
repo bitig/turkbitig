@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Old Turkic Alphabet Translator</title>
+  <script>
+  
+function translateToOldTurkic() {
+  var latinText = document.getElementById('latintext').value;
+
+  var uppercaseConsonantTranslationMap = {
+    'B': '\uD803\uDC18',
+    'D': '\uD803\uDC11'
+  };
+
+  var lowercaseConsonantTranslationMap = {
+    'b': '\uD803\uDC0B',
+    'd': '\uD803\uDC13'
+  };
+
+  var frontVowelTranslationMap = {
+    'E': '\uD803\uDC00',
+    'e': '\uD803\uDC00',
+    '\u00DC': '\uD803\uDC07',
+    '\u00FC': '\uD803\uDC07'
+  };
+
+  var backVowelTranslationMap = {
+    'A': '\uD803\uDC00',
+    'a': '\uD803\uDC00',
+    'U': '\uD803\uDC06',
+    'u': '\uD803\uDC06',
+    'Ü': '\uD803\uDC06',
+    'ü': '\uD803\uDC06'
+  };
+
+  var oldTurkicText = '';
+
+  for (var i = 0; i < latinText.length; i++) {
+    var latinChar = latinText[i];
+    var oldTurkicChar;
+
+    if (frontVowelTranslationMap[latinChar]) {
+      oldTurkicChar = frontVowelTranslationMap[latinChar];
+      if (i < latinText.length - 1 && (latinText[i + 1] in lowercaseConsonantTranslationMap)) {
+        oldTurkicChar += lowercaseConsonantTranslationMap[latinText[i + 1]];
+        i++; // Skip the next character since it has been translated
+      }
+    } else if (backVowelTranslationMap[latinChar]) {
+      oldTurkicChar = backVowelTranslationMap[latinChar];
+      if (i < latinText.length - 1 && (latinText[i + 1] in uppercaseConsonantTranslationMap)) {
+        oldTurkicChar += uppercaseConsonantTranslationMap[latinText[i + 1]];
+        i++; // Skip the next character since it has been translated
+      }
+    } else {
+      oldTurkicChar =
+        uppercaseConsonantTranslationMap[latinChar] ||
+        lowercaseConsonantTranslationMap[latinChar] ||
+        latinText[i];
+    }
+
+    oldTurkicText += oldTurkicChar;
+  }
+
+  document.getElementById('oldturkictext').value = oldTurkicText;
+}
+
+</script>
+</head>
+<body>
+  <h1>Old Turkic Alphabet Translator</h1>
+  <label for="latintext">Latin Text:</label>
+  <input type="text" id="latintext" oninput="translateToOldTurkic()">
+
+  <br>
+
+  <label for="oldturkictext">Old Turkic Text:</label>
+  <input type="text" id="oldturkictext" readonly>
+
+</body>
+</html>
