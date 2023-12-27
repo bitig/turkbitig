@@ -554,10 +554,14 @@ var inceunsuz = {
 }; // inceunsuz biter
 
 var ciftsesli = {
-   "İC": "&#x10C31;",
+   "İÇ": "&#x10C31;",
    "iç": "&#x10C31;",
    "İç": "&#x10C31;",
    "iÇ": "&#x10C31;",
+   "İC": "&#x10C31;",
+   "ic": "&#x10C31;",
+   "İc": "&#x10C31;",
+   "iC": "&#x10C31;",
    "ІЧ": "&#x10C31;", //İÇ
    "іч": "&#x10C31;", //iç
    "Іч": "&#x10C31;", //İç
@@ -812,7 +816,9 @@ function lto(str) {
           var cs = kalinince[chn];
           // Replace the current character with its corresponding inceunsuz or kalinunsuz, depending on the kalin/ince status of the next character.
           if (cs == 1) {
-                if  (chra[i - 1] == "i" || chra[i - 1] == "ı") {
+                if (chra[i + 2] == "ç" || chra[i + 2] == "c") {
+                ret += inceunsuz[ch] + unluler[chn];
+                } else if  (chra[i - 1] == "i" || chra[i - 1] == "ı") {
                 ret += inceunsuz[ch];
               } else {
                 ret += inceunsuz[ch] + unluler[chn];
