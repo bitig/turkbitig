@@ -1,30 +1,42 @@
 // keyboard hide
 
+// Get references to the toggle button and the keyDiv element
 const toggleButton = document.getElementById('toggleButton');
-    const keyDiv = document.getElementById('keydiv');
-    const storageKey = 'keyDivVisibility';
+const keyDiv = document.getElementById('keydiv');
 
-    toggleButton.addEventListener('click', () => {
-      if (keyDiv.style.display === 'none') {
-        keyDiv.style.display = 'block';
-        toggleButton.textContent = 'KAPAT';
-        localStorage.setItem(storageKey, 'visible');
-      } else {
-        keyDiv.style.display = 'none';
-        toggleButton.textContent = 'GÖKTÜRK KLAVYE';
-        localStorage.setItem(storageKey, 'hidden');
-      }
-    });
+// Define a storage key for storing the visibility preference
+const storageKey = 'keyDivVisibility';
 
-    // Retrieve the user's preference from local storage
-    const userPreference = localStorage.getItem(storageKey);
-    if (userPreference === 'visible') {
-      keyDiv.style.display = 'block';
-      toggleButton.textContent = 'KAPAT';
-    } else {
-      keyDiv.style.display = 'none';
-      toggleButton.textContent = 'GÖKTÜRK KLAVYE';
-    }
+// Add a click event listener to the toggle button
+toggleButton.addEventListener('click', () => {
+  // Check the current display style of the keyDiv element
+  if (keyDiv.style.display === 'none') {
+    // If it's currently hidden, show the keyDiv element
+    keyDiv.style.display = 'block';
+    toggleButton.textContent = 'KLAVYEYİ KAPAT';
+    // Store the visibility preference in local storage
+    localStorage.setItem(storageKey, 'visible');
+  } else {
+    // If it's currently visible, hide the keyDiv element
+    keyDiv.style.display = 'none';
+    toggleButton.textContent = 'GÖKTÜRK KLAVYE';
+    // Store the visibility preference in local storage
+    localStorage.setItem(storageKey, 'hidden');
+  }
+});
+
+// Retrieve the user's preference from local storage
+const userPreference = localStorage.getItem(storageKey);
+if (userPreference === 'hidden') {
+  // If the preference is 'hidden', hide the keyDiv element
+  keyDiv.style.display = 'none';
+  toggleButton.textContent = 'GÖKTÜRK KLAVYE';
+} else {
+  // If the preference is 'visible' or not set, show the keyDiv element
+  keyDiv.style.display = 'block';
+  toggleButton.textContent = 'KLAVYEYİ KAPAT';
+}
+
 // keyboard hide ends
 
 // keyboard - canvas begins
