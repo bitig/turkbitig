@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="tr-TR">
-  <head><style>body {visibility: hidden;opacity: 0;}</style>
+  <head><script>if (localStorage.getItem('dark') === '1') {document.documentElement.classList.add('dark');}</script><style>.dark body {background: #162029;}.dark .light-only {display: none;}html:not(.dark) .dark-only {display: none;}</style>
     <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <link rel="stylesheet" href="../fonts.css"/>
@@ -13,7 +13,7 @@
     <title>Sensin Kerim Sensin Rahim ─ Yunus Emre</title>
 
 </head>
-<body><noscript><style>body {visibility: visible;opacity: 1;}</style></noscript><button id="theme-toggle">RENK</button>
+<body><button id="theme-toggle">RENK</button>
 
 <div class="header">
 <div><a href="../"><img class="logo" alt="Türk Bitig" src="../logo.png" /></a><a class="turkbitig" href="../">Türk Bitig</a></div>

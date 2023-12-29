@@ -62,15 +62,24 @@ function updateThemeToggleText(theme) {
 
 
 function showTheme() {
-  // Check Local Storage then apply dark theme if it's active
+  // Check the theme preference from local storage
+  const themePreference = localStorage.getItem('theme');
+
+  // Check if the theme preference exists and set the theme accordingly
+  if (themePreference === 'dark') {
+    // Set the dark theme
+    document.body.classList.add('dark-theme');
+    console.log('Theme: Dark');
+  } else {
+    // Set the light theme (default)
+    document.body.classList.remove('dark-theme');
+    console.log('Theme: Light');
+  }
 }
 
-function showContent() {
-  document.body.style.visibility = 'visible';
-  document.body.style.opacity = 1;
-}
+document.querySelector('#theme-toggle').addEventListener('click', function() {
+  var wasDarkMode = localStorage.getItem('dark') === '1';
+      localStorage.setItem('dark', wasDarkMode ? '0' : '1');
+      document.documentElement.classList[wasDarkMode ? 'remove' : 'add']('dark');
+ });
 
-window.addEventListener('DOMContentLoaded', function () {
-  showTheme();
-  showContent();
-});
