@@ -60,19 +60,8 @@ function updateThemeToggleText(theme) {
   themeToggle.textContent = `${switchText}`;
 }
 
-
-function showTheme() {
-  // Check the theme preference from local storage
-  const themePreference = localStorage.getItem('theme');
-
-  // Check if the theme preference exists and set the theme accordingly
-  if (themePreference === 'dark') {
-    // Set the dark theme
-    document.body.classList.add('dark-theme');
-    console.log('Theme: Dark');
-  } else {
-    // Set the light theme (default)
-    document.body.classList.remove('dark-theme');
-    console.log('Theme: Light');
-  }
-}
+// Add a load event listener to the window object
+window.addEventListener('load', function () {
+  // Show the body element after the window finishes loading
+  document.body.style.display = 'block';
+});

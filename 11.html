@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Switcher</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #f0f0f0;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Theme Switcher</h1>
+  <button id="theme-toggle">Toggle Theme</button>
+
+  <script>
+    // Get the theme toggle button element
+    const themeToggle = document.querySelector('#theme-toggle');
+
+    // Store the current theme preference in a variable
+    let currentTheme = localStorage.getItem('themePreference');
+
+    // Check if a theme preference is stored in local storage
+    if (!currentTheme) {
+      // Set the default theme preference to light
+      currentTheme = 'light';
+    }
+
+    // Apply the initial theme preference
+    setTheme(currentTheme);
+
+    // Update the theme toggle button text
+    updateThemeToggleText(currentTheme);
+
+    // Listen for click events on the theme toggle button
+    themeToggle.addEventListener('click', toggleTheme);
+
+    // Function to toggle the theme
+    function toggleTheme() {
+      // Check the current theme and switch to the opposite theme
+      if (currentTheme === 'light') {
+        setTheme('dark');
+      } else {
+        setTheme('light');
+      }
+    }
+
+    // Function to set the theme
+    function setTheme(theme) {
+      // Get the body element
+      const body = document.body;
+
+      // Set the theme-specific styles
+      if (theme === 'light') {
+        body.style.backgroundColor = '#ffffff';
+        body.style.color = '#000000';
+      } else {
+        body.style.backgroundColor = '#000000';
+        body.style.color = '#ffffff';
+      }
+
+      // Update the current theme
+      currentTheme = theme;
+
+      // Update the theme toggle button text
+      updateThemeToggleText(theme);
+
+      // Store the theme preference in local storage
+      localStorage.setItem('themePreference', theme);
+    }
+
+    // Function to update the theme toggle button text
+    function updateThemeToggleText(theme) {
+      const switchText = theme === 'light' ? 'Switch to Dark' : 'Switch to Light';
+      themeToggle.textContent = switchText;
+    }
+  </script>
+</body>
+</html>
