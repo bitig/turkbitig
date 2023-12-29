@@ -185,8 +185,8 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px tbg";
   } else if (selectedFont === "cizgi") {
     ctx.font = fontSize + "px cizgi";
-  } else if (selectedFont === "tbg") {
-    ctx.font = fontSize + "px tbg";
+  } else if (selectedFont === "ttr") {
+    ctx.font = fontSize + "px ttr";
   } else if (selectedFont === "tonyukuk2") {
     ctx.font = fontSize + "px tonyukuk2";
   } else if (selectedFont === "irkbitig") {

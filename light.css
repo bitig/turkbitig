@@ -38,7 +38,7 @@ img {
 filter: none;
 }
 
-.alfabe_img {
+.invert {
 filter: none;
 }
 .pad td {
@@ -230,11 +230,6 @@ background:#FEFEFE;
       #d5e5ff 50%,
       #ffd5d5 0%);
   }
-
-.rs {
-border:1px solid #CCC;
-background-color:#EEE;
-}
 
 .iblat {
 color: #900;

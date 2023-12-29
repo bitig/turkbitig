@@ -35,7 +35,7 @@ img {
 filter: brightness(93%);
 }
 
-.alfabe_img {
+.invert {
 filter: invert(88%);
 }
 .pad td {
@@ -204,11 +204,6 @@ background: linear-gradient(to right,
   #888 0%,
   #888 50%,
   #555 0%);
-}
-
-.rs {
-border:1px solid #999;
-background:#50565C;
 }
 
 .turuk  {
