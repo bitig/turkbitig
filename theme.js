@@ -76,10 +76,3 @@ function showTheme() {
     console.log('Theme: Light');
   }
 }
-
-document.querySelector('#theme-toggle').addEventListener('click', function() {
-  var wasDarkMode = localStorage.getItem('dark') === '1';
-      localStorage.setItem('dark', wasDarkMode ? '0' : '1');
-      document.documentElement.classList[wasDarkMode ? 'remove' : 'add']('dark');
- });
-
