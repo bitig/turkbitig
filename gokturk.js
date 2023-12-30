@@ -731,9 +731,50 @@ function lto(str) {
       continue;
     }
 
-    // Check if the current character is a space or a colon.
-    if (ch == " " || ch == ":") {
-    // Leave spaces and colons as they are.
+    // Check if the current character is one of these.
+    if (ch == " " 
+            || ch == "1" 
+            || ch == "2" 
+            || ch == "3" 
+            || ch == "4" 
+            || ch == "5" 
+            || ch == "6" 
+            || ch == "7" 
+            || ch == "8" 
+            || ch == "9" 
+            || ch == "0" 
+            || ch == ":" 
+            || ch == ";"
+            || ch == "!"
+            || ch == "?"
+            || ch == "/"
+            || ch == "\\"
+            || ch == "."
+            || ch == ","
+            || ch == "("
+            || ch == ")"
+            || ch == "\["
+            || ch == "\]"
+            || ch == "\{"
+            || ch == "\}"
+            || ch == "\#"
+            || ch == "$"
+            || ch == "€"
+            || ch == "₺"
+            || ch == "<"
+            || ch == ">"
+            || ch == '"'
+            || ch == "'"
+            || ch == "_"
+            || ch == "─"
+            || ch == "-"
+            || ch == "+"
+            || ch == "="
+            || ch == "*"
+            || ch == "&"
+            || ch == "%"
+            || ch == "@"
+            || ch == "~") {    // Leave these as they are.
       ret += ch;
       continue;
       }
@@ -881,7 +922,8 @@ function eski() {
   var gtextInput = document.getElementById('gtext');
   var str = ltnInput.value + " ";
   var data = lto(str);
-  data = decodeEntities(data).trim().replace(/\./g, "\n");
+  data = decodeEntities(data).trim();
+//  data = decodeEntities(data).trim().replace(/\./g, "\n");
   orhnInput.value = data;
   gtextInput.value = data;
 }
