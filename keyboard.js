@@ -126,12 +126,12 @@ for (var i = 0; i < bgColorRadios.length; i++) {
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") { // Increase font size if up arrow key pressed
     if (fontSize < 2000) {
-      fontSize += 10;
+      fontSize += 6;
       updateCanvas();
     }
   } else if (event.key === "ArrowRight") { // Decrease font size if down arrow key pressed
-    if (fontSize > 20) {
-      fontSize -= 10;
+    if (fontSize > 18) {
+      fontSize -= 6;
       updateCanvas();
     }
   }
