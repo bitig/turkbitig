@@ -179,8 +179,8 @@ function updateCanvas(force = false) {
   ).value;
   if (selectedFont === "damgab") {
     ctx.font = fontSize + "px damgab";
-  } else if (selectedFont === "damgab2") {
-    ctx.font = fontSize + "px damgab2";
+  } else if (selectedFont === "damgabb") {
+    ctx.font = fontSize + "px damgabb";
   } else if (selectedFont === "tbg") {
     ctx.font = fontSize + "px tbg";
   } else if (selectedFont === "cizgi") {
