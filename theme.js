@@ -56,7 +56,7 @@ function setTheme(theme) {
 
 // Function to update the theme toggle button text
 function updateThemeToggleText(theme) {
-  const switchText = theme === 'light' ? 'KARA' : ' AK ';
+  const switchText = theme === 'light' ? 'KR' : ' AK ';
   themeToggle.textContent = `${switchText}`;
 }
 
