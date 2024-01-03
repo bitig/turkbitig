@@ -111,11 +111,6 @@
 #keyboard {
 }
 
-.mmenu {
-font-weight:bold;
-font-family:menu, arial;
-}
-
 .key {
    width:100%;
    border:1px solid #666;
