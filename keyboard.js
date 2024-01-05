@@ -1,5 +1,4 @@
 // keyboard hide
-
 // Get references to the toggle button and the keyDiv element
 const toggleButton = document.getElementById('toggleButton');
 const keyDiv = document.getElementById('keydiv');
@@ -27,16 +26,15 @@ toggleButton.addEventListener('click', () => {
 
 // Retrieve the user's preference from local storage
 const userPreference = localStorage.getItem(storageKey);
-if (userPreference === 'hidden') {
-  // If the preference is 'hidden', hide the keyDiv element
-  keyDiv.style.display = 'none';
-  toggleButton.textContent = 'GÖKTÜRK KLAVYE';
-} else {
-  // If the preference is 'visible' or not set, show the keyDiv element
+if (userPreference === 'visible') {
+  // If the preference is 'visible', show the keyDiv element (changed from 'none')
   keyDiv.style.display = 'block';
   toggleButton.textContent = 'KLAVYEYİ KAPAT';
+} else {
+  // If the preference is 'hidden' or not set, hide the keyDiv element (changed from 'block')
+  keyDiv.style.display = 'none';
+  toggleButton.textContent = 'GÖKTÜRK KLAVYE';
 }
-
 // keyboard hide ends
 
 // keyboard - canvas begins
