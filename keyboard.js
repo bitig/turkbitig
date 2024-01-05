@@ -19,7 +19,7 @@ toggleButton.addEventListener('click', () => {
     localStorage.setItem(storageKey, 'visible');
 
     // Set the expiration time for 5 minutes from now
-    const expirationTime = Date.now() + 1 * 60 * 1000; // 1 minute for testing purposes
+    const expirationTime = Date.now() + 5 * 60 * 1000; // 1 minute for testing purposes
     localStorage.setItem(expirationKey, expirationTime);
   } else {
     // If visible, hide the keyDiv element and update the toggle button text
