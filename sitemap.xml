@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.turkbitig.com/</loc></url>
   <url><loc>https://www.turkbitig.com/menu.html</loc></url>
+  <url><loc>https://www.turkbitig.com/gokturkce/</loc></url>
   <url><loc>https://www.turkbitig.com/alfabe.html</loc></url>
   <url><loc>https://www.turkbitig.com/font.html</loc></url>
   <url><loc>https://www.turkbitig.com/iletisim.html</loc></url>
@@ -14,7 +15,6 @@
   <url><loc>https://www.turkbitig.com/orhunyazitlari/bk.html</loc></url>
   <url><loc>https://www.turkbitig.com/orhunyazitlari/kt.html</loc></url>
   <url><loc>https://www.turkbitig.com/orhunyazitlari/sozluk.html</loc></url>
-  <url><loc>https://www.turkbitig.com/gokturkce/</loc></url>
   <url><loc>https://www.turkbitig.com/orhunyazitlari/resimler.html</loc></url>
   <url><loc>https://www.turkbitig.com/orhunyazitlari/galeri.html</loc></url>
   <url><loc>https://www.turkbitig.com/orhunyazitlari/ziyaret.html</loc></url>
