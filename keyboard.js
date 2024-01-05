@@ -1,37 +1,48 @@
 // keyboard hide
-// Get references to the toggle button and the keyDiv element
+// Get the toggle button element and the keyDiv element from the DOM
 const toggleButton = document.getElementById('toggleButton');
 const keyDiv = document.getElementById('keydiv');
 
-// Define a storage key for storing the visibility preference
+// Define the storage keys for the visibility preference and expiration time in local storage
 const storageKey = 'keyDivVisibility';
+const expirationKey = 'keyDivExpiration';
 
 // Add a click event listener to the toggle button
 toggleButton.addEventListener('click', () => {
-  // Check the current display style of the keyDiv element
+  // Check if the keyDiv element is currently hidden
   if (keyDiv.style.display === 'none') {
-    // If it's currently hidden, show the keyDiv element
+    // If hidden, show the keyDiv element and update the toggle button text
     keyDiv.style.display = 'block';
     toggleButton.textContent = 'KLAVYEYİ KAPAT';
-    // Store the visibility preference in local storage
+
+    // Store the visibility preference in local storage as 'visible'
     localStorage.setItem(storageKey, 'visible');
+
+    // Set the expiration time for 5 minutes from now
+    const expirationTime = Date.now() + 1 * 60 * 1000; // 1 minute for testing purposes
+    localStorage.setItem(expirationKey, expirationTime);
   } else {
-    // If it's currently visible, hide the keyDiv element
+    // If visible, hide the keyDiv element and update the toggle button text
     keyDiv.style.display = 'none';
     toggleButton.textContent = 'GÖKTÜRK KLAVYE';
-    // Store the visibility preference in local storage
-    localStorage.setItem(storageKey, 'hidden');
+
+    // Remove the visibility preference and expiration time from local storage
+    localStorage.removeItem(storageKey);
+    localStorage.removeItem(expirationKey);
   }
 });
 
-// Retrieve the user's preference from local storage
+// Get the visibility preference and expiration time from local storage
 const userPreference = localStorage.getItem(storageKey);
-if (userPreference === 'visible') {
-  // If the preference is 'visible', show the keyDiv element (changed from 'none')
+const expirationTime = localStorage.getItem(expirationKey);
+
+// Check if the visibility preference exists and the expiration time is valid (not expired)
+if (userPreference && expirationTime && Date.now() < parseInt(expirationTime)) {
+  // If the preference exists and not expired, show the keyDiv element and update the toggle button text
   keyDiv.style.display = 'block';
   toggleButton.textContent = 'KLAVYEYİ KAPAT';
 } else {
-  // If the preference is 'hidden' or not set, hide the keyDiv element (changed from 'block')
+  // If the preference doesn't exist or expired, hide the keyDiv element and update the toggle button text
   keyDiv.style.display = 'none';
   toggleButton.textContent = 'GÖKTÜRK KLAVYE';
 }
