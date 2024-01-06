@@ -594,8 +594,12 @@ height:2px;
 border:0px;
 }
 
-.widget .post-body ul {
-padding: 0 1.5em;
+ul, ol {
+padding-left: 1.5em;
+}
+
+li {
+  list-style-type: square;
 }
 
 .d {
