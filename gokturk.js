@@ -696,7 +696,7 @@ function chtohx(input) {
   return output;
 }
 
-// This function appears to be the main function that performs text conversion.
+// This is the main function that performs text conversion.
 function lto(str) {
   // This variable will hold the final output string.
   var ret = "";
@@ -728,6 +728,12 @@ function lto(str) {
     if (ch == "\n") {
       // Replace newlines with a dot followed by a space.
       ret += " .";
+      continue;
+    }
+
+    if (ch == " ") {
+      // Repeat the space.
+      ret += "  ";
       continue;
     }
 
