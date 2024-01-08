@@ -520,13 +520,6 @@ padding:1em;
 width:38%;
 }
 
-.irk {
-font-family:Bitig;
-direction:rtl;
-unicode-bidi:bidi-override;
-text-align:right;
-}
-
 .ibt {
 padding-left:5px;
 width:58%;
@@ -644,7 +637,7 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: 'irkbitig', 'turkic';
-font-size: 1.5em;
+font-size: 1.4em;
 }
 
 .iblat {
