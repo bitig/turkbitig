@@ -200,8 +200,8 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px tonyukuk";
   } else if (selectedFont === "tonyukukbold") {
     ctx.font = fontSize + "px tonyukukbold";
-  } else if (selectedFont === "irkbitig") {
-    ctx.font = fontSize + "px irkbitig";
+  } else if (selectedFont === "irkbitigreg") {
+    ctx.font = fontSize + "px irkbitigreg";
   } else if (selectedFont === "gokturkkurgu") {
     ctx.font = fontSize + "px gokturkkurgu";
   } else if (selectedFont === "kultigin") {
