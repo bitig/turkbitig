@@ -551,7 +551,8 @@ width:30%;
 }
 
 .trans {
-border-bottom:1px dashed;
+font-style: italic;
+border-bottom:1px solid #CCC;
 }
 
 .yhh {
