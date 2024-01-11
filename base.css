@@ -649,6 +649,10 @@ margin-right:5%;
 float:right;
 }
 
+.menu {
+float:right;
+}
+
 button {
 cursor: pointer;
 font-weight:bold;
