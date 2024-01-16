@@ -624,19 +624,17 @@ font-family:monospace;
 direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
-font-family: 'damgaregular';
-font-size: 1.3em;
+font-family: 'tbldamga';
 color: #000;
 }
 
 .damga  {
 direction:rtl;
 unicode-bidi:bidi-override;
-font-family: 'damgaregular';
+font-family: 'tbldamga';
 text-align:center;
-font-size: 1.2em;
 color: #000;
-background-color:#eee;
+border-radius:3px;
 padding:5px;
 }
 
