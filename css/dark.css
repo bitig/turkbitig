@@ -19,10 +19,6 @@ code {
 color:#DDD;
 }
 
-h1 {
-font-size: 1.6em;
-}
-
 th	{
 background:#505050;
 }
@@ -109,14 +105,6 @@ font-weight:bold;
 background: #666;
 border: 1px solid #FFF;
 color:#FFF;
-}
-
-.pulldown {
-background-color:#fff;
-}
-
-.pulldown select {
-font-size:1.2em;
 }
 
 .irkbitig td {
