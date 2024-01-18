@@ -120,6 +120,28 @@
     font-style: normal;
 }
 
+
+html, body {
+font-family: Arial, sans-serif;
+font-size: 1em;
+}
+
+
+@media only screen and (min-width: 600px) {
+hhtml {
+   font-size:1em;
+  }
+}
+
+body {
+line-height:1.5;
+margin:0;
+}
+
+a:active    {
+text-decoration:none;
+}
+
 #keyboard {
 }
 
@@ -289,29 +311,6 @@ font-weight:bold;
   }
 
 
-
-html, body {
-font-family: Arial, sans-serif;
-}
-
-body {
-line-height:1.5;
-margin:0;
-}
-
-a:link 	{
-}
-
-a:visited 	{
-}
-
-a:active 	{
-text-decoration:none;
-}
-
-a:hover {
-}
-
 .logo {
 height:39px;
 width:39px;
@@ -444,7 +443,7 @@ text-decoration: none;
 
 .tabs a.current {
 font-weight:bold;
-padding-bottom: 6x;
+padding-bottom: 6px;
 }
 
 .tabs a.parent {
