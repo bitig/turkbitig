@@ -506,6 +506,16 @@ border-radius:3px;
 padding:5px;
 }
 
+#damga  {
+direction:rtl;
+unicode-bidi:bidi-override;
+font-family: 'tamga';
+text-align:center;
+color: #000;
+border-radius:3px;
+padding:5px;
+}
+
 #theme-toggle {
 margin-right:5%;
 float:right;
