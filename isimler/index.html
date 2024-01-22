@@ -40,312 +40,325 @@
 
 <p>Türkiye'de en sık kullanılan kız ve erkek isimlerini Göktürk Alfabesi (Göktürkçe) ile yazdık, dilediğiniz isim henüz bu listede yok ise <a target="_blank" href="https://twitter.com/turkbitigcom">@twitter-𝕏</a> hesabımızdan yazıp eklememizi isteyebilirsiniz.</p>
 
-<button onclick="sortListItems()"><b>Sırala (kız - erkek)</b></button>
+<p>
+<button id="ascendingBtn">Erkek a-z</button>
+<button id="descendingBtn">Kız a-z</button>
+</p>
 
-<p>(e) erkek (k) kız (i) ikisi de</p>
+<p>(e) erkek (k) kız (i) ikili</p>
 
 <ol id="namelist">
-	<li><a href="adnan.html">(e) <code>ADNAN</code> <span class="damgar">𐰀𐰑𐰣𐰀𐰣</span></a></li>
-	<li><a href="akin.html">(e) <code>AKIN</code> <span class="damgar">𐰀𐰴𐰃𐰣</span></a></li>
-	<li><a href="ali.html">(e) <code>ALİ</code> <span class="damgar">𐰀𐰞𐰠𐰃</span></a></li>
-	<li><a href="alparslan.html">(e) <code>ALPARSLAN</code> <span class="damgar">𐰀𐰞𐰯𐰀𐰺𐰽𐰞𐰀𐰣</span></a></li>
-	<li><a href="alpaslan.html">(e) <code>ALPASLAN</code> <span class="damgar">𐰀𐰞𐰯𐰀𐰽𐰞𐰀𐰣</span></a></li>
-	<li><a href="alpay.html">(e) <code>ALPAY</code> <span class="damgar">𐰀𐰞𐰯𐰀𐰖</span></a></li>
-	<li><a href="alper.html">(e) <code>ALPER</code> <span class="damgar">𐰀𐰞𐰯𐰼</span></a></li>
-	<li><a href="alperen.html">(e) <code>ALPEREN</code> <span class="damgar">𐰀𐰞𐰯𐰼𐰤</span></a></li>
-	<li><a href="altan.html">(e) <code>ALTAN</code> <span class="damgar">𐰀𐰞𐱃𐰀𐰣</span></a></li>
-	<li><a href="altay.html">(e) <code>ALTAY</code> <span class="damgar">𐰀𐰞𐱃𐰀𐰖</span></a></li>
-	<li><a href="arman.html">(e) <code>ARMAN</code> <span class="damgar">𐰀𐰺𐰢𐰀𐰣</span></a></li>
-	<li><a href="arkin.html">(e) <code>ARKIN</code> <span class="damgar">𐰀𐰺𐰴𐰃𐰣</span></a></li>
-	<li><a href="arikan.html">(e) <code>ARIKAN</code> <span class="damgar">𐰀𐰺𐰃𐰴𐰀𐰣</span></a></li>
-	<li><a href="arzu.html">(k) <code>ARZU</code> <span class="damgar">𐰀𐰺𐰔𐰆</span></a></li>
-	<li><a href="aslan.html">(e) <code>ASLAN</code> <span class="damgar">𐰀𐰽𐰞𐰀𐰣</span></a></li>
-	<li><a href="asli.html">(k) <code>ASLI</code> <span class="damgar">𐰀𐰽𐰞𐰃</span></a></li>
-	<li><a href="asuman.html">(k) <code>ASUMAN</code> <span class="damgar">𐰀𐰽𐰆𐰢𐰀𐰣</span></a></li>
-	<li><a href="ata.html">(e) <code>ATA</code> <span class="damgar">𐰀𐱃𐰀</span></a></li>
-	<li><a href="atakan.html">(e) <code>ATAKAN</code> <span class="damgar">𐰀𐱃𐰴𐰣</span></a></li>
-	<li><a href="atalay.html">(e) <code>ATALAY</code> <span class="damgar">𐰀𐱃𐰞𐰖</span></a></li>
-	<li><a href="aybars.html">(e) <code>AYBARS</code> <span class="damgar">𐰀𐰖𐰉𐰀𐰺𐰽</span></a></li>
-	<li><a href="ayberk.html">(e) <code>AYBERK</code> <span class="damgar">𐰀𐰖𐰋𐰀𐰼𐰚</span></a></li>
-	<li><a href="aydogan.html">(e) <code>AYDOĞAN</code> <span class="damgar">𐰀𐰖𐰑𐰆𐰍𐰀𐰣</span></a></li>
-	<li><a href="aygul.html">(k) <code>AYGÜL</code> <span class="damgar">𐰀𐰖𐰏𐰇𐰠</span></a></li>
-	<li><a href="ayda.html">(k) <code>AYDA</code> <span class="damgar">𐰀𐰖𐰑𐰀</span></a></li>
-	<li><a href="ayla.html">(k) <code>AYLA</code> <span class="damgar">𐰀𐰖𐰞𐰀</span></a></li>
-	<li><a href="aydan.html">(k) <code>AYDAN</code> <span class="damgar">𐰀𐰖𐰑𐰀𐰣</span></a></li>
-	<li><a href="aydin.html">(e) <code>AYDIN</code> <span class="damgar">𐰀𐰖𐰑𐰃𐰣</span></a></li>
-	<li><a href="ayhan.html">(e) <code>AYHAN</code> <span class="damgar">𐰀𐰖𐰴𐰀𐰣</span></a></li>
-	<li><a href="aykut.html">(e) <code>AYKUT</code> <span class="damgar">𐰀𐰖𐰴𐰆𐱃</span></a></li>
-	<li><a href="aylin.html">(k) <code>AYLİN</code> <span class="damgar">𐰀𐰖𐰠𐰃𐰤</span></a></li>
-	<li><a href="ayperi.html">(k) <code>AYPERİ</code> <span class="damgar">𐰀𐰖𐰯𐰀𐰼𐰃</span></a></li>
-	<li><a href="aynur.html">(k) <code>AYNUR</code> <span class="damgar">𐰀𐰖𐰣𐰆𐰺</span></a></li>
-	<li><a href="aysel.html">(k) <code>AYSEL</code> <span class="damgar">𐰀𐰖𐰾𐰀𐰠</span></a></li>
-	<li><a href="aysun.html">(k) <code>AYSUN</code> <span class="damgar">𐰀𐰖𐰽𐰆𐰣</span></a></li>
-	<li><a href="ayse.html">(k) <code>AYŞE</code> <span class="damgar">𐰀𐰖𐱁𐰀</span></a></li>
-	<li><a href="aysegul.html">(k) <code>AYŞEGÜL</code> <span class="damgar">𐰀𐰖𐱁𐰀𐰏𐰇𐰠</span></a></li>
-	<li><a href="aytekin.html">(e) <code>AYTEKİN</code> <span class="damgar">𐰀𐰖𐱅𐰀𐰚𐰃𐰤</span></a></li>
-	<li><a href="ayten.html">(k) <code>AYTEN</code> <span class="damgar">𐰀𐰖𐱅𐰀𐰤</span></a></li>
-	<li><a href="aytunc.html">(e) <code>AYTUNÇ</code> <span class="damgar">𐰀𐰖𐱃𐰆𐰨</span></a></li>
-	<li><a href="banu.html">(k) <code>BANU</code> <span class="damgar">𐰉𐰀𐰣𐰆</span></a></li>
-	<li><a href="baran.html">(e) <code>BARAN</code> <span class="damgar">𐰉𐰀𐰺𐰣</span></a></li>
-	<li><a href="baris.html">(e) <code>BARIŞ</code> <span class="damgar">𐰉𐰀𐰺𐰃𐱁</span></a></li>
-	<li><a href="barlas.html">(e) <code>BARLAS</code> <span class="damgar">𐰉𐰀𐰺𐰞𐰀𐰽</span></a></li>
-	<li><a href="basak.html">(k) <code>BAŞAK</code> <span class="damgar">𐰉𐰀𐱁𐰴</span></a></li>
-	<li><a href="basaran.html">(e) <code>BAŞARAN</code> <span class="damgar">𐰉𐰀𐱁𐰺𐰣</span></a></li>
-	<li><a href="batur.html">(e) <code>BATUR</code> <span class="damgar">𐰉𐰀𐱃𐰆𐰺</span></a></li>
-	<li><a href="baybars.html">(e) <code>BAYBARS</code> <span class="damgar">𐰉𐰀𐰖𐰉𐰀𐰺𐰽</span></a></li>
-	<li><a href="baykam.html">(e) <code>BAYKAM</code> <span class="damgar">𐰉𐰀𐰖𐰴𐰀𐰢</span></a></li>
-	<li><a href="bayram.html">(e) <code>BAYRAM</code> <span class="damgar">𐰉𐰀𐰖𐰺𐰀𐰢</span></a></li>
-	<li><a href="baykal.html">(e) <code>BAYKAL</code> <span class="damgar">𐰉𐰀𐰖𐰴𐰀𐰞</span></a></li>
-	<li><a href="baysal.html">(e) <code>BAYSAL</code> <span class="damgar">𐰉𐰀𐰖𐰽𐰀𐰞</span></a></li>
-	<li><a href="bediz.html">(k) <code>BEDİZ</code> <span class="damgar">𐰋𐰀𐰓𐰃𐰔</span></a></li>
-	<li><a href="belen.html">(k) <code>BELEN</code> <span class="damgar">𐰋𐰀𐰠𐰤</span></a></li>
-	<li><a href="belgin.html">(k) <code>BELGİN</code> <span class="damgar">𐰋𐰀𐰠𐰏𐰃𐰤</span></a></li>
-	<li><a href="belinay.html">(k) <code>BELİNAY</code> <span class="damgar">𐰋𐰀𐰠𐰃𐰤𐰀𐰖</span></a></li>
-	<li><a href="bekir.html">(e) <code>BEKİR</code> <span class="damgar">𐰋𐰀𐰚𐰃𐰼</span></a></li>
-	<li><a href="bektas.html">(e) <code>BEKTAŞ</code> <span class="damgar">𐰋𐰀𐰚𐱃𐰀𐱁</span></a></li>
-	<li><a href="berat.html">(e) <code>BERAT</code> <span class="damgar">𐰋𐰀𐰺𐱃</span></a></li>
-	<li><a href="beren.html">(k) <code>BEREN</code> <span class="damgar">𐰋𐰀𐰼𐰤</span></a></li>
-	<li><a href="berkan.html">(e) <code>BERKAN</code> <span class="damgar">𐰋𐰀𐰼𐰴𐰀𐰣</span></a></li>
-	<li><a href="berkay.html">(e) <code>BERKAY</code> <span class="damgar">𐰋𐰀𐰼𐰴𐰀𐰖</span></a></li>
-	<li><a href="berna.html">(k) <code>BERNA</code> <span class="damgar">𐰋𐰀𐰼𐰣𐰀</span></a></li>
-	<li><a href="berrin.html">(k) <code>BERRİN</code> <span class="damgar">𐰋𐰀𐰼𐰼𐰃𐰤</span></a></li>
-	<li><a href="betul.html">(k) <code>BETÜL</code> <span class="damgar">𐰋𐰀𐱅𐰇𐰠</span></a></li>
-	<li><a href="bilal.html">(e) <code>BİLAL</code> <span class="damgar">𐰋𐰃𐰠𐰀𐰞</span></a></li>
-	<li><a href="bilge.html">(i) <code>BİLGE</code> <span class="damgar">𐰋𐰃𐰠𐰏𐰀</span></a></li>
-	<li><a href="birgul.html">(k) <code>BİRGÜL</code> <span class="damgar">𐰋𐰃𐰼𐰏𐰇𐰠</span></a></li>
-	<li><a href="birol.html">(e) <code>BİROL</code> <span class="damgar">𐰋𐰃𐰺𐰆𐰞</span></a></li>
-	<li><a href="bora.html">(e) <code>BORA</code> <span class="damgar">𐰉𐰆𐰺𐰀</span></a></li>
-	<li><a href="burak.html">(e) <code>BURAK</code> <span class="damgar">𐰉𐰆𐰺𐰀𐰴</span></a></li>
-	<li><a href="burcin.html">(i) <code>BURÇİN</code> <span class="damgar">𐰉𐰆𐰺𐰲𐰃𐰤</span></a></li>
-	<li><a href="buse.html">(k) <code>BUSE</code> <span class="damgar">𐰉𐰆𐰾𐰀</span></a></li>
-	<li><a href="bulent.html">(e) <code>BÜLENT</code> <span class="damgar">𐰋𐰇𐰠𐰀𐰤𐱅</span></a></li>
-	<li><a href="busra.html">(k) <code>BÜŞRA</code> <span class="damgar">𐰋𐰇𐱁𐰺𐰀</span></a></li>
-	<li><a href="cagla.html">(k) <code>ÇAĞLA</code> <span class="damgar">𐰲𐰀𐰍𐰞𐰀</span></a></li>
-	<li><a href="cagatay.html">(e) <code>ÇAĞATAY</code> <span class="damgar">𐰲𐰀𐰍𐱃𐰖</span></a></li>
-	<li><a href="celebi.html">(e) <code>ÇELEBİ</code> <span class="damgar">𐰲𐰀𐰠𐰋𐰃</span></a></li>
-	<li><a href="cetin.html">(e) <code>ÇETİN</code> <span class="damgar">𐰲𐰀𐱅𐰃𐰤</span></a></li>
-	<li><a href="cinar.html">(e) <code>ÇINAR</code> <span class="damgar">𐰲𐰃𐰣𐰀𐰺</span></a></li>
-	<li><a href="cigdem.html">(k) <code>ÇİĞDEM</code> <span class="damgar">𐰲𐰃𐰏𐰓𐰀𐰢</span></a></li>
-	<li><a href="damla.html">(k) <code>DAMLA</code> <span class="damgar">𐰑𐰀𐰢𐰞𐰀</span></a></li>
-	<li><a href="demet.html">(k) <code>DEMET</code> <span class="damgar">𐰓𐰀𐰢𐱅</span></a></li>
-	<li><a href="dengiz.html">(i) <code>DEÑİZ</code> <span class="damgar">𐰓𐰀𐰭𐰃𐰔</span></a></li>
-	<li><a href="deniz.html">(i) <code>DENİZ</code> <span class="damgar">𐰓𐰀𐰤𐰃𐰔</span></a></li>
-	<li><a href="derya.html">(k) <code>DERYA</code> <span class="damgar">𐰓𐰀𐰼𐰖𐰀</span></a></li>
-	<li><a href="didem.html">(k) <code>DİDEM</code> <span class="damgar">𐰓𐰃𐰓𐰀𐰢</span></a></li>
-	<li><a href="dilek.html">(k) <code>DİLEK</code> <span class="damgar">𐰓𐰃𐰠𐰀𐰚</span></a></li>
-	<li><a href="dilay.html">(k) <code>DİLAY</code> <span class="damgar">𐰓𐰃𐰞𐰀𐰖</span></a></li>
-	<li><a href="dikmen.html">(e) <code>DİKMEN</code> <span class="damgar">𐰓𐰃𐰚𐰢𐰀𐰤</span></a></li>
-	<li><a href="dogan.html">(e) <code>DOĞAN</code> <span class="damgar">𐰑𐰆𐰍𐰀𐰣</span></a></li>
-	<li><a href="dolunay.html">(e) <code>DOLUNAY</code> <span class="damgar">𐰑𐰆𐰞𐰣𐰀𐰖</span></a></li>
-	<li><a href="doganay.html">(e) <code>DOĞANAY</code> <span class="damgar">𐰑𐰆𐰍𐰀𐰣𐰀𐰖</span></a></li>
-	<li><a href="dursun.html">(e) <code>DURSUN</code> <span class="damgar">𐰑𐰆𐰺𐰽𐰆𐰣</span></a></li>
-	<li><a href="duygu.html">(k) <code>DUYGU</code> <span class="damgar">𐰑𐰆𐰖𐰍𐰆</span></a></li>
-	<li><a href="ebru.html">(k) <code>EBRU</code> <span class="damgar">𐰀𐰋𐰺𐰆</span></a></li>
-	<li><a href="egemen.html">(e) <code>EGEMEN</code> <span class="damgar">𐰀𐰏𐰢𐰤</span></a></li>
-	<li><a href="ekrem.html">(e) <code>EKREM</code> <span class="damgar">𐰀𐰚𐰼𐰀𐰢</span></a></li>
-	<li><a href="emel.html">(k) <code>EMEL</code> <span class="damgar">𐰀𐰢𐰠</span></a></li>
-	<li><a href="emine.html">(k) <code>EMİNE</code> <span class="damgar">𐰀𐰢𐰃𐰤𐰀</span></a></li>
-	<li><a href="emir.html">(i) <code>EMİR</code> <span class="damgar">𐰀𐰢𐰃𐰼</span></a></li>
-	<li><a href="emre.html">(e) <code>EMRE</code> <span class="damgar">𐰀𐰢𐰼𐰀</span></a></li>
-	<li><a href="enes.html">(e) <code>ENES</code> <span class="damgar">𐰀𐰤𐰾</span></a></li>
-	<li><a href="engin.html">(e) <code>ENGİN</code> <span class="damgar">𐰀𐰤𐰏𐰃𐰤</span></a></li>
-	<li><a href="eray.html">(e) <code>ERAY</code> <span class="damgar">𐰀𐰺𐰖</span></a></li>
-	<li><a href="erdal.html">(e) <code>ERDAL</code> <span class="damgar">𐰀𐰼𐰑𐰀𐰞</span></a></li>
-	<li><a href="erdinc.html">(e) <code>ERDİNÇ</code> <span class="damgar">𐰀𐰼𐰓𐰃𐰨</span></a></li>
-	<li><a href="erdem.html">(e) <code>ERDEM</code> <span class="damgar">𐰀𐰼𐰓𐰀𐰢</span></a></li>
-	<li><a href="eren.html">(e) <code>EREN</code> <span class="damgar">𐰀𐰼𐰤</span></a></li>
-	<li><a href="ergun.html">(e) <code>ERGÜN</code> <span class="damgar">𐰀𐰼𐰏𐰇𐰤</span></a></li>
-	<li><a href="erkan.html">(e) <code>ERKAN</code> <span class="damgar">𐰀𐰼𐰴𐰀𐰣</span></a></li>
-	<li><a href="erman.html">(e) <code>ERMAN</code> <span class="damgar">𐰀𐰼𐰢𐰀𐰣</span></a></li>
-	<li><a href="erol.html">(e) <code>EROL</code> <span class="damgar">𐰀𐰼𐰆𐰞</span></a></li>
-	<li><a href="ersan.html">(e) <code>ERSAN</code> <span class="damgar">𐰀𐰼𐰽𐰀𐰣</span></a></li>
-	<li><a href="ersin.html">(e) <code>ERSİN</code> <span class="damgar">𐰀𐰼𐰾𐰃𐰤</span></a></li>
-	<li><a href="ertan.html">(e) <code>ERTAN</code> <span class="damgar">𐰀𐰼𐱃𐰀𐰣</span></a></li>
-	<li><a href="ertugrul.html">(e) <code>ERTUĞRUL</code> <span class="damgar">𐰀𐰼𐱃𐰆𐰍𐰺𐰆𐰞</span></a></li>
-	<li><a href="esin.html">(k) <code>ESİN</code> <span class="damgar">𐰀𐰾𐰃𐰤</span></a></li>
-	<li><a href="esra.html">(k) <code>ESRA</code> <span class="damgar">𐰀𐰾𐰺𐰀</span></a></li>
-	<li><a href="etem.html">(e) <code>ETEM</code> <span class="damgar">𐰀𐱅𐰢</span></a></li>
-	<li><a href="eylul.html">(k) <code>EYLÜL</code> <span class="damgar">𐰀𐰘𐰠𐰇𐰠</span></a></li>
-	<li><a href="eymen.html">(e) <code>EYMEN</code> <span class="damgar">𐰀𐰘𐰢𐰀𐰤</span></a></li>
-	<li><a href="ezgi.html">(k) <code>EZGİ</code> <span class="damgar">𐰀𐰔𐰏𐰃</span></a></li>
-	<li><a href="gazel.html">(k) <code>GAZEL</code> <span class="damgar">𐰍𐰀𐰔𐰠</span></a></li>
-	<li><a href="gizem.html">(k) <code>GİZEM</code> <span class="damgar">𐰏𐰃𐰔𐰀𐰢</span></a></li>
-	<li><a href="giray.html">(e) <code>GİRAY</code> <span class="damgar">𐰏𐰃𐰺𐰀𐰖</span></a></li>
-	<li><a href="gonul.html">(k) <code>GÖÑÜL</code> <span class="damgar">𐰏𐰇𐰭𐰠</span></a></li>
-	<li><a href="gokay.html">(e) <code>GÖKAY</code> <span class="damgar">𐰏𐰜𐰀𐰖</span></a></li>
-	<li><a href="gokalp.html">(e) <code>GÖKALP</code> <span class="damgar">𐰏𐰜𐰀𐰞𐰯</span></a></li>
-	<li><a href="gokce.html">(i) <code>GÖKÇE</code> <span class="damgar">𐰏𐰜𐰲𐰀</span></a></li>
-	<li><a href="gokmen.html">(e) <code>GÖKMEN</code> <span class="damgar">𐰏𐰜𐰢𐰀𐰤</span></a></li>
-	<li><a href="goksel.html">(e) <code>GÖKSEL</code> <span class="damgar">𐰏𐰜𐰾𐰀𐰠</span></a></li>
-	<li><a href="gokturk.html">(e) <code>GÖKTÜRK</code> <span class="damgar">𐰏𐰜𐱅𐰇𐰼𐰜</span></a></li>
-	<li><a href="gorkem.html">(k) <code>GÖRKEM</code> <span class="damgar">𐰏𐰇𐰼𐰚𐰀𐰢</span></a></li>
-	<li><a href="gozde.html">(k) <code>GÖZDE</code> <span class="damgar">𐰏𐰇𐰔𐰓𐰀</span></a></li>
-	<li><a href="gulay.html">(k) <code>GÜLAY</code> <span class="damgar">𐰏𐰇𐰠𐰀𐰖</span></a></li>
-	<li><a href="gulben.html">(k) <code>GÜLBEN</code> <span class="damgar">𐰏𐰇𐰠𐰋𐰀𐰤</span></a></li>
-	<li><a href="gulcin.html">(k) <code>GÜLÇİN</code> <span class="damgar">𐰏𐰇𐰠𐰲𐰃𐰤</span></a></li>
-	<li><a href="gulsum.html">(k) <code>GÜLSÜM</code> <span class="damgar">𐰏𐰇𐰠𐰾𐰇𐰢</span></a></li>
-	<li><a href="gultekin.html">(e) <code>GÜLTEKİN</code> <span class="damgar">𐰏𐰇𐰠𐱅𐰀𐰚𐰃𐰤</span></a></li>
-	<li><a href="gunay.html">(e) <code>GÜNAY</code> <span class="damgar">𐰏𐰇𐰤𐰀𐰖</span></a></li>
-	<li><a href="guner.html">(e) <code>GÜNER</code> <span class="damgar">𐰏𐰇𐰤𐰀𐰼</span></a></li>
-	<li><a href="gungor.html">(e) <code>GÜNGÖR</code> <span class="damgar">𐰏𐰇𐰤𐰏𐰇𐰼</span></a></li>
-	<li><a href="gurbuz.html">(e) <code>GÜRBÜZ</code> <span class="damgar">𐰏𐰇𐰼𐰋𐰇𐰔</span></a></li>
-	<li><a href="gurdal.html">(e) <code>GÜRDAL</code> <span class="damgar">𐰏𐰇𐰼𐰑𐰀𐰞</span></a></li>
-	<li><a href="isilay.html">(k) <code>IŞILAY</code> <span class="damgar">𐰃𐱁𐰞𐰀𐰖</span></a></li>
-	<li><a href="ilber.html">(e) <code>İLBER</code> <span class="damgar">𐰃𐰠𐰋𐰀𐰼</span></a></li>
-	<li><a href="ilbey.html">(e) <code>İLBEY</code> <span class="damgar">𐰃𐰠𐰋𐰀𐰘</span></a></li>
-	<li><a href="ilker.html">(e) <code>İLKER</code> <span class="damgar">𐰃𐰠𐰚𐰀𐰼</span></a></li>
-	<li><a href="ilkay.html">(i) <code>İLKAY</code> <span class="damgar">𐰃𐰠𐰴𐰀𐰖</span></a></li>
-	<li><a href="ilknur.html">(k) <code>İLKNUR</code> <span class="damgar">𐰃𐰠𐰚𐰣𐰆𐰺</span></a></li>
-	<li><a href="irem.html">(k) <code>İREM</code> <span class="damgar">𐰃𐰼𐰀𐰢</span></a></li>
-	<li><a href="ismail.html">(e) <code>İSMAİL</code> <span class="damgar">𐰃𐰾𐰢𐰀𐰃𐰠</span></a></li>
-	<li><a href="ismet.html">(i) <code>İSMET</code> <span class="damgar">𐰃𐰾𐰢𐰀𐱅</span></a></li>
-	<li><a href="izzet.html">(e) <code>İZZET</code> <span class="damgar">𐰃𐰔𐰔𐰀𐱅</span></a></li>
-	<li><a href="kagan.html">(e) <code>HAKAN&gt;KAĞAN</code> <span class="damgar">𐰴𐰍𐰣</span></a></li>
-	<li><a href="kadir.html">(e) <code>KADİR</code> <span class="damgar">𐰴𐰀𐰓𐰃𐰼</span></a></li>
-	<li><a href="kamer.html">(e) <code>KAMER</code> <span class="damgar">𐰴𐰀𐰢𐰼</span></a></li>
-	<li><a href="kaya.html">(e) <code>KAYA</code> <span class="damgar">𐰚𐰀𐰢𐰞</span></a></li>
-	<li><a href="kayi.html">(e) <code>KAYI</code> <span class="damgar">𐰴𐰀𐰖𐰃</span></a></li>
-	<li><a href="kemal.html">(e) <code>KEMAL</code> <span class="damgar">𐰚𐰀𐰢𐰞</span></a></li>
-	<li><a href="kerem.html">(e) <code>KEREM</code> <span class="damgar">𐰚𐰀𐰼𐰢</span></a></li>
-	<li><a href="kiraz.html">(k) <code>KİRAZ</code> <span class="damgar">𐰚𐰃𐰺𐰀𐰔</span></a></li>
-	<li><a href="koray.html">(e) <code>KORAY</code> <span class="damgar">𐰸𐰆𐰺𐰀𐰖</span></a></li>
-	<li><a href="kubilay.html">(e) <code>KUBİLAY</code> <span class="damgar">𐰸𐰆𐰋𐰃𐰞𐰀𐰖</span></a></li>
-	<li><a href="kubra.html">(k) <code>KÜBRA</code> <span class="damgar">𐰚𐰇𐰋𐰺𐰀</span></a></li>
-	<li><a href="leyla.html">(k) <code>LEYLA</code> <span class="damgar">𐰠𐰀𐰘𐰞𐰀</span></a></li>
-	<li><a href="leman.html">(k) <code>LEMAN</code> <span class="damgar">𐰠𐰀𐰢𐰣</span></a></li>
-	<li><a href="maya.html">(k) <code>MAYA</code> <span class="damgar">𐰢𐰀𐰖𐰀</span></a></li>
-	<li><a href="melek.html">(k) <code>MELEK</code> <span class="damgar">𐰢𐰀𐰠𐰚</span></a></li>
-	<li><a href="meltem.html">(k) <code>MELTEM</code> <span class="damgar">𐰢𐰀𐰠𐱅𐰀𐰢</span></a></li>
-	<li><a href="meral.html">(k) <code>MERAL</code> <span class="damgar">𐰢𐰀𐰼𐰀𐰞</span></a></li>
-	<li><a href="mert.html">(e) <code>MERT</code> <span class="damgar">𐰢𐰀𐰼𐱅</span></a></li>
-	<li><a href="meryem.html">(k) <code>MERYEM</code> <span class="damgar">𐰢𐰀𐰼𐰘𐰀𐰢</span></a></li>
-	<li><a href="mete.html">(e) <code>METE</code> <span class="damgar">𐰢𐰀𐱅𐰀</span></a></li>
-	<li><a href="metin.html">(e) <code>METİN</code> <span class="damgar">𐰢𐰀𐱅𐰃𐰤</span></a></li>
-	<li><a href="mine.html">(k) <code>MİNE</code> <span class="damgar">𐰢𐰃𐰤𐰀</span></a></li>
-	<li><a href="murat.html">(e) <code>MURAT</code> <span class="damgar">𐰢𐰆𐰺𐰀𐱃</span></a></li>
-	<li><a href="musa.html">(e) <code>MUSA</code> <span class="damgar">𐰢𐰆𐰽𐰀</span></a></li>
-	<li><a href="muge.html">(k) <code>MÜGE</code> <span class="damgar">𐰢𐰇𐰏𐰀</span></a></li>
-	<li><a href="mursel.html">(e) <code>MÜRSEL</code> <span class="damgar">𐰢𐰇𐰼𐰾𐰀𐰠</span></a></li>
-	<li><a href="nazan.html">(k) <code>NAZAN</code> <span class="damgar">𐰣𐰀𐰔𐰣</span></a></li>
-	<li><a href="nazgul.html">(k) <code>NAZGÜL</code> <span class="damgar">𐰣𐰀𐰔𐰏𐰇𐰠</span></a></li>
-	<li><a href="nazli.html">(k) <code>NAZLI</code> <span class="damgar">𐰣𐰀𐰔𐰞𐰃</span></a></li>
-	<li><a href="nergis.html">(k) <code>NERGİS</code> <span class="damgar">𐰤𐰀𐰼𐰏𐰃𐰾</span></a></li>
-	<li><a href="nermin.html">(k) <code>NERMİN</code> <span class="damgar">𐰤𐰀𐰼𐰢𐰃𐰤</span></a></li>
-	<li><a href="neriman.html">(k) <code>NERİMAN</code> <span class="damgar">𐰤𐰀𐰼𐰃𐰢𐰀𐰣</span></a></li>
-	<li><a href="nesrin.html">(k) <code>NESRİN</code> <span class="damgar">𐰤𐰀𐰾𐰼𐰃𐰤</span></a></li>
-	<li><a href="nese.html">(k) <code>NEŞE</code> <span class="damgar">𐰤𐰀𐱁𐰀</span></a></li>
-	<li><a href="nigar.html">(k) <code>NİGAR</code> <span class="damgar">𐰤𐰃𐰏𐰀𐰺</span></a></li>
-	<li><a href="nilay.html">(k) <code>NİLAY</code> <span class="damgar">𐰤𐰃𐰠𐰀𐰖</span></a></li>
-	<li><a href="nilgun.html">(k) <code>NİLGÜN</code> <span class="damgar">𐰤𐰃𐰠𐰏𐰇𐰤</span></a></li>
-	<li><a href="nuran.html">(k) <code>NURAN</code> <span class="damgar">𐰣𐰆𐰺𐰀𐰣</span></a></li>
-	<li><a href="nuray.html">(k) <code>NURAY</code> <span class="damgar">𐰣𐰆𐰺𐰀𐰖</span></a></li>
-	<li><a href="nurgul.html">(k) <code>NURGÜL</code> <span class="damgar">𐰣𐰆𐰺𐰏𐰇𐰠</span></a></li>
-	<li><a href="nursel.html">(k) <code>NURSEL</code> <span class="damgar">𐰣𐰆𐰺𐰾𐰀𐰠</span></a></li>
-	<li><a href="nurten.html">(k) <code>NURTEN</code> <span class="damgar">𐰣𐰆𐰺𐱅𐰀𐰤</span></a></li>
-	<li><a href="oguz.html">(e) <code>OĞUZ</code> <span class="damgar">𐰆𐰍𐰔</span></a></li>
-	<li><a href="oguzhan.html">(e) <code>OĞUZHAN&gt;KAN</code> <span class="damgar">𐰆𐰍𐰔𐰴𐰀𐰣</span></a></li>
-	<li><a href="oktay.html">(e) <code>OKTAY</code> <span class="damgar">𐰆𐰸𐱃𐰀𐰖</span></a></li>
-	<li><a href="onur.html">(e) <code>ONUR</code> <span class="damgar">𐰆𐰣𐰺</span></a></li>
-	<li><a href="orhan.html">(e) <code>ORHAN&gt;ORKUN</code> <span class="damgar">𐰆𐰺𐰴𐰆𐰣</span></a></li>
-	<li><a href="osman.html">(e) <code>OSMAN</code> <span class="damgar">𐰆𐰽𐰢𐰀𐰣</span></a></li>
-	<li><a href="ozan.html">(e) <code>OZAN</code> <span class="damgar">𐰆𐰔𐰀𐰣</span></a></li>
-	<li><a href="omer.html">(e) <code>ÖMER</code> <span class="damgar">𐰇𐰢𐰀𐰼</span></a></li>
-	<li><a href="oyku.html">(k) <code>ÖYKÜ</code> <span class="damgar">𐰇𐰘𐰚𐰇</span></a></li>
-	<li><a href="ozay.html">(e) <code>ÖZAY</code> <span class="damgar">𐰇𐰔𐰀𐰖</span></a></li>
-	<li><a href="ozen.html">(e) <code>ÖZEN</code> <span class="damgar">𐰇𐰔𐰀𐰤</span></a></li>
-	<li><a href="ozer.html">(e) <code>ÖZER</code> <span class="damgar">𐰇𐰔𐰀𐰼</span></a></li>
-	<li><a href="ozden.html">(k) <code>ÖZDEN</code> <span class="damgar">𐰇𐰔𐰓𐰀𐰤</span></a></li>
-	<li><a href="ozge.html">(k) <code>ÖZGE</code> <span class="damgar">𐰇𐰔𐰏𐰀</span></a></li>
-	<li><a href="ozgul.html">(k) <code>ÖZGÜL</code> <span class="damgar">𐰇𐰔𐰏𐰇𐰠</span></a></li>
-	<li><a href="ozgur.html">(e) <code>ÖZGÜR</code> <span class="damgar">𐰇𐰔𐰏𐰼</span></a></li>
-	<li><a href="ozkan.html">(e) <code>ÖZKAN</code> <span class="damgar">𐰇𐰔𐰴𐰀𐰣</span></a></li>
-	<li><a href="ozlem.html">(k) <code>ÖZLEM</code> <span class="damgar">𐰇𐰔𐰠𐰀𐰢</span></a></li>
-	<li><a href="oznur.html">(k) <code>ÖZNUR</code> <span class="damgar">𐰇𐰔𐰣𐰆𐰺</span></a></li>
-	<li><a href="ozturk.html">(e) <code>ÖZTÜRK</code> <span class="damgar">𐰇𐰔𐱅𐰇𐰼𐰜</span></a></li>
-	<li><a href="pelin.html">(k) <code>PELİN</code> <span class="damgar">𐰯𐰀𐰠𐰃𐰤</span></a></li>
-	<li><a href="peker.html">(e) <code>PEKER</code> <span class="damgar">𐰯𐰀𐰚𐰼</span></a></li>
-	<li><a href="pinar.html">(k) <code>PINAR</code> <span class="damgar">𐰯𐰃𐰣𐰀𐰺</span></a></li>
-	<li><a href="polat.html">(e) <code>POLAT</code> <span class="damgar">𐰯𐰆𐰞𐰀𐱃</span></a></li>
-	<li><a href="rana.html">(k) <code>RANA</code> <span class="damgar">𐰺𐰀𐰣𐰀</span></a></li>
-	<li><a href="ruya.html">(k) <code>RÜYA</code> <span class="damgar">𐰼𐰇𐰖𐰀</span></a></li>
-	<li><a href="riza.html">(e) <code>RIZA</code> <span class="damgar">𐰺𐰃𐰔𐰀</span></a></li>
-	<li><a href="umut.html">(i) <code>UMUT</code> <span class="damgar">𐰆𐰢𐱃</span></a></li>
-	<li><a href="umit.html">(i) <code>ÜMİT</code> <span class="damgar">𐰇𐰢𐰃𐱅</span></a></li>
-	<li><a href="unal.html">(e) <code>ÜNAL</code> <span class="damgar">𐰇𐰤𐰀𐰞</span></a></li>
-	<li><a href="unsal.html">(e) <code>ÜNSAL</code> <span class="damgar">𐰇𐰤𐰽𐰀𐰞</span></a></li>
-	<li><a href="ramazan.html">(e) <code>RAMAZAN</code> <span class="damgar">𐰺𐰀𐰢𐰔𐰣</span></a></li>
-	<li><a href="samet.html">(e) <code>SAMET</code> <span class="damgar">𐰽𐰀𐰢𐱅</span></a></li>
-	<li><a href="sancar.html">(e) <code>SANCAR</code> <span class="damgar">𐰽𐰀𐰨𐰀𐰺</span></a></li>
-	<li><a href="saner.html">(e) <code>SANER</code> <span class="damgar">𐰽𐰀𐰤𐰼</span></a></li>
-	<li><a href="secil.html">(k) <code>SEÇİL</code> <span class="damgar">𐰾𐰀𐰲𐰃𐰠</span></a></li>
-	<li><a href="seda.html">(k) <code>SEDA</code> <span class="damgar">𐰾𐰀𐰑𐰀</span></a></li>
-	<li><a href="selcuk.html">(e) <code>SELÇUK</code> <span class="damgar">𐰾𐰀𐰠𐰲𐰸</span></a></li>
-	<li><a href="selen.html">(k) <code>SELEN</code> <span class="damgar">𐰾𐰀𐰠𐰤</span></a></li>
-	<li><a href="selin.html">(k) <code>SELİN</code> <span class="damgar">𐰾𐰀𐰠𐰃𐰤</span></a></li>
-	<li><a href="selma.html">(k) <code>SELMA</code> <span class="damgar">𐰾𐰀𐰞𐰢𐰀</span></a></li>
-	<li><a href="selda.html">(k) <code>SELDA</code> <span class="damgar">𐰾𐰀𐰠𐰑𐰀</span></a></li>
-	<li><a href="semra.html">(k) <code>SEMRA</code> <span class="damgar">𐰾𐰀𐰢𐰺𐰀</span></a></li>
-	<li><a href="senem.html">(k) <code>SENEM</code> <span class="damgar">𐰾𐰀𐰤𐰢</span></a></li>
-	<li><a href="serkan.html">(e) <code>SERKAN</code> <span class="damgar">𐰾𐰀𐰼𐰴𐰀𐰣</span></a></li>
-	<li><a href="serpil.html">(k) <code>SERPİL</code> <span class="damgar">𐰾𐰀𐰼𐰯𐰃𐰠</span></a></li>
-	<li><a href="sezen.html">(k) <code>SEZEN</code> <span class="damgar">𐰾𐰀𐰔𐰤</span></a></li>
-	<li><a href="seren.html">(k) <code>SEREN</code> <span class="damgar">𐰾𐰀𐰼𐰤</span></a></li>
-	<li><a href="sezer.html">(i) <code>SEZER</code> <span class="damgar">𐰾𐰀𐰔𐰼</span></a></li>
-	<li><a href="sezgi.html">(k) <code>SEZGİ</code> <span class="damgar">𐰾𐰀𐰔𐰏𐰃</span></a></li>
-	<li><a href="sezgin.html">(i) <code>SEZGİN</code> <span class="damgar">𐰾𐰀𐰔𐰏𐰃𐰤</span></a></li>
-	<li><a href="sibel.html">(k) <code>SİBEL</code> <span class="damgar">𐰾𐰃𐰋𐰀𐰠</span></a></li>
-	<li><a href="simge.html">(k) <code>SİMGE</code> <span class="damgar">𐰾𐰃𐰢𐰏𐰀</span></a></li>
-	<li><a href="sinan.html">(e) <code>SİNAN</code> <span class="damgar">𐰾𐰃𐰣𐰀𐰣</span></a></li>
-	<li><a href="sinem.html">(k) <code>SİNEM</code> <span class="damgar">𐰾𐰃𐰤𐰀𐰢</span></a></li>
-	<li><a href="sonay.html">(i) <code>SONAY</code> <span class="damgar">𐰽𐰆𐰣𐰀𐰖</span></a></li>
-	<li><a href="soner.html">(e) <code>SONER</code> <span class="damgar">𐰽𐰆𐰤𐰀𐰼</span></a></li>
-	<li><a href="songul.html">(k) <code>SONGÜL</code> <span class="damgar">𐰽𐰆𐰣𐰏𐰇𐰠</span></a></li>
-	<li><a href="sude.html">(k) <code>SUDE</code> <span class="damgar">𐰽𐰆𐰓𐰀</span></a></li>
-	<li><a href="sultan.html">(k) <code>SULTAN</code> <span class="damgar">𐰽𐰆𐰞𐱃𐰀𐰣</span></a></li>
-	<li><a href="suna.html">(k) <code>SUNA</code> <span class="damgar">𐰽𐰆𐰣𐰀</span></a></li>
-	<li><a href="suleyman.html">(e) <code>SÜLEYMAN</code> <span class="damgar">𐰾𐰇𐰠𐰀𐰘𐰢𐰀𐰣</span></a></li>
-	<li><a href="saban.html">(e) <code>ŞABAN</code> <span class="damgar">𐱁𐰀𐰉𐰣</span></a></li>
-	<li><a href="senay.html">(i) <code>ŞENAY</code> <span class="damgar">𐱁𐰀𐰣𐰖</span></a></li>
-	<li><a href="sebnem.html">(k) <code>ŞEBNEM</code> <span class="damgar">𐱁𐰀𐰋𐰤𐰀𐰢</span></a></li>
-	<li><a href="senel.html">(e) <code>ŞENEL</code> <span class="damgar">𐱁𐰀𐰤𐰠</span></a></li>
-	<li><a href="sengul.html">(k) <code>ŞENGÜL</code> <span class="damgar">𐱁𐰀𐰤𐰏𐰇𐰠</span></a></li>
-	<li><a href="senol.html">(e) <code>ŞENOL</code> <span class="damgar">𐱁𐰀𐰤𐰆𐰞</span></a></li>
-	<li><a href="seyda.html">(k) <code>ŞEYDA</code> <span class="damgar">𐱁𐰀𐰘𐰑𐰀</span></a></li>
-	<li><a href="sule.html">(k) <code>ŞULE</code> <span class="damgar">𐱁𐰆𐰠𐰀</span></a></li>
-	<li><a href="sukru.html">(e) <code>ŞÜKRÜ</code> <span class="damgar">𐱁𐰜𐰼𐰇</span></a></li>
-	<li><a href="tamer.html">(e) <code>TAMER</code> <span class="damgar">𐱃𐰀𐰢𐰼</span></a></li>
-	<li><a href="taner.html">(e) <code>TANER</code> <span class="damgar">𐱃𐰀𐰣𐰀𐰼</span></a></li>
-	<li><a href="tansu.html">(i) <code>TANSU</code> <span class="damgar">𐱃𐰀𐰣𐰽𐰆</span></a></li>
-	<li><a href="taskin.html">(e) <code>TAŞKIN</code> <span class="damgar">𐱃𐰀𐱁𐰴𐰃𐰣</span></a></li>
-	<li><a href="timur.html">(e) <code>TİMUR</code> <span class="damgar">𐱅𐰃𐰢𐰆𐰺</span></a></li>
-	<li><a href="tolga.html">(e) <code>TOLGA</code> <span class="damgar">𐱃𐰆𐰞𐰍𐰀</span></a></li>
-	<li><a href="toros.html">(e) <code>TOROS</code> <span class="damgar">𐱃𐰆𐰞𐰍𐰀</span></a></li>
-	<li><a href="tugce.html">(k) <code>TUĞÇE</code> <span class="damgar">𐱃𐰆𐰍𐰲𐰀</span></a></li>
-	<li><a href="tuna.html">(i) <code>TUNA</code> <span class="damgar">𐱃𐰆𐰣𐰀</span></a></li>
-	<li><a href="turan.html">(e) <code>TURAN</code> <span class="damgar">𐱃𐰆𐰺𐰀𐰣</span></a></li>
-	<li><a href="tulay.html">(k) <code>TÜLAY</code> <span class="damgar">𐱅𐰇𐰠𐰀𐰖</span></a></li>
-	<li><a href="tulin.html">(k) <code>TÜLİN</code> <span class="damgar">𐱅𐰇𐰠𐰃𐰤</span></a></li>
-	<li><a href="turk.html">(e) <code>TÜRK</code> <span class="damgar">𐱅𐰇𐰼𐰜</span></a></li>
-	<li><a href="turkan.html">(k) <code>TÜRKAN</code> <span class="damgar">𐱅𐰇𐰼𐰜𐰀𐰣</span></a></li>
-	<li><a href="turkmen.html">(e) <code>TÜRKMEN</code> <span class="damgar">𐱅𐰇𐰼𐰜𐰢𐰀𐰤</span></a></li>
-	<li><a href="yagmur.html">(k) <code>YAĞMUR</code> <span class="damgar">𐰖𐰀𐰍𐰢𐰆𐰺</span></a></li>
-	<li><a href="yakup.html">(e) <code>YAKUP</code> <span class="damgar">𐰖𐰀𐰴𐰆𐰯</span></a></li>
-	<li><a href="yaprak.html">(k) <code>YAPRAK</code> <span class="damgar">𐰖𐰀𐰯𐰺𐰀𐰴</span></a></li>
-	<li><a href="yaren.html">(k) <code>YAREN</code> <span class="damgar">𐰖𐰀𐰼𐰤</span></a></li>
-	<li><a href="yasin.html">(e) <code>YASİN</code> <span class="damgar">𐰖𐰀𐰾𐰃𐰤</span></a></li>
-	<li><a href="yasemin.html">(k) <code>YASEMİN</code> <span class="damgar">𐰖𐰀𐰾𐰢𐰃𐰤</span></a></li>
-	<li><a href="yalcin.html">(e) <code>YALÇIN</code> <span class="damgar">𐰖𐰀𐰞𐰲𐰃𐰣</span></a></li>
-	<li><a href="yasar.html">(e) <code>YAŞAR</code> <span class="damgar">𐰖𐰀𐱁𐰺</span></a></li>
-	<li><a href="yeliz.html">(k) <code>YELİZ</code> <span class="damgar">𐰘𐰀𐰠𐰃𐰔</span></a></li>
-	<li><a href="yesim.html">(k) <code>YEŞİM</code> <span class="damgar">𐰘𐰀𐱁𐰃𐰢</span></a></li>
-	<li><a href="yildiz.html">(k) <code>YILDIZ</code> <span class="damgar">𐰖𐰃𐰡𐰃𐰔</span></a></li>
-	<li><a href="yilmaz.html">(e) <code>YILMAZ</code> <span class="damgar">𐰖𐰃𐰞𐰢𐰀𐰔</span></a></li>
-	<li><a href="yigit.html">(e) <code>YİĞİT</code> <span class="damgar">𐰘𐰃𐰏𐱅</span></a></li>
-	<li><a href="yoruk.html">(e) <code>YÖRÜK</code> <span class="damgar">𐰘𐰇𐰼𐰜</span></a></li>
-	<li><a href="yunus.html">(e) <code>YUNUS</code> <span class="damgar">𐰖𐰆𐰣𐰽</span></a></li>
-	<li><a href="yuksel.html">(i) <code>YÜKSEL</code> <span class="damgar">𐰘𐰜𐰾𐰀𐰠</span></a></li>
-	<li><a href="zerrin.html">(k) <code>ZERRİN</code> <span class="damgar">𐰔𐰀𐰼𐰼𐰃𐰤</span></a></li>
-	<li><a href="zeynep.html">(k) <code>ZEYNEP</code> <span class="damgar">𐰔𐰀𐰘𐰤𐰯</span></a></li>
+<li>(e) <a href="abidin.html"><code>ABİDİN</code> <span class="damgar">𐰀𐰉𐰋𐰃𐰓𐰤</span></a></li>
+<li>(k) <a href="acelya.html"><code>AÇELYA</code> <span class="damgar">𐰀𐰲𐰠𐰖𐰀</span></a></li>
+<li>(e) <a href="adnan.html"><code>ADNAN</code> <span class="damgar">𐰀𐰑𐰣𐰀𐰣</span></a></li>
+<li>(k) <a href="akasya.html"><code>AKASYA</code> <span class="damgar">𐰀𐰴𐰽𐰖𐰀</span></a></li>
+<li>(e) <a href="akay.html"><code>AKAY</code> <span class="damgar">𐰀𐰴𐰖</span></a></li>
+<li>(e) <a href="aker.html"><code>AKER</code> <span class="damgar">𐰀𐰴𐰼</span></a></li>
+<li>(e) <a href="akin.html"><code>AKIN</code> <span class="damgar">𐰀𐰴𐰃𐰣</span></a></li>
+<li>(e) <a href="akiner.html"><code>AKINER</code> <span class="damgar">𐰀𐰴𐰃𐰤𐰀𐰼</span></a></li>
+<li>(e) <a href="akman.html"><code>AKMAN</code> <span class="damgar">𐰀𐰴𐰢𐰀𐰣</span></a></li>
+<li>(k) <a href="aksu.html"><code>AKSU</code> <span class="damgar">𐰀𐰴𐰽𐰆</span></a></li>
+<li>(e) <a href="aksun.html"><code>AKSUN</code> <span class="damgar">𐰀𐰴𐰽𐰆𐰣</span></a></li>
+<li>(e) <a href="ali.html"><code>ALİ</code> <span class="damgar">𐰀𐰞𐰠𐰃</span></a></li>
+<li>(e) <a href="alparslan.html"><code>ALPARSLAN</code> <span class="damgar">𐰀𐰞𐰯𐰀𐰺𐰽𐰞𐰀𐰣</span></a></li>
+<li>(e) <a href="alpaslan.html"><code>ALPASLAN</code> <span class="damgar">𐰀𐰞𐰯𐰀𐰽𐰞𐰀𐰣</span></a></li>
+<li>(e) <a href="alpay.html"><code>ALPAY</code> <span class="damgar">𐰀𐰞𐰯𐰀𐰖</span></a></li>
+<li>(e) <a href="alper.html"><code>ALPER</code> <span class="damgar">𐰀𐰞𐰯𐰼</span></a></li>
+<li>(e) <a href="alperen.html"><code>ALPEREN</code> <span class="damgar">𐰀𐰞𐰯𐰼𐰤</span></a></li>
+<li>(e) <a href="altan.html"><code>ALTAN</code> <span class="damgar">𐰀𐰞𐱃𐰀𐰣</span></a></li>
+<li>(e) <a href="altay.html"><code>ALTAY</code> <span class="damgar">𐰀𐰞𐱃𐰀𐰖</span></a></li>
+<li>(e) <a href="arman.html"><code>ARMAN</code> <span class="damgar">𐰀𐰺𐰢𐰀𐰣</span></a></li>
+<li>(e) <a href="arkin.html"><code>ARKIN</code> <span class="damgar">𐰀𐰺𐰴𐰃𐰣</span></a></li>
+<li>(e) <a href="arikan.html"><code>ARIKAN</code> <span class="damgar">𐰀𐰺𐰃𐰴𐰀𐰣</span></a></li>
+<li>(k) <a href="arzu.html"><code>ARZU</code> <span class="damgar">𐰀𐰺𐰔𐰆</span></a></li>
+<li>(e) <a href="aslan.html"><code>ASLAN</code> <span class="damgar">𐰀𐰽𐰞𐰀𐰣</span></a></li>
+<li>(k) <a href="asli.html"><code>ASLI</code> <span class="damgar">𐰀𐰽𐰞𐰃</span></a></li>
+<li>(k) <a href="asuman.html"><code>ASUMAN</code> <span class="damgar">𐰀𐰽𐰆𐰢𐰀𐰣</span></a></li>
+<li>(e) <a href="ata.html"><code>ATA</code> <span class="damgar">𐰀𐱃𐰀</span></a></li>
+<li>(e) <a href="atakan.html"><code>ATAKAN</code> <span class="damgar">𐰀𐱃𐰴𐰣</span></a></li>
+<li>(e) <a href="atalay.html"><code>ATALAY</code> <span class="damgar">𐰀𐱃𐰞𐰖</span></a></li>
+<li>(e) <a href="aybars.html"><code>AYBARS</code> <span class="damgar">𐰀𐰖𐰉𐰀𐰺𐰽</span></a></li>
+<li>(e) <a href="ayberk.html"><code>AYBERK</code> <span class="damgar">𐰀𐰖𐰋𐰀𐰼𐰚</span></a></li>
+<li>(e) <a href="aydogan.html"><code>AYDOĞAN</code> <span class="damgar">𐰀𐰖𐰑𐰆𐰍𐰀𐰣</span></a></li>
+<li>(k) <a href="aygul.html"><code>AYGÜL</code> <span class="damgar">𐰀𐰖𐰏𐰇𐰠</span></a></li>
+<li>(k) <a href="ayda.html"><code>AYDA</code> <span class="damgar">𐰀𐰖𐰑𐰀</span></a></li>
+<li>(k) <a href="ayla.html"><code>AYLA</code> <span class="damgar">𐰀𐰖𐰞𐰀</span></a></li>
+<li>(k) <a href="aydan.html"><code>AYDAN</code> <span class="damgar">𐰀𐰖𐰑𐰀𐰣</span></a></li>
+<li>(e) <a href="aydin.html"><code>AYDIN</code> <span class="damgar">𐰀𐰖𐰑𐰃𐰣</span></a></li>
+<li>(e) <a href="ayhan.html"><code>AYHAN</code> <span class="damgar">𐰀𐰖𐰴𐰀𐰣</span></a></li>
+<li>(e) <a href="aykut.html"><code>AYKUT</code> <span class="damgar">𐰀𐰖𐰴𐰆𐱃</span></a></li>
+<li>(k) <a href="aylin.html"><code>AYLİN</code> <span class="damgar">𐰀𐰖𐰠𐰃𐰤</span></a></li>
+<li>(k) <a href="ayperi.html"><code>AYPERİ</code> <span class="damgar">𐰀𐰖𐰯𐰀𐰼𐰃</span></a></li>
+<li>(k) <a href="aynur.html"><code>AYNUR</code> <span class="damgar">𐰀𐰖𐰣𐰆𐰺</span></a></li>
+<li>(k) <a href="aysel.html"><code>AYSEL</code> <span class="damgar">𐰀𐰖𐰾𐰀𐰠</span></a></li>
+<li>(k) <a href="aysun.html"><code>AYSUN</code> <span class="damgar">𐰀𐰖𐰽𐰆𐰣</span></a></li>
+<li>(k) <a href="ayse.html"><code>AYŞE</code> <span class="damgar">𐰀𐰖𐱁𐰀</span></a></li>
+<li>(k) <a href="aysegul.html"><code>AYŞEGÜL</code> <span class="damgar">𐰀𐰖𐱁𐰀𐰏𐰇𐰠</span></a></li>
+<li>(e) <a href="aytekin.html"><code>AYTEKİN</code> <span class="damgar">𐰀𐰖𐱅𐰀𐰚𐰃𐰤</span></a></li>
+<li>(k) <a href="ayten.html"><code>AYTEN</code> <span class="damgar">𐰀𐰖𐱅𐰀𐰤</span></a></li>
+<li>(e) <a href="aytunc.html"><code>AYTUNÇ</code> <span class="damgar">𐰀𐰖𐱃𐰆𐰨</span></a></li>
+<li>(k) <a href="banu.html"><code>BANU</code> <span class="damgar">𐰉𐰀𐰣𐰆</span></a></li>
+<li>(e) <a href="baran.html"><code>BARAN</code> <span class="damgar">𐰉𐰀𐰺𐰣</span></a></li>
+<li>(e) <a href="baris.html"><code>BARIŞ</code> <span class="damgar">𐰉𐰀𐰺𐰃𐱁</span></a></li>
+<li>(e) <a href="barlas.html"><code>BARLAS</code> <span class="damgar">𐰉𐰀𐰺𐰞𐰀𐰽</span></a></li>
+<li>(k) <a href="basak.html"><code>BAŞAK</code> <span class="damgar">𐰉𐰀𐱁𐰴</span></a></li>
+<li>(e) <a href="basaran.html"><code>BAŞARAN</code> <span class="damgar">𐰉𐰀𐱁𐰺𐰣</span></a></li>
+<li>(e) <a href="batur.html"><code>BATUR</code> <span class="damgar">𐰉𐰀𐱃𐰆𐰺</span></a></li>
+<li>(e) <a href="baybars.html"><code>BAYBARS</code> <span class="damgar">𐰉𐰀𐰖𐰉𐰀𐰺𐰽</span></a></li>
+<li>(e) <a href="baykam.html"><code>BAYKAM</code> <span class="damgar">𐰉𐰀𐰖𐰴𐰀𐰢</span></a></li>
+<li>(e) <a href="bayram.html"><code>BAYRAM</code> <span class="damgar">𐰉𐰀𐰖𐰺𐰀𐰢</span></a></li>
+<li>(e) <a href="baykal.html"><code>BAYKAL</code> <span class="damgar">𐰉𐰀𐰖𐰴𐰀𐰞</span></a></li>
+<li>(e) <a href="baysal.html"><code>BAYSAL</code> <span class="damgar">𐰉𐰀𐰖𐰽𐰀𐰞</span></a></li>
+<li>(k) <a href="bediz.html"><code>BEDİZ</code> <span class="damgar">𐰋𐰀𐰓𐰃𐰔</span></a></li>
+<li>(k) <a href="belen.html"><code>BELEN</code> <span class="damgar">𐰋𐰀𐰠𐰤</span></a></li>
+<li>(k) <a href="belgin.html"><code>BELGİN</code> <span class="damgar">𐰋𐰀𐰠𐰏𐰃𐰤</span></a></li>
+<li>(k) <a href="belinay.html"><code>BELİNAY</code> <span class="damgar">𐰋𐰀𐰠𐰃𐰤𐰀𐰖</span></a></li>
+<li>(e) <a href="bekir.html"><code>BEKİR</code> <span class="damgar">𐰋𐰀𐰚𐰃𐰼</span></a></li>
+<li>(e) <a href="bektas.html"><code>BEKTAŞ</code> <span class="damgar">𐰋𐰀𐰚𐱃𐰀𐱁</span></a></li>
+<li>(e) <a href="berat.html"><code>BERAT</code> <span class="damgar">𐰋𐰀𐰺𐱃</span></a></li>
+<li>(k) <a href="beren.html"><code>BEREN</code> <span class="damgar">𐰋𐰀𐰼𐰤</span></a></li>
+<li>(e) <a href="berkan.html"><code>BERKAN</code> <span class="damgar">𐰋𐰀𐰼𐰴𐰀𐰣</span></a></li>
+<li>(e) <a href="berkay.html"><code>BERKAY</code> <span class="damgar">𐰋𐰀𐰼𐰴𐰀𐰖</span></a></li>
+<li>(k) <a href="berna.html"><code>BERNA</code> <span class="damgar">𐰋𐰀𐰼𐰣𐰀</span></a></li>
+<li>(k) <a href="berrin.html"><code>BERRİN</code> <span class="damgar">𐰋𐰀𐰼𐰼𐰃𐰤</span></a></li>
+<li>(k) <a href="betul.html"><code>BETÜL</code> <span class="damgar">𐰋𐰀𐱅𐰇𐰠</span></a></li>
+<li>(e) <a href="bilal.html"><code>BİLAL</code> <span class="damgar">𐰋𐰃𐰠𐰀𐰞</span></a></li>
+<li>(i) <a href="bilge.html"><code>BİLGE</code> <span class="damgar">𐰋𐰃𐰠𐰏𐰀</span></a></li>
+<li>(k) <a href="birgul.html"><code>BİRGÜL</code> <span class="damgar">𐰋𐰃𐰼𐰏𐰇𐰠</span></a></li>
+<li>(e) <a href="birol.html"><code>BİROL</code> <span class="damgar">𐰋𐰃𐰺𐰆𐰞</span></a></li>
+<li>(e) <a href="bora.html"><code>BORA</code> <span class="damgar">𐰉𐰆𐰺𐰀</span></a></li>
+<li>(e) <a href="burak.html"><code>BURAK</code> <span class="damgar">𐰉𐰆𐰺𐰀𐰴</span></a></li>
+<li>(i) <a href="burcin.html"><code>BURÇİN</code> <span class="damgar">𐰉𐰆𐰺𐰲𐰃𐰤</span></a></li>
+<li>(k) <a href="buse.html"><code>BUSE</code> <span class="damgar">𐰉𐰆𐰾𐰀</span></a></li>
+<li>(e) <a href="bulent.html"><code>BÜLENT</code> <span class="damgar">𐰋𐰇𐰠𐰀𐰤𐱅</span></a></li>
+<li>(k) <a href="busra.html"><code>BÜŞRA</code> <span class="damgar">𐰋𐰇𐱁𐰺𐰀</span></a></li>
+<li>(k) <a href="cagla.html"><code>ÇAĞLA</code> <span class="damgar">𐰲𐰀𐰍𐰞𐰀</span></a></li>
+<li>(e) <a href="cagatay.html"><code>ÇAĞATAY</code> <span class="damgar">𐰲𐰀𐰍𐱃𐰖</span></a></li>
+<li>(e) <a href="celebi.html"><code>ÇELEBİ</code> <span class="damgar">𐰲𐰀𐰠𐰋𐰃</span></a></li>
+<li>(e) <a href="cetin.html"><code>ÇETİN</code> <span class="damgar">𐰲𐰀𐱅𐰃𐰤</span></a></li>
+<li>(e) <a href="cinar.html"><code>ÇINAR</code> <span class="damgar">𐰲𐰃𐰣𐰀𐰺</span></a></li>
+<li>(k) <a href="cigdem.html"><code>ÇİĞDEM</code> <span class="damgar">𐰲𐰃𐰏𐰓𐰀𐰢</span></a></li>
+<li>(k) <a href="damla.html"><code>DAMLA</code> <span class="damgar">𐰑𐰀𐰢𐰞𐰀</span></a></li>
+<li>(k) <a href="demet.html"><code>DEMET</code> <span class="damgar">𐰓𐰀𐰢𐱅</span></a></li>
+<li>(i) <a href="dengiz.html"><code>DEÑİZ</code> <span class="damgar">𐰓𐰀𐰭𐰃𐰔</span></a></li>
+<li>(i) <a href="deniz.html"><code>DENİZ</code> <span class="damgar">𐰓𐰀𐰤𐰃𐰔</span></a></li>
+<li>(k) <a href="derya.html"><code>DERYA</code> <span class="damgar">𐰓𐰀𐰼𐰖𐰀</span></a></li>
+<li>(k) <a href="didem.html"><code>DİDEM</code> <span class="damgar">𐰓𐰃𐰓𐰀𐰢</span></a></li>
+<li>(k) <a href="dilek.html"><code>DİLEK</code> <span class="damgar">𐰓𐰃𐰠𐰀𐰚</span></a></li>
+<li>(k) <a href="dilay.html"><code>DİLAY</code> <span class="damgar">𐰓𐰃𐰞𐰀𐰖</span></a></li>
+<li>(e) <a href="dikmen.html"><code>DİKMEN</code> <span class="damgar">𐰓𐰃𐰚𐰢𐰀𐰤</span></a></li>
+<li>(e) <a href="dogan.html"><code>DOĞAN</code> <span class="damgar">𐰑𐰆𐰍𐰀𐰣</span></a></li>
+<li>(e) <a href="dolunay.html"><code>DOLUNAY</code> <span class="damgar">𐰑𐰆𐰞𐰣𐰀𐰖</span></a></li>
+<li>(e) <a href="doganay.html"><code>DOĞANAY</code> <span class="damgar">𐰑𐰆𐰍𐰀𐰣𐰀𐰖</span></a></li>
+<li>(e) <a href="dursun.html"><code>DURSUN</code> <span class="damgar">𐰑𐰆𐰺𐰽𐰆𐰣</span></a></li>
+<li>(k) <a href="duygu.html"><code>DUYGU</code> <span class="damgar">𐰑𐰆𐰖𐰍𐰆</span></a></li>
+<li>(k) <a href="ebru.html"><code>EBRU</code> <span class="damgar">𐰀𐰋𐰺𐰆</span></a></li>
+<li>(e) <a href="egemen.html"><code>EGEMEN</code> <span class="damgar">𐰀𐰏𐰢𐰤</span></a></li>
+<li>(e) <a href="ekrem.html"><code>EKREM</code> <span class="damgar">𐰀𐰚𐰼𐰀𐰢</span></a></li>
+<li>(k) <a href="emel.html"><code>EMEL</code> <span class="damgar">𐰀𐰢𐰠</span></a></li>
+<li>(k) <a href="emine.html"><code>EMİNE</code> <span class="damgar">𐰀𐰢𐰃𐰤𐰀</span></a></li>
+<li>(i) <a href="emir.html"><code>EMİR</code> <span class="damgar">𐰀𐰢𐰃𐰼</span></a></li>
+<li>(e) <a href="emre.html"><code>EMRE</code> <span class="damgar">𐰀𐰢𐰼𐰀</span></a></li>
+<li>(e) <a href="enes.html"><code>ENES</code> <span class="damgar">𐰀𐰤𐰾</span></a></li>
+<li>(e) <a href="engin.html"><code>ENGİN</code> <span class="damgar">𐰀𐰤𐰏𐰃𐰤</span></a></li>
+<li>(e) <a href="eray.html"><code>ERAY</code> <span class="damgar">𐰀𐰺𐰖</span></a></li>
+<li>(e) <a href="erdal.html"><code>ERDAL</code> <span class="damgar">𐰀𐰼𐰑𐰀𐰞</span></a></li>
+<li>(e) <a href="erdinc.html"><code>ERDİNÇ</code> <span class="damgar">𐰀𐰼𐰓𐰃𐰨</span></a></li>
+<li>(e) <a href="erdem.html"><code>ERDEM</code> <span class="damgar">𐰀𐰼𐰓𐰀𐰢</span></a></li>
+<li>(e) <a href="eren.html"><code>EREN</code> <span class="damgar">𐰀𐰼𐰤</span></a></li>
+<li>(e) <a href="ergun.html"><code>ERGÜN</code> <span class="damgar">𐰀𐰼𐰏𐰇𐰤</span></a></li>
+<li>(e) <a href="erkan.html"><code>ERKAN</code> <span class="damgar">𐰀𐰼𐰴𐰀𐰣</span></a></li>
+<li>(e) <a href="erman.html"><code>ERMAN</code> <span class="damgar">𐰀𐰼𐰢𐰀𐰣</span></a></li>
+<li>(e) <a href="erol.html"><code>EROL</code> <span class="damgar">𐰀𐰼𐰆𐰞</span></a></li>
+<li>(e) <a href="ersan.html"><code>ERSAN</code> <span class="damgar">𐰀𐰼𐰽𐰀𐰣</span></a></li>
+<li>(e) <a href="ersin.html"><code>ERSİN</code> <span class="damgar">𐰀𐰼𐰾𐰃𐰤</span></a></li>
+<li>(e) <a href="ertan.html"><code>ERTAN</code> <span class="damgar">𐰀𐰼𐱃𐰀𐰣</span></a></li>
+<li>(e) <a href="ertugrul.html"><code>ERTUĞRUL</code> <span class="damgar">𐰀𐰼𐱃𐰆𐰍𐰺𐰆𐰞</span></a></li>
+<li>(k) <a href="esin.html"><code>ESİN</code> <span class="damgar">𐰀𐰾𐰃𐰤</span></a></li>
+<li>(k) <a href="esra.html"><code>ESRA</code> <span class="damgar">𐰀𐰾𐰺𐰀</span></a></li>
+<li>(e) <a href="etem.html"><code>ETEM</code> <span class="damgar">𐰀𐱅𐰢</span></a></li>
+<li>(k) <a href="eylul.html"><code>EYLÜL</code> <span class="damgar">𐰀𐰘𐰠𐰇𐰠</span></a></li>
+<li>(e) <a href="eymen.html"><code>EYMEN</code> <span class="damgar">𐰀𐰘𐰢𐰀𐰤</span></a></li>
+<li>(k) <a href="ezgi.html"><code>EZGİ</code> <span class="damgar">𐰀𐰔𐰏𐰃</span></a></li>
+<li>(k) <a href="gazel.html"><code>GAZEL</code> <span class="damgar">𐰍𐰀𐰔𐰠</span></a></li>
+<li>(k) <a href="gizem.html"><code>GİZEM</code> <span class="damgar">𐰏𐰃𐰔𐰀𐰢</span></a></li>
+<li>(e) <a href="giray.html"><code>GİRAY</code> <span class="damgar">𐰏𐰃𐰺𐰀𐰖</span></a></li>
+<li>(k) <a href="gonul.html"><code>GÖÑÜL</code> <span class="damgar">𐰏𐰇𐰭𐰠</span></a></li>
+<li>(e) <a href="gokay.html"><code>GÖKAY</code> <span class="damgar">𐰏𐰜𐰀𐰖</span></a></li>
+<li>(e) <a href="gokalp.html"><code>GÖKALP</code> <span class="damgar">𐰏𐰜𐰀𐰞𐰯</span></a></li>
+<li>(i) <a href="gokce.html"><code>GÖKÇE</code> <span class="damgar">𐰏𐰜𐰲𐰀</span></a></li>
+<li>(e) <a href="gokmen.html"><code>GÖKMEN</code> <span class="damgar">𐰏𐰜𐰢𐰀𐰤</span></a></li>
+<li>(e) <a href="goksel.html"><code>GÖKSEL</code> <span class="damgar">𐰏𐰜𐰾𐰀𐰠</span></a></li>
+<li>(e) <a href="gokturk.html"><code>GÖKTÜRK</code> <span class="damgar">𐰏𐰜𐱅𐰇𐰼𐰜</span></a></li>
+<li>(k) <a href="gorkem.html"><code>GÖRKEM</code> <span class="damgar">𐰏𐰇𐰼𐰚𐰀𐰢</span></a></li>
+<li>(k) <a href="gozde.html"><code>GÖZDE</code> <span class="damgar">𐰏𐰇𐰔𐰓𐰀</span></a></li>
+<li>(k) <a href="gulay.html"><code>GÜLAY</code> <span class="damgar">𐰏𐰇𐰠𐰀𐰖</span></a></li>
+<li>(k) <a href="gulben.html"><code>GÜLBEN</code> <span class="damgar">𐰏𐰇𐰠𐰋𐰀𐰤</span></a></li>
+<li>(k) <a href="gulcin.html"><code>GÜLÇİN</code> <span class="damgar">𐰏𐰇𐰠𐰲𐰃𐰤</span></a></li>
+<li>(k) <a href="gulsum.html"><code>GÜLSÜM</code> <span class="damgar">𐰏𐰇𐰠𐰾𐰇𐰢</span></a></li>
+<li>(e) <a href="gultekin.html"><code>GÜLTEKİN</code> <span class="damgar">𐰏𐰇𐰠𐱅𐰀𐰚𐰃𐰤</span></a></li>
+<li>(e) <a href="gunay.html"><code>GÜNAY</code> <span class="damgar">𐰏𐰇𐰤𐰀𐰖</span></a></li>
+<li>(e) <a href="guner.html"><code>GÜNER</code> <span class="damgar">𐰏𐰇𐰤𐰀𐰼</span></a></li>
+<li>(e) <a href="guneri.html"><code>GÜNERİ</code> <span class="damgar">𐰏𐰇𐰤𐰀𐰼𐰃</span></a></li>
+<li>(e) <a href="gungor.html"><code>GÜNGÖR</code> <span class="damgar">𐰏𐰇𐰤𐰏𐰇𐰼</span></a></li>
+<li>(e) <a href="gurbuz.html"><code>GÜRBÜZ</code> <span class="damgar">𐰏𐰇𐰼𐰋𐰇𐰔</span></a></li>
+<li>(e) <a href="gurdal.html"><code>GÜRDAL</code> <span class="damgar">𐰏𐰇𐰼𐰑𐰀𐰞</span></a></li>
+<li>(k) <a href="isilay.html"><code>IŞILAY</code> <span class="damgar">𐰃𐱁𐰞𐰀𐰖</span></a></li>
+<li>(e) <a href="ilber.html"><code>İLBER</code> <span class="damgar">𐰃𐰠𐰋𐰀𐰼</span></a></li>
+<li>(e) <a href="ilbey.html"><code>İLBEY</code> <span class="damgar">𐰃𐰠𐰋𐰀𐰘</span></a></li>
+<li>(e) <a href="ilker.html"><code>İLKER</code> <span class="damgar">𐰃𐰠𐰚𐰀𐰼</span></a></li>
+<li>(i) <a href="ilkay.html"><code>İLKAY</code> <span class="damgar">𐰃𐰠𐰴𐰀𐰖</span></a></li>
+<li>(k) <a href="ilknur.html"><code>İLKNUR</code> <span class="damgar">𐰃𐰠𐰚𐰣𐰆𐰺</span></a></li>
+<li>(k) <a href="irem.html"><code>İREM</code> <span class="damgar">𐰃𐰼𐰀𐰢</span></a></li>
+<li>(e) <a href="ismail.html"><code>İSMAİL</code> <span class="damgar">𐰃𐰾𐰢𐰀𐰃𐰠</span></a></li>
+<li>(i) <a href="ismet.html"><code>İSMET</code> <span class="damgar">𐰃𐰾𐰢𐰀𐱅</span></a></li>
+<li>(e) <a href="izzet.html"><code>İZZET</code> <span class="damgar">𐰃𐰔𐰔𐰀𐱅</span></a></li>
+<li>(e) <a href="kagan.html"><code>HAKAN&gt;KAĞAN</code> <span class="damgar">𐰴𐰍𐰣</span></a></li>
+<li>(e) <a href="kadir.html"><code>KADİR</code> <span class="damgar">𐰴𐰀𐰓𐰃𐰼</span></a></li>
+<li>(e) <a href="kamer.html"><code>KAMER</code> <span class="damgar">𐰴𐰀𐰢𐰼</span></a></li>
+<li>(e) <a href="kaya.html"><code>KAYA</code> <span class="damgar">𐰚𐰀𐰢𐰞</span></a></li>
+<li>(e) <a href="kayi.html"><code>KAYI</code> <span class="damgar">𐰴𐰀𐰖𐰃</span></a></li>
+<li>(e) <a href="kemal.html"><code>KEMAL</code> <span class="damgar">𐰚𐰀𐰢𐰞</span></a></li>
+<li>(e) <a href="kerem.html"><code>KEREM</code> <span class="damgar">𐰚𐰀𐰼𐰢</span></a></li>
+<li>(k) <a href="kiraz.html"><code>KİRAZ</code> <span class="damgar">𐰚𐰃𐰺𐰀𐰔</span></a></li>
+<li>(e) <a href="koray.html"><code>KORAY</code> <span class="damgar">𐰸𐰆𐰺𐰀𐰖</span></a></li>
+<li>(e) <a href="kubilay.html"><code>KUBİLAY</code> <span class="damgar">𐰸𐰆𐰋𐰃𐰞𐰀𐰖</span></a></li>
+<li>(k) <a href="kubra.html"><code>KÜBRA</code> <span class="damgar">𐰚𐰇𐰋𐰺𐰀</span></a></li>
+<li>(k) <a href="leyla.html"><code>LEYLA</code> <span class="damgar">𐰠𐰀𐰘𐰞𐰀</span></a></li>
+<li>(k) <a href="leman.html"><code>LEMAN</code> <span class="damgar">𐰠𐰀𐰢𐰣</span></a></li>
+<li>(k) <a href="maya.html"><code>MAYA</code> <span class="damgar">𐰢𐰀𐰖𐰀</span></a></li>
+<li>(k) <a href="melek.html"><code>MELEK</code> <span class="damgar">𐰢𐰀𐰠𐰚</span></a></li>
+<li>(k) <a href="meltem.html"><code>MELTEM</code> <span class="damgar">𐰢𐰀𐰠𐱅𐰀𐰢</span></a></li>
+<li>(k) <a href="meral.html"><code>MERAL</code> <span class="damgar">𐰢𐰀𐰼𐰀𐰞</span></a></li>
+<li>(e) <a href="mert.html"><code>MERT</code> <span class="damgar">𐰢𐰀𐰼𐱅</span></a></li>
+<li>(k) <a href="meryem.html"><code>MERYEM</code> <span class="damgar">𐰢𐰀𐰼𐰘𐰀𐰢</span></a></li>
+<li>(e) <a href="mete.html"><code>METE</code> <span class="damgar">𐰢𐰀𐱅𐰀</span></a></li>
+<li>(e) <a href="metin.html"><code>METİN</code> <span class="damgar">𐰢𐰀𐱅𐰃𐰤</span></a></li>
+<li>(k) <a href="mine.html"><code>MİNE</code> <span class="damgar">𐰢𐰃𐰤𐰀</span></a></li>
+<li>(e) <a href="murat.html"><code>MURAT</code> <span class="damgar">𐰢𐰆𐰺𐰀𐱃</span></a></li>
+<li>(e) <a href="musa.html"><code>MUSA</code> <span class="damgar">𐰢𐰆𐰽𐰀</span></a></li>
+<li>(k) <a href="muge.html"><code>MÜGE</code> <span class="damgar">𐰢𐰇𐰏𐰀</span></a></li>
+<li>(e) <a href="mursel.html"><code>MÜRSEL</code> <span class="damgar">𐰢𐰇𐰼𐰾𐰀𐰠</span></a></li>
+<li>(k) <a href="nazan.html"><code>NAZAN</code> <span class="damgar">𐰣𐰀𐰔𐰣</span></a></li>
+<li>(k) <a href="nazgul.html"><code>NAZGÜL</code> <span class="damgar">𐰣𐰀𐰔𐰏𐰇𐰠</span></a></li>
+<li>(k) <a href="nazli.html"><code>NAZLI</code> <span class="damgar">𐰣𐰀𐰔𐰞𐰃</span></a></li>
+<li>(k) <a href="nergis.html"><code>NERGİS</code> <span class="damgar">𐰤𐰀𐰼𐰏𐰃𐰾</span></a></li>
+<li>(k) <a href="nermin.html"><code>NERMİN</code> <span class="damgar">𐰤𐰀𐰼𐰢𐰃𐰤</span></a></li>
+<li>(k) <a href="neriman.html"><code>NERİMAN</code> <span class="damgar">𐰤𐰀𐰼𐰃𐰢𐰀𐰣</span></a></li>
+<li>(k) <a href="nesrin.html"><code>NESRİN</code> <span class="damgar">𐰤𐰀𐰾𐰼𐰃𐰤</span></a></li>
+<li>(k) <a href="nese.html"><code>NEŞE</code> <span class="damgar">𐰤𐰀𐱁𐰀</span></a></li>
+<li>(k) <a href="nigar.html"><code>NİGAR</code> <span class="damgar">𐰤𐰃𐰏𐰀𐰺</span></a></li>
+<li>(k) <a href="nilay.html"><code>NİLAY</code> <span class="damgar">𐰤𐰃𐰠𐰀𐰖</span></a></li>
+<li>(k) <a href="nilgun.html"><code>NİLGÜN</code> <span class="damgar">𐰤𐰃𐰠𐰏𐰇𐰤</span></a></li>
+<li>(k) <a href="nuran.html"><code>NURAN</code> <span class="damgar">𐰣𐰆𐰺𐰀𐰣</span></a></li>
+<li>(k) <a href="nuray.html"><code>NURAY</code> <span class="damgar">𐰣𐰆𐰺𐰀𐰖</span></a></li>
+<li>(k) <a href="nurgul.html"><code>NURGÜL</code> <span class="damgar">𐰣𐰆𐰺𐰏𐰇𐰠</span></a></li>
+<li>(k) <a href="nursel.html"><code>NURSEL</code> <span class="damgar">𐰣𐰆𐰺𐰾𐰀𐰠</span></a></li>
+<li>(k) <a href="nurten.html"><code>NURTEN</code> <span class="damgar">𐰣𐰆𐰺𐱅𐰀𐰤</span></a></li>
+<li>(e) <a href="oguz.html"><code>OĞUZ</code> <span class="damgar">𐰆𐰍𐰔</span></a></li>
+<li>(e) <a href="oguzhan.html"><code>OĞUZHAN&gt;KAN</code> <span class="damgar">𐰆𐰍𐰔𐰴𐰀𐰣</span></a></li>
+<li>(e) <a href="oktay.html"><code>OKTAY</code> <span class="damgar">𐰆𐰸𐱃𐰀𐰖</span></a></li>
+<li>(e) <a href="onur.html"><code>ONUR</code> <span class="damgar">𐰆𐰣𐰺</span></a></li>
+<li>(e) <a href="orhan.html"><code>ORHAN&gt;ORKUN</code> <span class="damgar">𐰆𐰺𐰴𐰆𐰣</span></a></li>
+<li>(e) <a href="osman.html"><code>OSMAN</code> <span class="damgar">𐰆𐰽𐰢𐰀𐰣</span></a></li>
+<li>(e) <a href="ozan.html"><code>OZAN</code> <span class="damgar">𐰆𐰔𐰀𐰣</span></a></li>
+<li>(e) <a href="omer.html"><code>ÖMER</code> <span class="damgar">𐰇𐰢𐰀𐰼</span></a></li>
+<li>(k) <a href="oyku.html"><code>ÖYKÜ</code> <span class="damgar">𐰇𐰘𐰚𐰇</span></a></li>
+<li>(e) <a href="ozay.html"><code>ÖZAY</code> <span class="damgar">𐰇𐰔𐰀𐰖</span></a></li>
+<li>(e) <a href="ozen.html"><code>ÖZEN</code> <span class="damgar">𐰇𐰔𐰀𐰤</span></a></li>
+<li>(e) <a href="ozer.html"><code>ÖZER</code> <span class="damgar">𐰇𐰔𐰀𐰼</span></a></li>
+<li>(k) <a href="ozden.html"><code>ÖZDEN</code> <span class="damgar">𐰇𐰔𐰓𐰀𐰤</span></a></li>
+<li>(k) <a href="ozge.html"><code>ÖZGE</code> <span class="damgar">𐰇𐰔𐰏𐰀</span></a></li>
+<li>(k) <a href="ozgul.html"><code>ÖZGÜL</code> <span class="damgar">𐰇𐰔𐰏𐰇𐰠</span></a></li>
+<li>(e) <a href="ozgur.html"><code>ÖZGÜR</code> <span class="damgar">𐰇𐰔𐰏𐰼</span></a></li>
+<li>(e) <a href="ozkan.html"><code>ÖZKAN</code> <span class="damgar">𐰇𐰔𐰴𐰀𐰣</span></a></li>
+<li>(k) <a href="ozlem.html"><code>ÖZLEM</code> <span class="damgar">𐰇𐰔𐰠𐰀𐰢</span></a></li>
+<li>(k) <a href="oznur.html"><code>ÖZNUR</code> <span class="damgar">𐰇𐰔𐰣𐰆𐰺</span></a></li>
+<li>(e) <a href="ozturk.html"><code>ÖZTÜRK</code> <span class="damgar">𐰇𐰔𐱅𐰇𐰼𐰜</span></a></li>
+<li>(k) <a href="pelin.html"><code>PELİN</code> <span class="damgar">𐰯𐰀𐰠𐰃𐰤</span></a></li>
+<li>(e) <a href="peker.html"><code>PEKER</code> <span class="damgar">𐰯𐰀𐰚𐰼</span></a></li>
+<li>(k) <a href="pinar.html"><code>PINAR</code> <span class="damgar">𐰯𐰃𐰣𐰀𐰺</span></a></li>
+<li>(e) <a href="polat.html"><code>POLAT</code> <span class="damgar">𐰯𐰆𐰞𐰀𐱃</span></a></li>
+<li>(k) <a href="rana.html"><code>RANA</code> <span class="damgar">𐰺𐰀𐰣𐰀</span></a></li>
+<li>(k) <a href="ruya.html"><code>RÜYA</code> <span class="damgar">𐰼𐰇𐰖𐰀</span></a></li>
+<li>(e) <a href="riza.html"><code>RIZA</code> <span class="damgar">𐰺𐰃𐰔𐰀</span></a></li>
+<li>(i) <a href="umut.html"><code>UMUT</code> <span class="damgar">𐰆𐰢𐱃</span></a></li>
+<li>(i) <a href="umit.html"><code>ÜMİT</code> <span class="damgar">𐰇𐰢𐰃𐱅</span></a></li>
+<li>(e) <a href="unal.html"><code>ÜNAL</code> <span class="damgar">𐰇𐰤𐰀𐰞</span></a></li>
+<li>(e) <a href="unsal.html"><code>ÜNSAL</code> <span class="damgar">𐰇𐰤𐰽𐰀𐰞</span></a></li>
+<li>(e) <a href="ramazan.html"><code>RAMAZAN</code> <span class="damgar">𐰺𐰀𐰢𐰔𐰣</span></a></li>
+<li>(e) <a href="samet.html"><code>SAMET</code> <span class="damgar">𐰽𐰀𐰢𐱅</span></a></li>
+<li>(e) <a href="sancar.html"><code>SANCAR</code> <span class="damgar">𐰽𐰀𐰨𐰀𐰺</span></a></li>
+<li>(e) <a href="saner.html"><code>SANER</code> <span class="damgar">𐰽𐰀𐰤𐰼</span></a></li>
+<li>(k) <a href="secil.html"><code>SEÇİL</code> <span class="damgar">𐰾𐰀𐰲𐰃𐰠</span></a></li>
+<li>(k) <a href="seda.html"><code>SEDA</code> <span class="damgar">𐰾𐰀𐰑𐰀</span></a></li>
+<li>(e) <a href="selcuk.html"><code>SELÇUK</code> <span class="damgar">𐰾𐰀𐰠𐰲𐰸</span></a></li>
+<li>(k) <a href="selen.html"><code>SELEN</code> <span class="damgar">𐰾𐰀𐰠𐰤</span></a></li>
+<li>(k) <a href="selin.html"><code>SELİN</code> <span class="damgar">𐰾𐰀𐰠𐰃𐰤</span></a></li>
+<li>(k) <a href="selma.html"><code>SELMA</code> <span class="damgar">𐰾𐰀𐰞𐰢𐰀</span></a></li>
+<li>(k) <a href="selda.html"><code>SELDA</code> <span class="damgar">𐰾𐰀𐰠𐰑𐰀</span></a></li>
+<li>(k) <a href="semra.html"><code>SEMRA</code> <span class="damgar">𐰾𐰀𐰢𐰺𐰀</span></a></li>
+<li>(k) <a href="senem.html"><code>SENEM</code> <span class="damgar">𐰾𐰀𐰤𐰢</span></a></li>
+<li>(e) <a href="serkan.html"><code>SERKAN</code> <span class="damgar">𐰾𐰀𐰼𐰴𐰀𐰣</span></a></li>
+<li>(k) <a href="serpil.html"><code>SERPİL</code> <span class="damgar">𐰾𐰀𐰼𐰯𐰃𐰠</span></a></li>
+<li>(k) <a href="sezen.html"><code>SEZEN</code> <span class="damgar">𐰾𐰀𐰔𐰤</span></a></li>
+<li>(k) <a href="seren.html"><code>SEREN</code> <span class="damgar">𐰾𐰀𐰼𐰤</span></a></li>
+<li>(i) <a href="sezer.html"><code>SEZER</code> <span class="damgar">𐰾𐰀𐰔𐰼</span></a></li>
+<li>(k) <a href="sezgi.html"><code>SEZGİ</code> <span class="damgar">𐰾𐰀𐰔𐰏𐰃</span></a></li>
+<li>(i) <a href="sezgin.html"><code>SEZGİN</code> <span class="damgar">𐰾𐰀𐰔𐰏𐰃𐰤</span></a></li>
+<li>(k) <a href="sibel.html"><code>SİBEL</code> <span class="damgar">𐰾𐰃𐰋𐰀𐰠</span></a></li>
+<li>(k) <a href="simge.html"><code>SİMGE</code> <span class="damgar">𐰾𐰃𐰢𐰏𐰀</span></a></li>
+<li>(e) <a href="sinan.html"><code>SİNAN</code> <span class="damgar">𐰾𐰃𐰣𐰀𐰣</span></a></li>
+<li>(k) <a href="sinem.html"><code>SİNEM</code> <span class="damgar">𐰾𐰃𐰤𐰀𐰢</span></a></li>
+<li>(i) <a href="sonay.html"><code>SONAY</code> <span class="damgar">𐰽𐰆𐰣𐰀𐰖</span></a></li>
+<li>(e) <a href="soner.html"><code>SONER</code> <span class="damgar">𐰽𐰆𐰤𐰀𐰼</span></a></li>
+<li>(k) <a href="songul.html"><code>SONGÜL</code> <span class="damgar">𐰽𐰆𐰣𐰏𐰇𐰠</span></a></li>
+<li>(k) <a href="sude.html"><code>SUDE</code> <span class="damgar">𐰽𐰆𐰓𐰀</span></a></li>
+<li>(k) <a href="sultan.html"><code>SULTAN</code> <span class="damgar">𐰽𐰆𐰞𐱃𐰀𐰣</span></a></li>
+<li>(k) <a href="suna.html"><code>SUNA</code> <span class="damgar">𐰽𐰆𐰣𐰀</span></a></li>
+<li>(e) <a href="suleyman.html"><code>SÜLEYMAN</code> <span class="damgar">𐰾𐰇𐰠𐰀𐰘𐰢𐰀𐰣</span></a></li>
+<li>(e) <a href="saban.html"><code>ŞABAN</code> <span class="damgar">𐱁𐰀𐰉𐰣</span></a></li>
+<li>(i) <a href="senay.html"><code>ŞENAY</code> <span class="damgar">𐱁𐰀𐰣𐰖</span></a></li>
+<li>(k) <a href="sebnem.html"><code>ŞEBNEM</code> <span class="damgar">𐱁𐰀𐰋𐰤𐰀𐰢</span></a></li>
+<li>(e) <a href="senel.html"><code>ŞENEL</code> <span class="damgar">𐱁𐰀𐰤𐰠</span></a></li>
+<li>(k) <a href="sengul.html"><code>ŞENGÜL</code> <span class="damgar">𐱁𐰀𐰤𐰏𐰇𐰠</span></a></li>
+<li>(e) <a href="senol.html"><code>ŞENOL</code> <span class="damgar">𐱁𐰀𐰤𐰆𐰞</span></a></li>
+<li>(k) <a href="seyda.html"><code>ŞEYDA</code> <span class="damgar">𐱁𐰀𐰘𐰑𐰀</span></a></li>
+<li>(k) <a href="sule.html"><code>ŞULE</code> <span class="damgar">𐱁𐰆𐰠𐰀</span></a></li>
+<li>(e) <a href="sukru.html"><code>ŞÜKRÜ</code> <span class="damgar">𐱁𐰜𐰼𐰇</span></a></li>
+<li>(e) <a href="tamer.html"><code>TAMER</code> <span class="damgar">𐱃𐰀𐰢𐰼</span></a></li>
+<li>(e) <a href="taner.html"><code>TANER</code> <span class="damgar">𐱃𐰀𐰣𐰀𐰼</span></a></li>
+<li>(i) <a href="tansu.html"><code>TANSU</code> <span class="damgar">𐱃𐰀𐰣𐰽𐰆</span></a></li>
+<li>(e) <a href="taskin.html"><code>TAŞKIN</code> <span class="damgar">𐱃𐰀𐱁𐰴𐰃𐰣</span></a></li>
+<li>(e) <a href="timur.html"><code>TİMUR</code> <span class="damgar">𐱅𐰃𐰢𐰆𐰺</span></a></li>
+<li>(e) <a href="tolga.html"><code>TOLGA</code> <span class="damgar">𐱃𐰆𐰞𐰍𐰀</span></a></li>
+<li>(e) <a href="toros.html"><code>TOROS</code> <span class="damgar">𐱃𐰆𐰞𐰍𐰀</span></a></li>
+<li>(k) <a href="tugce.html"><code>TUĞÇE</code> <span class="damgar">𐱃𐰆𐰍𐰲𐰀</span></a></li>
+<li>(i) <a href="tuna.html"><code>TUNA</code> <span class="damgar">𐱃𐰆𐰣𐰀</span></a></li>
+<li>(e) <a href="turan.html"><code>TURAN</code> <span class="damgar">𐱃𐰆𐰺𐰀𐰣</span></a></li>
+<li>(k) <a href="tulay.html"><code>TÜLAY</code> <span class="damgar">𐱅𐰇𐰠𐰀𐰖</span></a></li>
+<li>(k) <a href="tulin.html"><code>TÜLİN</code> <span class="damgar">𐱅𐰇𐰠𐰃𐰤</span></a></li>
+<li>(e) <a href="turk.html"><code>TÜRK</code> <span class="damgar">𐱅𐰇𐰼𐰜</span></a></li>
+<li>(k) <a href="turkan.html"><code>TÜRKAN</code> <span class="damgar">𐱅𐰇𐰼𐰜𐰀𐰣</span></a></li>
+<li>(e) <a href="turkmen.html"><code>TÜRKMEN</code> <span class="damgar">𐱅𐰇𐰼𐰜𐰢𐰀𐰤</span></a></li>
+<li>(k) <a href="yagmur.html"><code>YAĞMUR</code> <span class="damgar">𐰖𐰀𐰍𐰢𐰆𐰺</span></a></li>
+<li>(e) <a href="yakup.html"><code>YAKUP</code> <span class="damgar">𐰖𐰀𐰴𐰆𐰯</span></a></li>
+<li>(k) <a href="yaprak.html"><code>YAPRAK</code> <span class="damgar">𐰖𐰀𐰯𐰺𐰀𐰴</span></a></li>
+<li>(k) <a href="yaren.html"><code>YAREN</code> <span class="damgar">𐰖𐰀𐰼𐰤</span></a></li>
+<li>(e) <a href="yasin.html"><code>YASİN</code> <span class="damgar">𐰖𐰀𐰾𐰃𐰤</span></a></li>
+<li>(k) <a href="yasemin.html"><code>YASEMİN</code> <span class="damgar">𐰖𐰀𐰾𐰢𐰃𐰤</span></a></li>
+<li>(e) <a href="yalcin.html"><code>YALÇIN</code> <span class="damgar">𐰖𐰀𐰞𐰲𐰃𐰣</span></a></li>
+<li>(e) <a href="yasar.html"><code>YAŞAR</code> <span class="damgar">𐰖𐰀𐱁𐰺</span></a></li>
+<li>(k) <a href="yeliz.html"><code>YELİZ</code> <span class="damgar">𐰘𐰀𐰠𐰃𐰔</span></a></li>
+<li>(k) <a href="yesim.html"><code>YEŞİM</code> <span class="damgar">𐰘𐰀𐱁𐰃𐰢</span></a></li>
+<li>(k) <a href="yildiz.html"><code>YILDIZ</code> <span class="damgar">𐰖𐰃𐰡𐰃𐰔</span></a></li>
+<li>(e) <a href="yilmaz.html"><code>YILMAZ</code> <span class="damgar">𐰖𐰃𐰞𐰢𐰀𐰔</span></a></li>
+<li>(e) <a href="yigit.html"><code>YİĞİT</code> <span class="damgar">𐰘𐰃𐰏𐱅</span></a></li>
+<li>(e) <a href="yoruk.html"><code>YÖRÜK</code> <span class="damgar">𐰘𐰇𐰼𐰜</span></a></li>
+<li>(e) <a href="yunus.html"><code>YUNUS</code> <span class="damgar">𐰖𐰆𐰣𐰽</span></a></li>
+<li>(i) <a href="yuksel.html"><code>YÜKSEL</code> <span class="damgar">𐰘𐰜𐰾𐰀𐰠</span></a></li>
+<li>(k) <a href="zerrin.html"><code>ZERRİN</code> <span class="damgar">𐰔𐰀𐰼𐰼𐰃𐰤</span></a></li>
+<li>(k) <a href="zeynep.html"><code>ZEYNEP</code> <span class="damgar">𐰔𐰀𐰘𐰤𐰯</span></a></li>
 </ol>	
 
 <script>
@@ -367,6 +380,17 @@ function sortListItems() {
 
   isAscending = !isAscending; // Toggle the sorting order
 }
+
+var ascendingBtn = document.getElementById("ascendingBtn");
+var descendingBtn = document.getElementById("descendingBtn");
+
+ascendingBtn.addEventListener("click", function() {
+  sortListItems();
+});
+
+descendingBtn.addEventListener("click", function() {
+  sortListItems();
+});
 </script>
 
 <p>Dilediğiniz isim bu listede yoksa <a target="_blank" href="https://twitter.com/turkbitigcom">@twitter-𝕏</a> ile isteyin. Göktürk Alfabesi ile CFHV herfleri içeren isimleri yazmak mümkün olmuyor.</p>
