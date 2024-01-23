@@ -41,8 +41,9 @@
 <p>Türkiye'de en sık kullanılan kız ve erkek isimlerini Göktürk Alfabesi (Göktürkçe) ile yazdık, dilediğiniz isim henüz bu listede yok ise <a target="_blank" href="https://twitter.com/turkbitigcom">@twitter-𝕏</a> hesabımızdan yazıp eklememizi isteyebilirsiniz.</p>
 
 <p>
-<button id="ascendingBtn">Erkek a-z</button>
-<button id="descendingBtn">Kız a-z</button>
+<button id="descendingBtn">Kız A-Z</button>
+<button id="ascendingBtn">Erkek</button>
+<button id="resetBtn">Karma</button>
 </p>
 
 <p>(e) erkek (k) kız (i) ikili</p>
@@ -553,35 +554,55 @@
 </ol>	
 
 <script>
+// Retrieve the necessary elements
 var olElement = document.getElementById("namelist");
 var listItems = Array.from(olElement.getElementsByTagName("li"));
+var originalOrder = listItems.slice(); // Make a copy of the original order
 
-var isAscending = true; // Set to false for descending order
-
-function sortListItems() {
+// Sort the list items in ascending order (A-Z) based on the second character
+function sortAscending() {
   listItems.sort(function(a, b) {
     var textA = a.textContent.trim().charAt(1).toLowerCase();
     var textB = b.textContent.trim().charAt(1).toLowerCase();
-    return isAscending ? textA.localeCompare(textB) : textB.localeCompare(textA);
+    return textA.localeCompare(textB);
   });
 
+  updateList();
+}
+
+// Sort the list items in descending order (Z-A) based on the second character
+function sortDescending() {
+  listItems.sort(function(a, b) {
+    var textA = a.textContent.trim().charAt(1).toLowerCase();
+    var textB = b.textContent.trim().charAt(1).toLowerCase();
+    return textB.localeCompare(textA);
+  });
+
+  updateList();
+}
+
+// Reset the list items to the original order
+function resetSorting() {
+  listItems = originalOrder.slice();
+  updateList();
+}
+
+// Update the <ol> element with the sorted list items
+function updateList() {
   for (var i = 0; i < listItems.length; i++) {
     olElement.appendChild(listItems[i]);
   }
-
-  isAscending = !isAscending; // Toggle the sorting order
 }
 
+// Retrieve the buttons
 var ascendingBtn = document.getElementById("ascendingBtn");
 var descendingBtn = document.getElementById("descendingBtn");
+var resetBtn = document.getElementById("resetBtn");
 
-ascendingBtn.addEventListener("click", function() {
-  sortListItems();
-});
-
-descendingBtn.addEventListener("click", function() {
-  sortListItems();
-});
+// Add event listeners to the buttons
+ascendingBtn.addEventListener("click", sortAscending);
+descendingBtn.addEventListener("click", sortDescending);
+resetBtn.addEventListener("click", resetSorting);
 </script>
 
 <p>Göktürk Alfabesi'nde CFHV herfleri olmadığı için bu harfleri içeren isimleri yazmak mümkün değildir.</p>
