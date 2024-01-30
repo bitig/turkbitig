@@ -33,11 +33,6 @@
 
 <p>Eski Türkçe Sözlük - Türk dilinin, öz Türkçe'nin köklerinden, bin yıl önceki halinden, güzel kapsamlı bir eski Türkçe kelimeler dizini, <a href="../dlt/">Divânu Lügati't-Türk</a> dizini.</p><p><hr></p>
 
-
-<input type="text" id="searchInput" placeholder="ara">
-<button id="clearBtn">X</button>
-
-
 <ol id="sozlist">
 <li><code>a</code>: şaşalamayı anlatan bir edat· I, 39</li>
 <li><code>aba</code>: ayı· I, 86</li>
@@ -8376,37 +8371,6 @@
 <li><code>zerenze urugı</code>: bu bitkinin tohumu· I, 449</li>
 <li><code>zünküm</code>: bir çeşit Çin ipekllisi·I, 485</li>
 </ol>
-
-
-<script>
-var searchInput = document.getElementById("searchInput");
-var olElement = document.getElementById("sozlist");
-var listItems = Array.from(olElement.getElementsByTagName("li"));
-var clearBtn = document.getElementById("clearBtn");
-
-searchInput.addEventListener("input", searchItems);
-clearBtn.addEventListener("click", clearSearch);
-
-function searchItems() {
-  var searchTerm = searchInput.value.toLowerCase();
-
-  listItems.forEach(function(item) {
-    var text = item.textContent.toLowerCase();
-    if (text.includes(searchTerm)) {
-      item.style.display = "block";
-    } else {
-      item.style.display = "none";
-    }
-  });
-}
-
-function clearSearch() {
-  searchInput.value = "";
-  listItems.forEach(function(item) {
-    item.style.display = "block";
-  });
-}
-</script>	
 
 </div><!--content end-->
 <div class="footer"><a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
