@@ -270,7 +270,12 @@ width: 100%;
 .header {
 width: 100%;
 margin: 0 auto;
+#height: 2em;
+#background: #c5d7ef;
+#background-image: url('/image/header.png');
+#background-repeat: no-repeat;
 }
+
 
 .sitenav {
 z-index: 99;
@@ -284,6 +289,7 @@ position:sticky;
 top: 0;
 padding-top: 6px;
 padding-left: 2%;
+font-weight:bold;
 }
 
 .tabs a {
