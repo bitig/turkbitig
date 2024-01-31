@@ -72,7 +72,9 @@ border-bottom:1px solid #f6f6f6;
 
 .tabs {
 background-color: #E3E9f6;
+background-image: linear-gradient(to right, #E3E9f6, #f9f9f9);
 border-bottom:3px solid #58D;
+border-image: linear-gradient(to right, #58D, #F9f9f9) 30;
 }
 
 .tabs a {

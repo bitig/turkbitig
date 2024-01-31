@@ -204,6 +204,8 @@ font-weight: bold;
 h1, h2, h3 {
 margin-top:10px;
 margin-bottom:10px;
+background: linear-gradient(to right, #DDD, #FFF);
+padding-left: 1%;
 }
 
 iframe {
