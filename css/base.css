@@ -2,7 +2,7 @@ body {
 margin:0;
 line-height:1.5;
 font-family: sans-serif;
-font-size:18px;
+font-size:120%;
 }
 
 a:active    {
@@ -195,7 +195,6 @@ max-width:100%;
 }
 
 code {
-font-size: 1.2rem;
 font-weight: bold;
 }
 
