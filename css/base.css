@@ -96,7 +96,6 @@ text-align:center;
 cursor:pointer;
 background-color:#eee;
 border-radius: 3px;
-font-weight:bold;
 }
 
 .rs {
@@ -105,7 +104,6 @@ display:block;
 text-align:center;
 cursor:pointer;
 border-radius: 5px;
-font-weight:bold;
 }
 	
 .rby {color: #FFF;Background-color:#FFF;}
@@ -203,6 +201,10 @@ margin-top:10px;
 margin-bottom:10px;
 background: linear-gradient(to right, #DDD, #FFF);
 padding-left: 1%;
+}
+
+h1, h2 {
+font-size:1.6rem;
 }
 
 iframe {
