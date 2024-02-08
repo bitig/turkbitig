@@ -1,10 +1,10 @@
 html, body {
 background-color:#162029;
-color:#DDD;
+color:#D0D0D0;
 }
 
 a:link 	{
-color:#DDD;
+color:#D0D0D0;
 }
 
 a:visited 	{
@@ -17,6 +17,10 @@ color:#FFF;
 
 code {
 color:#DDD;
+}
+
+h1, h2, h3 {
+background: linear-gradient(to right, #365059, #162029);
 }
 
 th	{
@@ -57,14 +61,15 @@ border-bottom:1px solid #60666C;
 }
 
 .tabs {
-background: #50565C;
-border-bottom:3px solid #999;
+background: #26303F;
+border-bottom:3px solid #666;
+border-image:none;
 }
 
 .tabs a {
 text-shadow: 0px 0px 0px;
 background: #3f3f3f;
-border: 1px solid #CCC;
+border: 1px solid #999;
 border-bottom:0;
 }
 
@@ -74,14 +79,14 @@ box-shadow: inset 1px 2px 3px #ccc;
 }
 
 .tabs a.current {
-color: #EEE;
-border: 1px solid #CCC;
+color: #DDD;
+border: 1px solid #999;
 border-bottom: 6px solid #333;
 background:#30363C;
 }
 
 .tabs a.parent {
-color: #EEE;
+color: #DDD;
 border: 1px solid #CCC;
 border-bottom: 6px solid #333;
 background:#30363C;
@@ -90,7 +95,7 @@ background:#30363C;
 .nav a{
 text-shadow: 0px 0px 0px;
 font-weight:normal;
-color:#EEE;
+color:#DDD;
 background: #303639;
 border: 1px solid #999;
 }
@@ -101,9 +106,8 @@ box-shadow: inset 1px 1px 2px #ccc;
 }
 
 .nav a.this {
-font-weight:bold;
 background: #666;
-border: 1px solid #FFF;
+border: 1px solid #999;
 color:#FFF;
 }
 
@@ -197,6 +201,16 @@ color: #EEE;
 .damga  {
 color: #DDD;
 background-color:#505659;
+}
+
+.tamga  {
+color: #ddd;
+border:1px solid #999;
+}
+
+#damga  {
+color: #DDD;
+border:1px solid #999;
 }
 
 button {

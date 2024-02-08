@@ -41,7 +41,7 @@ function setTheme(theme) {
   const baseUrl = window.location.origin + window.location.pathname;
 
   // Update the stylesheet href based on the theme
-  styleSheet.setAttribute('href', `../${theme}.css`);
+  styleSheet.setAttribute('href', `/css/${theme}.css`);
 
 
   // Update the current theme

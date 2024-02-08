@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/fonts.css">
 <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/light.css">
+<link rel="stylesheet" href="/css/dark.css"/>
+<link rel="stylesheet" href="/css/light.css"/>
+<link id="theme-style" rel="stylesheet" href="/css/style.css">
 <link rel="shortcut icon" href="/image/favicon.ico" type="image/png">
 
 
@@ -40,10 +42,10 @@
 
 <p>Türkiye'de en sık kullanılan kız ve erkek isimlerini Göktürk Alfabesi (Göktürkçe) ile yazılabilen isimleri buraya yazıp dizdik, dilediğiniz isim henüz bu listede yok ise <a target="_blank" href="https://twitter.com/turkbitigcom">@twitter-𝕏</a> hesabımızdan yazıp eklememizi isteyebilirsiniz.</p>
 
-<p>A-Z
+<p>
 <button id="ascendingBtn">Erkek</button>
 <button id="descendingBtn">Kız</button>
-<button id="resetBtn">Tümü</button>
+<button id="resetBtn">Tümü</button> 
 </p>
 
 <p>(e) erkek (k) kız (i) ikili</p>
@@ -826,7 +828,9 @@ resetBtn.addEventListener("click", resetSorting);
 <p>Göktürk Alfabesi'nde CFHV harfleri olmadığı için bu harfleri içeren isimleri (sev~ ve han hariç) yazmak mümkün değildir. </p>
 
 </div><!--content end-->
-<div class="footer"><a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
+<div class="footer"><a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a> <button id="theme-toggle">AK</button></div>
+
+<script src="/js/theme.js"></script>
 </body>
 </html>
 

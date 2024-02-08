@@ -22,6 +22,10 @@ code {
 color: #900;
 }
 
+h1, h2, h3 {
+background: linear-gradient(to right, #DDD, #FFF);
+}
+
 th	{
 background-color:#ececec;
 }
@@ -110,6 +114,7 @@ background: linear-gradient(#fff, #ddd, #f9f9f9);
 }
 
 .nav a{
+font-weight:bold;
 color:#555;
 text-shadow: 1px 1px 2px #fff;
 background-color: #ddd;
