@@ -1,10 +1,10 @@
 html, body {
 background-color:#162029;
-color:#D0D0D0;
+color:#DDD;
 }
 
 a:link 	{
-color:#D0D0D0;
+color:#DDD;
 }
 
 a:visited 	{
@@ -204,7 +204,7 @@ background-color:#505659;
 }
 
 .tamga  {
-color: #ddd;
+color: #DDD;
 border:1px solid #999;
 }
 
