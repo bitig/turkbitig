@@ -124,11 +124,6 @@ border:1px dashed #cccccc;
 border:1px dashed #cccccc;
 }
 
-.zar {
-border-top:1px solid #555;
-padding:1em;
-}
-
 .iblat {
 color: #DDD;
 }
@@ -201,11 +196,6 @@ background: linear-gradient(to right,
 
 .turuk  {
 color: #EEE;
-}
-
-.damga  {
-color: #DDD;
-background-color:#505659;
 }
 
 .tamga  {
