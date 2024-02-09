@@ -76,7 +76,7 @@ var increaseBtn = document.getElementById("increaseBtn");
 var resetBtn = document.getElementById("resetBtn");
 
 // Set the initial font size
-var initialFontSize = 15;
+var initialFontSize = 16;
 var fSize = initialFontSize;
 
 // Retrieve the font size preference from localStorage (if available)
