@@ -9,6 +9,11 @@ a:active    {
 text-decoration:none;
 }
 
+div {
+border-radius: 4px;
+}
+
+
 #keyboard {
 }
 
@@ -103,7 +108,7 @@ border:1px solid #888;
 display:block;
 text-align:center;
 cursor:pointer;
-border-radius: 5px;
+border-radius: 4px;
 }
 	
 .rby {color: #FFF;Background-color:#FFF;}
@@ -167,7 +172,7 @@ border-radius: 5px;
   }
 
 #plus, #minus {
-  border-radius: 5px;
+  border-radius: 4px;
   padding-left:6px;
   padding-right:6px;
   font-weight:bold;
@@ -299,7 +304,7 @@ font-size:1rem;
 
 .tabs a {
 white-space: nowrap;
-border-radius: 3px 3px 0px 0px;
+border-radius: 4px 4px 0px 0px;
 padding: 5px;
 padding-bottom: 4px;
 text-decoration: none;
@@ -336,7 +341,7 @@ margin-top:1em;
 .nav a{
 padding:5px;
 white-space: nowrap;
-border-radius: 3px;
+border-radius: 4px;
 text-decoration: none;
 }
 
@@ -546,7 +551,7 @@ button {
 font-size: 1rem;
 cursor: pointer;
 font-weight:bold;
-border-radius: 3px;
+border-radius: 4px;
 }
 
 .content {
@@ -568,5 +573,3 @@ padding-left:20%;
 padding-top:3em;
 padding-bottom:3em;
 }
-
-

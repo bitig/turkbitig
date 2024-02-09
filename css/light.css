@@ -249,6 +249,7 @@ border:1px solid #999;
 .turuk  {
 color: #222;
 }
+
 button {
 color:#333;
 background-color:#EEE;
@@ -261,6 +262,6 @@ background-color:#EEE;
 
 
 #theme-toggle {
-background-color:#000;
+background-color:#666;
 color:#FFF;
 }
