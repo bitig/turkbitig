@@ -56,7 +56,7 @@ function setTheme(theme) {
 
 // Function to update the theme toggle button text
 function updateThemeToggleText(theme) {
-  const switchText = theme === 'light' ? 'KR' : ' AK ';
+  const switchText = theme === 'light' ? 'A' : 'A';
   themeToggle.textContent = `${switchText}`;
 }
 
@@ -65,3 +65,56 @@ window.addEventListener('load', function () {
   // Show the body element after the window finishes loading
   document.body.style.display = 'block';
 });
+
+
+// Allow users to increase or decrease the font size of a web page.
+// Get the paragraph element
+var paragraph = document.querySelector("body");
+
+// Get the increase and reset buttons
+var increaseBtn = document.getElementById("increaseBtn");
+var resetBtn = document.getElementById("resetBtn");
+
+// Set the initial font size
+var initialFontSize = 15;
+var fSize = initialFontSize;
+
+// Retrieve the font size preference from localStorage (if available)
+var savedPreference = localStorage.getItem("fontSizePreference");
+if (savedPreference) {
+  var preference = JSON.parse(savedPreference);
+  if (preference.expires && preference.expires < Date.now()) {
+    // Remove expired preference
+    localStorage.removeItem("fontSizePreference");
+  } else {
+    fSize = preference.size;
+    paragraph.style.fontSize = fSize + "px";
+  }
+}
+
+// Increase font size on button click
+increaseBtn.addEventListener("click", function() {
+  if (fSize < 26) {
+    fSize += 1;
+    paragraph.style.fontSize = fSize + "px";
+    saveFontSizePreference(fSize);
+  }
+});
+
+// Reset font size to the initial value on button click
+resetBtn.addEventListener("click", function() {
+  fSize = initialFontSize;
+  paragraph.style.fontSize = fSize + "px";
+  saveFontSizePreference(fSize);
+});
+
+// Save the font size preference to localStorage
+function saveFontSizePreference(size) {
+  var expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + 1); // Set expiration to 1 day from now
+  var preference = {
+    size: size,
+    expires: expirationDate.getTime()
+  };
+  localStorage.setItem("fontSizePreference", JSON.stringify(preference));
+}

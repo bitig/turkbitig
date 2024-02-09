@@ -17,7 +17,7 @@ text-decoration:none;
    border:1px solid #666;
    font-family:'tbkeys';
    cursor:pointer;
-   font-size:1.3rem;
+   font-size:1.3em;
    font-weight:normal;
    padding-left:1px;
    padding-right:1px;
@@ -25,7 +25,7 @@ text-decoration:none;
 
 @media only screen and (min-width: 600px) {
 .key {
-   font-size:1.6rem;
+   font-size:1.6em;
   }
 }
 
@@ -57,7 +57,7 @@ text-decoration:none;
   min-height:50px;
   width: 600px;
   max-width: 96%;
-  font-size:1.8rem;
+  font-size:1.8em;
   font-family:'tbldamga';
   direction:rtl;
   text-align:right;
@@ -138,7 +138,7 @@ border-radius: 5px;
   padding-right:0;
   margin-bottom:1%;
   font-family:Arial, sans-serif;
-  font-size:1.3rem;
+  font-size:1.3em;
 }
 
 .uu {
@@ -150,7 +150,7 @@ border-radius: 5px;
   unicode-bidi: bidi-override;
   text-align: right;
   font-family: 'kultigin';
-  font-size:1.2rem;
+  font-size:1.2em;
 }
 
 .fonttable {
@@ -171,7 +171,7 @@ border-radius: 5px;
   padding-left:6px;
   padding-right:6px;
   font-weight:bold;
-  font-size:1.3rem;
+  font-size:1.3em;
   }
 
 
@@ -204,7 +204,11 @@ padding-left: 1%;
 }
 
 h1, h2 {
-font-size:1.5rem;
+font-size:1.3em;
+}
+
+h3, h4 {
+font-size:1.1em;
 }
 
 iframe {
@@ -290,7 +294,7 @@ position:sticky;
 top: 0;
 padding-top: 6px;
 padding-left: 2%;
-font-weight:bold;
+font-size:1rem;
 }
 
 .tabs a {
@@ -308,21 +312,19 @@ text-decoration: none;
 }
 
 .tabs a.current {
-font-weight:bold;
 padding-bottom: 6px;
 }
 
 .tabs a.parent {
-font-weight:bold;
 padding-bottom: 6px;
 }
 
 .tabs a.bas {
-font-weight:bold;
 text-transform: uppercase;
 }
 
 .nav {
+font-size:1rem;
 padding-left:2%;
 margin-top:1em;
 }
@@ -332,7 +334,6 @@ margin-top:1em;
 }
 
 .nav a{
-font-weight:bold;
 padding:5px;
 white-space: nowrap;
 border-radius: 3px;
@@ -394,7 +395,7 @@ font-weight:bold;
 
 .u {
 line-height:1.2;
-font-size: 1.8rem;
+font-size: 1.8em;
 padding:0.5em;
 width:36%;
 direction:rtl;
@@ -424,6 +425,7 @@ max-width:30%;
 }
 
 .xlink {
+font-size:1rem;
 float:right;
 margin-top:15px;
 margin-right:5%;
@@ -453,7 +455,7 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: tbldamga;
-font-size: 1.8rem;
+font-size: 1.8em;
 padding-left:1%;
 padding-right:1%;
 padding-bottom:4px;
@@ -476,11 +478,11 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: 'irkbitig', 'turkic';
-font-size: 1.4rem;
+font-size: 1.4em;
 }
 
 .iblat {
-font-size: 1.2rem;
+font-size: 1.2em;
 font-weight: bold;
 font-family:monospace;
 }
@@ -524,8 +526,22 @@ padding:5px;
 }
 
 #theme-toggle {
-margin-right:5%;
-float:right;
+font-weight:bold;
+}
+
+#increaseBtn {
+margin-left:5px;
+margin-right:5px;
+}
+
+#theme-toggle {
+font-weight:bold;
+}
+#accessbuttons {
+font-size:1rem;
+position: fixed;
+bottom: 3%;
+right: 2%;
 }
 
 .menu {
@@ -533,7 +549,7 @@ float:right;
 }
 
 button {
-font-size: 0.9rem;
+font-size: 0.9em;
 cursor: pointer;
 font-weight:bold;
 border-radius: 3px;
@@ -552,6 +568,7 @@ padding-left:6%;
 }
 
 .footer {
+font-size:1rem;
 margin-top:3em;
 padding-left:20%;
 padding-top:3em;

@@ -61,6 +61,7 @@ border-bottom:1px solid #60666C;
 }
 
 .tabs {
+font-weight:normal;
 background: #26303F;
 border-bottom:3px solid #666;
 border-image:none;
@@ -92,9 +93,13 @@ border-bottom: 6px solid #333;
 background:#30363C;
 }
 
+
+.nav {
+  font-weight:normal;
+}
+
 .nav a{
-text-shadow: 0px 0px 0px;
-font-weight:normal;
+text-shadow:none;
 color:#DDD;
 background: #303639;
 border: 1px solid #999;
@@ -225,4 +230,9 @@ background-color:#263039;
 .transarea {
 color:#DDD;
 background-color:#30393F;
+}
+
+#theme-toggle {
+color:#000;
+background-color:#FFF;
 }
