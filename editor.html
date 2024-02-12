@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WYSIWYG Editor</title>
+  <style>
+    body {
+      background-color: #999;
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .editor-wrapper {
+      flex: 1;
+      overflow: auto;
+    }
+
+    .editor {
+      background-color: #CfCfC0;
+      border: 2px solid #666;
+      max-width: 800px;
+      padding: 0;
+      padding-left: 5px;
+      height: 100%;
+    }
+
+    .source-code-wrapper {
+      flex: 1;
+      overflow: auto;
+      padding: 2px;
+    }
+
+    .source-code {
+      width: 100%;
+      height: 100%;
+      background-color: #C0C0CC;
+      border: none;
+    }
+
+    .button-container {
+      padding: 10px;
+    }
+
+    .button-container button {
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="editor-wrapper">
+      <div class="editor" contenteditable="true" id="editor" spellcheck="false">
+        <p>Type your text here...</p>
+      </div>
+    </div>
+    <div class="source-code-wrapper">
+      <textarea class="source-code" id="sourceCode" spellcheck="false"></textarea>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button onclick="formatParagraph()">P</button>
+    <button onclick="formatHeading(1)">H1</button>
+    <button onclick="formatHeading(2)">H2</button>
+    <button onclick="formatHeading(3)">H3</button>
+    <button onclick="boldText()">Bold</button>
+    <button onclick="italicizeText()">Ita</button>
+    <button onclick="underlineText()">Und.</button>
+  </div>
+
+  <script>
+    var editor = document.getElementById('editor');
+    var sourceCode = document.getElementById('sourceCode');
+
+    editor.addEventListener('input', function() {
+      sourceCode.value = formatSourceCode(editor.innerHTML);
+    });
+
+    sourceCode.addEventListener('input', function() {
+      editor.innerHTML = sourceCode.value;
+    });
+
+    function formatParagraph() {
+      document.execCommand('formatBlock', false, 'p');
+      sourceCode.value = formatSourceCode(editor.innerHTML);
+    }
+
+    function formatHeading(level) {
+      document.execCommand('formatBlock', false, 'h' + level);
+      sourceCode.value = formatSourceCode(editor.innerHTML);
+    }
+
+    function boldText() {
+      document.execCommand('bold', false, null);
+    }
+
+    function italicizeText() {
+      document.execCommand('italic', false, null);
+    }
+
+    function underlineText() {
+      document.execCommand('underline', false, null);
+    }
+
+    editor.addEventListener('input', function() {
+      formatEditorContent();
+    });
+
+    function formatSourceCode(html) {
+      var divContainer = document.createElement('div');
+      divContainer.innerHTML = html;
+
+      var paragraphs = divContainer.getElementsByTagName('div');
+      while (paragraphs.length > 0) {
+        var div = paragraphs[0];
+        var p = document.createElement('p');
+        p.innerHTML = div.innerHTML;
+        div.parentNode.replaceChild(p, div);
+      }
+
+      var formattedHtml = divContainer.innerHTML.replace(/<\/(p|h\d)>/g, "</$1>\n\n");
+
+      // Reduce consecutive newlines to a maximum of 2
+      formattedHtml = formattedHtml.replace(/\n{3,}/g, "\n\n");
+
+      return formattedHtml;
+    }
+  </script>
+</body>
+</html>

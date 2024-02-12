@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+    html, body {
+      height: 100%;
+    }
+
+
+    body {
+      background-color: #999;
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    .editor {
+    outline: none;
+     background-color: #CCC;
+     height: 88%;
+     border: 1px solid #ccc;
+     padding: 10px;
+     overflow:auto;
+    }
+
+img {
+  max-width:100%;
+}
+
+    .button-container {
+      padding: 10px;
+    }
+
+    .button-container button {
+      padding: 5px;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="editor" contenteditable="true" id="editor" spellcheck="false">
+    <p>Type your text here...</p>
+  </div>
+
+  <div class="button-container">
+    <button onclick="formatParagraph()">P</button>
+    <button onclick="formatHeading(1)">H1</button>
+    <button onclick="formatHeading(2)">H2</button>
+    <button onclick="formatHeading(3)">H3</button>
+    <button onclick="boldText()">Bold</button>
+    <button onclick="italicizeText()">Ita</button>
+    <button onclick="underlineText()">Und.</button>
+  </div>
+
+  <script>
+    var editor = document.getElementById('editor');
+    var sourceCodeFrame = window.parent.frames[1];
+
+    editor.addEventListener('input', function() {
+      sourceCodeFrame.postMessage(formatSourceCode(editor.innerHTML), '*');
+    });
+
+    function formatParagraph() {
+      document.execCommand('formatBlock', false, 'p');
+      sourceCodeFrame.postMessage(formatSourceCode(editor.innerHTML), '*');
+    }
+
+    function formatHeading(level) {
+      document.execCommand('formatBlock', false, 'h' + level);
+      sourceCodeFrame.postMessage(formatSourceCode(editor.innerHTML), '*');
+    }
+
+    function boldText() {
+      document.execCommand('bold', false, null);
+    }
+
+    function italicizeText() {
+      document.execCommand('italic', false, null);
+    }
+
+    function underlineText() {
+      document.execCommand('underline', false, null);
+    }
+
+    editor.addEventListener('input', function() {
+      formatEditorContent();
+    });
+
+    function formatSourceCode(html) {
+      var divContainer = document.createElement('div');
+      divContainer.innerHTML = html;
+
+      var paragraphs = divContainer.getElementsByTagName('div');
+      while (paragraphs.length > 0) {
+        var div = paragraphs[0];
+        var p = document.createElement('p');
+        p.innerHTML = div.innerHTML;
+        div.parentNode.replaceChild(p, div);
+      }
+
+      var formattedHtml = divContainer.innerHTML.replace(/<\/(p|h\d)>/g, "</$1>\n\n");
+
+      // Reduce consecutive newlines to a maximum of 2
+      formattedHtml = formattedHtml.replace(/\n{3,}/g, "\n\n");
+
+      return formattedHtml;
+    }
+  </script>
+</body>
+</html>
