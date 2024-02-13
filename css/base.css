@@ -536,16 +536,24 @@ border-radius:3px;
 padding:5px;
 }
 
+#theme-toggle {
+  padding:5px;  
+}
+
+#increaseBtn {
+padding:5px;  
+margin-bottom:12px;
+}
+
 #resetBtn {
-margin-top:9px;
-margin-bottom:9px;
+padding:5px;  
 }
 
 #accessbuttons {
 font-weight:bold;
 font-size:1rem;
 position: fixed;
-bottom: 6%;
+bottom: 8%;
 right: 2%;
 }
 
