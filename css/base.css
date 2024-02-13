@@ -537,16 +537,17 @@ padding:5px;
 }
 
 #theme-toggle {
-  padding:5px;  
+  padding:4px;  
 }
 
 #increaseBtn {
 padding:5px;  
-margin-bottom:12px;
 }
 
 #resetBtn {
 padding:5px;  
+margin-top:12px;
+margin-bottom:12px;
 }
 
 #accessbuttons {
