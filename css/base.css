@@ -537,17 +537,18 @@ padding:5px;
 }
 
 #theme-toggle {
-  padding:4px;  
+padding:3px;  
+width:26px;
 }
 
 #increaseBtn {
-padding:5px;  
+padding:3px;  
+width:26px;
 }
 
 #decreaseBtn {
-padding:5px;  
-padding-left:4px;  
-padding-right:4px;  
+padding:3px;  
+width:26px;
 margin-top:12px;
 margin-bottom:12px;
 }
