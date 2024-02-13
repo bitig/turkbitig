@@ -71,12 +71,12 @@ window.addEventListener('load', function () {
 // Get the paragraph element
 var paragraph = document.querySelector("body");
 
-// Get the increase and reset buttons
+// Get the increase and decrease buttons
 var increaseBtn = document.getElementById("increaseBtn");
-var resetBtn = document.getElementById("resetBtn");
+var decreaseBtn = document.getElementById("decreaseBtn");
 
 // Set the initial font size
-var initialFontSize = 16;
+var initialFontSize = 17;
 var fSize = initialFontSize;
 
 // Retrieve the font size preference from localStorage (if available)
@@ -94,18 +94,20 @@ if (savedPreference) {
 
 // Increase font size on button click
 increaseBtn.addEventListener("click", function() {
-  if (fSize < 22) {
+  if (fSize < 21) {
     fSize += 2;
     paragraph.style.fontSize = fSize + "px";
     saveFontSizePreference(fSize);
   }
 });
 
-// Reset font size to the initial value on button click
-resetBtn.addEventListener("click", function() {
-  fSize = initialFontSize;
-  paragraph.style.fontSize = fSize + "px";
-  saveFontSizePreference(fSize);
+// Decrease font size on button click
+decreaseBtn.addEventListener("click", function() {
+  if (fSize > 17) {
+    fSize -= 2;
+    paragraph.style.fontSize = fSize + "px";
+    saveFontSizePreference(fSize);
+  }
 });
 
 // Save the font size preference to localStorage
