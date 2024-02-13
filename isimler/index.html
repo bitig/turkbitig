@@ -44,7 +44,7 @@
 <p>
 <button id="ascendingBtn">Erkek</button>
 <button id="descendingBtn">Kız</button>
-<button id="decreaseBtn">Tümü</button> 
+<button id="resetBtn">Tümü</button> 
 </p>
 
 <p>(e) erkek (k) kız (i) ikili</p>
@@ -816,12 +816,12 @@ function updateList() {
 // Retrieve the buttons
 var ascendingBtn = document.getElementById("ascendingBtn");
 var descendingBtn = document.getElementById("descendingBtn");
-var decreaseBtn = document.getElementById("decreaseBtn");
+var resetBtn = document.getElementById("resetBtn");
 
 // Add event listeners to the buttons
 ascendingBtn.addEventListener("click", sortAscending);
 descendingBtn.addEventListener("click", sortDescending);
-decreaseBtn.addEventListener("click", resetSorting);
+resetBtn.addEventListener("click", resetSorting);
 </script>
 
 <p>Göktürk Alfabesi'nde CFHV harfleri olmadığı için bu harfleri içeren isimleri (sev~ ve han hariç) yazmak mümkün değildir. </p>
