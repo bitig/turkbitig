@@ -94,7 +94,7 @@ if (savedPreference) {
 
 // Increase font size on button click
 increaseBtn.addEventListener("click", function() {
-  if (fSize < 22) {
+  if (fSize < 23) {
     fSize += 2;
     paragraph.style.fontSize = fSize + "px";
     saveFontSizePreference(fSize);
@@ -103,7 +103,7 @@ increaseBtn.addEventListener("click", function() {
 
 // Decrease font size on button click
 decreaseBtn.addEventListener("click", function() {
-  if (fSize > 16) {
+  if (fSize > 17) {
     fSize -= 2;
     paragraph.style.fontSize = fSize + "px";
     saveFontSizePreference(fSize);
