@@ -536,31 +536,6 @@ border-radius:3px;
 padding:5px;
 }
 
-#theme-toggle {
-padding:3px;  
-width:22px;
-}
-
-#increaseBtn {
-padding:3px;  
-width:22px;
-}
-
-#decreaseBtn {
-padding:3px;  
-width:22px;
-margin-top:12px;
-margin-bottom:12px;
-}
-
-#accessbuttons {
-font-weight:bold;
-font-size:1rem;
-position: fixed;
-bottom: 8%;
-right: 2%;
-}
-
 .menu {
 float:right;
 }
@@ -570,6 +545,13 @@ font-size: 1rem;
 cursor: pointer;
 font-weight:bold;
 border-radius: 4px;
+}
+
+#accessbuttons button{
+font-weight:bold;
+font-size:2rem;
+padding:8px;  
+margin:12px;
 }
 
 .content {
