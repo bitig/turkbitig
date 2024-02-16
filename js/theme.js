@@ -25,6 +25,18 @@ themeToggle.addEventListener('click', () => {
   toggleTheme();
 });
 
+// Listen for keydown events on the window
+window.addEventListener('keydown', (event) => {
+  // Check if Ctrl + Shift keys are pressed simultaneously
+  if (event.ctrlKey && event.code === 'Space') {
+    // Prevent the default behavior of the key combination
+    event.preventDefault();
+
+    // Toggle the theme between light and dark
+    toggleTheme();
+  }
+});
+
 // Function to toggle the theme
 function toggleTheme() {
   // Check the current theme and switch to the opposite theme
@@ -42,7 +54,6 @@ function setTheme(theme) {
 
   // Update the stylesheet href based on the theme
   styleSheet.setAttribute('href', `/css/${theme}.css`);
-
 
   // Update the current theme
   currentTheme = theme;

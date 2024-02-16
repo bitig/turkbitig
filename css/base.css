@@ -549,9 +549,10 @@ border-radius: 4px;
 
 #accessbuttons button{
 font-weight:bold;
-font-size:2rem;
+font-size:1.6rem;
 padding:8px;  
 margin:12px;
+min-width:1.3em;
 }
 
 .content {
