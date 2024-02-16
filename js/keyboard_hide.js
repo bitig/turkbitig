@@ -1,3 +1,53 @@
+// keyboard hide
+// Get the toggle button element and the keyDiv element from the DOM
+const toggleButton = document.getElementById('toggleButton');
+const keyDiv = document.getElementById('keydiv');
+
+// Define the storage keys for the visibility preference and expiration time in local storage
+const storageKey = 'keyDivVisibility';
+const expirationKey = 'keyDivExpiration';
+
+// Add a click event listener to the toggle button
+toggleButton.addEventListener('click', () => {
+  // Check if the keyDiv element is currently hidden
+  if (keyDiv.style.display === 'none') {
+    // If hidden, show the keyDiv element and update the toggle button text
+    keyDiv.style.display = 'block';
+    toggleButton.textContent = 'KLAVYEYİ KAPAT';
+
+    // Store the visibility preference in local storage as 'visible'
+    localStorage.setItem(storageKey, 'visible');
+
+    // Set the expiration time for 5 minutes from now
+    const expirationTime = Date.now() + 5 * 60 * 1000; // 1 minute for testing purposes
+    localStorage.setItem(expirationKey, expirationTime);
+  } else {
+    // If visible, hide the keyDiv element and update the toggle button text
+    keyDiv.style.display = 'none';
+    toggleButton.textContent = 'GÖKTÜRK KLAVYE';
+
+    // Remove the visibility preference and expiration time from local storage
+    localStorage.removeItem(storageKey);
+    localStorage.removeItem(expirationKey);
+  }
+});
+
+// Get the visibility preference and expiration time from local storage
+const userPreference = localStorage.getItem(storageKey);
+const expirationTime = localStorage.getItem(expirationKey);
+
+// Check if the visibility preference exists and the expiration time is valid (not expired)
+if (userPreference && expirationTime && Date.now() < parseInt(expirationTime)) {
+  // If the preference exists and not expired, show the keyDiv element and update the toggle button text
+  keyDiv.style.display = 'block';
+  toggleButton.textContent = 'KLAVYEYİ KAPAT';
+} else {
+  // If the preference doesn't exist or expired, hide the keyDiv element and update the toggle button text
+  keyDiv.style.display = 'none';
+  toggleButton.textContent = 'GÖKTÜRK KLAVYE';
+}
+// keyboard hide ends
+
 // keyboard - canvas begins
 var gtext = document.getElementById("gtext");
 var canvas = document.getElementById("canvas");
