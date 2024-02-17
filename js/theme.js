@@ -1,5 +1,7 @@
-// Get the theme toggle button element
-const themeToggle = document.querySelector('#theme-toggle');
+// Get the theme buttons
+const lightThemeButton = document.querySelector('#light-theme');
+const grayThemeButton = document.querySelector('#gray-theme');
+const darkThemeButton = document.querySelector('#dark-theme');
 
 // Get the <link> element for the stylesheet
 const styleSheet = document.querySelector('#theme-style');
@@ -16,36 +18,21 @@ if (!currentTheme) {
 // Apply the initial theme preference
 setTheme(currentTheme);
 
-// Update the theme toggle button text
-updateThemeToggleText(currentTheme);
+// Highlight the current theme button
+highlightCurrentThemeButton(currentTheme);
 
-// Listen for click events on the theme toggle button
-themeToggle.addEventListener('click', () => {
-  // Toggle the theme between light and dark
-  toggleTheme();
+// Add click event listeners to the theme buttons
+lightThemeButton.addEventListener('click', () => {
+  setTheme('light');
 });
 
-// Listen for keydown events on the window
-window.addEventListener('keydown', (event) => {
-  // Check if Ctrl + Shift keys are pressed simultaneously
-  if (event.ctrlKey && event.code === 'Space') {
-    // Prevent the default behavior of the key combination
-    event.preventDefault();
-
-    // Toggle the theme between light and dark
-    toggleTheme();
-  }
+grayThemeButton.addEventListener('click', () => {
+  setTheme('gray');
 });
 
-// Function to toggle the theme
-function toggleTheme() {
-  // Check the current theme and switch to the opposite theme
-  if (currentTheme === 'light') {
-    setTheme('dark');
-  } else {
-    setTheme('light');
-  }
-}
+darkThemeButton.addEventListener('click', () => {
+  setTheme('dark');
+});
 
 // Function to set the theme
 function setTheme(theme) {
@@ -58,17 +45,28 @@ function setTheme(theme) {
   // Update the current theme
   currentTheme = theme;
 
-  // Update the theme toggle button text
-  updateThemeToggleText(theme);
+  // Highlight the current theme button
+  highlightCurrentThemeButton(theme);
 
   // Store the theme preference in local storage
   localStorage.setItem('themePreference', theme);
 }
 
-// Function to update the theme toggle button text
-function updateThemeToggleText(theme) {
-  const switchText = theme === 'light' ? 'A' : 'A';
-  themeToggle.textContent = `${switchText}`;
+// Function to highlight the current theme button
+function highlightCurrentThemeButton(theme) {
+  // Remove the highlight class from all theme buttons
+  lightThemeButton.classList.remove('highlight');
+  grayThemeButton.classList.remove('highlight');
+  darkThemeButton.classList.remove('highlight');
+
+  // Add the highlight class to the current theme button
+  if (theme === 'light') {
+    lightThemeButton.classList.add('highlight');
+  } else if (theme === 'gray') {
+    grayThemeButton.classList.add('highlight');
+  } else if (theme === 'dark') {
+    darkThemeButton.classList.add('highlight');
+  }
 }
 
 // Add a load event listener to the window object
