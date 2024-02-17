@@ -113,10 +113,10 @@ border-bottom: 6px solid #DDD;
 
 .tabs a.parent {
 color: #333;
+background:#EEE;
+background: linear-gradient(#fff, #f0f0f0, #ddd);
 border: 1px solid #36c;
-border-bottom: 6px solid #fcfcfc;
-background:#f0f0f0;
-background: linear-gradient(#fff, #ddd, #f9f9f9);
+border-bottom: 6px solid #DDD;
 }
 
 
@@ -141,6 +141,10 @@ box-shadow: inset 1px 1px 2px #ccc;
 background: #EEE;
 border: 1px solid #666;
 color:#000;
+}
+
+.irk {
+  background:#CCC;
 }
 
 .irkbitig td {
@@ -181,7 +185,7 @@ color:#900;
 
 .mu  {
 color: #000;
-background-color:#eee;
+background-color:#ececec;
 }
 
 .uu {
@@ -255,6 +259,10 @@ border:1px solid #999;
 background-color:#EEE;
 }
 
+.transarea {
+color:#000;
+background-color:#EEE;
+}
 
 #theme-toggle {
 background-color:#666;

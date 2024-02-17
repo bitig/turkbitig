@@ -119,6 +119,10 @@ border: 1px solid #999;
 color:#FFF;
 }
 
+.irk {
+  background:#333;
+}
+
 .irkbitig td {
 border:1px dashed #cccccc;
 }
