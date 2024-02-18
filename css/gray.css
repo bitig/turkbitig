@@ -34,7 +34,7 @@ background-color:#ececec;
 }
 
 #canvas {
-filter: none;
+filter: brightness(98%);
 }
 
 img {
