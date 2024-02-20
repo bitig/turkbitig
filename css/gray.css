@@ -61,17 +61,6 @@ border:1px solid #eee;
 border:1px solid #eee;
 }
 
-.pagetitle{
-color:#555;
-}
-
-.pagetitle a{
-color:#555;
-}
-
-.leftpad {
-}
-
 .sitenav {
 box-shadow: 3px 3px 5px #ccc;
 background-color: #DDD;
@@ -163,10 +152,6 @@ width:38%;
 width:58%;
 }
 
-.osm-rtl {
-background-color:#ececec;
-}
-
 .kb td	{
 border:1px dashed #cccccc;
 }
@@ -235,20 +220,6 @@ background:#FEFEFE;
 color: #900;
 }
 
-.tamga  {
-color: #222;
-border:1px solid #999;
-}
-
-#damga  {
-color: #222;
-border:1px solid #999;
-}
-
-.turuk  {
-color: #222;
-}
-
 button {
 color:#333;
 background-color:#EEE;
@@ -262,9 +233,4 @@ background-color:#EEE;
 .transarea {
 color:#000;
 background-color:#EEE;
-}
-
-#theme-toggle {
-background-color:#666;
-color:#FFF;
 }

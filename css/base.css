@@ -68,12 +68,9 @@ border-radius: 4px;
 .space {
   height:2em;
   font-family:'arial';
-  background-color:#eee;
-  color:red;
   }
 
  .dots {
-  background-color:#eee;
   }
 
 
@@ -498,7 +495,6 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: 'tbldamga';
-color: #000;
 }
 
 .damga  {
@@ -516,9 +512,9 @@ direction:rtl;
 unicode-bidi:bidi-override;
 font-family: 'tamga';
 text-align:center;
-color: #000;
 border-radius:3px;
 padding:5px;
+border:1px solid #999;
 }
 
 #damga  {
@@ -526,8 +522,8 @@ direction:rtl;
 unicode-bidi:bidi-override;
 font-family: 'tamga';
 text-align:center;
-color: #000;
 border-radius:3px;
+border:1px solid #999;
 padding:5px;
 }
 

@@ -143,10 +143,6 @@ width:38%;
 width:58%;
 }
 
-.osm-rtl {
-background-color:#ececec;
-}
-
 .kb td	{
 border:1px dashed #cccccc;
 }
@@ -202,17 +198,6 @@ background: linear-gradient(to right,
 }
 
 .turuk  {
-color: #EEE;
-}
-
-.tamga  {
-color: #DDD;
-border:1px solid #999;
-}
-
-#damga  {
-color: #DDD;
-border:1px solid #999;
 }
 
 button {
@@ -227,9 +212,4 @@ background-color:#263039;
 .transarea {
 color:#DDD;
 background-color:#30393F;
-}
-
-#theme-toggle {
-background-color:#CCC;
-color:#222;
 }

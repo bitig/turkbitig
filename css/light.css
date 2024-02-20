@@ -60,17 +60,6 @@ border:1px solid #eee;
 border:1px solid #eee;
 }
 
-.pagetitle{
-color:#555;
-}
-
-.pagetitle a{
-color:#555;
-}
-
-.leftpad {
-}
-
 .sitenav {
 box-shadow: 3px 3px 5px #ccc;
 background-color: #fcfcfc;
@@ -161,10 +150,6 @@ width:38%;
 width:58%;
 }
 
-.osm-rtl {
-background-color:#ececec;
-}
-
 .kb td	{
 border:1px dashed #cccccc;
 }
@@ -230,21 +215,9 @@ background:#FEFEFE;
   }
 
 .iblat {
-color: #900;
-}
-
-.tamga  {
-color: #222;
-border:1px solid #999;
-}
-
-#damga  {
-color: #222;
-border:1px solid #999;
 }
 
 .turuk  {
-color: #222;
 }
 
 button {
@@ -255,10 +228,4 @@ border:1px solid #999;
 
 .footer {
 background-color:#EEE;
-}
-
-
-#theme-toggle {
-background-color:#666;
-color:#FFF;
 }
