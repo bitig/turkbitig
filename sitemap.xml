@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.turkbitig.com/</loc></url>
-  <url><loc>https://www.turkbitig.com/icerik.html</loc></url>
   <url><loc>https://www.turkbitig.com/gokturkce/</loc></url>
   <url><loc>https://www.turkbitig.com/gokturk-alfabesi/</loc></url>
   <url><loc>https://www.turkbitig.com/gokturk-alfabesi/font.html</loc></url>
+  <url><loc>https://www.turkbitig.com/icerik.html</loc></url>
   <url><loc>https://www.turkbitig.com/gokturk-alfabesi/turk.html</loc></url>
   <url><loc>https://www.turkbitig.com/iletisim.html</loc></url>
+  <url><loc>https://www.turkbitig.com/ayarlar.html</loc></url>
+  <url><loc>https://www.turkbitig.com/editor/</loc></url>
   <url><loc>https://www.turkbitig.com/isimler/</loc></url>
   <url><loc>https://www.turkbitig.com/isimler/adil.html</loc></url>
   <url><loc>https://www.turkbitig.com/isimler/zorlu.html</loc></url>
@@ -745,12 +747,6 @@
   <url><loc>https://www.turkbitig.com/isimler/akay.html</loc></url>
   <url><loc>https://www.turkbitig.com/isimler/akasya.html</loc></url>
   <url><loc>https://www.turkbitig.com/isimler/adnan.html</loc></url>
-  <url><loc>https://www.turkbitig.com/isimler/badegul.html</loc></url>
-  <url><loc>https://www.turkbitig.com/isimler/borkan.html</loc></url>
-  <url><loc>https://www.turkbitig.com/isimler/esengul.html</loc></url>
-  <url><loc>https://www.turkbitig.com/isimler/makbule.html</loc></url>
-  <url><loc>https://www.turkbitig.com/isimler/sudegul.html</loc></url>
-  <url><loc>https://www.turkbitig.com/isimler/yurdagul.html</loc></url>
   <url><loc>https://www.turkbitig.com/orhun-yazitlari/</loc></url>
   <url><loc>https://www.turkbitig.com/orhun-yazitlari/bilgekagan.html</loc></url>
   <url><loc>https://www.turkbitig.com/orhun-yazitlari/koltigin.html</loc></url>
@@ -1341,5 +1337,6 @@
   <url><loc>https://www.turkbitig.com/sozluk/kirgizca-ls.html</loc></url>
   <url><loc>https://www.turkbitig.com/sozluk/kirgizca-tz.html</loc></url>
   <url><loc>https://www.turkbitig.com/kazakca/</loc></url>
+  <url><loc>https://www.turkbitig.com/unicode.html</loc></url>
   <url><loc>https://www.turkbitig.com/mogolistangezisi.html</loc></url>
 </urlset>
