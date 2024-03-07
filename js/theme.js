@@ -18,9 +18,6 @@ if (!currentTheme) {
 // Apply the initial theme preference
 setTheme(currentTheme);
 
-// Highlight the current theme button
-highlightCurrentThemeButton(currentTheme);
-
 // Add click event listeners to the theme buttons
 lightThemeButton.addEventListener('click', () => {
   setTheme('light');
@@ -45,32 +42,6 @@ function setTheme(theme) {
   // Update the current theme
   currentTheme = theme;
 
-  // Highlight the current theme button
-  highlightCurrentThemeButton(theme);
-
   // Store the theme preference in local storage
   localStorage.setItem('themePreference', theme);
 }
-
-// Function to highlight the current theme button
-function highlightCurrentThemeButton(theme) {
-  // Remove the highlight class from all theme buttons
-  lightThemeButton.classList.remove('highlight');
-  grayThemeButton.classList.remove('highlight');
-  darkThemeButton.classList.remove('highlight');
-
-  // Add the highlight class to the current theme button
-  if (theme === 'light') {
-    lightThemeButton.classList.add('highlight');
-  } else if (theme === 'gray') {
-    grayThemeButton.classList.add('highlight');
-  } else if (theme === 'dark') {
-    darkThemeButton.classList.add('highlight');
-  }
-}
-
-// Add a load event listener to the window object
-window.addEventListener('load', function () {
-  // Show the body element after the window finishes loading
-  document.body.style.display = 'block';
-});
