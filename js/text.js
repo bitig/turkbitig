@@ -7,7 +7,7 @@ var increaseBtn = document.getElementById("increaseBtn");
 var decreaseBtn = document.getElementById("decreaseBtn");
 
 // Set the initial font size
-var initialFontSize = 17;
+var initialFontSize = 16;
 var fSize = initialFontSize;
 
 // Retrieve the font size preference from localStorage (if available)
@@ -25,7 +25,7 @@ if (savedPreference) {
 
 // Increase font size on button click
 increaseBtn.addEventListener("click", function() {
-  if (fSize < 28) {
+  if (fSize < 22) {
     fSize += 2;
     paragraph.style.fontSize = fSize + "px";
     saveFontSizePreference(fSize);
