@@ -194,9 +194,11 @@ font-weight: bold;
 }
 
 h1, h2, h3 {
+line-height: 1;
 border-radius:3px;
 margin-top:10px;
 margin-bottom:10px;
+padding: 6px;
 padding-left: 1%;
 }
 
