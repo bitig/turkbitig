@@ -1,11 +1,11 @@
 body {
-margin:0;
-line-height:1.5;
-font-family: sans-serif;
+margin:0;em
 }
 
-body, p, div, td, li, a, span{
- font-size:1rem;  
+p, div, td, li, a, span{
+font-size:1rem;
+font-family: sans-serif;
+line-height:1.5;
 }
 
 a:active    {
@@ -25,7 +25,7 @@ border-radius: 4px;
    width:100%;
    font-family:'tbkeys';
    cursor:pointer;
-   font-size:1.3em;
+   font-size:1.3rem;
    font-weight:normal;
    padding-left:1px;
    padding-right:1px;
@@ -33,7 +33,7 @@ border-radius: 4px;
 
 @media only screen and (min-width: 600px) {
 .key {
-   font-size:1.6em;
+   font-size:1.6rem;
   }
 }
 
@@ -60,7 +60,7 @@ border-radius: 4px;
   min-height:50px;
   width: 600px;
   max-width: 96%;
-  font-size:1.8em;
+  font-size:1.8rem;
   font-family:'tbldamga';
   direction:rtl;
   text-align:right;
@@ -138,7 +138,7 @@ border-radius: 4px;
   padding-right:0;
   margin-bottom:1%;
   font-family:Arial, sans-serif;
-  font-size:1.2em;
+  font-size:1.2rem;
 }
 
 .uu {
@@ -150,7 +150,7 @@ border-radius: 4px;
   unicode-bidi: bidi-override;
   text-align: right;
   font-family: 'kultigin';
-  font-size:1.3em;
+  font-size:1.3rem;
 }
 
 .fonttable {
@@ -171,7 +171,7 @@ border-radius: 4px;
   padding-left:6px;
   padding-right:6px;
   font-weight:bold;
-  font-size:1.3em;
+  font-size:1.3rem;
   }
 
 
@@ -206,11 +206,11 @@ padding-left: 1%;
 }
 
 h1, h2 {
-font-size:1.3em;
+font-size:1.3rem;
 }
 
 h3, h4 {
-font-size:1.1em;
+font-size:1.1rem;
 margin-bottom:5px;
 }
 
@@ -402,7 +402,7 @@ font-weight:bold;
 
 .u {
 line-height:1.2;
-font-size: 1.8em;
+font-size: 1.8rem;
 padding:0.5em;
 width:36%;
 direction:rtl;
@@ -462,7 +462,7 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: tbldamga;
-font-size: 1.8em;
+font-size: 1.8rem;
 padding-left:1%;
 padding-right:1%;
 padding-bottom:4px;
@@ -486,11 +486,11 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: 'irkbitig', 'turkic';
-font-size: 1.4em;
+font-size: 1.4rem;
 }
 
 .iblat {
-font-size: 1.2em;
+font-size: 1.1rem;
 font-weight: bold;
 font-family:monospace;
 }
@@ -574,7 +574,7 @@ padding-left:6%;
 .footer {
 font-size:1rem;
 margin-top:3em;
-padding-left:20%;
+padding-left:10%;
 padding-top:3em;
 padding-bottom:3em;
 }
