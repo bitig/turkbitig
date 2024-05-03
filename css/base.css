@@ -205,12 +205,21 @@ padding: 6px;
 padding-left: 1%;
 }
 
-h1, h2 {
+h1 {
 font-size:1.3rem;
 }
 
-h3, h4 {
+h2 {
+font-size:1.2rem;
+}
+
+h3 {
 font-size:1.1rem;
+margin-bottom:5px;
+}
+
+h4 {
+font-size:1rem;
 margin-bottom:5px;
 }
 
@@ -576,4 +585,10 @@ margin-top:3em;
 padding-left:10%;
 padding-top:3em;
 padding-bottom:3em;
+}
+
+#prevnext {
+margin-left:6%;
+font-weight:bold;
+padding-top:0.5em;
 }
