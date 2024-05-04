@@ -592,3 +592,9 @@ margin-left:6%;
 font-weight:bold;
 padding-top:0.5em;
 }
+
+@media only screen and (max-width: 600px) {
+#prevnext, .tabs, .nav {
+font-size:0.9rem;
+}
+}
