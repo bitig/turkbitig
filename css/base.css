@@ -1,8 +1,5 @@
 body {
 margin:0;em
-}
-
-p, div, td, li {
 font-size:0.938em;
 font-family: sans-serif;
 line-height:1.5;
@@ -10,7 +7,7 @@ line-height:1.5;
 
 
 @media only screen and (min-width: 600px) {
-p, div, td, li {
+body {
 font-size:1em;
 }
 }
