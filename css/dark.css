@@ -96,9 +96,8 @@ border-bottom: 6px solid #333;
 background:#30363C;
 }
 
-
 .nav {
-  font-weight:normal;
+font-weight:normal;
 }
 
 .nav a{
@@ -120,7 +119,7 @@ color:#FFF;
 }
 
 .irk {
-  background:#333;
+background:#333;
 }
 
 .irkbitig td {
@@ -190,11 +189,11 @@ background:#444;
 
 .ae, .ii {
 background: linear-gradient(to right,
-  #555,
-  #555 0%,
-  #888 0%,
-  #888 50%,
-  #555 0%);
+#555,
+#555 0%,
+#888 0%,
+#888 50%,
+#555 0%);
 }
 
 .turuk  {

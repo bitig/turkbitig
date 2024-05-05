@@ -1,14 +1,13 @@
 body {
-margin:0;em
-font-size:0.938em;
+margin:0;
+font-size:0.938rem;
 font-family: sans-serif;
 line-height:1.5;
 }
 
-
 @media only screen and (min-width: 600px) {
 body {
-font-size:1em;
+font-size:1rem;
 }
 }
 
@@ -21,24 +20,23 @@ div {
 border-radius: 4px;
 }
 
-
 #keyboard {
 }
 
 .key {
-   width:100%;
-   font-family:'tbkeys';
-   cursor:pointer;
-   font-size:1.3em;
-   font-weight:normal;
-   padding-left:1px;
-   padding-right:1px;
- }
+width:100%;
+font-family:'tbkeys';
+cursor:pointer;
+font-size:1.3em;
+font-weight:normal;
+padding-left:1px;
+padding-right:1px;
+}
 
 @media only screen and (min-width: 600px) {
 .key {
-   font-size:1.6em;
-  }
+font-size:1.6em;
+}
 }
 
 .radios {
@@ -53,47 +51,46 @@ border-radius: 4px;
 }
 
 #canvas {
-  max-width:100%;
-  font-family:'damgab';
-  direction:rtl;
-  unicode-bidi: bidi-override;
-  border: 1px solid #ddd;
+max-width:100%;
+font-family:'damgab';
+direction:rtl;
+unicode-bidi: bidi-override;
+border: 1px solid #ddd;
 }
 		
 .gtext {
-  min-height:50px;
-  width: 600px;
-  max-width: 96%;
-  font-size:1.8em;
-  font-family:'tbldamga';
-  direction:rtl;
-  text-align:right;
-  border:0px solid #eee;
-  background:#fdfdfd;
+min-height:50px;
+width: 600px;
+max-width: 96%;
+font-size:1.8em;
+font-family:'tbldamga';
+direction:rtl;
+text-align:right;
+border:0px solid #eee;
+background:#fdfdfd;
 }	
 
 .space {
-  height:2em;
-  font-family:'arial';
-  }
+height:2em;
+font-family:'arial';
+}
 
- .dots {
-  }
-
+.dots {
+}
 
 @media only screen and (max-width: 600px) {
 .hideelement {
-  display:none;
-  }
+display:none;
+}
 }
 
 .sfont {
-  }
+}
 
 /* Style for the radio buttons */
 input[type="radio"] {
-  display: none;
-  }
+display: none;
+}
 
 .rs2 {
 text-align:center;
@@ -103,7 +100,7 @@ border-radius: 3px;
 }
 
 .rs {
-border:1px solid #888; 
+border:1px solid #888;
 display:block;
 text-align:center;
 cursor:pointer;
@@ -137,47 +134,46 @@ border-radius: 4px;
 .br {color: #953;Background-color:#953;}
 
 #ltn {
-  width:99%;
-  padding:1%;
-  padding-right:0;
-  margin-bottom:1%;
-  font-family:Arial, sans-serif;
-  font-size:1.2em;
+width:99%;
+padding:1%;
+padding-right:0;
+margin-bottom:1%;
+font-family:Arial, sans-serif;
+font-size:1.2em;
 }
 
 .uu {
-  outline: none;
-  border:1px solid #ccc;
-  width:99%;
-  padding-left:0;
-  direction: rtl;
-  unicode-bidi: bidi-override;
-  text-align: right;
-  font-family: 'kultigin';
-  font-size:1.3em;
+outline: none;
+border:1px solid #ccc;
+width:99%;
+padding-left:0;
+direction: rtl;
+unicode-bidi: bidi-override;
+text-align: right;
+font-family: 'kultigin';
+font-size:1.3em;
 }
 
 .fonttable {
- max-width:510px;
+max-width:510px;
 }
 
 .keytable {
- margin-top: 10px;
- max-width:510px;
+margin-top: 10px;
+max-width:510px;
 }
 
 .keytable td {
-  padding:2px;
-  }
+padding:2px;
+}
 
 #plus, #minus {
-  border-radius: 4px;
-  padding-left:6px;
-  padding-right:6px;
-  font-weight:bold;
-  font-size:1.3em;
-  }
-
+border-radius: 4px;
+padding-left:6px;
+padding-right:6px;
+font-weight:bold;
+font-size:1.3em;
+}
 
 .logo {
 height:39px;
@@ -300,7 +296,6 @@ margin: 0 auto;
 #background-image: url('/image/header.png');
 #background-repeat: no-repeat;
 }
-
 
 .sitenav {
 z-index: 99;
@@ -461,7 +456,7 @@ padding-left: 2em;
 }
 
 ul li {
-  list-style-type: square;
+list-style-type: square;
 }
 
 .d {
@@ -493,7 +488,7 @@ line-height: 130%;
 }
 
 .irk {
-border:1px solid #CCC;  
+border:1px solid #CCC; 
 padding:0.5em;
 direction:rtl;
 unicode-bidi:bidi-override;
@@ -557,16 +552,16 @@ border-radius: 4px;
 }
 
 button:active {
-  filter: brightness(110%);
-  box-shadow: 1px 1px 1px #BBB inset;
+filter: brightness(110%);
+box-shadow: 1px 1px 1px #BBB inset;
 }
 
 #accessbuttons button{
 font-weight:bold;
 font-size:1.2em;
-padding:6px;  
-padding-left:12px;  
-padding-right:12px;  
+padding:6px; 
+padding-left:12px; 
+padding-right:12px; 
 margin:6px;
 min-width:1.6em;
 }
@@ -595,4 +590,40 @@ padding-bottom:3em;
 margin-left:6%;
 font-weight:bold;
 padding-top:0.5em;
+}
+
+.ar {
+text-align:right;
+width:40%;
+font-size:110%;
+}
+
+.tur {
+width:60%;
+}
+
+.lat {
+font-size:90%;
+}
+
+.nr {
+padding-right:8px;
+font-size:80%;
+color:#C00;
+}
+
+@media only screen and (max-width: 600px) {
+.tur {
+line-height:1.2;
+}
+
+.ar {
+font-size:100%;
+}
+
+}
+
+td {
+border:1px solid #BBB;
+padding:3px;
 }

@@ -106,7 +106,6 @@ background:#f0f0f0;
 background: linear-gradient(#fff, #ddd, #f9f9f9);
 }
 
-
 .nav {
 font-weight:bold;
 }
@@ -131,7 +130,7 @@ color:#000;
 }
 
 .irk {
-  background:#EEE;
+background:#EEE;
 }
 
 .irkbitig td {
@@ -180,39 +179,39 @@ background:#FEFEFE;
 }
 
 .kalin {
-  background:#d5e5ff;
-  }
+background:#d5e5ff;
+}
 
 .ince {
-  background:#ffd5d5;
-  }
+background:#ffd5d5;
+}
 
 .normal {
-  background:#eee;
-  }
+background:#eee;
+}
 
 .sil {
-  background:#eee;
-  color:red;
-  }
+background:#eee;
+color:red;
+}
 
 .ae {
-  background: linear-gradient(to right,
-      #eee,
-      #eee 0%,
-      #d5e5ff 0%,
-      #d5e5ff 50%,
-      #ffd5d5 0%);
-  }
+background: linear-gradient(to right,
+#eee,
+#eee 0%,
+#d5e5ff 0%,
+#d5e5ff 50%,
+#ffd5d5 0%);
+}
 
 .ii {
-  background: linear-gradient(to right,
-      #eee,
-      #eee 0%,
-      #d5e5ff 0%,
-      #d5e5ff 50%,
-      #ffd5d5 0%);
-  }
+background: linear-gradient(to right,
+#eee,
+#eee 0%,
+#d5e5ff 0%,
+#d5e5ff 50%,
+#ffd5d5 0%);
+}
 
 .iblat {
 }
