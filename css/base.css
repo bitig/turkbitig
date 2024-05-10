@@ -632,3 +632,17 @@ padding:3px;
 .audio {
 width:100%;
 }
+
+
+@font-face {
+  font-family: 'kuranfont';
+  src: url('/kuran/kuran.woff2') format('woff2');
+}
+
+.ar {
+  font-family: 'kuranfont';
+}
+
+.nr {
+  font-family: 'kuranfont';
+}
