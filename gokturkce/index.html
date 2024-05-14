@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="https://www.turkbitig.com/gokturkce/" />
 <link rel="stylesheet" href="/css/fonts.css">
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/dark.css"/>
@@ -11,7 +10,7 @@
 <link rel="stylesheet" href="/css/light.css"/>
 <link rel="stylesheet" href="/css/style.css" id="theme-style">
 <link rel="shortcut icon" href="/image/favicon.ico" type="image/png">
-<script src='/js/gokturk.js'></script>
+<script src='/js/gokturkce.js'></script>
 
 <meta name="keywords" content="Göktürkçe, Göktürkçe çeviri, Göktürk Alfabesi, Göktürk harfleri, göktürk yazıları, göktürk harfleri, göktürk yazısı, göktürkçe yazı, göktürk kitabeleri, Orhun alfabesi, nasıl yazılır, nasıl öğrenilir, öğren, yaz, yazı, eski türkçe, çeviri, çeviri programı, Old Turkic Alphabet, Orkhon Alphabet, Transliteration">
 <meta name="description" content="Göktürkçe çeviri ve klavye ile Göktürk Alfabesi yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
@@ -38,15 +37,13 @@
 <h1>Göktürkçe Çeviri Yazıcı</h1>
 
 <div> <!-- div yazici baslar-->
-<form method="POST" autocomplete="off" spellcheck="false">
 <table>
-<tr><td colspan="2"><input maxlength="380" type="text" placeholder="buraya yaz: Türük &gt; Türk" id="ltn"></td></tr>
-<tr><td nowrap><button onclick="copyToClipboard(event)">Kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="orhn"></td></tr>
+<tr><td colspan="2"><input maxlength="380" type="text" placeholder="buraya yaz: Türük &gt; Türk" id="ltn" oninput="updateDiv()"></td></tr>
+<tr><td nowrap><button onclick="copyToClipboard(event)">Kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="orhn"></div></td></tr>
 <tr><td colspan="2"><canvas width="800" id="canvas"></canvas></td></tr>
 </table>
-</form>
 
-<textarea maxlength="80" hidden id="gtext"></textarea>
+<textarea maxlength="80"  hidden id="gtext"></textarea>
 </div><!-- div yazici biter-->
 
 <table border="0" class="fonttable">
@@ -211,7 +208,7 @@
 </li>
 </ul>
 
-<script src="/js/keyboard.js"></script>
+<script src="/js/keyboard2.js"></script>
 
 </div></main>
 
