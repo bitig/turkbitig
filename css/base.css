@@ -143,6 +143,15 @@ font-family:Arial, sans-serif;
 font-size:120%;
 }
 
+#textInput {
+width:99%;
+padding:1%;
+padding-right:0;
+margin-bottom:1%;
+font-family:Arial, sans-serif;
+font-size:120%;
+}
+
 .uu {
 outline: none;
 border:1px solid #ccc;
