@@ -49,8 +49,12 @@ function processInputText(inputText) {
 
         if (
           (i < inputText.length - 1 && isFrontVowel(inputText[i + 1]))
-          || ((i > 0 && !isBackVowel(inputText[i + 1])) &&
-            (i > 0 && isFrontVowel(previousChar)) ||
+          || (
+            (i > 0 && !isBackVowel(inputText[i + 1])) &&
+            (i > 0 && isFrontVowel(previousChar)) 
+          )
+          || (
+            (i > 0 && !isBackVowel(inputText[i + 1])) &&
             (i > 0 && isFrontVowel(inputText[i - 2]))
           )
         ) {
