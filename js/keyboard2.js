@@ -1,3 +1,5 @@
+// Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
+
 // keyboard - canvas begins
 var gtext = document.getElementById("gtext");
 var canvas = document.getElementById("canvas");

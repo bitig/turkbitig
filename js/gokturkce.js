@@ -1,8 +1,9 @@
+// Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
+
 var vowelsMap = {
   'a': '𐰀',
   'e': '𐰀',
   'â': '𐰀', //â
-  'ə': '𐰀', //ä - Azerbaycan
   'ı': '𐰃',
   'i': '𐰃',
   'o': '𐰆',
@@ -35,8 +36,6 @@ var consonantsMap = {
   'f': ['𐰯', '𐰯'],
   'ğ': ['𐰍', '𐰏'],
   'h': ['𐰴', '𐰚'],
-  'x': ['𐰴', '𐰚'], //he - Azerbaycan
-  'q': ['𐰴', '𐰚'], //ka - Azerbaycan
   'j': ['𐱁', '𐱁'],
   'v': ['𐰉', '𐰋'],
   ' ': ['  ', '  '],
@@ -58,10 +57,10 @@ var doublesMap = {
   'lt': '𐰡',
 };
 
-var frontVowels = ['e', 'i', 'ö', 'ü'];
+var frontVowels = ['e', 'ə', 'i', 'ö', 'ü'];
 
 function updateDiv() {
-  var inputText = document.getElementById("ltn").value;
+  var inputText = document.getElementById("ltn").value.trim();
   inputText = inputText.replace(/I/g, 'ı');
   inputText = inputText.replace(/İ/g, 'i');
   inputText = inputText.toLowerCase();
