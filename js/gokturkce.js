@@ -1,6 +1,7 @@
 var vowelsMap = {
   'a': '𐰀',
   'e': '𐰀',
+  'â': '𐰀', //â
   'ə': '𐰀', //ä - Azerbaycan
   'ı': '𐰃',
   'i': '𐰃',
@@ -21,7 +22,7 @@ var consonantsMap = {
   's': ['𐰽', '𐰾'],
   't': ['𐱃', '𐱅'],
   'y': ['𐰖', '𐰘'],
-  // tektipler
+  // tekliler
   'ç': ['𐰲', '𐰲'],
   'ñ': ['𐰭', '𐰭'],
   'ŋ': ['𐰭', '𐰭'],
@@ -61,6 +62,9 @@ var frontVowels = ['e', 'i', 'ö', 'ü'];
 
 function updateDiv() {
   var inputText = document.getElementById("ltn").value;
+  inputText = inputText.replace(/I/g, 'ı');
+  inputText = inputText.replace(/İ/g, 'i');
+  inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
   var orhn = document.getElementById("orhn");
   orhn.value = processedText; // Update value instead of textContent
