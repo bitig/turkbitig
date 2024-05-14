@@ -76,6 +76,7 @@ function processInputText(inputText) {
   var i = 0;
   var previousChar = '';
   var previousVowel = '';
+  var currentFrontVowel = '';
 
   while (i < inputText.length) {
     var doubleChar = inputText.slice(i, i + 2);
@@ -88,21 +89,23 @@ function processInputText(inputText) {
 
       if (currentChar in vowelsMap) {
         if (
-          currentChar !== previousVowel || 
-          currentChar !== inputText[i -2] ||
+          currentChar !== previousVowel ||
+          (currentChar === previousVowel && isFrontVowel(currentChar) && !isFrontVowel(currentFrontVowel)) ||
+          currentChar !== inputText[i - 2] ||
           inputText[i + 1] === ' ' ||
           i === inputText.length - 1
         ) {
           processedText += vowelsMap[currentChar];
           previousVowel = currentChar;
         }
+        currentFrontVowel = currentChar; // Store the current front vowel
       } else if (currentChar in consonantsMap) {
         var mappedCharacters = consonantsMap[currentChar];
 
         if (
-          (i < inputText.length - 1 && isFrontVowel(inputText[i + 1])) 
-          || (i > 0 && isFrontVowel(previousChar))
-          || (i > 0 && isFrontVowel(inputText[i - 2]))
+          (i < inputText.length - 1 && isFrontVowel(inputText[i + 1])) ||
+          (i > 0 && isFrontVowel(previousChar)) ||
+          (i > 0 && isFrontVowel(inputText[i - 2]))
         ) {
           processedText += mappedCharacters[1];
         } else {
