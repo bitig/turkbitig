@@ -40,7 +40,7 @@
 <table>
 <tr><td colspan="2"><input maxlength="380" type="text" placeholder="buraya yaz: Türük &gt; Türk" id="ltn" oninput="updateDiv()"></td></tr>
 <tr><td nowrap><button onclick="copyToClipboard(event)">Kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="orhn"></div></td></tr>
-<tr><td colspan="2"><canvas width="800" id="canvas"></canvas></td></tr>
+<tr><td colspan="2" class="canvasback"><canvas width="800" id="canvas"></canvas></td></tr>
 </table>
 
 <textarea maxlength="80"  hidden id="gtext"></textarea>
@@ -63,7 +63,7 @@
 </tr>
 <tr>
 <td>Renk</td>
-<td><label class="rs rby"><input type="radio" name="colorRadio" value="#F6F6F6">0</label></td>
+<td colspan="2"><label class="rs rby"><input type="radio" name="colorRadio" value="#F6F6F6">0</label></td>
 <td><label class="rs rsi"><input type="radio" name="colorRadio" value="#000">1</label></td>
 <td><label class="rs rk"><input type="radio" name="colorRadio" value="#C00" checked>2</label></td>
 <td><label class="rs rsa"><input type="radio" name="colorRadio" value="#FD0">3</label></td>
@@ -72,12 +72,12 @@
 <td><label class="rs rg"><input type="radio" name="colorRadio" value="#1BE">6</label></td>
 <td><label class="rs rp"><input type="radio" name="colorRadio" value="#90C">7</label></td>
 <td><label class="rs ry"><input type="radio" name="colorRadio" value="#096">8</label></td>
-<td><label class="rs rr"><input type="radio" name="colorRadio" value="#953">9</label></td>
 <td rowspan="2" align="right" style="vertical-align:middle;"><button style="border-radius:5px; padding:3px;" onclick="downloadImage()">indir<br>paylaş</button></td>
 </tr>
 
 <tr>
 <td>Arka</td>
+<td><label class="rs bs" ><input type="radio" name="bgColorRadio" value="transparent">&nbsp;</label></td>
 <td><label class="rs bby"><input type="radio" name="bgColorRadio" value="#FFF" checked>0</label></td>
 <td><label class="rs bsi"><input type="radio" name="bgColorRadio" value="#000">1</label></td>
 <td><label class="rs bk"><input type="radio" name="bgColorRadio" value="#C00">2</label></td>
@@ -87,7 +87,6 @@
 <td><label class="rs bg"><input type="radio" name="bgColorRadio" value="#1BE">6</label></td>
 <td><label class="rs bp" ><input type="radio" name="bgColorRadio" value="#90C">7</label></td>
 <td><label class="rs by" ><input type="radio" name="bgColorRadio" value="#096">8</label></td>
-<td><label class="rs br" ><input type="radio" name="bgColorRadio" value="#953">9</label></td>
 </tr>
 </table>
 

@@ -56,9 +56,18 @@ max-width:100%;
 font-family:'damgab';
 direction:rtl;
 unicode-bidi: bidi-override;
-border: 1px solid #ddd;
 }
-		
+	 
+.canvasback {
+  background-image: linear-gradient(to bottom, 
+  	rgba(255, 255, 255, 1), 
+  	rgba(255, 255, 255, 0), 
+  	rgba(255, 255, 255, 1)),
+  url('/image/transp.png');
+  bbackground-size: cover;
+  bbackground-position: center;
+}
+
 .gtext {
 min-height:50px;
 width: 600px;
@@ -120,6 +129,11 @@ border-radius: 4px;
 .rt {color: #F60;Background-color:#F60;}
 .rp {color: #909;Background-color:#909;}
 .rr {color: #953;Background-color:#953;}
+
+
+.bs {
+  background-image: url("/image/transp.png");
+}
 
 .bby {color: #FFF;Background-color:#FFF;}
 .bsi {color: #000;Background-color:#000;}

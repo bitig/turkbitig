@@ -78,8 +78,12 @@ for (var i = 0; i < fontRadios.length; i++) {
 // Handle background color radio button changes
 for (var i = 0; i < bgColorRadios.length; i++) {
     bgColorRadios[i].addEventListener('change', (event) => {
-        canvasColor = event.target.value;
-        updateCanvas();
+        if (event.target.value === 'transparent') {
+            canvas.style.backgroundColor = 'transparent';
+        } else {
+            canvasColor = event.target.value;
+            updateCanvas();
+        }
     });
 }
 
