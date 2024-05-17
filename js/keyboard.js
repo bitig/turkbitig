@@ -1,3 +1,5 @@
+// Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
+
 // keyboard - canvas begins
 var gtext = document.getElementById("gtext");
 var canvas = document.getElementById("canvas");
@@ -20,18 +22,6 @@ function getParameterFromURL(paramName) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(paramName);
 }
-
-// Get the value from the URL and set it as the value of the gtext element
-var urlValue = getParameterFromURL("orhn");
-if (urlValue) {
-  orhn.value = urlValue;
-  gtext.value = urlValue;
-}
-
-// Update the canvas after setting the value from URL
-updateCanvas();
-
-// ... rest of the script
 
 ltn.addEventListener("input", () => {
   clearTimeout(debounceTimer);
@@ -76,8 +66,12 @@ for (var i = 0; i < fontRadios.length; i++) {
 // Handle background color radio button changes
 for (var i = 0; i < bgColorRadios.length; i++) {
     bgColorRadios[i].addEventListener('change', (event) => {
-        canvasColor = event.target.value;
-        updateCanvas();
+        if (event.target.value === 'transparent') {
+            canvas.style.backgroundColor = 'transparent';
+        } else {
+            canvasColor = event.target.value;
+            updateCanvas();
+        }
     });
 }
 
