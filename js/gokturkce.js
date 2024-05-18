@@ -5,6 +5,7 @@ var consonantsMap={'b':['𐰉','𐰋'],'d':['𐰑','𐰓'],'g':['𐰍','𐰏'],'
 var doublesMap={'ng':'𐰭','nç':'𐰨','nd':'𐰦','nt':'𐰦','ny':'𐰪','ok':'𐰸','uk':'𐰸','ök':'𐰜','ük':'𐰜','iç':'𐰱','ık':'𐰶','ld':'𐰡','lt':'𐰡',};
 var vowels = ['a', 'ı', 'o', 'u', 'e', 'i', 'ö', 'ü'];
 var consonants = ['b', 'c', 'ç', 'd', 'f', 'g', 'ğ', 'h', 'j', 'k', 'l', 'n', 'm', 'p', 'r', 's', 'ş', 't', 'v', 'y', 'z'];
+var singles = ['ç', 'm', 'p', 'ş', 'z'];
 var backVowels = ['a', 'ı', 'o', 'u'];
 var frontVowels = ['e', 'i', 'ö', 'ü'];
 
@@ -58,6 +59,13 @@ function processInputText(inputText) {
             (i > 0 
               && isBackVowel(previousChar) 
               && isFrontVowel(inputText[i + 1])
+              && isSingle(inputText[i + 2])
+             )
+          )
+          || (
+            (i > 0 
+              && isBackVowel(previousChar) 
+              && isFrontVowel(inputText[i + 1])
               && !isConsonant(inputText[i + 2])
              )
           )
@@ -66,6 +74,7 @@ function processInputText(inputText) {
               && isFrontVowel(previousChar) 
               && isBackVowel(inputText[i + 1])
               && isConsonant(inputText[i + 2])
+              && !isSingle(inputText[i + 2])
              )
           )
           || (
@@ -111,4 +120,8 @@ function isVowel(char) {
 
 function isConsonant(char) {
   return consonants.includes(char);
+}
+
+function isSingle(char) {
+  return singles.includes(char);
 }
