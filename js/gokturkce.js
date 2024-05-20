@@ -53,7 +53,7 @@ function processInputText(inputText) {
         var mappedCharacters = consonantsMap[currentChar];
 
         if (
-          (i < inputText.length 
+          (i >= 0
             && isFrontVowel(inputText[i + 1])
             )
           || (
