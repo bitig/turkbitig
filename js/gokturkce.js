@@ -46,7 +46,7 @@ function processInputText(inputText) {
         if (
           vowelsMap[currentChar] !== vowelsMap[previousVowel] ||
           vowelsMap[currentChar] !== vowelsMap[inputText[i - 2]] ||
-          inputText[i + 1] === ' ' ||
+          inputText[i + 1] === ' ' || inputText[i - 1] === ' ' ||
           i === inputText.length - 1
         ) {
           processedText += vowelsMap[currentChar];
