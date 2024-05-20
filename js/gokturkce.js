@@ -14,6 +14,7 @@ function updateDiv() {
   inputText = inputText.replace(/H/g, 'k').replace(/h/g, 'k');
   inputText = inputText.replace(/Q/g, 'k').replace(/q/g, 'k');
   inputText = inputText.replace(/W/g, 'u').replace(/w/g, 'u');
+  inputText = inputText.replace(/X/g, 'k').replace(/x/g, 'k');
   inputText = inputText.replace(/V/g, 'b').replace(/v/g, 'b');
   inputText = inputText.replace(/C/g, 'ç').replace(/c/g, 'ç');
   inputText = inputText.replace(/J/g, 'ç').replace(/j/g, 'ç');
