@@ -15,7 +15,7 @@ var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
 var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
 var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
-var ltn = document.getElementById("ltn");
+var latin = document.getElementById("latin");
 var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
 
 function getParameterFromURL(paramName) {
@@ -23,7 +23,7 @@ function getParameterFromURL(paramName) {
   return urlParams.get(paramName);
 }
 
-ltn.addEventListener("input", () => {
+latin.addEventListener("input", () => {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => {
     updateCanvas();
@@ -31,7 +31,7 @@ ltn.addEventListener("input", () => {
 });
 
 // Add additional event listener to gtext element that triggers updateCanvas function
-ltn.addEventListener("change", () => {
+latin.addEventListener("change", () => {
   updateCanvas();
 });
 
@@ -209,7 +209,7 @@ function downloadImage() {
 updateCanvas();
 
 var keyboardContainer = document.getElementById("keyboard");
-var gtext = document.getElementById("orhn");
+var gtext = document.getElementById("gokturk");
 
 keyboardContainer.addEventListener("click", function(event) {
   var clickedElement = event.target;
@@ -232,7 +232,7 @@ keyboardContainer.addEventListener("click", function(event) {
 
       function copyToClipboard(event) {
         event.preventDefault();
-        var input = document.getElementById("orhn");
+        var input = document.getElementById("gokturk");
         input.select();
         input.setSelectionRange(0, 99999); // For mobile devices
         document.execCommand("copy");

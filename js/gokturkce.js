@@ -10,9 +10,8 @@ var backVowels = ['a', 'ı', 'o', 'u'];
 var frontVowels = ['e', 'i', 'ö', 'ü'];
 
 function updateDiv() {
-  var inputText = document.getElementById("ltn").value.trim();
-  inputText = inputText.replace(/I/g, 'ı');
-  inputText = inputText.replace(/İ/g, 'i');
+  var inputText = document.getElementById("latin").value.trim();
+  inputText = inputText.replace(/I/g, 'ı').replace(/İ/g, 'i');
   inputText = inputText.replace(/F/g, 'p').replace(/f/g, 'p');
   inputText = inputText.replace(/Ğ/g, 'g').replace(/ğ/g, 'g');
   inputText = inputText.replace(/H/g, 'k').replace(/h/g, 'k');
@@ -21,8 +20,8 @@ function updateDiv() {
   inputText = inputText.replace(/J/g, 'ç').replace(/j/g, 'ç');
   inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
-  var orhn = document.getElementById("orhn");
-  orhn.value = processedText; // Update value instead of textContent
+  var gokturk = document.getElementById("gokturk");
+  gokturk.value = processedText; // Update value instead of textContent
   var gtext = document.getElementById("gtext");
   gtext.textContent = processedText;
 }
@@ -63,17 +62,10 @@ function processInputText(inputText) {
             )
           || (
             (i > 0 
-              && isFrontVowel(inputText[i - 1])
+              && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2]))
               && !isVowel(inputText[i + 1])
              )
           )
-          || (
-            (i > 0 
-              && isFrontVowel(inputText[i - 2])
-              && !isVowel(inputText[i + 1])
-             )
-          )
-
         )
        {
           processedText += mappedCharacters[1];
