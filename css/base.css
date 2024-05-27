@@ -192,11 +192,11 @@ padding:2px;
 }
 
 #plus, #minus {
+width:95%;
+height:40px;
 border-radius: 4px;
 padding-left:6px;
 padding-right:6px;
-font-weight:bold;
-font-size:130%;
 }
 
 .logo {

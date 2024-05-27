@@ -150,8 +150,16 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px gokturkkurgu";
   } else if (selectedFont === "kultigin") {
     ctx.font = fontSize + "px kultigin";
+  } else if (selectedFont === "kultigingolge") {
+    ctx.font = fontSize + "px kultigingolge";
+  } else if (selectedFont === "kultiginbold") {
+    ctx.font = fontSize + "px kultiginbold";
   } else if (selectedFont === "tbldamga") {
     ctx.font = fontSize + "px tbldamga";
+  } else if (selectedFont === "oguz") {
+    ctx.font = fontSize + "px oguz";
+  } else if (selectedFont === "oguzbold") {
+    ctx.font = fontSize + "px oguzbold";
   }
 
   ctx.textAlign = "right";
