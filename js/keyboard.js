@@ -148,6 +148,8 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px irkbitigreg";
   } else if (selectedFont === "gokturkkurgu") {
     ctx.font = fontSize + "px gokturkkurgu";
+  } else if (selectedFont === "gokturkkurgubold") {
+    ctx.font = fontSize + "px gokturkkurgubold";
   } else if (selectedFont === "kultigin") {
     ctx.font = fontSize + "px kultigin";
   } else if (selectedFont === "kultigingolge") {
