@@ -192,8 +192,9 @@ padding:2px;
 }
 
 #plus, #minus {
-width:95%;
-height:46px;
+width:96%;
+height:50px;
+font-size:130%;
 border-radius: 4px;
 padding-left:6px;
 padding-right:6px;
