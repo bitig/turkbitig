@@ -138,8 +138,8 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px tbg";
   } else if (selectedFont === "cizgi") {
     ctx.font = fontSize + "px cizgi";
-  } else if (selectedFont === "ttr") {
-    ctx.font = fontSize + "px ttr";
+  } else if (selectedFont === "tatarbodun") {
+    ctx.font = fontSize + "px tatarbodun";
   } else if (selectedFont === "tonyukuk") {
     ctx.font = fontSize + "px tonyukuk";
   } else if (selectedFont === "tonyukukbold") {
@@ -158,8 +158,8 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px kultiginbold";
   } else if (selectedFont === "tbldamga") {
     ctx.font = fontSize + "px tbldamga";
-  } else if (selectedFont === "oguz") {
-    ctx.font = fontSize + "px oguz";
+  } else if (selectedFont === "oguzbodun") {
+    ctx.font = fontSize + "px oguzbodun";
   } else if (selectedFont === "oguzbold") {
     ctx.font = fontSize + "px oguzbold";
   }
