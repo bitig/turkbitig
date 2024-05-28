@@ -14,11 +14,13 @@ function updateDiv() {
   inputText = inputText.replace(/Ğ/g, 'g').replace(/ğ/g, 'g');
   inputText = inputText.replace(/H/g, 'k').replace(/h/g, 'k');
   inputText = inputText.replace(/Q/g, 'k').replace(/q/g, 'k');
-  inputText = inputText.replace(/W/g, 'u').replace(/w/g, 'u');
+  inputText = inputText.replace(/W/g, 'o').replace(/w/g, 'o');
   inputText = inputText.replace(/X/g, 'k').replace(/x/g, 'k');
   inputText = inputText.replace(/V/g, 'b').replace(/v/g, 'b');
   inputText = inputText.replace(/C/g, 'ç').replace(/c/g, 'ç');
   inputText = inputText.replace(/J/g, 'ç').replace(/j/g, 'ç');
+  inputText = inputText.replace(/U/g, 'o').replace(/u/g, 'o');
+  inputText = inputText.replace(/Ü/g, 'ö').replace(/ü/g, 'ö');
   inputText = inputText.replace(/ /g, '  ');
   inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
