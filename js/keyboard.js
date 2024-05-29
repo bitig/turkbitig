@@ -142,6 +142,8 @@ function updateCanvas(force = false) {
     ctx.font = fontSize + "px tatarbodun";
   } else if (selectedFont === "tonyukuk") {
     ctx.font = fontSize + "px tonyukuk";
+  } else if (selectedFont === "tonyukukel") {
+    ctx.font = fontSize + "px tonyukukel";
   } else if (selectedFont === "tonyukukbold") {
     ctx.font = fontSize + "px tonyukukbold";
   } else if (selectedFont === "irkbitigreg") {
