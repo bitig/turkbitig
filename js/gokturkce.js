@@ -21,7 +21,6 @@ function updateDiv() {
   inputText = inputText.replace(/J/g, 'ç').replace(/j/g, 'ç');
   inputText = inputText.replace(/U/g, 'o').replace(/u/g, 'o');
   inputText = inputText.replace(/Ü/g, 'ö').replace(/ü/g, 'ö');
-  inputText = inputText.replace(/ /g, '  ');
   inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
   var gokturk = document.getElementById("gokturk");
