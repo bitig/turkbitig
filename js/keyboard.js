@@ -231,7 +231,11 @@ keyboardContainer.addEventListener("click", function(event) {
     var keyType = clickedElement.getAttribute("data-value");
     switch (keyType) {
       case "-":
-        gtext.value = gtext.value.slice(0, -2);
+        if (gtext.value.slice(-1) === " ") {
+          gtext.value = gtext.value.slice(0, -1);
+        } else {
+          gtext.value = gtext.value.slice(0, -2);
+        }
         break;
       case "x":
         gtext.value = gtext.value.slice(0, -2000);
