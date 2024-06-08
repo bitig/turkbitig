@@ -323,10 +323,6 @@ width: 100%;
 .header {
 width: 100%;
 margin: 0 auto;
-#height: 2em;
-#background: #c5d7ef;
-#background-image: url('/image/header.png');
-#background-repeat: no-repeat;
 }
 
 .sitenav {
