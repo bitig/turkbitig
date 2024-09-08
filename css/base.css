@@ -471,8 +471,12 @@ max-width:30%;
 font-size:100%;
 font-weight:bold;
 float:right;
-margin-top:15px;
+margin-top:6px;
 margin-right:5%;
+}
+
+.xlinkb {
+padding:8px;
 }
 
 hr {
