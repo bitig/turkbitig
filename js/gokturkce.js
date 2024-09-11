@@ -14,13 +14,14 @@ function updateDiv() {
   inputText = inputText.replace(/Ğ/g, 'g').replace(/ğ/g, 'g');
   inputText = inputText.replace(/H/g, 'k').replace(/h/g, 'k');
   inputText = inputText.replace(/Q/g, 'k').replace(/q/g, 'k');
-  inputText = inputText.replace(/W/g, 'o').replace(/w/g, 'o');
+  inputText = inputText.replace(/W/g, 'b').replace(/w/g, 'b');
   inputText = inputText.replace(/X/g, 'k').replace(/x/g, 'k');
   inputText = inputText.replace(/V/g, 'b').replace(/v/g, 'b');
   inputText = inputText.replace(/C/g, 'ç').replace(/c/g, 'ç');
   inputText = inputText.replace(/J/g, 'ç').replace(/j/g, 'ç');
-  inputText = inputText.replace(/U/g, 'o').replace(/u/g, 'o');
-  inputText = inputText.replace(/Ü/g, 'ö').replace(/ü/g, 'ö');
+  inputText = inputText.replace(/Ə/g, 'e').replace(/ə/g, 'e');
+  inputText = inputText.replace(/Ý/g, 'y').replace(/ý/g, 'y');
+  inputText = inputText.replace(/Ä/g, 'e').replace(/ä/g, 'e');
   inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
   var gokturk = document.getElementById("gokturk");
