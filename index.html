@@ -20,7 +20,7 @@
 <body><script src="/js/theme.js"></script>
 
 <div class="header">
-	<a href="/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a> 
+	<a href="/gokturkce/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a> 
 	<a class="xlink" href="/icerik.html"><button class="xlinkb">&#9776;</button></a> 
 </div>
 
@@ -37,7 +37,7 @@
 <div> <!-- div yazici baslar-->
 <table>
 <tr><td colspan="2"><input maxlength="999" type="text" placeholder="buna yaz: Türük &gt; Türk" id="latin" oninput="updateDiv()"></td></tr>
-<tr><td nowrap><button onclick="copyToClipboard(event)">Kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="gokturk"></td></tr>
+<tr><td nowrap><button style="padding:6px;" onclick="copyToClipboard(event)">Kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="gokturk"></td></tr>
 <tr><td colspan="2" class="canvasback"><canvas width="1200" id="canvas"></canvas></td></tr>
 </table>
 
@@ -47,8 +47,8 @@
 <table border="0" class="fonttable">
 <tr>
 <td width="14%" rowspan="2" colspan="2">Font<br>Renk</td>	
-<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga"><span style="font-family:'tbldamga';"><big>𐰀</big></span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold" checked><span style="font-family:'kultiginbold';">𐰚</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span style="font-family:'tbldamga';"><big>𐰀</big></span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span style="font-family:'kultiginbold';">𐰚</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgabb"><span style="font-family:'damgabb';">𐰔</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span style="font-family:'oguzbold';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukbold"><span style="font-family:'tonyukukbold';">𐰡</span></label></td>
@@ -68,14 +68,14 @@
 <tr>
 <td><label class="rs rby"><input type="radio" name="colorRadio" value="#F6F6F6">0</label></td>
 <td><label class="rs rsi"><input type="radio" name="colorRadio" value="#000">1</label></td>
-<td><label class="rs rk"><input type="radio" name="colorRadio" value="#C00" checked>2</label></td>
+<td><label class="rs rk"><input type="radio" name="colorRadio" value="#C00">2</label></td>
 <td><label class="rs rsa"><input type="radio" name="colorRadio" value="#FD0">3</label></td>
-<td><label class="rs rl"><input type="radio" name="colorRadio" value="#14A">4</label></td>
+<td><label class="rs rl"><input type="radio" name="colorRadio" value="#14A" checked>4</label></td>
 <td><label class="rs rb"><input type="radio" name="colorRadio" value="#A25">5</label></td>
 <td><label class="rs rg"><input type="radio" name="colorRadio" value="#1BE">6</label></td>
 <td><label class="rs ry"><input type="radio" name="colorRadio" value="#096">7</label></td>
 <td><label class="rs rp"><input type="radio" name="colorRadio" value="#90C">8</label></td>
-<td width="16%" rowspan="2" colspan="2" align="right" style="vertical-align:middle;"><button style="width:99%; border-radius:5px;" onclick="downloadImage()">indir<br>paylaş</button></td>
+<td width="16%" rowspan="2" colspan="2" align="right" style="vertical-align:middle;"><button style="width:99%; padding:6px;" onclick="downloadImage()">indir<br>paylaş</button></td>
 </tr>
 
 <tr>
@@ -91,7 +91,6 @@
 </tr>
 </table>
 
-<!--
 <div id="keydiv">
 <table border="0" id="keyboard" class="keytable">
 <tr>
@@ -186,10 +185,11 @@
 </tr>
 </table>
 </div>
--->
+
+<!--<button id="toggleButton">KLAVYEYİ AÇ</button>-->
 
 <ul>
-<li><a href="/gokturkce/"><b>Klavyeyi aç</b></a></li>
+<li><a href="/gokturkce/"><b>Klavyeyi kapat</b></a></li>
 </ul>
 
 <hr>
