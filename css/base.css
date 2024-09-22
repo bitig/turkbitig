@@ -572,6 +572,15 @@ border:1px solid #999;
 padding:5px;
 }
 
+#isim {
+white-space: nowrap;
+font-family: tamga;
+font-size:86px;
+padding: 10px;
+margin: 10px;
+border: 1px solid #ccc;
+}
+
 .menu {
 font-size:200%;
 text-decoration:none;

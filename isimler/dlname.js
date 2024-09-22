@@ -1,50 +1,54 @@
-function downloadImage() {
-    var element = document.getElementById("damga");
+// Copyright (C) turkbitig.com. All Rights Reserved.
 
-    // Create a new canvas element
-    var canvas = document.createElement("canvas");
-    var context = canvas.getContext("2d");
+window.onload = function() {
+const damgaDiv = document.getElementById('isim');
 
-    // Set canvas dimensions to match the element
+document.querySelectorAll('button[id]').forEach(button => {
+    if (button.id !== 'downloadImage') {
+        button.addEventListener('click', function() {
+            const font = button.id.charAt(0).toUpperCase() + button.id.slice(1);
+            damgaDiv.style.fontFamily = `${font}, sans-serif`;
+        });
+    }
+});
+
+window.downloadImage = function() {
+    const element = document.getElementById("isim");
+
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
     canvas.width = element.offsetWidth;
     canvas.height = element.offsetHeight;
 
-    // Set background color to white
     context.fillStyle = "#FFFFFF";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Set text color to black
     context.fillStyle = "#000000";
 
-    // Set font properties
-    var fontSize = 86;
-    var font = "tamga";
+    const fontSize = 86;
+    const font = window.getComputedStyle(element).fontFamily;
     context.font = fontSize + "px " + font;
 
-    // Measure the text width
-    var textWidth = context.measureText(element.innerText).width;
+    const textWidth = context.measureText(element.innerText).width;
+    const textX = (canvas.width - textWidth) / 2;
+    const textY = fontSize;
 
-    // Calculate the text position to center it horizontally
-    var textX = (canvas.width - textWidth) / 2;
-    var textY = fontSize;
-
-    // Draw the text on the canvas
     context.fillText(element.innerText, textX, textY);
 
-    // Convert the canvas to a data URL
-    var dataUrl = canvas.toDataURL("image/png");
+    const dataUrl = canvas.toDataURL("image/png");
 
-    // Create a link element
-    var link = document.createElement("a");
+    const link = document.createElement("a");
     link.href = dataUrl;
     link.download = "isim.png";
 
-    // Simulate a click on the link element to trigger the download
     link.click();
-}
+    };
+};
+
 
 function copyElementContent() {
-    var element = document.getElementById("damga");
+    var element = document.getElementById("isim");
     var range = document.createRange();
     range.selectNodeContents(element);
     window.getSelection().removeAllRanges();
