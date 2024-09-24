@@ -126,7 +126,15 @@ text-align:center;
 cursor:pointer;
 border-radius: 4px;
 }
-	
+
+.fc {
+border-right:1px solid #FFF;
+border-bottom:1px solid #FFF;
+text-align:center;
+cursor:pointer;
+border-radius: 2px;
+}
+
 .rby {color: #FFF;Background-color:#FFF;}
 .rsi {color: #000;Background-color:#000;}
 .rk {color: #C00;Background-color:#C00;}
@@ -142,6 +150,7 @@ border-radius: 4px;
 
 
 .bs {
+  border:1px solid #999;
   background-image: url("/image/transp.png");
 }
 
