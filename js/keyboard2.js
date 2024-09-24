@@ -19,6 +19,7 @@ var textColorPicker = document.getElementById("textColorPicker");
 
 // Set default text color
 textColorPicker.value = "#CC0000";
+bgColorPicker.value = "#FEFFFF";
 
 function getParameterFromURL(paramName) {
   const urlParams = new URLSearchParams(window.location.search);
