@@ -18,7 +18,6 @@
 
 <style>
 #plus, #minus {
-height:50px;
 width:90%;
 max-width:80px;
 }
@@ -62,8 +61,6 @@ max-width:80px;
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukbold"><span style="font-family:'tonyukukbold';">𐰡</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukelbold"><span style="font-family:'tonyukukelbold';">𐰼</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
-<td rowspan="2" style="text-align:right;"><button id="plus">+</button></td>
-<td rowspan="2" style="text-align:right;"><button id="minus">-</button></td>
 </tr>
 <tr>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkurgubold"><span style="font-family:'gokturkkurgubold';">𐰱</span></label></td>
@@ -78,28 +75,14 @@ max-width:80px;
 
 <table border="0" class="fonttable">
 <tr>
-<td width="8%" rowspan="2" colspan="2">Renk</td>	
-<td><label class="rs rby"><input type="radio" name="colorRadio" value="#F6F6F6">0</label></td>
-<td><label class="rs rsi"><input type="radio" name="colorRadio" value="#000">1</label></td>
-<td><label class="rs rk"><input type="radio" name="colorRadio" value="#C00">2</label></td>
-<td><label class="rs rsa"><input type="radio" name="colorRadio" value="#FD0">3</label></td>
-<td><label class="rs rl"><input type="radio" name="colorRadio" value="#14A" checked>4</label></td>
-<td><label class="rs rb"><input type="radio" name="colorRadio" value="#A25">5</label></td>
-<td><label class="rs rg"><input type="radio" name="colorRadio" value="#1BE">6</label></td>
-<td><label class="rs ry"><input type="radio" name="colorRadio" value="#096">7</label></td>
-<td><label class="rs rp"><input type="radio" name="colorRadio" value="#90C">8</label></td>
-</tr>
+<td width="6%">Renk</td>
+<td><input type="color" id="textColorPicker" class="color-picker" value="#000099"></td>
 
-<tr>
-<td><label class="rs bby"><input type="radio" name="bgColorRadio" value="#FFF" checked>0</label></td>
-<td><label class="rs bs" ><input type="radio" name="bgColorRadio" value="transparent">&nbsp;</label></td>
-<td><label class="rs bsi"><input type="radio" name="bgColorRadio" value="#000">1</label></td>
-<td><label class="rs bk"><input type="radio" name="bgColorRadio" value="#C00">2</label></td>
-<td><label class="rs bsa"><input type="radio" name="bgColorRadio" value="#FD0">3</label></td>
-<td><label class="rs bl"><input type="radio" name="bgColorRadio" value="#14A">4</label></td>
-<td><label class="rs bb" ><input type="radio" name="bgColorRadio" value="#A25">5</label></td>
-<td><label class="rs bg"><input type="radio" name="bgColorRadio" value="#1BE">6</label></td>
-<td><label class="rs by" ><input type="radio" name="bgColorRadio" value="#096">8</label></td>
+<td>&nbsp;Arka&nbsp;</td>
+<td><input type="color" id="bgColorPicker" class="color-picker" value="#ffffff"></td>
+
+<td width="60%" nowrap colspan="4" style="text-align:right;"><button id="plus">+</button> <button id="minus">-</button>
+</td>
 </tr>
 </table>
 
@@ -215,7 +198,7 @@ max-width:80px;
 <li><a href="/orhun-yazitlari/"><b>Orhun Yazıtları</b></a></li>
 </ul>
 
-<script src="/js/keyboard.js"></script>
+<script src="/js/keyboard2.js"></script>
 
 </div></main>
 
