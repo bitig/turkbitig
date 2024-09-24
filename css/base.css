@@ -108,6 +108,10 @@ input[type="radio"] {
 display: none;
 }
 
+input[type="color"] {
+  height: 50px;
+}
+
 .rs2 {
 text-align:center;
 cursor:pointer;
@@ -199,7 +203,7 @@ padding:2px;
 }
 
 #plus, #minus {
-height:38px;
+height:50px;
 font-size:130%;
 border-radius: 4px;
 padding-left:6px;
