@@ -127,12 +127,20 @@ cursor:pointer;
 border-radius: 4px;
 }
 
+.fc2 {
+display:block;
+text-align:center;
+cursor:pointer;
+}
+
+
 .fc {
+width:1vw;
 border-right:1px solid #FFF;
 border-bottom:1px solid #FFF;
 text-align:center;
 cursor:pointer;
-border-radius: 2px;
+border-radius: 0px;
 }
 
 .rby {color: #FFF;Background-color:#FFF;}
@@ -167,6 +175,40 @@ border-radius: 2px;
 .bp {color: #909;Background-color:#909;}
 .br {color: #953;Background-color:#953;}
 
+.wyt {color: #EEEEEE;Background-color:#EEEEEE;border-top:1px solid #CCC;border-left:1px solid #CCC;}
+.blk {color: #000000;Background-color:#000000;}
+.gry {color: #999999;Background-color:#999999;}
+.pp1 {color: #5D3FD3;Background-color:#5D3FD3;}
+.pp2 {color: #BF40BF;Background-color:#BF40BF;}
+
+.br1 {color: #800000;Background-color:#800000;}
+.br2 {color: #CC0000;Background-color:#CC0000;}
+.br3 {color: #FF0000;Background-color:#FF0000;}
+.br5 {color: #F08080;Background-color:#F08080;}
+.br6 {color: #FFC0CB;Background-color:#FFC0CB;}
+
+.bb1 {color: #1144AA;Background-color:#1144AA;}
+.bb2 {color: #0073E6;Background-color:#0073E6;}
+.bb3 {color: #1E90FF;Background-color:#1E90FF;}
+.bb4 {color: #87CEEB;Background-color:#87CEEB;}
+.bb5 {color: #87CEFA;Background-color:#87CEFA;}
+.bb6 {color: #40E0D0;Background-color:#40E0D0;}
+
+.bg1 {color: #808000;Background-color:#808000;}
+.bg2 {color: #556B2F;Background-color:#556B2F;}
+.bg3 {color: #228B22;Background-color:#228B22;}
+.bg4 {color: #3CB371;Background-color:#3CB371;}
+.bg5 {color: #90EE90;Background-color:#90EE90;}
+.bg6 {color: #00FF00;Background-color:#00FF00;}
+
+.by1 {color: #A52A2A;Background-color:#A52A2A;}
+.by2 {color: #FFA500;Background-color:#FFA500;}
+.by3 {color: #DAA520;Background-color:#DAA520;}
+.by4 {color: #FFDE21;Background-color:#FFDE21;}
+.by5 {color: #EEE8AA;Background-color:#EEE8AA;}
+.by6 {color: #F5DEB3;Background-color:#F5DEB3;}
+
+
 #latin {
 width:99%;
 padding:1%;
@@ -200,6 +242,13 @@ font-size:2em;
 .fonttable {
 max-width:510px;
 margin-top:8px;
+}
+
+.colortable {
+max-width:510px;
+margin-top:8px;
+border-spacing:0px;
+border-collapse:collapse;
 }
 
 .keytable {
