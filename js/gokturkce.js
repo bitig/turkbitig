@@ -22,6 +22,7 @@ function updateDiv() {
   inputText = inputText.replace(/Ə/g, 'e').replace(/ə/g, 'e');
   inputText = inputText.replace(/Ý/g, 'y').replace(/ý/g, 'y');
   inputText = inputText.replace(/Ä/g, 'e').replace(/ä/g, 'e');
+  inputText = inputText.replace(/Ū/g, 'u').replace(/ū/g, 'u');
   inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
   var gokturk = document.getElementById("gokturk");
