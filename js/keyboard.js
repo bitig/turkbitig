@@ -12,10 +12,10 @@ var debounceTimer;
 
 var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
-var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
 var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
-var latin = document.getElementById("latin");
+var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
 var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
+var latin = document.getElementById("latin");
 
 function getParameterFromURL(paramName) {
   const urlParams = new URLSearchParams(window.location.search);

@@ -158,7 +158,6 @@ border-radius: 0px;
 
 
 .bs {
-  border:1px solid #999;
   background-image: url("/image/transp.png");
 }
 
@@ -175,9 +174,11 @@ border-radius: 0px;
 .bp {color: #909;Background-color:#909;}
 .br {color: #953;Background-color:#953;}
 
-.wyt {color: #EEEEEE;Background-color:#EEEEEE;border-top:1px solid #CCC;border-left:1px solid #CCC;}
+.wht {color: #FEFEFE;Background-color:#FEFEFE;border-top:1px solid #CCC;border-left:1px solid #CCC;}
 .blk {color: #000000;Background-color:#000000;}
 .gry {color: #999999;Background-color:#999999;}
+.gry1 {color: #666666;Background-color:#666666;}
+.gry2 {color: #BBBBBB;Background-color:#BBBBBB;}
 .pp1 {color: #5D3FD3;Background-color:#5D3FD3;}
 .pp2 {color: #BF40BF;Background-color:#BF40BF;}
 
