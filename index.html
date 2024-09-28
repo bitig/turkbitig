@@ -42,27 +42,28 @@ max-width:80px;
 <br>
 
 <div> <!-- div yazici baslar-->
-<table>
-<tr><td colspan="3"><input maxlength="999" type="text" placeholder="buna yaz: Türük &gt; Türk" id="latin" oninput="updateDiv()"></td></tr>
-<tr><td nowrap><button style="padding:6px;" onclick="copyToClipboard(event)">Kopyala</button>&nbsp;</td><td><button style="width:99%; padding:6px;" onclick="downloadImage()">indir/paylaş</button></td><td align="right" width="96%"><input type="text" class="uu" id="gokturk"></td></tr>
-<tr><td colspan="3" class="canvasback"><canvas width="1200" id="canvas"></canvas></td></tr>
-</table>
-
+<table><tbody>
+<tr><td colspan="3"><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></td></tr>
+<tr><td colspan="3" class="canvasback"><canvas width="1200" id="canvas" height="231" style="background-color: gold;"></canvas></td></tr>
+<tr><td><button style="width:99%; padding:6px;" onclick="downloadImage()">indir</button></td><td nowrap=""><button style="padding:6px;" onclick="copyToClipboard(event)">kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="gokturk"></td></tr>
+</tbody></table>
 <textarea hidden id="gtext"></textarea>
 </div><!-- div yazici biter-->
 
 <table border="0" class="fonttable">
 <tr>
-<td width="8%" rowspan="2">Font&nbsp;</td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span style="font-family:'tbldamga';"><big><b>𐰀</b></big></span></label></td>
+<td width="8%" rowspan="2" colspan="2">Font&nbsp;</td>	
+<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span style="font-family:'tbldamga';"><big>𐰀</big></span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span style="font-family:'kultiginbold';">𐰚</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgabb"><span style="font-family:'damgabb';">𐰔</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span style="font-family:'oguzbold';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukbold"><span style="font-family:'tonyukukbold';">𐰡</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukelbold"><span style="font-family:'tonyukukelbold';">𐰼</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
-</tr>
 
+<td nowrap="" rowspan="2" style="text-align:right;">&nbsp;</td>
+<td width="20%" nowrap="" rowspan="2" style="text-align:right;"><button id="plus">+</button> <button id="minus">-</button></td>
+</tr>
 <tr>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkurgubold"><span style="font-family:'gokturkkurgubold';">𐰱</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';">𐰚</span></label></td>
@@ -74,16 +75,63 @@ max-width:80px;
 </tr>
 </table>
 
-<table border="0" class="fonttable">
+<table border="0" class="colortable">
 <tr>
-<td width="6%">Renk</td>
-<td><input type="color" id="textColorPicker" class="color-picker" value="#CC0000"></td>
+<td rowspan="2" width="8%">Renk</td>
+<td><label class="fc2 wht"><input type="radio" name="colorRadio" value="#FFFFFF">&nbsp;</label></td>
+<td><label class="fc2 blk"><input type="radio" name="colorRadio" value="#000000">&nbsp;</label></td>
+<td><label class="fc2 pp2"><input type="radio" name="colorRadio" value="#BF40BF">&nbsp;</label></td>
+<td><label class="fc2 by1"><input type="radio" name="colorRadio" value="#A41D34">&nbsp;</label></td>
+<td><label class="fc2 br2"><input type="radio" name="colorRadio" value="#CC0000">&nbsp;</label></td>
+<td><label class="fc2 br3"><input type="radio" name="colorRadio" value="#FF0000">&nbsp;</label></td>
+<td><label class="fc2 br6"><input type="radio" name="colorRadio" value="#FFC0CB">&nbsp;</label></td>
+<td><label class="fc2 by2"><input type="radio" name="colorRadio" value="#FFA500">&nbsp;</label></td>
+<td><label class="fc2 by4"><input type="radio" name="colorRadio" value="#FFDE21">&nbsp;</label></td>
+<td><label class="fc2 by6"><input type="radio" name="colorRadio" value="#F5DEB3">&nbsp;</label></td>
+</tr>
 
-<td>&nbsp;Arka&nbsp;</td>
-<td><input type="color" id="bgColorPicker" class="color-picker" value="#ffffff"></td>
+<tr>
+<td><label class="fc2 gry2"><input type="radio" name="colorRadio" value="#EEEEEE">&nbsp;</label></td>
+<td><label class="fc2 gry1"><input type="radio" name="colorRadio" value="#666666">&nbsp;</label></td>
+<td><label class="fc2 pp1"><input type="radio" name="colorRadio" value="#5D3FD3">&nbsp;</label></td>
+<td><label class="fc2 bb1"><input type="radio" name="colorRadio" value="#1144AA">&nbsp;</label></td>
+<td><label class="fc2 bb2"><input type="radio" name="colorRadio" value="#0073E6" checked>&nbsp;</label></td>
+<td><label class="fc2 bb4"><input type="radio" name="colorRadio" value="#14C0F1">&nbsp;</label></td>
+<td><label class="fc2 bb6"><input type="radio" name="colorRadio" value="#40E0D0">&nbsp;</label></td>
+<td><label class="fc2 bg3"><input type="radio" name="colorRadio" value="#228B22">&nbsp;</label></td>
+<td><label class="fc2 bg4"><input type="radio" name="colorRadio" value="#3CB371">&nbsp;</label></td>
+<td><label class="fc2 bg5"><input type="radio" name="colorRadio" value="#90EE90">&nbsp;</label></td>
+</tr>
 
-<td width="60%" nowrap colspan="4" style="text-align:right;"><button id="plus">+</button> <button id="minus">-</button>
-</td>
+<tr>
+<td colspan="11">&nbsp;</td>
+</tr>
+
+<tr>
+<td width="8%" rowspan="2">Arka</td>
+<td><label class="fc2 wht"><input type="radio" name="bgColorRadio" value="#FFFFFF" checked>&nbsp;</label></td>
+<td><label class="fc2 blk"><input type="radio" name="bgColorRadio" value="#000000">&nbsp;</label></td>
+<td><label class="fc2 pp2"><input type="radio" name="bgColorRadio" value="#BF40BF">&nbsp;</label></td>
+<td><label class="fc2 by1"><input type="radio" name="bgColorRadio" value="#A41D34">&nbsp;</label></td>
+<td><label class="fc2 br2"><input type="radio" name="bgColorRadio" value="#CC0000">&nbsp;</label></td>
+<td><label class="fc2 br3"><input type="radio" name="bgColorRadio" value="#FF0000">&nbsp;</label></td>
+<td><label class="fc2 br6"><input type="radio" name="bgColorRadio" value="#FFC0CB">&nbsp;</label></td>
+<td><label class="fc2 by2"><input type="radio" name="bgColorRadio" value="#FFA500">&nbsp;</label></td>
+<td><label class="fc2 by4"><input type="radio" name="bgColorRadio" value="#FFDE21">&nbsp;</label></td>
+<td><label class="fc2 by6"><input type="radio" name="bgColorRadio" value="#F5DEB3">&nbsp;</label></td>
+</tr>
+
+<tr>
+<td><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent">&nbsp;</label></td>
+<td><label class="fc2 gry"><input type="radio" name="bgColorRadio" value="#CCCCCC">&nbsp;</label></td>
+<td><label class="fc2 pp1"><input type="radio" name="bgColorRadio" value="#5D3FD3">&nbsp;</label></td>
+<td><label class="fc2 bb1"><input type="radio" name="bgColorRadio" value="#1144AA">&nbsp;</label></td>
+<td><label class="fc2 bb2"><input type="radio" name="bgColorRadio" value="#0073E6">&nbsp;</label></td>
+<td><label class="fc2 bb4"><input type="radio" name="bgColorRadio" value="#14C0F1">&nbsp;</label></td>
+<td><label class="fc2 bb6"><input type="radio" name="bgColorRadio" value="#40E0D0">&nbsp;</label></td>
+<td><label class="fc2 bg3"><input type="radio" name="bgColorRadio" value="#228B22">&nbsp;</label></td>
+<td><label class="fc2 bg4"><input type="radio" name="bgColorRadio" value="#3CB371">&nbsp;</label></td>
+<td><label class="fc2 bg5"><input type="radio" name="bgColorRadio" value="#90EE90">&nbsp;</label></td>
 </tr>
 </table>
 
@@ -185,7 +233,7 @@ max-width:80px;
 <!--<button id="toggleButton">KLAVYEYİ AÇ</button>-->
 
 <ul>
-<li><a href="/gokturkce/"><b>Klavyesiz yazıcı</b></a></li>
+<li><a href="/gokturkce/"><b>Klavyeyi kapat</b></a></li>
 </ul>
 
 <hr>
@@ -197,7 +245,7 @@ max-width:80px;
 <li><a href="/orhun-yazitlari/"><b>Orhun Yazıtları</b></a></li>
 </ul>
 
-<script src="/js/keyboard2.js"></script>
+<script src="/js/keyboard.js"></script>
 
 </div></main>
 
