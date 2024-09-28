@@ -261,6 +261,10 @@ max-width:510px;
 padding:2px;
 }
 
+#keydiv {
+    display: none;
+}
+
 #plus, #minus {
 height:50px;
 font-size:130%;
