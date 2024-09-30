@@ -224,7 +224,7 @@ function setLocalStorage(key, value) {
     var now = new Date();
     var item = {
         value: value,
-        expiry: now.getTime() + 3600000 // Current time + 1 hour in milliseconds
+        expiry: now.getTime() + 900000 // Current time + 15 minutes in milliseconds
     };
     localStorage.setItem(key, JSON.stringify(item));
 }
