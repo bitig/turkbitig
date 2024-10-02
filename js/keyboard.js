@@ -194,8 +194,10 @@ function downloadImage() {
 
   // Generate timestamp for filename
   const now = new Date();
-  const timestamp = String(now.getMinutes()).padStart(2, '0') +
-                    String(now.getSeconds()).padStart(2, '0');
+  const timestamp = 
+  	String(now.getHours()).padStart(2, '0') +
+  	String(now.getMinutes()).padStart(2, '0') +
+ 	String(now.getSeconds()).padStart(2, '0');
 
   // Create a download link and trigger the download
   const link = document.createElement('a');
