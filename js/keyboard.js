@@ -72,7 +72,7 @@ bgColorRadios.forEach(radio => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
-    if (fontSize < 2000) {
+    if (fontSize < 600) {
       fontSize += 6;
       updateCanvas();
     }
@@ -192,9 +192,14 @@ function downloadImage() {
   // Draw the relevant portion of the original canvas onto the new canvas
   newCtx.drawImage(canvas, minX, minY, trimmedWidth, trimmedHeight, 0, 0, trimmedWidth, trimmedHeight);
 
+  // Generate timestamp for filename
+  const now = new Date();
+  const timestamp = String(now.getMinutes()).padStart(2, '0') +
+                    String(now.getSeconds()).padStart(2, '0');
+
   // Create a download link and trigger the download
   const link = document.createElement('a');
-  link.download = 'download.png';
+  link.download = `Gokturkce_${timestamp}.png`;
   link.href = newCanvas.toDataURL();
   link.click();
 }
