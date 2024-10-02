@@ -150,19 +150,95 @@ function updateCanvas(force = false) {
 function downloadImage() {
   updateCanvas();
 
+  // Find the bounding box of the text
+  var textBounds = findTextBounds();
+
+  // Create a new canvas with the size of the text bounds
   var newCanvas = document.createElement('canvas');
-  newCanvas.width = canvas.width;
-  newCanvas.height = canvas.height;
+  newCanvas.width = textBounds.width;
+  newCanvas.height = textBounds.height;
   var newCtx = newCanvas.getContext('2d');
+
+  // Fill the new canvas with the background color
   newCtx.fillStyle = canvasColor;
   newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-  newCtx.drawImage(canvas, 0, 0);
+  // Draw the portion of the original canvas that contains text onto the new canvas
+  newCtx.drawImage(canvas, 
+    textBounds.left, textBounds.top, textBounds.width, textBounds.height, // source rectangle
+    0, 0, textBounds.width, textBounds.height // destination rectangle
+  );
 
+  // Create a download link and trigger the download
   var link = document.createElement('a');
-  link.download = 'gokturkce.png';
+  link.download = 'download.png';
   link.href = newCanvas.toDataURL();
   link.click();
+}
+
+function findTextBounds() {
+  var ctx = canvas.getContext('2d');
+  var pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  var l = pixels.data.length;
+  var bound = {
+    top: null,
+    left: null,
+    right: null,
+    bottom: null
+  };
+  var x, y;
+
+  // Iterate over every pixel to find the highest
+  // and lowest x and y that have a non-background color.
+  for (var i = 0; i < l; i += 4) {
+    if (pixels.data[i + 3] !== 0) {
+      x = (i / 4) % canvas.width;
+      y = ~~((i / 4) / canvas.width);
+
+      if (bound.top === null) {
+        bound.top = y;
+      }
+
+      if (bound.left === null) {
+        bound.left = x;
+      } else if (x < bound.left) {
+        bound.left = x;
+      }
+
+      if (bound.right === null) {
+        bound.right = x;
+      } else if (bound.right < x) {
+        bound.right = x;
+      }
+
+      if (bound.bottom === null) {
+        bound.bottom = y;
+      } else if (bound.bottom < y) {
+        bound.bottom = y;
+      }
+    }
+  }
+
+  // Calculate the width and height of the content
+  var trimHeight = bound.bottom - bound.top;
+  var trimWidth = bound.right - bound.left;
+
+  // Add padding
+  var padding = 10;
+  bound.top = Math.max(0, bound.top - padding);
+  bound.left = Math.max(0, bound.left - padding);
+  bound.bottom = Math.min(canvas.height, bound.bottom + padding);
+  bound.right = Math.min(canvas.width, bound.right + padding);
+
+  trimHeight = bound.bottom - bound.top;
+  trimWidth = bound.right - bound.left;
+
+  return {
+    left: bound.left,
+    top: bound.top,
+    width: trimWidth,
+    height: trimHeight
+  };
 }
 
 updateCanvas();
