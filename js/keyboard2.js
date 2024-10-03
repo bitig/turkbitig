@@ -1,6 +1,5 @@
 // Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
 
-// keyboard - canvas begins
 var gtext = document.getElementById("gtext");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -12,9 +11,9 @@ var debounceTimer;
 
 var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
-var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
-var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
-var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
+var colorPicker = document.getElementById("fontColor");
+var bgColorPicker = document.getElementById("bgColor");
+var fontFamilySelect = document.getElementById("fontFamily");
 var latin = document.getElementById("latin");
 
 function getParameterFromURL(paramName) {
@@ -47,27 +46,16 @@ plusButton.addEventListener("click", () => {
   }
 });
 
-colorRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
-    updateCanvas();
-  });
+colorPicker.addEventListener('input', () => {
+  updateCanvas();
 });
 
-fontRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
-    updateCanvas();
-  });
+bgColorPicker.addEventListener('input', () => {
+  updateCanvas();
 });
 
-bgColorRadios.forEach(radio => {
-  radio.addEventListener('change', (event) => {
-    if (event.target.value === 'transparent') {
-      canvas.style.backgroundColor = 'transparent';
-    } else {
-      canvasColor = event.target.value;
-      updateCanvas();
-    }
-  });
+fontFamilySelect.addEventListener('change', () => {
+  updateCanvas();
 });
 
 document.addEventListener("keydown", (event) => {
@@ -109,14 +97,9 @@ function updateCanvas(force = false) {
   var canvasHeight = textHeight + paddingTop * 2;
   canvas.height = canvasHeight;
 
-  var selectedColor = document.querySelector(
-    'input[name="colorRadio"]:checked'
-  ).value;
-  ctx.fillStyle = selectedColor;
+  ctx.fillStyle = colorPicker.value;
 
-  var selectedFont = document.querySelector(
-    'input[name="fontRadio"]:checked'
-  ).value;
+  var selectedFont = fontFamilySelect.value;
   ctx.font = fontSize + "px " + selectedFont;
 
   ctx.textAlign = "right";
@@ -133,14 +116,7 @@ function updateCanvas(force = false) {
     y += fontSize * lineHeight;
   }
 
-  canvas.style.backgroundColor = "";
-  var selectedBgColor = document.querySelector(
-    'input[name="bgColorRadio"]:checked'
-  );
-  if (selectedBgColor) {
-    canvasColor = selectedBgColor.value;
-  }
-  canvas.style.backgroundColor = canvasColor;
+  canvas.style.backgroundColor = bgColorPicker.value;
 
   if (force) {
     canvas.dispatchEvent(new Event("input"));
@@ -187,7 +163,7 @@ function downloadImage() {
     const newCtx = newCanvas.getContext('2d');
 
     // Fill the new canvas with the background color
-    newCtx.fillStyle = canvasColor; // Assuming canvasColor is your background color variable
+    newCtx.fillStyle = bgColorPicker.value;
     newCtx.fillRect(0, 0, trimmedWidth, trimmedHeight);
 
     // Draw the relevant portion of the original canvas onto the new canvas
@@ -247,9 +223,6 @@ function copyToClipboard(event) {
   console.log("Copied to clipboard: " + input.value);
 }
 
-// keyboard - canvas ends
-
-
 function toggleKeyDiv() {
     var keyDiv = document.getElementById('keydiv');
     var toggleButton = document.getElementById('toggleButton');
@@ -302,4 +275,3 @@ window.onload = function() {
         toggleButton.textContent = 'Göktürkçe klavye';
     }
 };
-
