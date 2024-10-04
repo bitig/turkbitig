@@ -1,5 +1,6 @@
 // Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
 
+// keyboard - canvas begins
 var gtext = document.getElementById("gtext");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -14,6 +15,7 @@ var plusButton = document.getElementById("plus");
 var colorPicker = document.getElementById("fontColor");
 var bgColorPicker = document.getElementById("bgColor");
 var fontFamilySelect = document.getElementById("fontFamily");
+var textSizeSelect = document.getElementById("textSize");
 var latin = document.getElementById("latin");
 
 function getParameterFromURL(paramName) {
@@ -40,7 +42,7 @@ minusButton.addEventListener("click", () => {
 });
 
 plusButton.addEventListener("click", () => {
-  if (fontSize < 800) {
+  if (fontSize < 600) {
     fontSize += 10;
     updateCanvas();
   }
@@ -58,18 +60,9 @@ fontFamilySelect.addEventListener('change', () => {
   updateCanvas();
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft") {
-    if (fontSize < 600) {
-      fontSize += 6;
-      updateCanvas();
-    }
-  } else if (event.key === "ArrowRight") {
-    if (fontSize > 18) {
-      fontSize -= 6;
-      updateCanvas();
-    }
-  }
+textSizeSelect.addEventListener('change', () => {
+  fontSize = parseInt(textSizeSelect.value);
+  updateCanvas();
 });
 
 function updateCanvas(force = false) {

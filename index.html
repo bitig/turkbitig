@@ -28,7 +28,7 @@ max-width:80px;
 <body><script src="/js/theme.js"></script>
 
 <div class="header">
-	<a href="/gokturkce/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a>
+	<a href="/icerik.html"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a>
 	<a class="xlink" href="/icerik.html"><button class="xlinkb">&#9776;</button></a>
 </div>
 
@@ -78,10 +78,25 @@ max-width:80px;
 
 <td>Boy&nbsp;</td>	
 <td nowrap><button id="plus">+</button></td>
+
+<td>
+
+<select id="textSize">
+<option value="50">50</option>
+<option value="100">100</option>
+<option value="150">150</option>
+<option value="200" selected>200</option>
+<option value="300">300</option>
+<option value="400">400</option>
+<option value="500">500</option>
+<option value="600">600</option>
+</select>
+
+</td>
+
 <td nowrap><button id="minus">-</button></td>
 <td width="30%">&nbsp;</td>
 <tr></table>
-
 
 <table border="0" class="fonttable"><tr>
 <td>Renk&nbsp;</td><td><input type="color" id="fontColor" value="#000000"></td>
@@ -89,16 +104,9 @@ max-width:80px;
 <td width="60%">&nbsp;</td>
 </tr></table>
 
-
-
-
-
-
 <hr>
 
-<button id="toggleButton" onclick="toggleKeyDiv()">Göktürkçe klavye</button>
-
-<div id="keydiv">
+<div>
 <table border="0" id="keyboard" class="keytable">
 <tr>
 
@@ -193,6 +201,8 @@ max-width:80px;
 </table>
 </div>
 
+<hr>
+<div><a href="/gokturkce/"><button type="button">Klavyesiz yazıcı</button></a></div>
 <hr>
 
 <ul>
