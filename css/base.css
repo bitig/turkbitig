@@ -1,15 +1,7 @@
 body {
 margin:0;
-font-size:95%;
 font-family: sans-serif;
-line-height:1.3;
-}
-
-@media only screen and (min-width: 600px) {
-body {
-font-size:100%;
 line-height:1.5;
-}
 }
 
 a:active    {
@@ -776,3 +768,17 @@ red {
 html, body, p, div {
 font-size:1rem;
 }
+
+@media only screen and (max-width: 600px) {
+body {
+font-size:100%;
+line-height:1.3;
+}
+
+html, body, p, div {
+font-size:0.875rem;
+}
+
+}
+
+
