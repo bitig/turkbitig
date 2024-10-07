@@ -17,7 +17,7 @@
 <title>Göktürk alfabesi  - Göktürkçe Çeviri</title>
 
 <style>
-#plus, #minus {width:50%;max-width:80px;}
+#plus, #minus {width:90%;min-width:40px;}
 </style>
 
 </head>
@@ -49,34 +49,38 @@
 
 <table border="0" class="fonttable">
 <tr>
-<td width="8%" rowspan="2" colspan="2">Font&nbsp;</td>	
-<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span style="font-family:'tbldamga';"><big>𐰀</big></span></label></td>
+<td width="8%" rowspan="3">Font&nbsp;</td>	
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span style="font-family:'kultiginbold';">𐰚</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgabb"><span style="font-family:'damgabb';">𐰔</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span style="font-family:'oguzbold';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukbold"><span style="font-family:'tonyukukbold';">𐰡</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukelbold"><span style="font-family:'tonyukukelbold';">𐰼</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgarb"><span style="font-family:'damgarb';">𐰜</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
-
-<td nowrap="" rowspan="2" style="text-align:right;">&nbsp;</td>
-<td width="20%" nowrap="" rowspan="2" style="text-align:right;"><button id="plus">+</button> <button id="minus">-</button></td>
+<td width="3%" rowspan="3">&nbsp;</td>	
+<td colspan="2" style="width:20%;"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked>Altyazı</label></td>
 </tr>
+
 <tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkurgubold"><span style="font-family:'gokturkkurgubold';">𐰱</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';">𐰚</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰔</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="oguzbodun"><span style="font-family:'oguzbodun';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="tonyukuk"><span style="font-family:'tonyukuk';">𐰡</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukel"><span style="font-family:'tonyukukel';">𐰼</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgar"><span style="font-family:'damgar';">𐰜</span></label></td>
+<td rowspan="2" style="vertical-align: bottom;"><button id="plus">+</button></td>
+<td rowspan="2" style="vertical-align: bottom;"><button id="minus">-</button></td>
+</tr>
+
+<tr>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukel"><span style="font-family:'tonyukukel';">𐰼</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukelbold"><span style="font-family:'tonyukukelbold';">𐰼</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkurgubold"><span style="font-family:'gokturkkurgubold';">𐰱</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="irkbitig"><span style="font-family:'irkbitig';">𐰓</span></label></td>
 </tr>
 </table>
 
 <table border="0" class="colortable">
 <tr>
-<td rowspan="2" width="8%">Renk</td>
+<td rowspan="3" width="8%">Renk</td>
 <td><label class="fc2 wht"><input type="radio" name="colorRadio" value="#FFFFFF">&nbsp;</label></td>
 <td><label class="fc2 blk"><input type="radio" name="colorRadio" value="#000000">&nbsp;</label></td>
 <td><label class="fc2 pp2"><input type="radio" name="colorRadio" value="#BF40BF">&nbsp;</label></td>
@@ -84,27 +88,29 @@
 <td><label class="fc2 br2"><input type="radio" name="colorRadio" value="#CC0000">&nbsp;</label></td>
 <td><label class="fc2 br3"><input type="radio" name="colorRadio" value="#FF0000">&nbsp;</label></td>
 <td><label class="fc2 br6"><input type="radio" name="colorRadio" value="#FFC0CB">&nbsp;</label></td>
-<td><label class="fc2 by2"><input type="radio" name="colorRadio" value="#FFAF30">&nbsp;</label></td>
-<td><label class="fc2 by4"><input type="radio" name="colorRadio" value="#FFDE21">&nbsp;</label></td>
-<td><label class="fc2 by6"><input type="radio" name="colorRadio" value="#F5DEB3">&nbsp;</label></td>
 </tr>
 
 <tr>
 <td><label class="fc2 gry2"><input type="radio" name="colorRadio" value="#EEEEEE">&nbsp;</label></td>
-<td><label class="fc2 gry1"><input type="radio" name="colorRadio" value="#666666">&nbsp;</label></td>
+<td><label class="fc2 bg0"><input type="radio" name="colorRadio" value="#06402B">&nbsp;</label></td>
 <td><label class="fc2 pp1"><input type="radio" name="colorRadio" value="#4D2FC3">&nbsp;</label></td>
 <td><label class="fc2 bb1"><input type="radio" name="colorRadio" value="#2255CC">&nbsp;</label></td>
 <td><label class="fc2 bb2"><input type="radio" name="colorRadio" value="#0959F9" checked>&nbsp;</label></td>
 <td><label class="fc2 bb4"><input type="radio" name="colorRadio" value="#06C9F9">&nbsp;</label></td>
 <td><label class="fc2 bb6"><input type="radio" name="colorRadio" value="#40E0D0">&nbsp;</label></td>
-<td><label class="fc2 bg3"><input type="radio" name="colorRadio" value="#228B22">&nbsp;</label></td>
-<td><label class="fc2 bg4"><input type="radio" name="colorRadio" value="#3CB371">&nbsp;</label></td>
-<td><label class="fc2 bg5"><input type="radio" name="colorRadio" value="#90EE90">&nbsp;</label></td>
 </tr>
 
 <tr>
-<td colspan="11">&nbsp;</td>
+<td><label class="fc2 gry1"><input type="radio" name="colorRadio" value="#666666">&nbsp;</label></td>
+<td><label class="fc2 bg3"><input type="radio" name="colorRadio" value="#228B22">&nbsp;</label></td>
+<td><label class="fc2 bg4"><input type="radio" name="colorRadio" value="#3CB371">&nbsp;</label></td>
+<td><label class="fc2 bg5"><input type="radio" name="colorRadio" value="#90EE90">&nbsp;</label></td>
+<td><label class="fc2 by2"><input type="radio" name="colorRadio" value="#FFAF30">&nbsp;</label></td>
+<td><label class="fc2 by4"><input type="radio" name="colorRadio" value="#FFDE21">&nbsp;</label></td>
+<td><label class="fc2 by6"><input type="radio" name="colorRadio" value="#F5DEB3">&nbsp;</label></td>
 </tr>
+
+<tr><td colspan="8">&nbsp;</td></tr>
 
 <tr>
 <td width="8%" rowspan="3">Arka</td>
@@ -115,22 +121,26 @@
 <td><label class="fc2 br2"><input type="radio" name="bgColorRadio" value="#C00000">&nbsp;</label></td>
 <td><label class="fc2 br3"><input type="radio" name="bgColorRadio" value="#F00000">&nbsp;</label></td>
 <td><label class="fc2 br6"><input type="radio" name="bgColorRadio" value="#F0C0C0">&nbsp;</label></td>
-<td><label class="fc2 by2"><input type="radio" name="bgColorRadio" value="#FFA000">&nbsp;</label></td>
-<td><label class="fc2 by4"><input type="radio" name="bgColorRadio" value="#F9D020">&nbsp;</label></td>
-<td><label class="fc2 by6"><input type="radio" name="bgColorRadio" value="#F0CEB0">&nbsp;</label></td>
 </tr>
 
 <tr>
 <td><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent">&nbsp;</label></td>
-<td><label class="fc2 gry"><input type="radio" name="bgColorRadio" value="#CCCCCC">&nbsp;</label></td>
+<td><label class="fc2 bg0"><input type="radio" name="bgColorRadio" value="#06402B">&nbsp;</label></td>
 <td><label class="fc2 pp1"><input type="radio" name="bgColorRadio" value="#5D3FD3">&nbsp;</label></td>
 <td><label class="fc2 bb1"><input type="radio" name="bgColorRadio" value="#1144AA">&nbsp;</label></td>
 <td><label class="fc2 bb2"><input type="radio" name="bgColorRadio" value="#0073E6">&nbsp;</label></td>
 <td><label class="fc2 bb4"><input type="radio" name="bgColorRadio" value="#09C0F0">&nbsp;</label></td>
 <td><label class="fc2 bb6"><input type="radio" name="bgColorRadio" value="#40D0D0">&nbsp;</label></td>
+</tr>
+
+<tr>
+<td><label class="fc2 gry"><input type="radio" name="bgColorRadio" value="#CCCCCC">&nbsp;</label></td>
 <td><label class="fc2 bg3"><input type="radio" name="bgColorRadio" value="#128020">&nbsp;</label></td>
 <td><label class="fc2 bg4"><input type="radio" name="bgColorRadio" value="#2C9369">&nbsp;</label></td>
 <td><label class="fc2 bg5"><input type="radio" name="bgColorRadio" value="#80DE90">&nbsp;</label></td>
+<td><label class="fc2 by2"><input type="radio" name="bgColorRadio" value="#FFA000">&nbsp;</label></td>
+<td><label class="fc2 by4"><input type="radio" name="bgColorRadio" value="#F9D020">&nbsp;</label></td>
+<td><label class="fc2 by6"><input type="radio" name="bgColorRadio" value="#F0CEB0">&nbsp;</label></td>
 </tr>
 </table>
 
