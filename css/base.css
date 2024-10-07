@@ -6,10 +6,6 @@ font-family: sans-serif;
 line-height:1.5;
 }
 
-html,body,p,div,td,a,li,input,label {
-ttext-size-adjust: none;
-} 
-
 a:active    {
 filter: brightness(106%);
 text-decoration:none;
