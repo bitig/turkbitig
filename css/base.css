@@ -1,3 +1,5 @@
+html * {max-height:1000000px;}
+
 body {
 margin:0;
 font-family: sans-serif;
@@ -10,6 +12,10 @@ body {
 line-height:1.3;
 }
 }
+
+html,body,p,div,td,a,li,input,label {
+text-size-adjust: none;
+} 
 
 a:active    {
 filter: brightness(106%);
