@@ -128,9 +128,11 @@ border-radius: 4px;
 }
 
 .fc2 {
+height:24px;
 display:block;
 text-align:center;
 cursor:pointer;
+border-radius: 4px;
 }
 
 
