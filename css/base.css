@@ -532,6 +532,7 @@ max-width:30%;
 }
 
 .xlink {
+font-size:120%;
 font-weight:bold;
 float:right;
 margin-top:6px;
@@ -539,7 +540,9 @@ margin-right:5%;
 }
 
 .xlinkb {
-padding:8px;
+padding:5px;
+padding-left:12px;
+padding-right:12px;
 }
 
 hr {
