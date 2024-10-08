@@ -1,51 +1,59 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 window.onload = function() {
-const damgaDiv = document.getElementById('isim');
+    const damgaDiv = document.getElementById('isim');
 
-document.querySelectorAll('button[id]').forEach(button => {
-    if (button.id !== 'downloadImage') {
-        button.addEventListener('click', function() {
-            const font = button.id.charAt(0).toUpperCase() + button.id.slice(1);
-            damgaDiv.style.fontFamily = `${font}, sans-serif`;
-        });
-    }
-});
+    document.querySelectorAll('button[id]').forEach(button => {
+        if (button.id !== 'downloadImage') {
+            button.addEventListener('click', function() {
+                const font = button.id.charAt(0).toUpperCase() + button.id.slice(1);
+                damgaDiv.style.fontFamily = `${font}, sans-serif`;
+            });
+        }
+    });
 
-window.downloadImage = function() {
-    const element = document.getElementById("isim");
+    window.downloadImage = function() {
+        const element = document.getElementById("isim");
 
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
 
-    canvas.width = element.offsetWidth;
-    canvas.height = element.offsetHeight;
+        canvas.width = element.offsetWidth;
+        canvas.height = element.offsetHeight;
 
-    context.fillStyle = "#FFFFFF";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "#FFFFFF";
+        context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.fillStyle = "#000000";
+        context.fillStyle = "#000000";
 
-    const fontSize = 86;
-    const font = window.getComputedStyle(element).fontFamily;
-    context.font = fontSize + "px " + font;
+        const fontSize = 86;
+        const font = window.getComputedStyle(element).fontFamily;
+        context.font = fontSize + "px " + font;
 
-    const textWidth = context.measureText(element.innerText).width;
-    const textX = (canvas.width - textWidth) / 2;
-    const textY = fontSize;
+        const textWidth = context.measureText(element.innerText).width;
+        const textX = (canvas.width - textWidth) / 2;
+        const textY = fontSize;
 
-    context.fillText(element.innerText, textX, textY);
+        context.fillText(element.innerText, textX, textY);
 
-    const dataUrl = canvas.toDataURL("image/png");
+        const dataUrl = canvas.toDataURL("image/png");
 
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = "isim.png";
+        const link = document.createElement("a");
+        link.href = dataUrl;
 
-    link.click();
+        // Get current time and format it
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const timeString = `${hours}${minutes}${seconds}`;
+
+        // Add time to the file name
+        link.download = `Gokturkce_${timeString}.png`;
+
+        link.click();
     };
 };
-
 
 function copyElementContent() {
     var element = document.getElementById("isim");
