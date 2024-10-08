@@ -216,6 +216,7 @@ function copyToClipboard(event) {
   console.log("Copied to clipboard: " + input.value);
 }
 
+/*
 function toggleKeyDiv() {
     var keyDiv = document.getElementById('keydiv');
     var toggleButton = document.getElementById('toggleButton');
@@ -268,3 +269,4 @@ window.onload = function() {
         toggleButton.textContent = 'Göktürkçe klavye';
     }
 };
+*/
