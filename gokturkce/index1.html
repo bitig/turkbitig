@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/dark.css"/>
+<link rel="stylesheet" href="/css/gray.css"/>
+<link rel="stylesheet" href="/css/light.css"/>
+<link rel="stylesheet" href="/css/style.css" id="theme-style">
+<link rel="shortcut icon" href="/image/favicon.ico" type="image/png">
+<script src='/js/gokturkce.js'></script>
+
+<meta name="keywords" content="Göktürk Alfabesi, Orhun alfabesi, Göktürk harfleri, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı">
+<meta name="description" content="Göktürkçe çeviri ve klavye ile Göktürk Alfabesi yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
+<title>Göktürk alfabesi  - Göktürkçe Çeviri</title>
+
+<style>
+#plus, #minus {width:90%;min-width:40px;}
+</style>
+
+</head>
+<body><script src="/js/theme.js"></script><script src="/js/text.js"></script>
+
+<div class="header">
+	<a href="/icerik.html"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a><a class="xlink" href="/icerik.html"><button class="xlinkb">&#9776;</button></a>
+</div>
+
+<div class="sitenav">
+<div class="tabs">
+Göktürkçe Çeviri <a class="current" href="/gokturkce/">Basit</a> <a href="/">Klavyeli</a>
+</div><!--tabs end-->
+</div><!--sitenav end-->
+
+<main><div class="contenti">
+
+<br>
+
+<div> <!-- div yazici baslar-->
+<table><tbody>
+<tr><td colspan="3"><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></td></tr>
+<tr><td colspan="3" class="canvasback"><canvas width="1200" id="canvas" height="231" style="background-color:#FFF;"></canvas></td></tr>
+<tr><td><button style="width:99%; padding:6px;" onclick="downloadImage()">indir</button></td><td nowrap=""><button style="padding:6px;" onclick="copyToClipboard(event)">kopyala</button>&nbsp;</td><td align="right" width="96%"><input type="text" class="uu" id="gokturk"></td></tr>
+</tbody></table>
+<textarea hidden id="gtext"></textarea>
+</div><!-- div yazici biter-->
+
+<table border="0" class="fonttable">
+<tr>
+<td width="8%" rowspan="3">Font&nbsp;</td>	
+<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span style="font-family:'kultiginbold';font-size:120%;">𐰚</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="damgabb"><span style="font-family:'damgabb';font-size:120%;">𐰔</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span style="font-family:'oguzbold';font-size:120%;">𐰋</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukbold"><span style="font-family:'tonyukukbold';font-size:120%;">𐰡</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="damgarb"><span style="font-family:'damgarb';font-size:120%;">𐰜</span></label></td>
+<td width="3%" rowspan="3">&nbsp;</td>	
+<td colspan="2" style="width:20%;"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked>Altyazı</label></td>
+</tr>
+
+<tr>
+<td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';font-size:120%;">𐰚</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';font-size:120%;">𐰔</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="oguzbodun"><span style="font-family:'oguzbodun';font-size:120%;">𐰋</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukuk"><span style="font-family:'tonyukuk';font-size:120%;">𐰡</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="damgar"><span style="font-family:'damgar';font-size:120%;">𐰜</span></label></td>
+<td rowspan="2" style="vertical-align: bottom;"><button id="plus">+</button></td>
+<td rowspan="2" style="vertical-align: bottom;"><button id="minus">-</button></td>
+</tr>
+
+<tr>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukel"><span style="font-family:'tonyukukel';font-size:120%;">𐰼</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukelbold"><span style="font-family:'tonyukukelbold';font-size:120%;">𐰼</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkurgubold"><span style="font-family:'gokturkkurgubold';font-size:120%;">𐰱</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';font-size:120%;">𐰢</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="irkbitig"><span style="font-family:'irkbitig';font-size:120%;">𐰓</span></label></td>
+</tr>
+</table>
+
+<table border="0" class="colortable">
+<tr>
+<td rowspan="2" width="8%">Renk</td>
+<td><label class="fc2 wht"><input type="radio" name="colorRadio" value="#FFFFFF">&nbsp;</label></td>
+<td><label class="fc2 blk"><input type="radio" name="colorRadio" value="#000000">&nbsp;</label></td>
+<td><label class="fc2 pp2"><input type="radio" name="colorRadio" value="#BF40BF">&nbsp;</label></td>
+<td><label class="fc2 by1"><input type="radio" name="colorRadio" value="#A41D34">&nbsp;</label></td>
+<td><label class="fc2 br2"><input type="radio" name="colorRadio" value="#CC0000">&nbsp;</label></td>
+<td><label class="fc2 br3"><input type="radio" name="colorRadio" value="#FF0000">&nbsp;</label></td>
+<td><label class="fc2 by2"><input type="radio" name="colorRadio" value="#FFAF30">&nbsp;</label></td>
+<td><label class="fc2 by4"><input type="radio" name="colorRadio" value="#FFDE21">&nbsp;</label></td>
+<td><label class="fc2 by6"><input type="radio" name="colorRadio" value="#F5DEB3">&nbsp;</label></td>
+</tr>
+
+<tr>
+<td><label class="fc2 gry1"><input type="radio" name="colorRadio" value="#666666">&nbsp;</label></td>
+<td><label class="fc2 pp1"><input type="radio" name="colorRadio" value="#4D2FC3">&nbsp;</label></td>
+<td><label class="fc2 bb1"><input type="radio" name="colorRadio" value="#2255CC">&nbsp;</label></td>
+<td><label class="fc2 bb2"><input type="radio" name="colorRadio" value="#0959F9" checked>&nbsp;</label></td>
+<td><label class="fc2 bb4"><input type="radio" name="colorRadio" value="#06C9F9">&nbsp;</label></td>
+<td><label class="fc2 bb6"><input type="radio" name="colorRadio" value="#40E0D0">&nbsp;</label></td>
+<td><label class="fc2 bg0"><input type="radio" name="colorRadio" value="#16503B">&nbsp;</label></td>
+<td><label class="fc2 bg3"><input type="radio" name="colorRadio" value="#228B22">&nbsp;</label></td>
+<td><label class="fc2 bg4"><input type="radio" name="colorRadio" value="#3CB371">&nbsp;</label></td>
+</tr>
+</table>
+
+
+<table border="0" class="colortable">
+<tr>
+<td width="8%" rowspan="3">Arka</td>
+<td><label class="fc2 wht"><input type="radio" name="bgColorRadio" value="#FFFFFF" checked>&nbsp;</label></td>
+<td><label class="fc2 blk"><input type="radio" name="bgColorRadio" value="#000000">&nbsp;</label></td>
+<td><label class="fc2 pp2"><input type="radio" name="bgColorRadio" value="#B040B0">&nbsp;</label></td>
+<td><label class="fc2 by1"><input type="radio" name="bgColorRadio" value="#830030">&nbsp;</label></td>
+<td><label class="fc2 br2"><input type="radio" name="bgColorRadio" value="#C00000">&nbsp;</label></td>
+<td><label class="fc2 br3"><input type="radio" name="bgColorRadio" value="#F00000">&nbsp;</label></td>
+<td><label class="fc2 by2"><input type="radio" name="bgColorRadio" value="#FFA000">&nbsp;</label></td>
+<td><label class="fc2 by4"><input type="radio" name="bgColorRadio" value="#F9D020">&nbsp;</label></td>
+<td><label class="fc2 by6"><input type="radio" name="bgColorRadio" value="#F0CEB0">&nbsp;</label></td>
+</tr>
+
+<tr>
+<td width="12%"><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent">Şef</label></td>
+<td><label class="fc2 pp1"><input type="radio" name="bgColorRadio" value="#5D3FD3">&nbsp;</label></td>
+<td><label class="fc2 bb1"><input type="radio" name="bgColorRadio" value="#1144AA">&nbsp;</label></td>
+<td><label class="fc2 bb2"><input type="radio" name="bgColorRadio" value="#0073E6">&nbsp;</label></td>
+<td><label class="fc2 bb4"><input type="radio" name="bgColorRadio" value="#09C0F0">&nbsp;</label></td>
+<td><label class="fc2 bb6"><input type="radio" name="bgColorRadio" value="#40D0D0">&nbsp;</label></td>
+<td><label class="fc2 bg0"><input type="radio" name="bgColorRadio" value="#06402B">&nbsp;</label></td>
+<td><label class="fc2 bg3"><input type="radio" name="bgColorRadio" value="#128020">&nbsp;</label></td>
+<td><label class="fc2 bg4"><input type="radio" name="bgColorRadio" value="#2C9369">&nbsp;</label></td>
+</tr>
+</table>
+
+<!--
+<hr>
+
+<button id="toggleButton" onclick="toggleKeyDiv()">Göktürkçe klavye</button>
+
+<div id="keydiv">
+<table border="0" id="keyboard" class="keytable">
+<tr>
+
+<td><button class="key ae" data-value="𐰀">𐰀</button></td>
+<td><button class="key ii" data-value="𐰃">𐰃</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key kalin" data-value="𐰆">𐰆</button></td>
+<td><button class="key ince" data-value="𐰇">𐰇</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key normal" data-value="𐰲">𐰲</button></td>
+<td><button class="key sil" data-value="x">X</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-value="𐰉">𐰉</button></td>
+<td><button class="key ince" data-value="𐰋">𐰋</button></td>
+
+<td><button class="key kalin" data-value="𐰺">𐰺</button></td>
+<td><button class="key ince" data-value="𐰼">𐰼</button></td>
+
+<td><button class="key normal" data-value="𐰢">𐰢</button></td>
+<td><button class="delete key sil" data-value="-">&gt;</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-value="𐰑">𐰑</button></td>
+<td><button class="key ince" data-value="𐰓">𐰓</button></td>
+
+<td><button class="key kalin" data-value="𐰽">𐰽</button></td>
+<td><button class="key ince" data-value="𐰾">𐰾</button></td>
+
+<td><button class="key normal" data-value="𐰯">𐰯</button></td>
+
+<td><button class="key normal" data-value=" "> &nbsp; </button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-value="𐰍">𐰍</button></td>
+<td><button class="key ince" data-value="𐰏">𐰏</button></td>
+
+<td><button class="key kalin" data-value="𐱃">𐱃</button></td>
+<td><button class="key ince" data-value="𐱅">𐱅</button></td>
+
+<td><button class="key normal" data-value="𐱁">𐱁</button></td>
+<td><button class="key normal" data-value=":">: </button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-value="𐰴">𐰴</button></td>
+<td><button class="key ince" data-value="𐰚">𐰚</button></td>
+
+<td><button class="key kalin" data-value="𐰖">𐰖</button></td>
+<td><button class="key ince" data-value="𐰘">𐰘</button></td>
+
+<td><button class="key normal" data-value="𐰔">𐰔</button></td>
+<td><button class="key normal" data-value="𐰪">𐰪</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-value="𐰞">𐰞</button></td>
+<td><button class="key ince" data-value="𐰠">𐰠</button></td>
+
+<td><button class="key kalin" data-value="𐰶">𐰶</button></td>
+<td><button class="key ince" data-value="𐰱">𐰱</button></td>
+
+<td><button class="key normal" data-value="𐰨">𐰨</button></td>
+
+<td><button class="key normal" data-value="𐰦">𐰦</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-value="𐰣">𐰣</button></td>
+<td><button class="key ince" data-value="𐰤">𐰤</button></td>
+
+<td><button class="key kalin" data-value="𐰸">𐰸</button></td>
+<td><button class="key ince" data-value="𐰜">𐰜</button></td>
+
+<td><button class="key normal" data-value="𐰭">𐰭</button></td>
+<td><button class="key normal" data-value="𐰡">𐰡</button></td>
+
+</tr>
+</table>
+</div>
+-->
+<hr>
+
+<ul>
+<li><a href="/isimler/"><b>GÖKTÜRKÇE İSİMLER</b></a></li>
+<li><a href="/orhun-yazitlari/"><b><red>ORHUN YAZITLARI</red></b></a></li>
+<li><a href="/gokturkce/yazici.html">Uzun metin yazıcı</a></li>
+<li><a href="/gokturk-alfabesi/">Alfabenin kuralları</a></li>
+</ul>
+
+<script src="/js/keyboard.js"></script>
+
+</div></main>
+
+<footer>
+<div class="footer"><a href="/iletisim.html">iletişim</a> | <a href="/ayarlar.html">ayarlar</a></div>
+</footer>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XB6M7JR5GW');
+</script>
+
+</body>
+</html>

@@ -124,13 +124,19 @@ border-radius: 4px;
 }
 
 .fc2 {
-height:24px;
-display:block;
+width:30px;
+height:10px;
 text-align:center;
 cursor:pointer;
-border-radius: 4px;
+border-left:1px solid #CCC;
 }
 
+
+.fc2img {
+width:10%;
+min-width:10px;
+height:1px;
+}
 
 .fc {
 width:1vw;
@@ -245,7 +251,7 @@ margin-top:8px;
 }
 
 .colortable {
-max-width:510px;
+max-width:520px;
 margin-top:12px;
 border-spacing:0px;
 border-collapse:collapse;
