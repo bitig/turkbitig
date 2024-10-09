@@ -129,13 +129,14 @@ height:10px;
 text-align:center;
 cursor:pointer;
 border-left:1px solid #CCC;
+padding-top:10px;
 }
 
 
 .fc2img {
 width:10%;
 min-width:10px;
-height:1px;
+height:26px;
 }
 
 .fc {
