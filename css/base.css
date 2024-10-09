@@ -124,19 +124,9 @@ border-radius: 4px;
 }
 
 .fc2 {
-width:30px;
-height:10px;
-text-align:center;
 cursor:pointer;
-border-left:1px solid #CCC;
-padding-top:10px;
-}
-
-
-.fc2img {
-width:10%;
-min-width:10px;
-height:26px;
+display:block;
+border-radius:3px;
 }
 
 .fc {
