@@ -428,6 +428,7 @@ text-transform: uppercase;
 }
 
 .nav {
+font-weight:bold;
 padding-left:2%;
 margin-top:1em;
 }
@@ -437,14 +438,14 @@ margin-top:1em;
 }
 
 .nav a{
+border-right: 1px solid #ccc;  
 padding:5px;
 white-space: nowrap;
-border-radius: 4px;
-text-decoration: none;
 }
 
 .nav a.this {
 padding-bottom:5px;
+text-decoration:none;
 }
 
 .pulldown {
