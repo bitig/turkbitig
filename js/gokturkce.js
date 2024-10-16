@@ -27,8 +27,6 @@ function updateDiv() {
   var processedText = processInputText(inputText);
   var gokturk = document.getElementById("gokturk");
   gokturk.value = processedText; 
-  var gtext = document.getElementById("gtext");
-  gtext.textContent = processedText;
 }
 
 

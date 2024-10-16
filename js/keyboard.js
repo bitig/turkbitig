@@ -1,7 +1,7 @@
 // Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
 
 // keyboard - canvas begins
-var gtext = document.getElementById("gtext");
+var gokturk = document.getElementById("gokturk");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var fontSize = 220;
@@ -87,7 +87,7 @@ document.addEventListener("keydown", (event) => {
 function updateCanvas(force = false) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  var inputText = gtext.value;
+  var inputText = gokturk.value;
   var maxWidth = canvas.width - paddingRight;
   var lines = [];
   var words = inputText.split(" ");
@@ -213,7 +213,7 @@ function downloadImage() {
 updateCanvas();
 
 var keyboardContainer = document.getElementById("keyboard");
-var gtext = document.getElementById("gokturk");
+var gokturk = document.getElementById("gokturk");
 
 keyboardContainer.addEventListener("click", function(event) {
   var clickedElement = event.target;
@@ -221,17 +221,17 @@ keyboardContainer.addEventListener("click", function(event) {
     var keyType = clickedElement.getAttribute("data-value");
     switch (keyType) {
       case "-":
-        if (/[0123456789~!@#$%&*+()? -:;"'.,]$/.test(gtext.value.slice(-1))) {
-          gtext.value = gtext.value.slice(0, -1);
+        if (/[0123456789~!@#$%&*+()? -:;"'.,]$/.test(gokturk.value.slice(-1))) {
+          gokturk.value = gokturk.value.slice(0, -1);
         } else {
-          gtext.value = gtext.value.slice(0, -2);
+          gokturk.value = gokturk.value.slice(0, -2);
         }
         break;
       case "x":
-        gtext.value = gtext.value.slice(0, -2000);
+        gokturk.value = gokturk.value.slice(0, -2000);
         break;
       default:
-        gtext.value += keyType;
+        gokturk.value += keyType;
         break;
     }
     updateCanvas();
