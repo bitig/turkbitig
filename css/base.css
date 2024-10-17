@@ -105,7 +105,8 @@ display: none;
 }
 
 input[type="color"] {
-  height: 50px;
+  width: 35px;
+  height: 55px;
 }
 
 .rs2 {
