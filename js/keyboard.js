@@ -1,6 +1,4 @@
 // Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
-
-// keyboard - canvas begins
 var gokturk = document.getElementById("gokturk");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -157,7 +155,6 @@ function downloadImage() {
 
     let minX = width, maxX = 0, minY = height, maxY = 0;
 
-    // Find the boundaries of the text
     for (let i = 0; i < data.length; i += 4) {
       const alpha = data[i + 3];
       if (alpha !== 0) {
@@ -170,7 +167,6 @@ function downloadImage() {
       }
     }
 
-    // Add padding
     const padding = 10;
     minX = Math.max(0, minX - padding);
     minY = Math.max(0, minY - padding);
@@ -180,27 +176,22 @@ function downloadImage() {
     const trimmedWidth = maxX - minX + 1;
     const trimmedHeight = maxY - minY + 1;
 
-    // Create a new canvas with the trimmed size
     const newCanvas = document.createElement('canvas');
     newCanvas.width = trimmedWidth;
     newCanvas.height = trimmedHeight;
     const newCtx = newCanvas.getContext('2d');
 
-    // Fill the new canvas with the background color
-    newCtx.fillStyle = canvasColor; // Assuming canvasColor is your background color variable
+    newCtx.fillStyle = canvasColor;
     newCtx.fillRect(0, 0, trimmedWidth, trimmedHeight);
 
-    // Draw the relevant portion of the original canvas onto the new canvas
     newCtx.drawImage(canvas, minX, minY, trimmedWidth, trimmedHeight, 0, 0, trimmedWidth, trimmedHeight);
 
-    // Generate timestamp for filename
     const now = new Date();
     const timestamp = 
       String(now.getHours()).padStart(2, '0') +
       String(now.getMinutes()).padStart(2, '0') +
       String(now.getSeconds()).padStart(2, '0');
 
-    // Create a download link and trigger the download
     const link = document.createElement('a');
     link.download = `Gokturkce_${timestamp}.png`;
     link.href = newCanvas.toDataURL();
@@ -247,9 +238,6 @@ function copyToClipboard(event) {
   console.log("Copied to clipboard: " + input.value);
 }
 
-// keyboard - canvas ends
-
-
 function toggleKeyDiv() {
     var keyDiv = document.getElementById('keydiv');
     var toggleButton = document.getElementById('toggleButton');
@@ -257,49 +245,16 @@ function toggleKeyDiv() {
     if (keyDiv.style.display === 'none' || keyDiv.style.display === '') {
         keyDiv.style.display = 'block';
         toggleButton.textContent = 'Klavyeyi kapat';
-        setLocalStorage('keyDivVisible', 'true');
     } else {
         keyDiv.style.display = 'none';
         toggleButton.textContent = 'Göktürkçe klavye';
-        setLocalStorage('keyDivVisible', 'false');
     }
 }
 
-function setLocalStorage(key, value) {
-    var now = new Date();
-    var item = {
-        value: value,
-        expiry: now.getTime() + 60000 // Current time + 1 minutes in milliseconds
-    };
-    localStorage.setItem(key, JSON.stringify(item));
-}
-
-function getLocalStorage(key) {
-    var itemStr = localStorage.getItem(key);
-    if (!itemStr) {
-        return null;
-    }
-    var item = JSON.parse(itemStr);
-    var now = new Date();
-    if (now.getTime() > item.expiry) {
-        localStorage.removeItem(key);
-        return null;
-    }
-    return item.value;
-}
-
-// Initialize the state based on local storage or default to hidden
 window.onload = function() {
     var keyDiv = document.getElementById('keydiv');
     var toggleButton = document.getElementById('toggleButton');
-    var isVisible = getLocalStorage('keyDivVisible');
 
-    if (isVisible === 'true') {
-        keyDiv.style.display = 'block';
-        toggleButton.textContent = 'Klavyeyi kapat';
-    } else {
-        keyDiv.style.display = 'none';
-        toggleButton.textContent = 'Göktürkçe klavye';
-    }
+    keyDiv.style.display = 'none';
+    toggleButton.textContent = 'Göktürkçe klavye';
 };
-
