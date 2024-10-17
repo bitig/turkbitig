@@ -1,4 +1,5 @@
 // Copyright (C) 2018-2024 turkbitig.com. All Rights Reserved.
+
 var gokturk = document.getElementById("gokturk");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -6,20 +7,26 @@ var fontSize = 220;
 var lineHeight = 0.96;
 var paddingTop = 10;
 var paddingRight = 10;
+var canvasColor = '#ffffff'; 
 var debounceTimer;
 
+// Button and input elements
 var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
 var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
 var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
 var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
 var latin = document.getElementById("latin");
+var fontColorPicker = document.getElementById("fontColor");
+var bgColorPicker = document.getElementById("bgColor");
 
+// Function to get URL parameter
 function getParameterFromURL(paramName) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(paramName);
 }
 
+// Event listeners
 latin.addEventListener("input", () => {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => {
@@ -46,32 +53,37 @@ plusButton.addEventListener("click", () => {
 });
 
 colorRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
+  radio.addEventListener("change", () => {
+    fontColorPicker.value = radio.value; // Update picker value when radio changes
     updateCanvas();
   });
 });
 
 fontRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
+  radio.addEventListener("change", () => {
     updateCanvas();
   });
 });
 
 bgColorRadios.forEach(radio => {
-  radio.addEventListener('change', (event) => {
-    if (event.target.value === 'transparent') {
-      canvas.style.backgroundColor = 'transparent';
-    } else {
-      canvasColor = event.target.value;
-      updateCanvas();
-    }
+  radio.addEventListener("change", () => {
+    bgColorPicker.value = radio.value; // Update picker value when radio changes
+    updateCanvas();
   });
+});
+
+fontColorPicker.addEventListener("input", () => {
+  updateCanvas();
+});
+
+bgColorPicker.addEventListener("input", () => {
+  updateCanvas();
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
     if (fontSize < 600) {
-      fontSize += 6;
+      fontSize = Math.min(fontSize + 6, 600); // Prevent overflow
       updateCanvas();
     }
   } else if (event.key === "ArrowRight") {
@@ -82,13 +94,14 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Main update function
 function updateCanvas(force = false) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  var inputText = gokturk.value;
+  var input = gokturk.value;
   var maxWidth = canvas.width - paddingRight;
   var lines = [];
-  var words = inputText.split(" ");
+  var words = input.split(" ");
   var currentLine = words[0];
   for (var i = 1; i < words.length; i++) {
     var testLine = currentLine + " " + words[i];
@@ -107,16 +120,24 @@ function updateCanvas(force = false) {
   var canvasHeight = textHeight + paddingTop * 2;
   canvas.height = canvasHeight;
 
-  var selectedColor = document.querySelector(
-    'input[name="colorRadio"]:checked'
-  ).value;
+  // Color selection logic
+  const defaultColor = '#000000';
+  var selectedColor = fontColorPicker.value!== defaultColor 
+   ? fontColorPicker.value 
+    : document.querySelector('input[name="colorRadio"]:checked').value;
   ctx.fillStyle = selectedColor;
 
-  var selectedFont = document.querySelector(
-    'input[name="fontRadio"]:checked'
-  ).value;
+  // Background color selection logic (prioritizes picker)
+  var selectedBgColor = bgColorPicker.value!== defaultColor 
+   ? bgColorPicker.value 
+    : document.querySelector('input[name="bgColorRadio"]:checked').value;
+  canvas.style.background = selectedBgColor;
+
+  // Font selection logic
+  var selectedFont = document.querySelector('input[name="fontRadio"]:checked').value;
   ctx.font = fontSize + "px " + selectedFont;
 
+  // Text rendering
   ctx.textAlign = "right";
   ctx.textBaseline = "top";
   ctx.direction = "rtl";
@@ -124,40 +145,35 @@ function updateCanvas(force = false) {
   var x = canvas.width - paddingRight;
   var y = paddingTop;
   for (var i = 0; i < lines.length; i++) {
-    if (y + fontSize * lineHeight > canvasHeight - paddingTop) {
+    if (y > canvasHeight - paddingTop) {
       break;
     }
     ctx.fillText(lines[i], x, y);
     y += fontSize * lineHeight;
   }
 
-  canvas.style.backgroundColor = "";
-  var selectedBgColor = document.querySelector(
-    'input[name="bgColorRadio"]:checked'
-  );
-  if (selectedBgColor) {
-    canvasColor = selectedBgColor.value;
-  }
-  canvas.style.backgroundColor = canvasColor;
-
   if (force) {
     canvas.dispatchEvent(new Event("input"));
   }
 }
 
+
 function downloadImage() {
   try {
-    updateCanvas();
+    updateCanvas(true); // Ensure canvas is updated before download
 
-    const ctx = canvas.getContext('2d');
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const { data, width, height } = imageData;
+    const originalCanvas = document.getElementById("canvas");
+    const originalCtx = originalCanvas.getContext('2d');
+    const { width, height } = originalCanvas;
 
+    // Find the bounding box of the text
+    const imageData = originalCtx.getImageData(0, 0, width, height);
+    const { data } = imageData;
     let minX = width, maxX = 0, minY = height, maxY = 0;
 
     for (let i = 0; i < data.length; i += 4) {
       const alpha = data[i + 3];
-      if (alpha !== 0) {
+      if (alpha!== 0) {
         const x = (i / 4) % width;
         const y = Math.floor((i / 4) / width);
         minX = Math.min(minX, x);
@@ -167,25 +183,36 @@ function downloadImage() {
       }
     }
 
+    // Add a bit of padding around the text
     const padding = 10;
     minX = Math.max(0, minX - padding);
     minY = Math.max(0, minY - padding);
     maxX = Math.min(width - 1, maxX + padding);
     maxY = Math.min(height - 1, maxY + padding);
 
-    const trimmedWidth = maxX - minX + 1;
-    const trimmedHeight = maxY - minY + 1;
+    // If there's no text, don't download anything
+    if (maxX <= minX || maxY <= minY) {
+      console.log("No text found on the canvas.");
+      return;
+    }
 
-    const newCanvas = document.createElement('canvas');
-    newCanvas.width = trimmedWidth;
-    newCanvas.height = trimmedHeight;
-    const newCtx = newCanvas.getContext('2d');
+    // Create a new canvas to fit the text bounding box
+    const textCanvas = document.createElement('canvas');
+    textCanvas.width = maxX - minX + 1;
+    textCanvas.height = maxY - minY + 1;
+    const textCtx = textCanvas.getContext('2d');
 
-    newCtx.fillStyle = canvasColor;
-    newCtx.fillRect(0, 0, trimmedWidth, trimmedHeight);
+    // Fill with selected background color (to ensure transparent areas are filled)
+    var selectedBgColor = bgColorPicker.value!== '#000000' 
+    ? bgColorPicker.value 
+      : document.querySelector('input[name="bgColorRadio"]:checked').value;
+    textCtx.fillStyle = selectedBgColor;
+    textCtx.fillRect(0, 0, textCanvas.width, textCanvas.height);
 
-    newCtx.drawImage(canvas, minX, minY, trimmedWidth, trimmedHeight, 0, 0, trimmedWidth, trimmedHeight);
+    // Draw the text portion onto the new canvas
+    textCtx.drawImage(originalCanvas, minX, minY, textCanvas.width, textCanvas.height, 0, 0, textCanvas.width, textCanvas.height);
 
+    // Download the new canvas
     const now = new Date();
     const timestamp = 
       String(now.getHours()).padStart(2, '0') +
@@ -194,7 +221,7 @@ function downloadImage() {
 
     const link = document.createElement('a');
     link.download = `Gokturkce_${timestamp}.png`;
-    link.href = newCanvas.toDataURL();
+    link.href = textCanvas.toDataURL();
     link.click();
   } catch (error) {
     console.error('Error downloading image:', error);
@@ -258,3 +285,6 @@ window.onload = function() {
     keyDiv.style.display = 'none';
     toggleButton.textContent = 'Göktürkçe klavye';
 };
+
+updateCanvas();
+
