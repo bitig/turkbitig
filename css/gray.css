@@ -245,3 +245,8 @@ background-color:#CCC;
 color:#000;
 background-color:#EEE;
 }
+
+.rs input:checked + span {
+display:block;
+background-color: #FFF;
+}

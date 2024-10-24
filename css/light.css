@@ -236,3 +236,8 @@ border:1px solid #999;
 .footer {
 background-color:#EEE;
 }
+
+.rs input:checked + span {
+display:block;
+background-color: #9DF;
+}
