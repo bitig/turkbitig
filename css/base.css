@@ -565,3 +565,7 @@ width:100%;
 red {
 	color:#C00;
 }
+
+.rs input:checked + span {
+border-radius: 3px;
+}
