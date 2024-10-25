@@ -35,10 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const {
-      containerId,
-      newIndex
-    } = getContainerDetails(wordElement);
+    const { containerId, newIndex } = getContainerDetails(wordElement);
 
     if (e.type === 'click') {
       updateClickedHighlight(containerId, newIndex, state);
@@ -47,37 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (e.type === 'mouseleave') {
       clearHoverHighlight();
     }
-
-    // Target the original elements
-    const originalElements = wordElement.closest('[id]').querySelectorAll('.word');
-    if (e.type === 'click') {
-      originalElements.forEach(element => {
-        if (element.dataset.index === wordElement.dataset.index) {
-          element.classList.add('clicked-highlight');
-        }
-      });
-    } else if (e.type === 'mouseover') {
-      originalElements.forEach(element => {
-        if (element.dataset.index === wordElement.dataset.index) {
-          if (!element.textContent.includes(':')) {
-            element.classList.add('hover-highlight');
-          }
-        }
-      });
-    } else if (e.type === 'mouseleave') {
-      originalElements.forEach(element => {
-        element.classList.remove('hover-highlight');
-      });
-    }
   };
 
   const getContainerDetails = (wordElement) => {
     const containerId = wordElement.closest('[id]').id;
     const newIndex = parseInt(wordElement.dataset.index);
-    return {
-      containerId,
-      newIndex
-    };
+    return { containerId, newIndex };
   };
 
   const updateHoverHighlight = (containerId, index, state) => {
@@ -123,3 +95,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
