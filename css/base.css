@@ -574,9 +574,8 @@ border-radius: 3px;
 .highlight { background-color: yellow; } 
 .mt,.mu { cursor: pointer; }
 
-.word {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
+.word:focus {
+  /* Define your custom focus style here, e.g., */
+  box-shadow: 0 0 0 2px #51a7e8; /* A blue glow, but you can customize the color and style */
+  outline: none; /* Optionally remove the default outline if your custom style covers the need */
 }
-
-
