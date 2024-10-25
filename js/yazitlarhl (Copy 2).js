@@ -1,6 +1,5 @@
-// Copyright (C) turkbitig.com. All Rights Reserved.
-
 document.addEventListener('DOMContentLoaded', () => {
+    // State management using a single object
     const state = {
         currentContainer: null,
         currentIndex: null,
@@ -8,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clickedIndex: null
     };
 
+    // Process all containers once and cache selectors
     const processContainers = () => {
         const containers = document.querySelectorAll('[id] .mu, [id] .mt');
         containers.forEach(element => {
@@ -18,14 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const bindEventListeners = () => {
-        document.querySelectorAll('.word').forEach(word => {
-            word.addEventListener('mouseover', handleWordInteraction);
-            word.addEventListener('mouseleave', handleWordInteraction);
-            word.addEventListener('click', handleWordInteraction);
-        });
-    };
-
+    // Single event handler for both mouseover and click
     const handleWordInteraction = (e) => {
         const wordElement = e.target.closest('.word');
         if (!wordElement) {
@@ -35,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const { containerId, newIndex } = getContainerDetails(wordElement);
+        const containerId = wordElement.closest('[id]').id;
+        const newIndex = wordElement.dataset.index;
 
         if (e.type === 'click') {
             updateClickedHighlight(containerId, newIndex, state);
@@ -46,53 +40,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const getContainerDetails = (wordElement) => {
-        const containerId = wordElement.closest('[id]').id;
-        const newIndex = parseInt(wordElement.dataset.index);
-        return { containerId, newIndex };
-    };
-
+    // Update hover highlight
     const updateHoverHighlight = (containerId, index, state) => {
+        // Clear previous hover highlights
+        clearHoverHighlight();
+
+        // Add hover highlight
         const container = document.getElementById(containerId);
-        const words = container.querySelectorAll(`.word[data-index="${index}"]`);
-        words.forEach(word => {
+        container.querySelectorAll(`.word[data-index="${index}"]`).forEach(word => {
             if (!word.textContent.includes(':')) {
                 word.classList.add('hover-highlight');
             }
         });
+
+        state.currentContainer = containerId;
+        state.currentIndex = index;
     };
 
+    // Update clicked highlight
     const updateClickedHighlight = (containerId, index, state) => {
         clearClickedHighlight(state);
+        
         const container = document.getElementById(containerId);
-        const words = container.querySelectorAll(`.word[data-index="${index}"]`);
-        words.forEach(word => {
+        container.querySelectorAll(`.word[data-index="${index}"]`).forEach(word => {
             if (!word.textContent.includes(':')) {
                 word.classList.add('clicked-highlight');
             }
         });
+
+        state.clickedContainer = containerId;
+        state.clickedIndex = index;
     };
 
+    // Clear hover highlight
+    const clearHoverHighlight = () => {
+        document.querySelectorAll('.hover-highlight')
+            .forEach(word => word.classList.remove('hover-highlight'));
+    };
+
+    // Clear clicked highlight
     const clearClickedHighlight = (state) => {
-        document.querySelectorAll('.clicked-highlight').forEach(word => word.classList.remove('clicked-highlight'));
+        document.querySelectorAll('.clicked-highlight')
+            .forEach(word => word.classList.remove('clicked-highlight'));
         state.clickedContainer = null;
         state.clickedIndex = null;
     };
 
-    const clearHoverHighlight = () => {
-        document.querySelectorAll('.hover-highlight').forEach(word => word.classList.remove('hover-highlight'));
-    };
-
+    // Initialize
     processContainers();
-    bindEventListeners();
 
-    // Unbind event listeners when the script ends or the page is unloaded
-    window.addEventListener('beforeunload', () => {
-        document.querySelectorAll('.word').forEach(word => {
-            word.removeEventListener('mouseover', handleWordInteraction);
-            word.removeEventListener('mouseleave', handleWordInteraction);
-            word.removeEventListener('click', handleWordInteraction);
-        });
+    // Event listeners - attached to word elements for accuracy
+    document.querySelectorAll('.word').forEach(word => {
+        word.addEventListener('mouseover', handleWordInteraction);
+        word.addEventListener('mouseleave', handleWordInteraction);
+        word.addEventListener('click', handleWordInteraction);
     });
 });
 
