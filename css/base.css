@@ -569,3 +569,8 @@ red {
 .rs input:checked + span {
 border-radius: 3px;
 }
+
+/* Yazıtlar Highlight Style */
+.highlight { background-color: yellow; } 
+.mt,.mu { cursor: pointer; }
+
