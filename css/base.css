@@ -574,3 +574,9 @@ border-radius: 3px;
 .highlight { background-color: yellow; } 
 .mt,.mu { cursor: pointer; }
 
+.word {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+
