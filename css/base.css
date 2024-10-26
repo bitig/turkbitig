@@ -573,20 +573,9 @@ red {
 border-radius: 3px;
 }
 
-/* Yazıtlar Highlight Style */
-.highlight { background-color: yellow; } 
-.mt,.mu { cursor: pointer; }
-
-    .word {
-        cursor: pointer;
-    }
-    .hover-highlight {
-        background-color: yellow;
-    }
-    .clicked-highlight {
-        background-color: #FFD030;
-    }
-    .hover-highlight.clicked-highlight {
-        background-color: #FFD030;
-    }
+/* Yazıtlar highlight style */
+.mu, .mt, .mtr {cursor: pointer; }
+.hover-highlight {background-color: #FF3;}
+.clicked-highlight {background-color: #F93;}
+.hover-highlight.clicked-highlight {background-color: #F93;}
 
