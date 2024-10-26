@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const processContainers = () => {
-    const containers = document.querySelectorAll('[id] .mu, [id] .mt, [id] .mtr');
+    const containers = document.querySelectorAll('[id] .mu, [id] .mt');
     containers.forEach(element => {
       element.innerHTML = element.textContent
         .split(' ')
