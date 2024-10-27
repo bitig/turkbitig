@@ -372,7 +372,6 @@ list-style-type: square;
 
 .d {
 margin-top:1em;
-font-weight:bold;
 }
 
 .mu  {
@@ -393,12 +392,11 @@ padding:0.5%;
 padding-bottom:0.5em;
 ffont-weight:bold;
 font-family:monospace;
-color:#600;
+color:#900;
 }
 
 .mtr {
 padding:0.5%;
-line-height: 130%;
 }
 
 .irk {
@@ -576,6 +574,6 @@ border-radius: 3px;
 /* Yazıtlar highlight style */
 .mu, .mt, .mtr {cursor: pointer; }
 .hover-highlight {background-color: #FF3;}
-.clicked-highlight {background-color: #F93;}
-.hover-highlight.clicked-highlight {background-color: #F93;}
+.clicked-highlight {background-color: #FC3;}
+.hover-highlight.clicked-highlight {background-color: #FC3;}
 
