@@ -571,6 +571,8 @@ border-radius: 3px;
 .hover-highlight.clicked-highlight {background-color: #FC3;}
 
 .path {
+padding-top:11px;
+padding-bottom:6px;
 line-height:1.8;
 margin-left:1%;
 }
