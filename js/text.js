@@ -8,7 +8,7 @@
  var resetBtn = document.getElementById("resetBtn");
 
  // Set the initial font size
- var initialFontSize = 18;
+ var initialFontSize = 20;
  var fSize = initialFontSize;
 
  // Retrieve the font size preference from localStorage (if available)
