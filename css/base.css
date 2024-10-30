@@ -150,11 +150,6 @@ padding-left:6px;
 padding-right:6px;
 }
 
-.logo {
-width:180px;
-height:39px;
-}
-
 img {
 border-radius: 7px 7px 7px 7px;
 max-width:100%;
@@ -578,6 +573,13 @@ border-radius: 3px;
 .hover-highlight.clicked-highlight {background-color: #FC3;}
 
 .path {
-margin-top:11px;
-margin-left:2%;
+line-height:1.8;
+margin-left:1%;
 }
+
+.logo {
+vertical-align:bottom;
+width:41px;
+height:39px;
+}
+
