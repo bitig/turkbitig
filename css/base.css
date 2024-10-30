@@ -278,7 +278,6 @@ text-transform: uppercase;
 .nav {
 font-weight:bold;
 padding-left:2%;
-margin-top:1em;
 }
 
 @media only screen and (min-width: 600px) {
@@ -510,7 +509,6 @@ padding-bottom:3em;
 #prevnext {
 margin-left:6%;
 font-weight:bold;
-padding-top:0.5em;
 }
 
 .ar {
