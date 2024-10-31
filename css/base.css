@@ -374,12 +374,12 @@ margin-top:1em;
 }
 
 .mu  {
-line-height:1.3;
+line-height:1.2;
 direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: tbldamga;
-font-size: 180%;
+font-size: 150%;
 padding-left:1%;
 padding-right:1%;
 padding-bottom:4px;
@@ -453,7 +453,7 @@ padding:5px;
 #isim {
 white-space: nowrap;
 font-family: tamga;
-font-size:500%;
+font-size:380%;
 padding: 10px;
 margin: 10px;
 border: 1px solid #ccc;
