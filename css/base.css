@@ -9,7 +9,7 @@ font-size:18px;
 
 @media only screen and (max-width: 600px) {
 body {
-font-size:24px;
+font-size:22px;
 }
 }
 
@@ -162,7 +162,6 @@ max-width:100%;
 }
 
 code {
-font-size:110%;
 font-weight: bold;
 }
 
@@ -390,12 +389,12 @@ padding-bottom:4px;
 line-height:1.3;
 padding:0.5%;
 padding-bottom:0.5em;
-ffont-weight:bold;
 font-family:monospace;
 color:#900;
 }
 
 .mtr {
+font-size:90%;
 padding:0.5%;
 }
 
@@ -406,7 +405,7 @@ direction:rtl;
 unicode-bidi:bidi-override;
 text-align:right;
 font-family: 'irkbitig', 'turkic';
-font-size:140%;
+font-size:120%;
 }
 
 .iblat {
@@ -454,7 +453,7 @@ padding:5px;
 #isim {
 white-space: nowrap;
 font-family: tamga;
-font-size:86px;
+font-size:500%;
 padding: 10px;
 margin: 10px;
 border: 1px solid #ccc;
