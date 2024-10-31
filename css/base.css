@@ -10,6 +10,7 @@ font-size:18px;
 @media only screen and (max-width: 600px) {
 body {
 font-size:22px;
+line-height:1.3;
 }
 }
 
