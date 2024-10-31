@@ -258,3 +258,8 @@ background-color: #FFF;
 .rs {
 background-color:#E6E6E6;
 }
+
+.rs:active {
+background-color:#FFF;
+}
+

@@ -230,6 +230,12 @@ display:block;
 background-color: #368;
 }
 
+.rs:active {
+    background-color:#368;
+}
+
 .rs {
 background-color:#666;
 }
+
+

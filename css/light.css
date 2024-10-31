@@ -245,3 +245,8 @@ background-color: #9DF;
 .rs {
 background-color:#EEE;
 }
+
+.rs:active {
+background-color:#9DF;
+}
+
