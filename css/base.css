@@ -135,6 +135,15 @@ border-spacing:0px;
 border-collapse:collapse;
 }
 
+
+@media only screen and (max-width: 600px) {
+
+.colortable {font-size:90%;}
+
+}
+
+
+
 .keytable {
 margin-top: 10px;
 max-width:510px;
