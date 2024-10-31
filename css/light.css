@@ -4,15 +4,15 @@ color:#111;
 }
 
 a:link 	{
-color:#369;
+color:#039;
 }
 
 a:visited 	{
-color:#369;
+color:#039;
 }
 
 a:active 	{
-color:#369;
+color:#039;
 }
 
 a:hover {
@@ -68,8 +68,8 @@ border:1px solid #eee;
 }
 
 .sitenav {
-box-shadow: 3px 3px 5px #ccc;
-background-color: #fcfcfc;
+box-shadow: 3px 3px 5px #999;
+background-color: #EEE;
 border-bottom:1px solid #f6f6f6;
 }
 
@@ -240,4 +240,8 @@ background-color:#EEE;
 .rs input:checked + span {
 display:block;
 background-color: #9DF;
+}
+
+.rs {
+background-color:#EEE;
 }

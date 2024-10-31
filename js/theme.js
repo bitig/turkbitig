@@ -12,7 +12,7 @@ let currentTheme = localStorage.getItem('themePreference');
 // Check if a theme preference is stored in local storage
 if (!currentTheme) {
   // Set the default theme preference to light
-  currentTheme = 'gray';
+  currentTheme = 'light';
 }
 
 // Apply the initial theme preference

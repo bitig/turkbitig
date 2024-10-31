@@ -92,6 +92,7 @@ border-radius:3px;
 
 .bs {
   background-image: url("/image/transp.png");
+  border:1px solid #333;
 }
 
 #latin {
