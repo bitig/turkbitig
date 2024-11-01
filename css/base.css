@@ -326,6 +326,8 @@ width:58%;
 }
 
 .ibtr {
+font-size:90%;
+padding-top:0.1em;
 padding-bottom:1em;
 }
 
@@ -421,7 +423,6 @@ font-size:110%;
 }
 
 .iblat {
-font-weight: bold;
 font-family:monospace;
 }
 
@@ -582,6 +583,12 @@ border-radius: 3px;
 
 /* Yazıtlar highlight style */
 .mu, .mt, .mtr {cursor: pointer; }
+.hover-highlight {background-color: #FF3;}
+.clicked-highlight {background-color: #FC3;}
+.hover-highlight.clicked-highlight {background-color: #FC3;}
+
+/* IrkBitig highlight style */
+.irk, .iblat, .ibtr {cursor: pointer; }
 .hover-highlight {background-color: #FF3;}
 .clicked-highlight {background-color: #FC3;}
 .hover-highlight.clicked-highlight {background-color: #FC3;}
