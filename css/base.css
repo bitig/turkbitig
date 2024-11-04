@@ -605,20 +605,20 @@ border-radius: 3px;
 .hover-highlight.clicked-highlight {background-color: #FC3;}
 
 .path {
-padding-top:8px;
-padding-bottom:3px;
-line-height:1.8;
+padding-top:2px;
+padding-bottom:2px;
 margin-left:1%;
 }
 
 .logo {
 vertical-align:bottom;
-width:41px;
-height:39px;
+width:50px;
+height:46px;
 }
 
 .logo1 {
-width:180px;
-height:39px;
+vertical-align:bottom;
+width:200px;
+height:46px;
 }
 

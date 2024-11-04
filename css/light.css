@@ -250,3 +250,11 @@ background-color:#EEE;
 background-color:#9DF;
 }
 
+.logo {
+filter: drop-shadow(1px 1px 0px #FFF);
+}
+
+.logo1 {
+filter: drop-shadow(1px 1px 0px #FFF);
+}
+
