@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Canvas Text Editor</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        canvas { border: 1px solid black; display: block; margin: 20px auto; width: 80%; }
+        .controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .controls input, .controls select { padding: 5px; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <input type="text" id="textInput" placeholder="Enter text" oninput="updateCanvas()">
+        <input type="color" id="textColor" value="#000000" oninput="updateCanvas()">
+        <input type="color" id="bgColor" value="#ffffff" oninput="updateCanvas()">
+        <input type="number" id="textSize" value="20" oninput="updateCanvas()">
+        <select id="fontFamily" onchange="updateCanvas()">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+        </select>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function updateCanvas() {
+            const text = document.getElementById('textInput').value;
+            const textColor = document.getElementById('textColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const textSize = document.getElementById('textSize').value;
+            const fontFamily = document.getElementById('fontFamily').value;
+
+            ctx.font = `${textSize}px ${fontFamily}`;
+            const lines = wrapText(ctx, text, canvas.width - 20);
+            const textHeight = parseInt(textSize, 10) * lines.length;
+            canvas.height = textHeight + 20;
+
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = textColor;
+            ctx.textBaseline = 'top';
+            lines.forEach((line, index) => {
+                ctx.font = `${textSize}px ${fontFamily}`;
+                ctx.fillText(line, 10, 10 + index * parseInt(textSize, 10));
+            });
+        }
+
+        function wrapText(ctx, text, maxWidth) {
+            const words = text.split(' ');
+            const lines = [];
+            let line = '';
+
+            words.forEach(word => {
+                const testLine = line + word + ' ';
+                const testWidth = ctx.measureText(testLine).width;
+                if (testWidth > maxWidth && line) {
+                    lines.push(line);
+                    line = word + ' ';
+                } else {
+                    line = testLine;
+                }
+            });
+            lines.push(line);
+            return lines;
+        }
+
+        // Initial setup
+        canvas.width = document.documentElement.clientWidth * 0.8;
+        updateCanvas();
+        
+        // Adjust canvas width on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = document.documentElement.clientWidth * 0.8;
+            updateCanvas();
+        });
+    </script>
+</body>
+</html>
+
