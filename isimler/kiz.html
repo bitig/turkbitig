@@ -18,23 +18,16 @@
 </head>
 <body><script src="/js/theme.js"></script>
 
-<div class="sitenav"><span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span>
-
-<div class="path">
- <a href="/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a>
- <a href="/isimler/">İsimler</a> &gt;
- <a href="/isimler/kiz.html#top">Kız</a>
-</div><!--path end-->
+<div class="sitenav">
+<span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span>
+<div id="logo">
+<a href="/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a></div><!--logo end-->
 </div><!--sitenav end-->
-
-
 
 <main><div class="content">
 
 <h1>Kız İsimleri</h1>
 <p>Türkiye ve Türk dünyasında yaygın kullanılan kız (bebek) isimleri ve bunların Göktürk alfabesi ile (Göktürkçe) yazılışı.</p>
-
-<ul><li><a href="/gokturkce/">Göktürk alfabesi çeviri yazıcı</a></li></ul>
 
 <p><a href="/isimler/erkek.html">Erkek</a> | Kız | <a href="/isimler/">Hepsi</a></p>
 
@@ -356,59 +349,9 @@
 <li><a href="zeynep.html"><code>ZEYNEP</code> <span class="damgar">𐰔𐰀𐰘𐰤𐰯</span></a></li>
 </ol>	
 
-<script>
-// Retrieve the necessary elements
-var olElement = document.getElementById("namelist");
-var listItems = Array.from(olElement.getElementsByTagName("li"));
-var originalOrder = listItems.slice(); // Make a copy of the original order
-
-// Sort the list items in ascending order (A-Z) based on the second character
-function sortAscending() {
-  listItems.sort(function(a, b) {
-    var textA = a.textContent.trim().charAt(1).toLowerCase();
-    var textB = b.textContent.trim().charAt(1).toLowerCase();
-    return textA.localeCompare(textB);
-  });
-
-  updateList();
-}
-
-// Sort the list items in descending order (Z-A) based on the second character
-function sortDescending() {
-  listItems.sort(function(a, b) {
-    var textA = a.textContent.trim().charAt(1).toLowerCase();
-    var textB = b.textContent.trim().charAt(1).toLowerCase();
-    return textB.localeCompare(textA);
-  });
-
-  updateList();
-}
-
-// Reset the list items to the original order
-function resetSorting() {
-  listItems = originalOrder.slice();
-  updateList();
-}
-
-// Update the <ol> element with the sorted list items
-function updateList() {
-  for (var i = 0; i < listItems.length; i++) {
-    olElement.appendChild(listItems[i]);
-  }
-}
-
-// Retrieve the buttons
-var ascendingBtn = document.getElementById("ascendingBtn");
-var descendingBtn = document.getElementById("descendingBtn");
-var resetBtn = document.getElementById("resetBtn");
-
-// Add event listeners to the buttons
-ascendingBtn.addEventListener("click", sortAscending);
-descendingBtn.addEventListener("click", sortDescending);
-resetBtn.addEventListener("click", resetSorting);
-</script>
-
 <p>Göktürk Alfabesi'nde CFHV harfleri olmadığı için bu harfleri içeren isimleri (sev~ ve han hariç) yazmak mümkün değildir. </p>
+
+<ul><li><a href="/gokturkce/">Göktürk alfabesi çeviri yazıcı</a></li></ul>
 
 </div></main>
 

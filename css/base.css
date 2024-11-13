@@ -256,14 +256,12 @@ z-index: 99;
 position:sticky;
 top: 0;
 padding-bottom: 6px;
-margin-bottom:20px;
 }
 
 .tabs {
-position:sticky;
-top: 0;
-padding-top: 6px;
+padding-top: 16px;
 padding-left: 2%;
+margin-bottom:6px;
 }
 
 .tabs a {
@@ -615,18 +613,15 @@ border-radius: 3px;
 .hover-highlight.clicked-highlight {background-color: #FC3;}
 
 .path {
-padding-top:2px;
-padding-bottom:2px;
-margin-left:1%;
+padding-top: 16px;
+padding-left: 2%;
+margin-bottom:6px;
+}
+
+#logo {
 }
 
 .logo {
-vertical-align:bottom;
-width:50px;
-height:46px;
-}
-
-.logo1 {
 vertical-align:bottom;
 width:200px;
 height:46px;
