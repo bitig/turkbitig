@@ -512,12 +512,14 @@ min-width:1.6em;
 
 .content {
 max-width:700px;
+padding-top:9px;
 padding-left:2%;
 padding-right:2%;
 }
 
 .contenti {
 max-width:1200px;
+padding-top:9px;
 padding-left:2%;
 padding-right:2%;
 }
