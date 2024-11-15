@@ -629,8 +629,15 @@ width:200px;
 height:46px;
 }
 
+@font-face {
+  font-family: 'kuran';
+  src: url('/font/kuranfont.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 .ar {
-  line-height:2.5;
-  font-family: "Amiri Quran", serif;
+  font-family: 'kuran', serif;
+  line-height:2;
 }
 
