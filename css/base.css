@@ -613,9 +613,17 @@ border-radius: 3px;
 .hover-highlight.clicked-highlight {background-color: #FC3;}
 
 .path {
+font-weight:bold;
 padding-top: 16px;
 padding-left: 2%;
 margin-bottom:6px;
+}
+
+.path a{
+text-decoration:none;
+border:1px solid #999;
+border-radius:5px;
+padding:6px;
 }
 
 #logo {

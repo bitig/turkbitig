@@ -258,3 +258,8 @@ filter: drop-shadow(1px 1px 0px #FFF);
 filter: drop-shadow(1px 1px 0px #FFF);
 }
 
+.path a{
+background-color:#EEE;
+color:#333;
+}
+
