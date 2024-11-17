@@ -14,7 +14,6 @@ line-height:1.3;
 }
 }
 
-
 a:active    {
 filter: brightness(106%);
 text-decoration:none;
@@ -137,14 +136,11 @@ border-spacing:0px;
 border-collapse:collapse;
 }
 
-
 @media only screen and (max-width: 600px) {
 
 .colortable {font-size:90%;}
 
 }
-
-
 
 .keytable {
 margin-top: 10px;
@@ -372,12 +368,15 @@ margin-right:5%;
 font-size:130%;
 font-weight:bold;
 text-decoration:none;
+border:1px solid #999;
+border-radius: 4px;
+padding:3px;
 }
 
 .menulink:active {
-color:#69F;
+color:#666;
+background-color:#EEE;
 }
-
 
 hr {
 height:2px;
@@ -536,7 +535,6 @@ padding-left:6%;
 @media only screen and (max-width: 600px) {
 .content {font-size:23px;}
 }
-
 
 .footer {
 margin-top:3em;
