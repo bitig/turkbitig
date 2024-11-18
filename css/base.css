@@ -248,9 +248,6 @@ margin: 0 auto;
 }
 
 .sitenav {
-z-index: 99;
-position:sticky;
-top: 0;
 padding-bottom: 6px;
 }
 
