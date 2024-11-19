@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Text Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .control-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+            margin-right: 10px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            max-width: 100%;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label for="text">Text:</label>
+            <textarea id="text">Enter your text here...</textarea>
+        </div>
+        <div class="control-group">
+            <label for="textColor">Text Color:</label>
+            <input type="color" id="textColor" value="#000000">
+        </div>
+        <div class="control-group">
+            <label for="bgColor">Background Color:</label>
+            <input type="color" id="bgColor" value="#ffffff">
+        </div>
+        <div class="control-group">
+            <label for="fontSize">Font Size:</label>
+            <input type="range" id="fontSize" min="8" max="72" value="16">
+            <span id="fontSizeValue">16px</span>
+        </div>
+        <div class="control-group">
+            <label for="fontFamily">Font:</label>
+            <select id="fontFamily">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const text = document.getElementById('text');
+        const textColor = document.getElementById('textColor');
+        const bgColor = document.getElementById('bgColor');
+        const fontSize = document.getElementById('fontSize');
+        const fontSizeValue = document.getElementById('fontSizeValue');
+        const fontFamily = document.getElementById('fontFamily');
+
+        // Set initial canvas size
+        canvas.width = 600;
+        canvas.height = 300;
+
+        function wrapText(text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let lines = [];
+
+            for(let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = ctx.measureText(testLine);
+                const testWidth = metrics.width;
+
+                if (testWidth > maxWidth && n > 0) {
+                    lines.push(line);
+                    line = words[n] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+            lines.push(line);
+
+            return lines;
+        }
+
+        function updateCanvas() {
+            // Set font
+            const fontString = `${fontSize.value}px ${fontFamily.value}`;
+            ctx.font = fontString;
+
+            // Calculate wrapped text
+            const padding = 20;
+            const maxWidth = canvas.width - (padding * 2);
+            const lineHeight = parseInt(fontSize.value) * 1.2;
+            const lines = wrapText(text.value, padding, padding, maxWidth, lineHeight);
+
+            // Calculate required canvas height
+            const requiredHeight = (lines.length * lineHeight) + (padding * 2);
+            canvas.height = requiredHeight;
+
+            // Set background
+            ctx.fillStyle = bgColor.value;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Set text color and font again (needed after canvas resize)
+            ctx.fillStyle = textColor.value;
+            ctx.font = fontString;
+
+            // Draw text
+            let y = padding + (parseInt(fontSize.value));
+            lines.forEach(line => {
+                ctx.fillText(line, padding, y);
+                y += lineHeight;
+            });
+        }
+
+        // Event listeners
+        text.addEventListener('input', updateCanvas);
+        textColor.addEventListener('input', updateCanvas);
+        bgColor.addEventListener('input', updateCanvas);
+        fontSize.addEventListener('input', () => {
+            fontSizeValue.textContent = fontSize.value + 'px';
+            updateCanvas();
+        });
+        fontFamily.addEventListener('change', updateCanvas);
+
+        // Initial render
+        updateCanvas();
+    </script>
+</body>
+</html>
