@@ -26,7 +26,7 @@ window.onload = function() {
 
         context.fillStyle = "#000000";
 
-        const fontSize = 86;
+        const fontSize = 70;
         const font = window.getComputedStyle(element).fontFamily;
         context.font = fontSize + "px " + font;
 
