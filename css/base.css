@@ -552,6 +552,7 @@ font-size:110%;
 
 .tur {
 width:60%;
+font-size:95%;
 }
 
 .lat {
@@ -559,14 +560,13 @@ font-size:90%;
 }
 
 .nr {
-padding-right:8px;
 font-size:80%;
-color:#C00;
 }
 
 @media only screen and (max-width: 600px) {
 .tur {
 line-height:1.2;
+font-size:92%;
 }
 
 .ar {
