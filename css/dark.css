@@ -74,39 +74,6 @@ background-color: #30363C;
 border-bottom:1px solid #60666C;
 }
 
-.tabs {
-font-weight:normal;
-background: #26303F;
-border-bottom:3px solid #666;
-border-image:none;
-}
-
-.tabs a {
-text-shadow: 0px 0px 0px;
-background: #3f3f3f;
-border: 1px solid #999;
-border-bottom:0;
-}
-
-.tabs a:active {
-background: #666;
-box-shadow: inset 1px 2px 3px #ccc;
-}
-
-.tabs a.current {
-color: #DDD;
-border: 1px solid #999;
-border-bottom: 6px solid #333;
-background:#30363C;
-}
-
-.tabs a.parent {
-color: #DDD;
-border: 1px solid #CCC;
-border-bottom: 6px solid #333;
-background:#30363C;
-}
-
 .nnav {
 font-weight:normal;
 }

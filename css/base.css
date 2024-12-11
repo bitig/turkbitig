@@ -252,9 +252,7 @@ padding-bottom: 6px;
 }
 
 .tabs {
-padding-top: 16px;
-padding-left: 2%;
-margin-bottom:6px;
+ margin-bottom:10px;
 }
 
 .tabs a {
@@ -269,14 +267,15 @@ text-decoration: none;
 }
 
 .tabs a:active {
+color: #666;
+background: #f6f6f6;
 }
 
 .tabs a.current {
-padding-bottom: 6px;
+border-radius: 5px;
 }
 
 .tabs a.parent {
-padding-bottom: 6px;
 }
 
 .tabs a.bas {
@@ -285,20 +284,16 @@ text-transform: uppercase;
 
 .nav {
 font-weight:bold;
-padding-left:2%;
-}
-
-@media only screen and (min-width: 600px) {
-.nav {padding-left:6%;}
 }
 
 .nav a{
-border-right: 1px solid #ccc;  
 padding:5px;
 white-space: nowrap;
 }
 
 .nav a.this {
+border:1px solid #999;
+border-radius: 5px;
 padding-bottom:5px;
 text-decoration:none;
 }

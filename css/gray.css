@@ -82,45 +82,20 @@ background-color: #DDD;
 border-bottom:1px solid #f6f6f6;
 }
 
-.tabs {
-font-weight:bold;
-background-color: #E3E9f6;
-background-image: linear-gradient(to right, #CCC, #DDD);
-border-bottom:3px solid #58D;
-border-image: linear-gradient(to right, #58D, #DDD) 30;
-}
-
 .tabs a {
-color: #555;
-text-shadow: 1px 1px 2px #fff;
-background-color: #ddd;
-background: linear-gradient(#fff, #f0f0f0, #ddd);
-border: 1px solid #999;
-border-bottom:0;
 }
 
 .tabs a:hover {
 }
 
 .tabs a:active {
-background: #f6f6f6;
-box-shadow: inset 1px 2px 3px #ccc;
 }
 
 .tabs a.current {
-color: #333;
-background:#EEE;
-background: linear-gradient(#fff, #f0f0f0, #ddd);
-border: 1px solid #36c;
-border-bottom: 6px solid #DDD;
+border:1px solid #999;
 }
 
 .tabs a.parent {
-color: #333;
-background:#EEE;
-background: linear-gradient(#fff, #f0f0f0, #ddd);
-border: 1px solid #36c;
-border-bottom: 6px solid #DDD;
 }
 
 .nnav {
