@@ -54,7 +54,13 @@ font-family:'damgab';
 direction:rtl;
 unicode-bidi: bidi-override;
 }
-	 
+	
+.rtl {
+direction:rtl;
+text-align:right;
+}
+
+	
 .canvasback {
   background-image: linear-gradient(to bottom, 
   	rgba(255, 255, 255, 1), 
