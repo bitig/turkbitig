@@ -376,6 +376,15 @@ color:#666;
 background-color:#EEE;
 }
 
+.xlink {
+font-size:80%;
+font-weight:bold;
+float:right;
+margin-top:6px;
+margin-right:5%;
+}
+
+
 hr {
 height:2px;
 border:0px;
