@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Canvas Text Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #controls {
+            margin-bottom: 20px;
+        }
+        label {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+        input, select, textarea {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        #canvas {
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Interactive Canvas Text Editor</h1>
+
+<div id="controls">
+    <label>
+        Text:
+        <textarea id="textInput" rows="4" cols="50">Hello, World!</textarea>
+    </label>
+    <br>
+    <label>
+        Text Color:
+        <input type="color" id="textColor" value="#000000">
+    </label>
+    <label>
+        Background Color:
+        <input type="color" id="bgColor" value="#ffffff">
+    </label>
+    <br>
+    <label>
+        Font Size:
+        <input type="number" id="fontSize" value="30" min="10" max="100"> px
+    </label>
+    <label>
+        Font:
+        <select id="fontFamily">
+            <option value="Arial">Arial</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="'Times New Roman'">Times New Roman</option>
+            <option value="'Courier New'">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="'Comic Sans MS'">Comic Sans MS</option>
+        </select>
+    </label>
+</div>
+
+<canvas id="canvas" width="600" height="200"></canvas>
+
+<script>
+    // Get HTML elements
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const textInput = document.getElementById('textInput');
+    const textColor = document.getElementById('textColor');
+    const bgColor = document.getElementById('bgColor');
+    const fontSize = document.getElementById('fontSize');
+    const fontFamily = document.getElementById('fontFamily');
+
+    // Event listeners for live updates
+    textInput.addEventListener('input', updateCanvas);
+    textColor.addEventListener('input', updateCanvas);
+    bgColor.addEventListener('input', updateCanvas);
+    fontSize.addEventListener('input', updateCanvas);
+    fontFamily.addEventListener('change', updateCanvas);
+
+    function updateCanvas() {
+        // Get values
+        const text = textInput.value;
+        const color = textColor.value;
+        const background = bgColor.value;
+        const size = parseInt(fontSize.value, 10);
+        const font = fontFamily.value;
+
+        // Set font
+        ctx.font = `${size}px ${font}`;
+        ctx.textBaseline = 'top';
+
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Prepare text wrapping
+        const lineHeight = size * 1.2;
+        const maxWidth = canvas.width - 20; // Padding
+        const words = text.split(' ');
+        let lines = [];
+        let currentLine = '';
+
+        // Wrap text
+        for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            const testLine = currentLine + word + ' ';
+            const metrics = ctx.measureText(testLine);
+            const testWidth = metrics.width;
+
+            if (testWidth > maxWidth && i > 0) {
+                lines.push(currentLine);
+                currentLine = word + ' ';
+            } else {
+                currentLine = testLine;
+            }
+        }
+        lines.push(currentLine);
+
+        // Adjust canvas height if necessary
+        const requiredHeight = lines.length * lineHeight + 20; // Padding
+        if (canvas.height !== requiredHeight) {
+            canvas.height = requiredHeight;
+        }
+
+        // Redraw background after resizing
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw text
+        ctx.fillStyle = color;
+        ctx.font = `${size}px ${font}`;
+        ctx.textBaseline = 'top';
+
+        for (let j = 0; j < lines.length; j++) {
+            ctx.fillText(lines[j], 10, 10 + j * lineHeight);
+        }
+    }
+
+    // Initial canvas update
+    updateCanvas();
+</script>
+
+</body>
+</html>
+
