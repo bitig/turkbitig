@@ -15,13 +15,15 @@ var strokeColor = '#000000';
 // Button and input elements
 var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
+var strokeMinusButton = document.getElementById("strokeMinus");
+var strokePlusButton = document.getElementById("strokePlus");
+var strokeWidthDisplay = document.getElementById("strokeWidthDisplay");
 var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
 var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
 var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
 var latin = document.getElementById("latin");
 var fontColorPicker = document.getElementById("fontColor");
 var bgColorPicker = document.getElementById("bgColor");
-var strokeWidthInput = document.getElementById("strokeWidth");
 var strokeColorPicker = document.getElementById("strokeColor");
 
 // Function to get URL parameter
@@ -56,6 +58,22 @@ plusButton.addEventListener("click", () => {
   }
 });
 
+strokeMinusButton.addEventListener("click", () => {
+  if (strokeWidth > 0) {
+    strokeWidth -= 1;
+    strokeWidthDisplay.textContent = strokeWidth;
+    updateCanvas();
+  }
+});
+
+strokePlusButton.addEventListener("click", () => {
+  if (strokeWidth < 30) {
+    strokeWidth += 1;
+    strokeWidthDisplay.textContent = strokeWidth;
+    updateCanvas();
+  }
+});
+
 colorRadios.forEach(radio => {
   radio.addEventListener("change", () => {
     fontColorPicker.value = radio.value;
@@ -81,11 +99,6 @@ fontColorPicker.addEventListener("input", () => {
 });
 
 bgColorPicker.addEventListener("input", () => {
-  updateCanvas();
-});
-
-strokeWidthInput.addEventListener("input", () => {
-  strokeWidth = parseInt(strokeWidthInput.value) || 0;
   updateCanvas();
 });
 
