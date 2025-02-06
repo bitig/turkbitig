@@ -9,7 +9,7 @@ var paddingTop = 10;
 var paddingRight = 10;
 var canvasColor = '#ffffff'; 
 var debounceTimer;
-var strokeWidth = 2;
+var strokeWidth = 5;
 var strokeColor = '#000000';
 
 // Button and input elements
