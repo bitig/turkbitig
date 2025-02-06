@@ -253,10 +253,10 @@ function downloadImage() {
 
     // Download the new canvas
     const now = new Date();
-    const timestamp = 
-      String(now.getHours()).padStart(2, '0') +
-      String(now.getMinutes()).padStart(2, '0') +
-      String(now.getSeconds()).padStart(2, '0');
+    const options = {timeZone: 'Europe/Istanbul', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
+    const formatter = new Intl.DateTimeFormat([], options);
+    const [{ value: hour }, , { value: minute }, , { value: second }] = formatter.formatToParts(now);
+    const timestamp = `${hour.padStart(2, '0')}${minute.padStart(2, '0')}${second.padStart(2, '0')}`;
 
     const link = document.createElement('a');
     link.download = `Gokturkce_${timestamp}.png`;
