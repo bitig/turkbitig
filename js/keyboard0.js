@@ -67,7 +67,7 @@ strokeMinusButton.addEventListener("click", () => {
 });
 
 strokePlusButton.addEventListener("click", () => {
-  if (strokeWidth < 30) {
+  if (strokeWidth < 50) {
     strokeWidth += 1;
     strokeWidthDisplay.textContent = strokeWidth;
     updateCanvas();
