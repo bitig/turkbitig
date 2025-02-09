@@ -254,9 +254,9 @@ margin: 0 auto;
 }
 
 .sitenav {
-width:100%;
-top:0px;
-position: fixed;
+twidth:100%;
+ttop:0px;
+tposition: fixed;
 padding-bottom: 6px;
 z-index: 9999;
 }
