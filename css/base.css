@@ -254,9 +254,9 @@ margin: 0 auto;
 }
 
 .sitenav {
-twidth:100%;
-ttop:0px;
-tposition: fixed;
+width:100%;
+top:0px;
+position: fixed;
 padding-bottom: 6px;
 z-index: 9999;
 }
@@ -521,6 +521,7 @@ min-width:1.6em;
 }
 
 .content {
+margin-top:60px;
 max-width:700px;
 padding-top:9px;
 padding-left:2%;
@@ -528,6 +529,7 @@ padding-right:2%;
 }
 
 .contenti {
+margin-top:60px;
 max-width:1600px;
 padding-top:9px;
 padding-left:2%;
