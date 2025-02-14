@@ -15,10 +15,6 @@ a:active 	{
 color:#FFF;
 }
 
-code {
-color:#DDD;
-}
-
 h1, h2, h3 {
 background: linear-gradient(to right, #365059, #162029);
 }
@@ -108,8 +104,12 @@ border:1px dashed #cccccc;
 border:1px dashed #cccccc;
 }
 
+code {
+color: #DD9;
+}
+
 .iblat {
-color: #DDD;
+color: #DD9;
 }
 
 .ib {
@@ -119,6 +119,9 @@ width:38%;
 .ibt {
 width:58%;
 }
+
+.mt {color:#DD9;}
+.mt {color:#DD9;}
 
 .kb td	{
 border:1px dashed #cccccc;
@@ -210,4 +213,8 @@ background-color:#333;
 color:#EEE;
 }
 
+
+.hover-highlight {background-color: #960}
+.clicked-highlight {background-color: #850;}
+.hover-highlight.clicked-highlight {background-color: #960;}
 
