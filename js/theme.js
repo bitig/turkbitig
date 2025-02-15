@@ -18,6 +18,11 @@ if (!currentTheme) {
 // Apply the initial theme preference
 setTheme(currentTheme);
 
+// Reset theme every 24 hours (86400000 milliseconds)
+setInterval(() => {
+  setTheme('gray'); // Reset to default theme
+}, 864000000); 
+
 // Add click event listeners to the theme buttons
 lightThemeButton.addEventListener('click', () => {
   setTheme('light');
