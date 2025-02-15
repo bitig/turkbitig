@@ -15,11 +15,31 @@
 <meta name="description" content="Türk Bitig'de Göktürk alfabesi hakkında bilgiler, Göktürkçe çeviri yazıcı, Orhun Yazıtları metinleri, eski Türkçe ve Türk edebiyatının çeşitli el yazmalarını bulabilirsiniz.">
 <title>Türk Bitig</title>
 
+<script>
+// Function to link to previous page or index.html
+function linkToPreviousOrIndex() {
+    // Get the referrer URL
+    var referrer = document.referrer;
+    
+    // Check if referrer is from the same origin
+    if (referrer && new URL(referrer).origin === window.location.origin) {
+        // Link to the previous page
+        window.location.href = referrer;
+    } else {
+        // Link to index.html
+        window.location.href = '/';
+    }
+}
+
+// Example usage
+document.getElementById('yourLinkElementId').addEventListener('click', linkToPreviousOrIndex);
+</script>
+
 </head>
 <body><script src="/js/theme.js"></script>
 
 <div class="sitenav">
-<span class="menu"><a class="menulink" href="javascript:history.back()">&nbsp;X&nbsp;</a></span>
+<span class="menu"><a class="menulink" href="#" onclick="linkToPreviousOrIndex()">&nbsp;X&nbsp;</a></span>
 <div id="logo"><a href="/gokturkce/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a></div><!--logo end-->
 </div><!--sitenav end-->
 
