@@ -1,6 +1,6 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 var vowelsMap={'a':'𐰀','e':'𐰀','ı':'𐰃','i':'𐰃','o':'𐰆','u':'𐰆','ö':'𐰇','ü':'𐰇',};
-var consonantsMap={'b':['𐰉','𐰋'],'d':['𐰑','𐰓'],'g':['𐰍','𐰏'],'k':['𐰴','𐰚','𐰶','𐰸'],'l':['𐰞','𐰠'],'n':['𐰣','𐰤'],'r':['𐰺','𐰼'],'s':['𐰽','𐰾'],'t':['𐱃','𐱅'],'y':['𐰖','𐰘'],'ç':['𐰲','𐰲'],'ñ':['𐰭','𐰭'],'ŋ':['𐰭','𐰭'],'m':['𐰢','𐰢'],'p':['𐰯','𐰯'],'ş':['𐱁','𐱁'],'z':['𐰔','𐰔']};
+var consonantsMap={'b':['𐰉','𐰋'],'d':['𐰑','𐰓'],'g':['𐰍','𐰏'],'k':['𐰴','𐰚'],'l':['𐰞','𐰠'],'n':['𐰣','𐰤'],'r':['𐰺','𐰼'],'s':['𐰽','𐰾'],'t':['𐱃','𐱅'],'y':['𐰖','𐰘'],'ç':['𐰲','𐰲'],'ñ':['𐰭','𐰭'],'ŋ':['𐰭','𐰭'],'m':['𐰢','𐰢'],'p':['𐰯','𐰯'],'ş':['𐱁','𐱁'],'z':['𐰔','𐰔']};
 var doublesMap={'ng':'𐰭','nç':'𐰨','nd':'𐰦','nt':'𐰦','ny':'𐰪','ok':'𐰸','uk':'𐰸','ök':'𐰜','ük':'𐰜','iç':'𐰱','ık':'𐰶','ld':'𐰡'};
 var allChars = ['a', 'ı', 'o', 'u', 'e', 'i', 'ö', 'ü', 'b',  'd', 'g', 'k', 'l', 'n', 'r', 's',  't', 'y', 'ç', 'm', 'p', 'ş', 'z'];
 var backVowels = ['a', 'ı', 'o', 'u'];
@@ -50,22 +50,22 @@ function processInputText(inputText) {
         }
       } else if (currentChar in consonantsMap) {
         var mappedCharacters = consonantsMap[currentChar];
-        // kı/ku/ko
-        if (currentChar === 'k' && i + 1 < inputText.length && inputText[i + 1] === 'ı') {
-          processedText += mappedCharacters[2];
-        } else if (currentChar === 'k' && i + 1 < inputText.length && (inputText[i + 1] === 'u' || inputText[i + 1] === 'o')) {
-          processedText += mappedCharacters[3];
+
+        if (
+          (i >= 0
+            && isFrontVowel(inputText[i + 1])
+            )
+          || (
+            (i > 0 
+              && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2]))
+              && !isBackVowel(inputText[i + 1])
+             )
+          )
+        )
+       {
+          processedText += mappedCharacters[1];
         } else {
-          // digerleri
-          if (
-            (i >= 0 && isFrontVowel(inputText[i + 1])) ||
-            (i > 0 && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2])) &&
-            !isBackVowel(inputText[i + 1]))
-          ) {
-            processedText += mappedCharacters[1];
-          } else {
-            processedText += mappedCharacters[0];
-          }
+          processedText += mappedCharacters[0];
         }
       } else {
         processedText += currentChar;
@@ -78,6 +78,7 @@ function processInputText(inputText) {
 
   return processedText;
 }
+
 function isFrontVowel(char) {
   return frontVowels.includes(char);
 }
