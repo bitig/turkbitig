@@ -53,6 +53,7 @@ max-width:100%;
 font-family:'damgab';
 direction:rtl;
 unicode-bidi: bidi-override;
+border:2px solid #999;
 }
 	
 .rtl {
@@ -114,13 +115,13 @@ width:99%;
 padding:1%;
 padding-right:0;
 margin-bottom:1%;
-font-family:Arial, sans-serif;
+font-family:sans-serif;
 font-size:120%;
 }
 
 .uu {
 outline: none;
-border:1px solid #ccc;
+border:2px solid #999;
 width:99%;
 padding-left:0;
 direction: rtl;
