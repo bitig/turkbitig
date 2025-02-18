@@ -259,6 +259,7 @@ top:0px;
 width:100%;
 position:fixed;
 padding-bottom: 6px;
+z-index: 1000;
 }
 
 .clear-content {
