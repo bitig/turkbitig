@@ -1,12 +1,8 @@
-hhhhtml * {
-  max-height: 1000000px;
-}
-
 body {
   margin: 0;
   font-family: sans-serif;
-  line-height: 1.3;
-  font-size: 20px;
+  line-height: 1.5;
+  font-size: 22px;
   -webkit-text-size-adjust: 100%; /* Stops Chrome/Safari inflation */
   text-size-adjust: 100%; /* Future-proof */
 }
@@ -583,6 +579,6 @@ red {
 /* Consolidated Media Query */
 @media only screen and (min-width: 600px) {
   body {
-    line-height: 1.5;
+    font-size: 18px;
   }
 }
