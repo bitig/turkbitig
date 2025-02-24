@@ -46,14 +46,14 @@ latin.addEventListener("change", () => {
 
 minusButton.addEventListener("click", () => {
   if (fontSize > 20) {
-    fontSize -= 10;
+    fontSize = Math.round(fontSize * 0.94);
     updateCanvas();
   }
 });
 
 plusButton.addEventListener("click", () => {
   if (fontSize < 800) {
-    fontSize += 10;
+    fontSize = Math.round(fontSize * 1.06);
     updateCanvas();
   }
 });
@@ -109,13 +109,13 @@ strokeColorPicker.addEventListener("input", () => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
-    if (fontSize < 600) {
-      fontSize = Math.min(fontSize + 6, 600);
+    if (fontSize < 800) {
+      fontSize = Math.min(Math.round(fontSize * 1.06), 600);
       updateCanvas();
     }
   } else if (event.key === "ArrowRight") {
     if (fontSize > 18) {
-      fontSize -= 6;
+      fontSize = Math.round(fontSize * 0.94);
       updateCanvas();
     }
   }
