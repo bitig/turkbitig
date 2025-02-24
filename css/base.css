@@ -46,7 +46,7 @@ div {
     rgba(255, 255, 255, 0), 
     rgba(255, 255, 255, 1)),
     url('/image/transp.png');
-  background-size: cover;
+  background-size: auto;
   background-position: center;
 }
 
@@ -72,6 +72,7 @@ input[type="color"] {
 .fc2 {
   cursor: pointer;
   display: block;
+  border: 1px solid #333;
   border-radius: 3px;
 }
 

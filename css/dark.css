@@ -27,16 +27,6 @@ background:#505050;
 filter: brightness(90%);
 }
 
-.canvasback {
-  background-image: linear-gradient(to bottom, 
-  	rgba(0, 12, 12, 1), 
-  	rgba(0, 12, 12, 0), 
-  	rgba(0, 12, 12, 1)),
-  url('/image/transp.png');
-  bbackground-size: cover;
-  bbackground-position: center;
-}
-
 img {
 filter: brightness(93%);
 }
