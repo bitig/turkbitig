@@ -225,17 +225,8 @@ color:#000;
 background-color:#EEE;
 }
 
-.rs input:checked + span {
-display:block;
-background-color: #FFF;
-}
-
 .rs {
 background-color:#E6E6E6;
-}
-
-.rs:active {
-background-color:#FFF;
 }
 
 .path a{

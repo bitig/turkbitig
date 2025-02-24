@@ -197,17 +197,8 @@ border:1px solid #999;
 background-color:#EEE;
 }
 
-.rs input:checked + span {
-display:block;
-background-color: #9DF;
-}
-
 .rs {
 background-color:#EEE;
-}
-
-.rs:active {
-background-color:#9DF;
 }
 
 .logo {
