@@ -113,7 +113,7 @@ input[type="color"] {
 
 .uuu {
   padding-top:8px;
-  line-height:1;
+  line-height:1.1;
   border: 2px solid #999;
   direction:rtl;
   unicode-bidi: bidi-override;
