@@ -36,7 +36,8 @@
 
 <table border="0">
 <tr>
-<td>Yazı tipi</td><td>&nbsp;</td><td colspan="2">Boyu</td><td colspan="2">&nbsp;Renkleri</td><td width="100%">&nbsp;</td>
+<td>Yazı tipi</td><td>&nbsp;</td><td colspan="2">Boyu</td><td>&nbsp;</td>
+<td colspan="2">&nbsp;Renkleri</td><td width="100%">&nbsp;</td>
 </tr>
 
 <tr>
@@ -65,8 +66,9 @@
 <td>&nbsp;</td>    
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
 <td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td>&nbsp;<input type="color" oninput="changeColor(this.value)" id="colorPicker" value="#169c60"></td>
-<td>&nbsp;<input type="color" oninput="changeBgColor(this.value)" id="bgColorPicker" value="#ffffff"></td>
+<td>&nbsp;</td>    
+<td><input type="color" oninput="changeColor(this.value)" id="colorPicker" value="#169c60"></td>
+<td><input type="color" oninput="changeBgColor(this.value)" id="bgColorPicker" value="#ffffff"></td>
 <td>&nbsp;</td>
 </tr></table>
 
@@ -78,12 +80,11 @@
 </tr>
 
 <tr>
-<td nowrap><button onclick="downloadAsPng()">İndir</button></td>
-<td align="right">&nbsp;<button onclick="copyGokturk()">Kopyala</button></td>
+<td nowrap><button onclick="downloadAsPng()">İndir</button></td><td><button onclick="copyGokturk()">Kopyala</button></td>
 <td>&nbsp;</td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td>&nbsp;<input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 </tr>
 </table>
 
