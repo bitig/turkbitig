@@ -1,3 +1,5 @@
+// Copyright (C) turkbitig.com. All Rights Reserved.
+
 function changeSize(action) {
     const element = document.getElementById('gokturk');
     let currentSize = window.getComputedStyle(element).fontSize;
