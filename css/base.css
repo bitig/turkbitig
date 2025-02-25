@@ -124,6 +124,7 @@ input[type="color"] {
   -webkit-text-stroke-width: 1px;
   text-stroke-width: 1px; 
   overflow-wrap: break-word; 
+  min-height: 100px; 
   width: 100%; 
   max-width: 1600px;"
 }
@@ -623,6 +624,6 @@ red {
   }
 .keytable {font-size:110%;}
 
-.uuu {font-size: 200px;}
+.uuu {font-size: 200px;  min-height: 200px;}
 
 }
