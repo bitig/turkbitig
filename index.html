@@ -65,28 +65,30 @@
 </td>
 <td>&nbsp;</td>    
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
-<td nowrap><button onclick="changeSize('decrease')">&nbsp;─&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
 <td>&nbsp;</td>    
 <td><input type="color" oninput="changeColor(this.value)" id="colorPicker" value="#169c60"></td>
 <td><input type="color" oninput="changeBgColor(this.value)" id="bgColorPicker" value="#ffffff"></td>
 <td>&nbsp;</td>
 </tr></table>
 
-<table border="0">
-<tr>
-<td colspan="2">Paylaş</td><td>&nbsp;&nbsp;&nbsp;</td><td colspan="2" nowrap>Kıyı&nbsp;çizgi</td><td width="100%">&nbsp;</td>
-</tr>
-
-<tr>
-<td nowrap><button onclick="downloadAsPng()">İndir</button></td><td><button onclick="copyGokturk()">Kopyala</button></td>
-<td>&nbsp;</td>
-<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;─&nbsp;</button></td>
-<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
-</tr>
-</table>
+<hr>
 
 <div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
+
+<hr>
+
+<table border="0">
+<tr>
+<td nowrap><button onclick="downloadAsPng()">İndir</button></td><td><button onclick="copyGokturk()">Kopyala</button></td>
+<td>&nbsp;Çizgi</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td>&nbsp;</td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="100%">&nbsp;</td>
+</tr>
+</table>
 
 <hr>
 

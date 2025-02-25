@@ -107,9 +107,9 @@ input[type="color"] {
   border-radius:3px;  
 }
 
-#colorPicker {width:39px;height:33px;}
-#bgColorPicker {width:39px;height:33px;}
-#strokeColorPicker {width:38px;height:33px;}
+#colorPicker {width:39px;height:38px;}
+#bgColorPicker {width:39px;height:38px;}
+#strokeColorPicker {width:38px;height:38px;}
 
 .uuu {
   padding-top:8px;
@@ -625,5 +625,9 @@ red {
 .keytable {font-size:110%;}
 
 .uuu {font-size: 200px;  min-height: 200px;}
+
+#colorPicker {height:33px;}
+#bgColorPicker {height:33px;}
+#strokeColorPicker {height:33px;}
 
 }
