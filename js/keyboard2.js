@@ -55,7 +55,7 @@ function changeStrokeSize(action) {
     let currentStrokeWidth = window.getComputedStyle(element).webkitTextStrokeWidth || '0px';
     let strokeNum = parseFloat(currentStrokeWidth) || 0;
     
-    if (action === 'increase') {
+    if (action === 'increase' && strokeNum < 99) {
         strokeNum += 1;
     } else if (action === 'decrease' && strokeNum > 0) {
         strokeNum -= 1;
