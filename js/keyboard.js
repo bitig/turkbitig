@@ -262,7 +262,7 @@ function downloadImage() {
     const timestamp = `${hour.padStart(2, '0')}${minute.padStart(2, '0')}${second.padStart(2, '0')}`;
 
     const link = document.createElement('a');
-    link.download = `Gokturkce_${timestamp}.png`;
+    link.download = `gokturk-${timestamp}.png`;
     link.href = textCanvas.toDataURL();
     link.click();
   } catch (error) {
