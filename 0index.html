@@ -36,32 +36,20 @@
 
 <table border="0">
 <tr>
-<td>Boyu</td>
-<td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
-<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td>&nbsp;</td>
-
-<td>Renkler</td>
-<td><input type="color" oninput="changeColor(this.value)" id="colorPicker" value="#169c60"></td>
-<td><input type="color" oninput="changeBgColor(this.value)" id="bgColorPicker" value="#ffffff"></td>
-<td width="70%">&nbsp;</td>
+<td>Yazı tipi</td><td>&nbsp;</td><td colspan="2">Boyu</td><td>&nbsp;</td>
+<td colspan="2">&nbsp;Renkleri</td><td width="100%">&nbsp;</td>
 </tr>
-</table>
 
-<div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
-
-<table border="0" class="fonttable" id="fontRadioGroup">
 <tr>
-<td colspan="3" width="40%">
+<td>
 <select class="fontselect" onchange="changeFont(this.value)">
-  <option value="tbldamga" selected>Yazı tipi</option>
   <option value="tbldamga">Altyazılı</option>
   <option value="bitigtam">Bitig-Y</option>
   <option value="cizgi">Çizgi</option>
   <option value="damgaregular">Damga-Y</option>
   <option value="damgam">Damga-Y2</option>
   <option value="damgagenis">Damga-G</option>
-  <option value="damgab">Damga-K</option>
+  <option value="damgab" selected>Damga-K</option>
   <option value="damgabb">Damga-A</option>
   <option value="gokturkyeni">Göktürk</option>
   <option value="gokturkyenib">Göktürk-K</option>
@@ -87,40 +75,30 @@
   <option value="turiktam">Türük-Y</option>
 </select>
 </td>
+<td>&nbsp;</td>    
+<td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td>&nbsp;</td>    
+<td><input type="color" oninput="changeColor(this.value)" id="colorPicker" value="#169c60"></td>
+<td><input type="color" oninput="changeBgColor(this.value)" id="bgColorPicker" value="#ffffff"></td>
+<td>&nbsp;</td>
+</tr></table>
 
-<td>&nbsp;Çizgi</td>
-<td colspan="2"><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button>&nbsp;<button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
-</tr>
+<hr>
 
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeni"><span style="font-family:'gokturkyeni';">𐰱</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyenib"><span style="font-family:'gokturkyenib';">𐰱</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="karluk"><span style="font-family:'karluk';">𐰡</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="karlukbold"><span style="font-family:'karlukbold';">𐰡</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="oguzbodun"><span style="font-family:'oguzbodun';">𐰋</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span style="font-family:'oguzbold';">𐰋</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';">𐰚</span></label></td>
-</tr>
+<div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
 
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalem"><span style="font-family:'gokturkkalem';">𐰀</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalembold"><span style="font-family:'gokturkkalembold';">𐰀</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalemagir"><span style="font-family:'gokturkkalemagir';">𐰀</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgagenis"><span style="font-family:'damgagenis';">𐰔</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰔</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span style="font-family:'kultiginbold';">𐰚</span></label></td>
-</tr>
-</table>
-
-<br>
+<hr>
 
 <table border="0">
 <tr>
-<td nowrap><button onclick="downloadAsPng()">İndir / Paylaş</button></td>
-<td><button onclick="copyGokturk()">Kopyala</button></td>
-<td width="80%">&nbsp;</td>
+<td nowrap><button onclick="downloadAsPng()">İndir</button></td><td><button onclick="copyGokturk()">Kopyala</button></td>
+<td>&nbsp;Çizgi</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td>&nbsp;</td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="100%">&nbsp;</td>
 </tr>
 </table>
 
@@ -134,7 +112,7 @@
 <li><a href="/gokturkce/yazici.html">Uzun metin yazıcı</a></li>
 </ul>
 
-<script src="/js/keyboard3.js"></script>
+<script src="/js/keyboard2.js"></script>
 
 </div></main>
 
