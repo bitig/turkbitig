@@ -42,9 +42,9 @@ div {
 
 .canvasback {
   background-image: linear-gradient(to bottom, 
-    rgba(255, 255, 255, 1), 
-    rgba(255, 255, 255, 0), 
-    rgba(255, 255, 255, 1)),
+    rgba(217, 217, 217, 1),
+    rgba(217, 217, 217, 0),
+    rgba(217, 217, 217, 1)),
     url('/image/transp.png');
   background-size: auto;
   background-position: center;

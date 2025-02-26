@@ -12,6 +12,9 @@ var debounceTimer;
 var strokeWidth = 3;
 var strokeColor = '#000000';
 
+// Set default text
+gokturk.value = '𐱅𐰇𐰼𐰜';
+
 // Button and input elements
 var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
