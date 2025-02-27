@@ -166,15 +166,21 @@ function downloadAsPng() {
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
     ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
-    ctx.strokeStyle = styles.webkitTextStrokeColor || 'black';
-    ctx.lineWidth = strokeWidth;
     ctx.fillStyle = styles.color;
+    
+    // Only set stroke properties if strokeWidth > 0
+    if (strokeWidth > 0) {
+        ctx.strokeStyle = styles.webkitTextStrokeColor || 'black';
+        ctx.lineWidth = strokeWidth;
+    }
     
     const startY = paddingTop + strokeWidth + lineHeight / 2;
     const rightX = canvas.width - paddingRight - strokeWidth;
     lines.forEach((line, index) => {
         const y = startY + index * lineHeight;
-        ctx.strokeText(line, rightX, y);
+        if (strokeWidth > 0) {
+            ctx.strokeText(line, rightX, y); // Only stroke if width > 0
+        }
         ctx.fillText(line, rightX, y);
     });
     
