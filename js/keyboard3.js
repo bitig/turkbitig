@@ -112,7 +112,11 @@ function downloadAsPng() {
     const fontSize = parseFloat(styles.fontSize);
     const strokeWidth = parseFloat(styles.webkitTextStrokeWidth || '0');
     const currentWidth = element.offsetWidth;
-    const padding = 20;
+    const paddingLeft = 5;   // Left padding
+    const paddingRight = 5;  // Right padding
+    const paddingTop = 16;    // Top padding
+    const paddingBottom = 2; // Bottom padding
+    
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
     
     const words = text.split(' ');
@@ -122,18 +126,18 @@ function downloadAsPng() {
     for (let word of words) {
         const testLine = currentLine + (currentLine ? ' ' : '') + word;
         const metrics = ctx.measureText(testLine);
-        if (metrics.width <= currentWidth - padding * 2) {
+        if (metrics.width <= currentWidth - (paddingLeft + paddingRight)) {
             currentLine = testLine;
         } else {
             if (currentLine) {
                 lines.push(currentLine);
             }
             const wordMetrics = ctx.measureText(word);
-            if (wordMetrics.width > currentWidth - padding * 2) {
+            if (wordMetrics.width > currentWidth - (paddingLeft + paddingRight)) {
                 let subWord = '';
                 for (let char of word) {
                     const testSubWord = subWord + char;
-                    if (ctx.measureText(testSubWord).width <= currentWidth - padding * 2) {
+                    if (ctx.measureText(testSubWord).width <= currentWidth - (paddingLeft + paddingRight)) {
                         subWord = testSubWord;
                     } else {
                         lines.push(subWord);
@@ -153,8 +157,8 @@ function downloadAsPng() {
     const textHeight = lines.length * lineHeight;
     const textWidth = Math.max(...lines.map(line => ctx.measureText(line).width));
     
-    canvas.width = textWidth + strokeWidth * 2 + padding * 2;
-    canvas.height = textHeight + strokeWidth * 2 + padding * 2;
+    canvas.width = textWidth + strokeWidth * 2 + paddingLeft + paddingRight;
+    canvas.height = textHeight + strokeWidth * 2 + paddingTop + paddingBottom;
     
     ctx.fillStyle = styles.backgroundColor || 'transparent';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -166,8 +170,8 @@ function downloadAsPng() {
     ctx.lineWidth = strokeWidth;
     ctx.fillStyle = styles.color;
     
-    const startY = (canvas.height - textHeight) / 2 + lineHeight / 2;
-    const rightX = canvas.width - padding;
+    const startY = paddingTop + strokeWidth + lineHeight / 2;
+    const rightX = canvas.width - paddingRight - strokeWidth;
     lines.forEach((line, index) => {
         const y = startY + index * lineHeight;
         ctx.strokeText(line, rightX, y);

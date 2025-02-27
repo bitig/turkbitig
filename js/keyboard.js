@@ -215,7 +215,7 @@ function downloadImage() {
 
     for (let i = 0; i < data.length; i += 4) {
       const alpha = data[i + 3];
-      if (alpha!== 0) {
+      if (alpha !== 0) {
         const x = (i / 4) % width;
         const y = Math.floor((i / 4) / width);
         minX = Math.min(minX, x);
@@ -245,8 +245,8 @@ function downloadImage() {
     const textCtx = textCanvas.getContext('2d');
 
     // Fill with selected background color (to ensure transparent areas are filled)
-    var selectedBgColor = bgColorPicker.value!== '#000000' 
-    ? bgColorPicker.value 
+    var selectedBgColor = bgColorPicker.value !== '#000000' 
+      ? bgColorPicker.value 
       : document.querySelector('input[name="bgColorRadio"]:checked').value;
     textCtx.fillStyle = selectedBgColor;
     textCtx.fillRect(0, 0, textCanvas.width, textCanvas.height);
@@ -259,7 +259,7 @@ function downloadImage() {
     const options = {timeZone: 'Europe/Istanbul', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
     const formatter = new Intl.DateTimeFormat([], options);
     const [{ value: hour }, , { value: minute }, , { value: second }] = formatter.formatToParts(now);
-    const timestamp = `${hour.padStart(2, '0')}${minute.padStart(2, '0')}${second.padStart(2, '0')}`;
+    const timestamp = `${hour.padStart(2, '0')}-${minute.padStart(2, '0')}-${second.padStart(2, '0')}`; // Added hyphens here
 
     const link = document.createElement('a');
     link.download = `gokturk-${timestamp}.png`;
