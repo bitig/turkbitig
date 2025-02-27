@@ -114,7 +114,7 @@ function downloadAsPng() {
     const currentWidth = element.offsetWidth;
     const paddingLeft = 5;   // Left padding
     const paddingRight = 5;  // Right padding
-    const paddingTop = 16;    // Top padding
+    const paddingTop = 30;    // Top padding
     const paddingBottom = 2; // Bottom padding
     
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
