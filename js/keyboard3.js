@@ -4,14 +4,20 @@ function changeSize(action) {
     const element = document.getElementById('gokturk');
     let currentSize = window.getComputedStyle(element).fontSize;
     let sizeNum = parseFloat(currentSize);
-    let newSize;
+    let target;
     
     if (action === 'increase') {
-        newSize = Math.round(sizeNum * 1.08);
-        if (newSize > 800) newSize = 800; // Cap at 800px
+        target = sizeNum * 1.08; // Increase by 8%
     } else if (action === 'decrease') {
-        newSize = Math.round(sizeNum * 0.92);
-        if (newSize < 16) newSize = 16; // Floor at 16px
+        target = sizeNum * 0.92; // Decrease by 8%
+    }
+   
+    let newSize = Math.round(target / 2) * 2;
+    
+    if (action === 'increase' && newSize > 800) {
+        newSize = 800; // Cap at 800px
+    } else if (action === 'decrease' && newSize < 16) {
+        newSize = 16; // Floor at 16px
     }
     
     element.style.fontSize = `${newSize}px`;
