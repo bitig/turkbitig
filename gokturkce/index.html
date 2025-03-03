@@ -48,7 +48,7 @@
 </tr>
 </table>
 
-<div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
+<div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;"></div>
 
 <table border="0" class="fonttable" id="fontRadioGroup">
 <tr>
@@ -105,7 +105,7 @@
 <td><label class="rs"><input type="radio" name="fontRadio" value="karlukbold"><span style="font-family:'karlukbold';">𐰡</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekagan"><span style="font-family:'bilgekagan';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganbold"><span style="font-family:'bilgekaganbold';">𐰋</span></label></td>
-<td><button id="copyButton" onclick="copyText(this)" copytext="𐱅𐰇𐰼𐰜"><small>Türk</small></button></td>
+<td><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Türük" data-gokturk-text="𐱅𐰇𐰼𐰜"><small>Türk</small></button></td>
 </tr>
 
 <tr>
@@ -115,7 +115,7 @@
 <td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgagenis"><span style="font-family:'damgagenis';">𐰔</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰔</span></label></td>
-<td><button id="copyButton" onclick="copyText(this)" copytext="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡"><small>Tüm</small></button></td>
+<td><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Türük" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡"><small>Tüm</small></button></td>
 </tr>
 </table>
 
@@ -134,23 +134,18 @@
 <hr>
 
 <script>
-    function copyText(button) {
-        // Get the text from data-text attribute
-        const textToCopy = button.getAttribute('copytext');
-        
-        // Clear the input field first
-        document.getElementById('latin').value = '';
-        
-        // Copy the text to both elements
-        document.getElementById('latin').value = textToCopy;
-        document.getElementById('gokturk').innerText = textToCopy;
-    }
-    
-    function clearText() {
-        // Clear both elements
-        document.getElementById('latin').value = '';
-        document.getElementById('gokturk').innerText = '';
-    }
+function copyDifferentValues(button) {
+    const latinText = button.getAttribute('data-latin-text');
+    const gokturkText = button.getAttribute('data-gokturk-text');
+    document.getElementById('latin').value = '';
+    document.getElementById('latin').value = latinText;
+    document.getElementById('gokturk').innerText = gokturkText;
+}
+
+function clearText() {
+    document.getElementById('latin').value = '';
+    document.getElementById('gokturk').innerText = '';
+}
 </script>
 
 <ul>
