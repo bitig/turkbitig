@@ -82,18 +82,18 @@
   <option value="tatarbold">Tatar-K</option>
   <option value="tonyukuk">Tonyukuk</option>
   <option value="tonyukukagir">Tonyukuk-B</option>
-  <option value="tonyukukdar">Tonyukuk-dar</option>
-  <option value="tonyukukdarkalin">Tonyukuk-dk</option>
+  <option value="tonyukukdar">Tonyukuk-D</option>
+  <option value="tonyukukdarkalin">Tonyuk-GK</option>
   <option value="tbg">Türkbitig</option>
   <option value="tbgbold">Türkbitig-K</option>
   <option value="bilgekagan">Türük-Y</option>
   <option value="bilgekaganbold">Türük-KY</option>
   <option value="yolluktigin">Yolluktiğin</option>
-  <option value="yolluktiginb">Yolluktiğin-K</option>
+  <option value="yolluktiginb">Yolluk-K</option>
 </select>
 </td>
 
-<td>&nbsp;Çizgi</td>
+<td align="right">&nbsp;Kıyı</td>
 <td nowrap colspan="2"><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button>&nbsp;<button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
 <td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 </tr>
@@ -105,7 +105,7 @@
 <td><label class="rs"><input type="radio" name="fontRadio" value="karlukbold"><span style="font-family:'karlukbold';">𐰡</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="oguzbodun"><span style="font-family:'oguzbodun';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span style="font-family:'oguzbold';">𐰋</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';">𐰚</span></label></td>
+<td><button id="copyButton" onclick="copyText(this)" copytext="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">@</button></td>
 </tr>
 
 <tr>
@@ -115,7 +115,7 @@
 <td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰢</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgagenis"><span style="font-family:'damgagenis';">𐰔</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰔</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span style="font-family:'kultiginbold';">𐰚</span></label></td>
+<td><button id="clearButton" onclick="clearText()">Sil</button></td>
 </tr>
 </table>
 
@@ -131,9 +131,6 @@
 </table>
 
 <hr>
-
-<button id="copyButton" onclick="copyText(this)" copytext="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm harfleri göster</button>
-<button id="clearButton" onclick="clearText()">Sil</button>
 
 <script>
     function copyText(button) {
