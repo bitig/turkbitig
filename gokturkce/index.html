@@ -98,10 +98,14 @@
 </td>
 
 <td align="right">&nbsp;Kıyı</td>
-<td nowrap colspan="2"><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button>&nbsp;<button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
 <td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="90%">&nbsp;</td>
 </tr>
+</table>
 
+<table border="0" class="fonttable" id="fontRadioGroup">
 <tr>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeni"><span style="font-family:'gokturkyeni';">𐰱</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyenib"><span style="font-family:'gokturkyenib';">𐰱</span></label></td>
@@ -109,7 +113,7 @@
 <td><label class="rs"><input type="radio" name="fontRadio" value="karlukbold"><span style="font-family:'karlukbold';">𐰡</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekagan"><span style="font-family:'bilgekagan';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganbold"><span style="font-family:'bilgekaganbold';">𐰋</span></label></td>
-<td><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Türk" data-gokturk-text="𐱅𐰇𐰼𐰜"><small>Türk</small></button></td>
+<td width="5%"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Türk" data-gokturk-text="𐱅𐰇𐰼𐰜"><small>Türk</small></button></td>
 </tr>
 
 <tr>
