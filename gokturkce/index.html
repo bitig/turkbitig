@@ -18,6 +18,7 @@
 
 <style>
 .sitenav {position: relative;}
+#clearButton {padding:5px;}
 </style>
 
 </head>
@@ -32,7 +33,10 @@
 
 <h1>Göktürkçe Çeviri <span class="xlink"> <a target="_blank" href="https://x.com/turkbitigcom">Sor@&#120143;</a></span></h1>
 
-<div><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></div>
+<table border="0"><tr>
+<td><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></td>
+<td style="width:2%;padding-left:6px;"><button id="clearButton" onclick="clearText()"><big>Sil</big></button></td>
+</tr></table>
 
 <table border="0">
 <tr>
@@ -125,7 +129,6 @@
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">İndir&nbsp;/&nbsp;Paylaş</button></td>
-<td><button id="clearButton" onclick="clearText()">Sil</button></td>
 <td nowrap></td>
 <td width="90%">&nbsp;</td>
 </tr>
