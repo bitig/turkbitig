@@ -125,12 +125,35 @@
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">İndir&nbsp;/&nbsp;Paylaş</button></td>
-<td nowrap><button type="button" value="𐰀𐰃𐰉𐰋𐰑𐰓𐰍𐰏𐰴𐰚𐰞𐰠𐰣𐰤𐰆𐰇𐰺𐰼𐰽𐰾𐱃𐱅𐰖𐰘𐰶𐰱𐰸𐰜𐰲𐰢𐰯𐱁𐰔𐰪𐰨𐰦𐰭𐰡" onclick="document.getElementById('gokturk').innerHTML = this.value">Harfler</button></td>
+<td nowrap></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
 
 <hr>
+
+<button id="copyButton" onclick="copyText(this)" copytext="𐰀𐰃𐰉𐰋𐰑𐰓𐰍𐰏𐰴𐰚𐰞𐰠𐰣𐰤𐰆𐰇𐰺𐰼𐰽𐰾𐱃𐱅𐰖𐰘𐰶𐰱𐰸𐰜𐰲𐰢𐰯𐱁𐰔𐰪𐰨𐰦𐰭𐰡">Tüm harfleri göster</button>
+<button id="clearButton" onclick="clearText()">Sil</button>
+
+<script>
+    function copyText(button) {
+        // Get the text from data-text attribute
+        const textToCopy = button.getAttribute('copytext');
+        
+        // Clear the input field first
+        document.getElementById('latin').value = '';
+        
+        // Copy the text to both elements
+        document.getElementById('latin').value = textToCopy;
+        document.getElementById('gokturk').innerText = textToCopy;
+    }
+    
+    function clearText() {
+        // Clear both elements
+        document.getElementById('latin').value = '';
+        document.getElementById('gokturk').innerText = '';
+    }
+</script>
 
 <ul>
 <li><a href="/">Klavyeli yazıcı</a></li>
