@@ -13,7 +13,7 @@ var strokeWidth = 3;
 var strokeColor = '#000000';
 
 // Set default text
-gokturk.value = '𐱅𐰇𐰼𐰜';
+gokturk.value = '';
 
 // Button and input elements
 var minusButton = document.getElementById("minus");
