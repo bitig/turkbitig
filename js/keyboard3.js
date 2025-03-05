@@ -17,7 +17,7 @@ function changeSize(action) {
     if (action === 'increase' && newSize > 800) {
         newSize = 800; // Cap at 800px
     } else if (action === 'decrease' && newSize < 16) {
-        newSize = 16; // Floor at 16px
+        newSize = 14; // Floor at 16px
     }
     
     element.style.fontSize = `${newSize}px`;
