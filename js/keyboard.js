@@ -20,7 +20,6 @@ var minusButton = document.getElementById("minus");
 var plusButton = document.getElementById("plus");
 var strokeMinusButton = document.getElementById("strokeMinus");
 var strokePlusButton = document.getElementById("strokePlus");
-var strokeWidthDisplay = document.getElementById("strokeWidthDisplay");
 var fontRadios = document.querySelectorAll('input[name="fontRadio"]');
 var colorRadios = document.querySelectorAll('input[name="colorRadio"]');
 var bgColorRadios = document.querySelectorAll('input[name="bgColorRadio"]');
@@ -64,7 +63,6 @@ plusButton.addEventListener("click", () => {
 strokeMinusButton.addEventListener("click", () => {
   if (strokeWidth > 0) {
     strokeWidth -= 1;
-    strokeWidthDisplay.textContent = strokeWidth;
     updateCanvas();
   }
 });
@@ -72,7 +70,6 @@ strokeMinusButton.addEventListener("click", () => {
 strokePlusButton.addEventListener("click", () => {
   if (strokeWidth < 50) {
     strokeWidth += 1;
-    strokeWidthDisplay.textContent = strokeWidth;
     updateCanvas();
   }
 });

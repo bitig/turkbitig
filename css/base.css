@@ -174,8 +174,8 @@ input[type="color"] {
   display: none;
 }
 
-#plus, #minus {
-  height: 50px;
+#plus, #minus, #strokePlus, #strokeMinus {
+  height: 38px;
   font-size: 130%;
   border-radius: 4px;
   padding-left: 6px;
