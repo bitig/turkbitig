@@ -327,3 +327,17 @@ window.onload = function() {
 
 updateCanvas();
 
+function copyDifferentValues(button) {
+    const latinText = button.getAttribute('data-latin-text');
+    const gokturkText = button.getAttribute('data-gokturk-text');
+    document.getElementById('latin').value = '';
+    document.getElementById('latin').value = latinText;
+    document.getElementById('gokturk').value = '';  // Changed from innerText to value
+    document.getElementById('gokturk').value = gokturkText;  // Changed from innerText to value
+}
+
+function clearText() {
+    document.getElementById('latin').value = '';
+    document.getElementById('gokturk').value = '';  // Changed from innerText to value
+}
+
