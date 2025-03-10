@@ -38,15 +38,13 @@
 <div>
 <div><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></div>
 
-<table><tr>
-<td>Boy</td><td nowrap><button id="plus">+</button></td><td nowrap><button id="minus">-</button></td>
-
-
+<table border="0"><tr>
+<td>Boy</td><td nowrap><button id="plus">+</button></td>
+<td nowrap><button id="minus">-</button></td>
 <td>&nbsp;Çizgi</td>
 <td><button id="strokePlus">&nbsp;+&nbsp;</button></td>
 <td><button id="strokeMinus">&nbsp;-&nbsp;</button></td>
 <td><input style="height:38px;width:38px;" type="color" id="strokeColor" value="#000000"></td>
-
 <td width="80%">&nbsp;</td>
 </tr></table>
 
@@ -55,14 +53,14 @@
 <table>
 <tr><td nowrap=""><button onclick="downloadImage()">İndir/Paylaş</button></td>
 <td><button onclick="copyToClipboard(event)">Kopyala</button></td>
-<td align="right" width="96%"><input type="text" class="uu" id="gokturk" readonly></td></tr>
+<td align="right" width="96%"><small><small><input type="text" class="uu" id="gokturk" readonly></small></small></td></tr>
 </tbody></table></div>
 <!-- div yazici biter-->
 
 <table border="0" class="fonttable">
 <tr>
 <td width="12%" >Fontlar&nbsp;</td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgaregular"><span style="font-family:'damgaregular';">𐰜</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="damgaduz"><span style="font-family:'damgaduz';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgagenisbold"><span style="font-family:'damgagenisbold';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeni"><span style="font-family:'gokturkyeni';">𐰇</span></label></td>
@@ -83,7 +81,7 @@
 </tr>
 
 <tr>
-<td><button id="copyButton" onclick="copyDifferentValues(this)" data-gokturk-text="" data-latin-text="𐰀 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰃 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤 𐰭 𐰆 𐰇 𐰯 𐰺𐰼 𐰽𐰾 𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪 𐰨 𐰦 𐰡"><small>Harfler</small></button></td>
+<td><button id="copyButton" onclick="copyDifferentValues(this)" data-gokturk-text="" data-latin-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯𐰺𐰼 𐰽𐰾𐱁𐱃𐱅 𐰖𐰘𐰔 𐰪𐰨 𐰦𐰡"><small>Harfler&nbsp;</small></button></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="irkbitig"><span style="font-family:'irkbitig';">𐱃</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';">𐰚</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="yolluktigin"><span style="font-family:'yolluktigin';">𐰖</span></label></td>
