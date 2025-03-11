@@ -81,6 +81,10 @@ input[type="color"] {
   border: 1px solid #333;
 }
 
+.tbs {
+  background-image: url("/image/transp.png");
+}
+
 #latin {
   width: 99%;
   padding: 1%;
