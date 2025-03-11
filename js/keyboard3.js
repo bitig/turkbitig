@@ -35,13 +35,13 @@ document.getElementById('fontRadioGroup').addEventListener('change', function(ev
 });
 
 function changeColor(color) {
-    const element = document.getElementById('gokturk');
-    element.style.color = color;
+    document.getElementById('fontColor').value = color;
+    document.getElementById('gokturk').style.color = color;
 }
 
 function changeBgColor(color) {
-    const element = document.getElementById('gokturk');
-    element.style.backgroundColor = color;
+    document.getElementById('bgColor').value = color;
+    document.getElementById('gokturk').style.backgroundColor = color;
 }
 
 function copyGokturk() {

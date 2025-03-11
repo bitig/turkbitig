@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -7,19 +8,17 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/gray.css">
 <link rel="shortcut icon" href="/image/favicon.ico" type="image/png">
-
-<link rel="canonical" href="/gokturkce/" />
-
-<script src='/js/gokturkce.js'></script>
+<link rel="canonical" href="/" />
+<script src='/js/gokturkce2.js'></script>
 
 <meta name="keywords" content="Göktürk Alfabesi, Orhun alfabesi, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı">
-<meta name="description" content="Göktürk Alfabesi Çeviri Yazıcı ile öğrenerek yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
+<meta name="description" content="Göktürkçe çeviri ve klavye ile Göktürk Alfabesi yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
 
 <title>Göktürkçe Çeviri</title>
 
 <style>
-#plus, #minus, #strokePlus, #strokeMinus {min-width:40px;}
 .sitenav {position: relative;}
+#clearButton {padding:5px;}
 </style>
 
 </head>
@@ -34,54 +33,93 @@
 
 <h1>Göktürkçe Çeviri <span class="xlink"> <a target="_blank" href="https://x.com/turkbitigcom">Sor@&#120143;</a></span></h1>
 
-<!-- div yazici baslar-->
-<div>
-<div><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></div>
-
 <table border="0"><tr>
-<td>Boy</td><td nowrap><button id="plus">+</button></td>
-<td nowrap><button id="minus">-</button></td>
-<td>&nbsp;Çizgi</td>
-<td><button id="strokePlus">&nbsp;+&nbsp;</button></td>
-<td><button id="strokeMinus">&nbsp;-&nbsp;</button></td>
-<td><input style="height:38px;width:38px;" type="color" id="strokeColor" value="#000000"></td>
-<td width="80%">&nbsp;</td>
+<td><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></td>
+<td style="width:2%;padding-left:6px;"><button id="clearButton" onclick="clearText()"><big>Sil</big></button></td>
 </tr></table>
 
-<div class="canvasback"><canvas width="1600" id="canvas" height="231" style="background-color:#FFF;"></canvas></div>
+<table border="0">
+<tr>
+<td>Boy&nbsp;</td>
+<td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
 
-<table>
-<tr><td nowrap=""><button onclick="downloadImage()">İndir/Paylaş</button></td>
-<td><button onclick="copyToClipboard(event)">Kopyala</button></td>
-<td align="right" width="96%"><small><small><input type="text" class="uu" id="gokturk" readonly></small></small></td></tr>
-</tbody></table></div>
-<!-- div yazici biter-->
+<td align="right">&nbsp;Kıyı</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="99%">&nbsp;</td>
+</tr>
+</table>
+
+<div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
 
 <table border="0" class="fonttable">
 <tr>
-<td width="12%" >Fontlar&nbsp;</td>
+
+</tr>
+</table>
+
+<table border="0" class="fonttable" id="fontRadioGroup">
+<tr>
+<td colspan="3" width="40%">
+<select class="fontselect" onchange="changeFont(this.value)">
+  <option value="tbldamga" selected>Yazı tipi</option>
+  <option value="tbldamga">Altyazılı</option>
+  <option value="cizgi">Çizgi</option>
+  <option value="damgaregular">Damga-Y</option>
+  <option value="damgab">Damga-K</option>
+  <option value="damgabb">Damga-A</option>
+  <option value="gokturkyeni">Göktürk</option>
+  <option value="gokturkyenib">Göktürk-K</option>
+  <option value="gokturkyeniagir">Göktürk-A</option>
+  <option value="irkbitig">Irk Bitig</option>
+  <option value="gokturkkalem">Kalem</option>
+  <option value="gokturkkalemince">Kalem-İ</option>
+  <option value="gokturkkalembold">Kalem-K</option>
+  <option value="gokturkkalemagir">Kalem-A</option>
+  <option value="gokturkkalemduz">Kalem-D</option>
+  <option value="gokturkkalemegri">Kalem-E</option>
+  <option value="karluk">Karluk</option>
+  <option value="karlukbold">Karluk-K</option>
+  <option value="kultigin">Kültiğin</option>
+  <option value="kultiginbold">Kültiğin-K</option>
+  <option value="kultigingolge">Kültiğin-GL</option>
+  <option value="damgaroman">Roman</option>
+  <option value="tatarbold">Tatar-K</option>
+  <option value="tonyukuk">Tonyukuk</option>
+  <option value="tonyukukagir">Tonyukuk-B</option>
+  <option value="tonyukukdar">Tonyukuk-D</option>
+  <option value="tonyukukdarkalin">Tonyuk-GK</option>
+  <option value="tbg">Türkbitig</option>
+  <option value="tbgbold">Türkbitig-K</option>
+  <option value="bilgekaganyeni">Türük-YY</option>
+  <option value="bilgekaganyenim">Türük-YM</option>
+  <option value="bilgekaganyenib">Türük-YK</option>
+  <option value="yolluktigin">Yolluktiğin</option>
+  <option value="yolluktiginb">Yolluk-K</option>
+</select>
+</td>
+
+<td colspan="2"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span><small>Latin</small></span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgaduz"><span style="font-family:'damgaduz';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgagenisbold"><span style="font-family:'damgagenisbold';">𐰜</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeni"><span style="font-family:'gokturkyeni';">𐰇</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeniagir"><span style="font-family:'gokturkyeniagir';">𐰇</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tatarbold"><span style="font-family:'tatarbold';">𐰼</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰦</span></label></td>
 </tr>
 
 <tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span><small>Altyazı</small></span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeni"><span style="font-family:'gokturkyeni';">𐰇</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeniagir"><span style="font-family:'gokturkyeniagir';">𐰇</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyeni"><span style="font-family:'bilgekaganyeni';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenib"><span style="font-family:'bilgekaganyenib';">𐰋</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalem"><span style="font-family:'gokturkkalem';">𐰑</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalemegri"><span style="font-family:'gokturkkalemegri';">𐰑</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalemduz"><span style="font-family:'gokturkkalemduz';">𐰑</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukuk"><span style="font-family:'tonyukuk';">𐰸</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukdar"><span style="font-family:'tonyukukdar';">𐰸</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tatarbold"><span style="font-family:'tatarbold';">𐰼</span></label></td>
 </tr>
 
 <tr>
-<td><button id="copyButton" onclick="copyDifferentValues(this)" data-gokturk-text="" data-latin-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯𐰺𐰼 𐰽𐰾𐱁𐱃𐱅 𐰖𐰘𐰔 𐰪𐰨 𐰦𐰡"><small>Harfler&nbsp;</small></button></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span style="font-family:'cizgi';">𐰦</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="irkbitig"><span style="font-family:'irkbitig';">𐱃</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span style="font-family:'kultigin';">𐰚</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="yolluktigin"><span style="font-family:'yolluktigin';">𐰖</span></label></td>
@@ -94,40 +132,72 @@
 
 <table border="0" class="colortable">
 <tbody><tr><td width="3%">Renk&nbsp;</td>
-<td><label class="fc2" style="background-color:#FFFFFF;"><input type="radio" name="colorRadio" value="#FFFFFF">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#830030;"><input type="radio" name="colorRadio" value="#830030">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#F00000;"><input type="radio" name="colorRadio" value="#E30A17">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#FFFFFF;"><input type="radio" name="colorRadio" value="#FFFFFF" onchange="changeColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#830030;"><input type="radio" name="colorRadio" value="#830030" onchange="changeColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#F00000;"><input type="radio" name="colorRadio" value="#E30A17" onchange="changeColor(this.value)">&nbsp;</label></td>
 
 <td width="3%" style="text-align:center;">&nbsp;Arka&nbsp;</td>
-<td><label class="fc2" style="background-color:#FFFFFF;"><input type="radio" name="bgColorRadio" value="#FFFFFF" checked="">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#830030;"><input type="radio" name="bgColorRadio" value="#830030">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#F00000;"><input type="radio" name="bgColorRadio" value="#E30A17">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#FFFFFF;"><input type="radio" name="bgColorRadio" value="#FFFFFF" checked="" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#830030;"><input type="radio" name="bgColorRadio" value="#830030" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#F00000;"><input type="radio" name="bgColorRadio" value="#E30A17" onchange="changeBgColor(this.value)">&nbsp;</label></td>
 </tr>
 
 <tr>
-<td rowspan="2" style="text-align:center;vertical-align:middle;"><input type="color" name="fontColor" id="fontColor" value="#169c60" style="cursor:pointer;"></td>
-<td><label class="fc2" style="background-color:#000000;"><input type="radio" name="colorRadio" value="#000000">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#169c60;"><input type="radio" name="colorRadio" value="#169c60">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#FFD030;"><input type="radio" name="colorRadio" value="#FFD030">&nbsp;</label></td>
+<td rowspan="2" style="text-align:center;vertical-align:middle;"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#169c60"></td>
+<td><label class="fc2" style="background-color:#000000;"><input type="radio" name="colorRadio" value="#000000" onchange="changeColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#169c60;"><input type="radio" name="colorRadio" value="#169c60" onchange="changeColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#FFD030;"><input type="radio" name="colorRadio" value="#FFD030" onchange="changeColor(this.value)">&nbsp;</label></td>
 
-<td rowspan="2" style="text-align:center;vertical-align:middle;"><input type="color" name="bgColor" id="bgColor" value="#FFFFFF" style="cursor:pointer;"></td>
-<td><label class="fc2" style="background-color:#000000;"><input type="radio" name="bgColorRadio" value="#000000">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#169c60;"><input type="radio" name="bgColorRadio" value="#169c60">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#FFD030;"><input type="radio" name="bgColorRadio" value="#FFD030">&nbsp;</label></td>
+<td rowspan="2" style="text-align:center;vertical-align:middle;"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
+<td><label class="fc2" style="background-color:#000000;"><input type="radio" name="bgColorRadio" value="#000000" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#169c60;"><input type="radio" name="bgColorRadio" value="#169c60" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#FFD030;"><input type="radio" name="bgColorRadio" value="#FFD030" onchange="changeBgColor(this.value)">&nbsp;</label></td>
 </tr>
 
 <tr>
-<td><label class="fc2 bs"><input type="radio" name="colorRadio" value="transparent">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#1144AA;"><input type="radio" name="colorRadio" value="#1144AA">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="colorRadio" value="#09C0F0">&nbsp;</label></td>
+<td><label class="fc2 bs"><input type="radio" name="colorRadio" value="transparent" onchange="changeColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#1144AA;"><input type="radio" name="colorRadio" value="#1144AA" onchange="changeColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="colorRadio" value="#09C0F0" onchange="changeColor(this.value)">&nbsp;</label></td>
 
-<td><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#1144AA;"><input type="radio" name="bgColorRadio" value="#1144AA">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="bgColorRadio" value="#09C0F0">&nbsp;</label></td>
+<td><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#1144AA;"><input type="radio" name="bgColorRadio" value="#1144AA" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="bgColorRadio" value="#09C0F0" onchange="changeBgColor(this.value)">&nbsp;</label></td>
 </tr>
 </tbody></table>
 
+
 <hr>
+
+<table border="0">
+<tr>
+<td><button onclick="copyGokturk()">Kopyala</button></td>
+<td nowrap><button onclick="downloadAsPng()">İndir&nbsp;/&nbsp;Paylaş</button></td>
+<td nowrap></td>
+<td width="90%">&nbsp;</td>
+</tr>
+</table>
+
+<hr>
+
+
+<button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Türük" data-gokturk-text="𐱅𐰇𐰼𐰜"><small>Türk</small></button>
+<button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱𐰑𐰓𐰍𐰏𐰃𐰴𐰚𐰶𐰸𐰜𐰞𐰠𐰢𐰣𐰤𐰭𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡"><small>Harfler</small></button>
+
+<script>
+function copyDifferentValues(button) {
+    const latinText = button.getAttribute('data-latin-text');
+    const gokturkText = button.getAttribute('data-gokturk-text');
+    document.getElementById('latin').value = '';
+    document.getElementById('latin').value = latinText;
+    document.getElementById('gokturk').innerText = gokturkText;
+}
+
+function clearText() {
+    document.getElementById('latin').value = '';
+    document.getElementById('gokturk').innerText = '';
+}
+</script>
+
 
 <ul>
 <li><a href="/">Klavyeli yazıcı</a></li>
@@ -138,14 +208,49 @@
 <li><a href="/gokturk-alfabesi/font.html">Göktürkçe font indir</a></li>
 </ul>
 
-<div><span style="font-family:tbldamga;">&nbsp;</span></div>
-
-<script src="/js/keyboard.js"></script>
+<script src="/js/keyboard3.js"></script>
 
 </div></main>
 
+<div>
+<span style="font-family:tbldamga;">&nbsp;</span>
+<span style="font-family:cizgi;">&nbsp;</span>
+<span style="font-family:damgaregular;">&nbsp;</span>
+<span style="font-family:damgab;">&nbsp;</span>
+<span style="font-family:damgabb;">&nbsp;</span>
+<span style="font-family:damgatamince;">&nbsp;</span>
+<span style="font-family:gokturkyenib;">&nbsp;</span>
+<span style="font-family:gokturkyeni;">&nbsp;</span>
+<span style="font-family:gokturkyeniagir;">&nbsp;</span>
+<span style="font-family:irkbitig;">&nbsp;</span>
+<span style="font-family:gokturkkalem;">&nbsp;</span>
+<span style="font-family:gokturkkalemince;">&nbsp;</span>
+<span style="font-family:gokturkkalembold;">&nbsp;</span>
+<span style="font-family:gokturkkalemagir;">&nbsp;</span>
+<span style="font-family:gokturkkalemduz;">&nbsp;</span>
+<span style="font-family:gokturkkalemegri;">&nbsp;</span>
+<span style="font-family:karluk;">&nbsp;</span>
+<span style="font-family:karlukbold;">&nbsp;</span>
+<span style="font-family:kultigin;">&nbsp;</span>
+<span style="font-family:kultiginbold;">&nbsp;</span>
+<span style="font-family:kultigingolge;">&nbsp;</span>
+<span style="font-family:damgaroman;">&nbsp;</span>
+<span style="font-family:tatarbold;">&nbsp;</span>
+<span style="font-family:tonyukuk;">&nbsp;</span>
+<span style="font-family:tonyukukagir;">&nbsp;</span>
+<span style="font-family:tonyukukdar;">&nbsp;</span>
+<span style="font-family:tonyukukdarkalin;">&nbsp;</span>
+<span style="font-family:tbg;">&nbsp;</span>
+<span style="font-family:tbgbold;">&nbsp;</span>
+<span style="font-family:bilgekaganyeni;">&nbsp;</span>
+<span style="font-family:bilgekaganyenim;">&nbsp;</span>
+<span style="font-family:bilgekaganyenib;">&nbsp;</span>
+<span style="font-family:yolluktigin;">&nbsp;</span>
+<span style="font-family:yolluktiginb;">&nbsp;</span>
+</div>
+
 <footer>
-<div class="footer"><a href="/iletisim.html">iletişim</a> | <a href="/ayarlar.html">ayarlar</a></div>
+<div class="footer"><a href="/gokturkce/">göktürkçe</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
 
 <!-- Google tag (gtag.js) -->
@@ -159,3 +264,4 @@ gtag('config', 'G-XB6M7JR5GW');
 
 </body>
 </html>
+
