@@ -33,10 +33,7 @@
 
 <h1>Göktürkçe Çeviri <span class="xlink"> <a target="_blank" href="https://x.com/turkbitigcom">Sor@&#120143;</a></span></h1>
 
-<table border="0"><tr>
-<td><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></td>
-<td style="width:2%;padding-left:6px;"><button id="clearButton" onclick="clearText()"><big>Sil</big></button></td>
-</tr></table>
+<div><input maxlength="999" type="text" placeholder="buna yaz: Türük > Türk" id="latin" oninput="updateDiv()"></div>
 
 <table border="0">
 <tr>
@@ -44,11 +41,10 @@
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
 <td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
 
-<td align="right">&nbsp;Kıyı</td>
-<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
-<td width="99%">&nbsp;</td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱𐰑𐰓𐰍𐰏𐰃𐰴𐰚𐰶𐰸𐰜𐰞𐰠𐰢𐰣𐰤𐰭𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td style="padding-left:6px;"><button id="clearButton" onclick="clearText()">Sil</button></td>
+
+<td width="90%">&nbsp;</td>
 </tr>
 </table>
 
@@ -99,7 +95,11 @@
   <option value="yolluktiginb">Yolluk-K</option>
 </select>
 </td>
-<td><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱𐰑𐰓𐰍𐰏𐰃𐰴𐰚𐰶𐰸𐰜𐰞𐰠𐰢𐰣𐰤𐰭𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+
+<td style="padding-left:10px;text-align:right;">Kıyı</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td width="50%">&nbsp;</td>
 </tr></table>
 
