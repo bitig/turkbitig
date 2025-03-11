@@ -52,7 +52,7 @@
 </tr>
 </table>
 
-<div class="uuu" id="gokturk" style="font-family:damgab;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
+<div class="uuu" id="gokturk" style="font-family:tbldamga;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
 
 <table border="0" class="fonttable">
 <tr>
@@ -101,7 +101,7 @@
 </select>
 </td>
 
-<td colspan="2"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga"><span><small>Altyazı</small></span></label></td>
+<td colspan="2"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span><small>Altyazı</small></span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgaduz"><span style="font-family:'damgaduz';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span style="font-family:'damgab';">𐰜</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="damgagenisbold"><span style="font-family:'damgagenisbold';">𐰜</span></label></td>
@@ -172,16 +172,13 @@
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">İndir&nbsp;/&nbsp;Paylaş</button></td>
-<td nowrap></td>
+<td>&nbsp;</td>
+<td nowrap><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱𐰑𐰓𐰍𐰏𐰃𐰴𐰚𐰶𐰸𐰜𐰞𐰠𐰢𐰣𐰤𐰭𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Harfler</button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
 
 <hr>
-
-
-<button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Türük" data-gokturk-text="𐱅𐰇𐰼𐰜"><small>Türk</small></button>
-<button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱𐰑𐰓𐰍𐰏𐰃𐰴𐰚𐰶𐰸𐰜𐰞𐰠𐰢𐰣𐰤𐰭𐰆𐰇𐰯𐰺𐰼𐰽𐰾𐱁𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡"><small>Harfler</small></button>
 
 <script>
 function copyDifferentValues(button) {
@@ -197,7 +194,6 @@ function clearText() {
     document.getElementById('gokturk').innerText = '';
 }
 </script>
-
 
 <ul>
 <li><a href="/">Klavyeli yazıcı</a></li>
