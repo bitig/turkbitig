@@ -103,12 +103,12 @@ input[type="color"] {
 .fontselect {
   padding:4px;
   font-family: sans-serif;
-  font-size: 90%;
+  font-size: 93%;
   border-radius:3px;  
 }
 
 .fontselect option {
-  font-size:90%;
+  font-size:93%;
 }
 
 #colorPicker {width:39px;height:38px;}
