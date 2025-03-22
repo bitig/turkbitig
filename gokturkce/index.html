@@ -159,21 +159,6 @@
 
 <hr>
 
-<script>
-function copyDifferentValues(button) {
-    const latinText = button.getAttribute('data-latin-text');
-    const gokturkText = button.getAttribute('data-gokturk-text');
-    document.getElementById('latin').value = '';
-    document.getElementById('latin').value = latinText;
-    document.getElementById('gokturk').innerText = gokturkText;
-}
-
-function clearText() {
-    document.getElementById('latin').value = '';
-    document.getElementById('gokturk').innerText = '';
-}
-</script>
-
 <ul>
 <li><a href="/">Klavyeli yazıcı</a></li>
 <li><a href="/isimler/"><b>Göktürkçe isimler</b></a></li>

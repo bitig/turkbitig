@@ -93,6 +93,43 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+
+// Initialize the segmenter for graphemes
+const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+
+// Add event listener to the keyboard
+document.getElementById('keyboard').addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON') {
+        const key = event.target.getAttribute('data-key');
+        const output = document.getElementById('gokturk'); // Your text output element
+        if (key === 'backspace') {
+            const text = output.textContent;
+            if (text.length > 0) {
+                const segments = Array.from(segmenter.segment(text));
+                const newText = segments.slice(0, -1).map(s => s.segment).join('');
+                output.textContent = newText;
+            }
+        } else if (key === 'delete') {
+            output.textContent = '';
+        } else {
+            output.textContent += key;
+        }
+    }
+});
+
+function copyDifferentValues(button) {
+    const latinText = button.getAttribute('data-latin-text');
+    const gokturkText = button.getAttribute('data-gokturk-text');
+    document.getElementById('latin').value = '';
+    document.getElementById('latin').value = latinText;
+    document.getElementById('gokturk').innerText = gokturkText;
+}
+
+function clearText() {
+    document.getElementById('latin').value = '';
+    document.getElementById('gokturk').innerText = '';
+}
+
 function downloadAsPng() {
     const element = document.getElementById('gokturk');
     const selection = window.getSelection();
