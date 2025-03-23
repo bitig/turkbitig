@@ -25,60 +25,83 @@ function updateDiv() {
 }
 
 function processInputText(inputText) {
-  var processedText = '';
-  var i = 0;
-  var previousChar = '';
-  var previousVowel = '';
+    var processedText = '';
+    var i = 0;
+    var previousChar = '';
+    var previousVowel = '';
+    var startingVowel = null; // Store the starting vowel
+    var influenceNextConsonant = false; // Flag for influencing the next consonant
 
-  while (i < inputText.length) {
-    var doubleChar = inputText.slice(i, i + 2);
-
-    if (doubleChar in doublesMap) {
-      processedText += doublesMap[doubleChar];
-      i++;
-    } else {
-      var currentChar = inputText[i];
-
-      if (currentChar in vowelsMap) {
-        if (
-          vowelsMap[currentChar] !== vowelsMap[previousVowel] ||
-          vowelsMap[currentChar] !== vowelsMap[inputText[i - 2]] ||
-          !isChar(inputText[i + 1]) || !isChar(inputText[i - 1]) ||
-          i === inputText.length - 1
-        ) {
-          processedText += vowelsMap[currentChar];
-          previousVowel = currentChar;
+    while (i < inputText.length) {
+        // Check if we're at the start of a new word
+        if (!isChar(previousChar) && isChar(inputText[i])) {
+            if (inputText[i] in vowelsMap) {
+                startingVowel = inputText[i];
+                influenceNextConsonant = true;
+            } else {
+                startingVowel = null;
+                influenceNextConsonant = false;
+            }
         }
-      } else if (currentChar in consonantsMap) {
-        var mappedCharacters = consonantsMap[currentChar];
-        // kı/ku/ko
-        if (currentChar === 'k' && i + 1 < inputText.length && inputText[i + 1] === 'ı') {
-          processedText += mappedCharacters[2];
-        } else if (currentChar === 'k' && i + 1 < inputText.length && (inputText[i + 1] === 'u' || inputText[i + 1] === 'o')) {
-          processedText += mappedCharacters[3];
+
+        var doubleChar = inputText.slice(i, i + 2);
+
+        if (doubleChar in doublesMap) {
+            processedText += doublesMap[doubleChar];
+            i++;
         } else {
-          // digerleri
-          if (
-            (i >= 0 && isFrontVowel(inputText[i + 1])) ||
-            (i > 0 && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2])) &&
-            !isBackVowel(inputText[i + 1]))
-          ) {
-            processedText += mappedCharacters[1];
-          } else {
-            processedText += mappedCharacters[0];
-          }
+            var currentChar = inputText[i];
+
+            if (currentChar in vowelsMap) {
+                if (
+                    vowelsMap[currentChar] !== vowelsMap[previousVowel] ||
+                    vowelsMap[currentChar] !== vowelsMap[inputText[i - 2]] ||
+                    !isChar(inputText[i + 1]) || !isChar(inputText[i - 1]) ||
+                    i === inputText.length - 1
+                ) {
+                    processedText += vowelsMap[currentChar];
+                    previousVowel = currentChar;
+                }
+            } else if (currentChar in consonantsMap) {
+                var mappedCharacters = consonantsMap[currentChar];
+                // Special cases for 'k'
+                if (currentChar === 'k' && i + 1 < inputText.length && inputText[i + 1] === 'ı') {
+                    processedText += mappedCharacters[2];
+                } else if (currentChar === 'k' && i + 1 < inputText.length && (inputText[i + 1] === 'u' || inputText[i + 1] === 'o')) {
+                    processedText += mappedCharacters[3];
+                } else {
+                    // General case
+                    if (influenceNextConsonant && startingVowel) {
+                        if (isFrontVowel(startingVowel)) {
+                            processedText += mappedCharacters[1];
+                        } else {
+                            processedText += mappedCharacters[0];
+                        }
+                        influenceNextConsonant = false;
+                    } else {
+                        if (
+                            (i >= 0 && isFrontVowel(inputText[i + 1])) ||
+                            (i > 0 && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2])) &&
+                            !isBackVowel(inputText[i + 1]))
+                        ) {
+                            processedText += mappedCharacters[1];
+                        } else {
+                            processedText += mappedCharacters[0];
+                        }
+                    }
+                }
+            } else {
+                processedText += currentChar;
+            }
         }
-      } else {
-        processedText += currentChar;
-      }
+
+        previousChar = currentChar;
+        i++;
     }
 
-    previousChar = currentChar;
-    i++;
-  }
-
-  return processedText;
+    return processedText;
 }
+
 function isFrontVowel(char) {
   return frontVowels.includes(char);
 }
