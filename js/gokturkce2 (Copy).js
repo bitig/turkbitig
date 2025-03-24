@@ -21,7 +21,7 @@ function updateDiv() {
     inputText = inputText.toLowerCase();
   var processedText = processInputText(inputText);
   var gokturk = document.getElementById("gokturk");
-   gokturk.innerText = processedText; // innerText for divs
+   gokturk.innerText = processedText; // Changed from .value to .innerText
 }
 
 function processInputText(inputText) {
@@ -51,36 +51,21 @@ function processInputText(inputText) {
         }
       } else if (currentChar in consonantsMap) {
         var mappedCharacters = consonantsMap[currentChar];
-        // special cases for 'k'
+        // kı/ku/ko
         if (currentChar === 'k' && i + 1 < inputText.length && inputText[i + 1] === 'ı') {
           processedText += mappedCharacters[2];
         } else if (currentChar === 'k' && i + 1 < inputText.length && (inputText[i + 1] === 'u' || inputText[i + 1] === 'o')) {
           processedText += mappedCharacters[3];
         } else {
-          // vowel priority
+          // digerleri
           if (
-            previousChar in vowelsMap &&          // preceded by a vowel
-            i + 1 < inputText.length &&           
-            inputText[i + 1] in vowelsMap &&      
-            i + 1 < inputText.length - 1 &&       // followed by a vowel, not the last
-            !['ç', 'm', 'p', 'ş', 'z' ].includes(inputText[i + 2]) 
-            ) {
-            if (isFrontVowel(previousChar)) {
-              processedText += mappedCharacters[1];       // front
-            } else {
-              processedText += mappedCharacters[0];       // back
-            }
+            (i >= 0 && isFrontVowel(inputText[i + 1])) ||
+            (i > 0 && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2])) &&
+            !isBackVowel(inputText[i + 1]))
+          ) {
+            processedText += mappedCharacters[1];
           } else {
-            // logic for other consonants
-            if (
-              (i >= 0 && isFrontVowel(inputText[i + 1])) ||
-              (i > 0 && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2])) &&
-              !isBackVowel(inputText[i + 1]))
-            ) {
-              processedText += mappedCharacters[1];
-            } else {
-              processedText += mappedCharacters[0];
-            }
+            processedText += mappedCharacters[0];
           }
         }
       } else {
