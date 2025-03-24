@@ -106,3 +106,4 @@ function isBackVowel(char) {
 function isChar(char) {
   return allChars.includes(char);
 }
+
