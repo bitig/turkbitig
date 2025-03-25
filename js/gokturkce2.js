@@ -1,109 +1,170 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-var vowelsMap={'a':'𐰀','e':'𐰀','ı':'𐰃','i':'𐰃','o':'𐰆','u':'𐰆','ö':'𐰇','ü':'𐰇',};
-var consonantsMap={'b':['𐰉','𐰋'],'d':['𐰑','𐰓'],'g':['𐰍','𐰏'],'k':['𐰴','𐰚','𐰶','𐰸'],'l':['𐰞','𐰠'],'n':['𐰣','𐰤'],'r':['𐰺','𐰼'],'s':['𐰽','𐰾'],'t':['𐱃','𐱅'],'y':['𐰖','𐰘'],'ç':['𐰲','𐰲'],'ñ':['𐰭','𐰭'],'ŋ':['𐰭','𐰭'],'m':['𐰢','𐰢'],'p':['𐰯','𐰯'],'ş':['𐱁','𐱁'],'z':['𐰔','𐰔']};
-var doublesMap={'ng':'𐰭','nç':'𐰨','nd':'𐰦','nt':'𐰦','ny':'𐰪','ok':'𐰸','uk':'𐰸','ök':'𐰜','ük':'𐰜','iç':'𐰱','ık':'𐰶','ld':'𐰡'};
-var allChars = ['a', 'ı', 'o', 'u', 'e', 'i', 'ö', 'ü', 'b',  'd', 'g', 'k', 'l', 'n', 'r', 's',  't', 'y', 'ç', 'm', 'p', 'ş', 'z'];
-var backVowels = ['a', 'ı', 'o', 'u'];
-var frontVowels = ['e', 'i', 'ö', 'ü'];
+document.addEventListener('DOMContentLoaded', () => {
+  const latinInput = document.getElementById('latin');
+  const gokturkDiv = document.getElementById('gokturk');
 
-function updateDiv() {
-  var inputText = document.getElementById("latin").value.trim();
-    inputText = inputText.replace(/I/g, 'ı').replace(/İ/g, 'i');
-    inputText = inputText.replace(/[Ff]/g, 'p');
-    inputText = inputText.replace(/[Ğğ]/g, 'g');
-    inputText = inputText.replace(/[HhQqXx]/g, 'k');
-    inputText = inputText.replace(/[WwVv]/g, 'b');
-    inputText = inputText.replace(/[CcJj]/g, 'ç');
-    inputText = inputText.replace(/[ÄäƏə]/g, 'e');
-    inputText = inputText.replace(/[Ýý]/g, 'y');
-    inputText = inputText.replace(/[Ūū]/g, 'u');
-    inputText = inputText.toLowerCase();
-  var processedText = processInputText(inputText);
-  var gokturk = document.getElementById("gokturk");
-   gokturk.innerText = processedText; // innerText for divs
-}
+  const backVowelMap = {
+    'ab': '𐰀𐰉', 'ba': '𐰉𐰀', 'ıb': '𐰃𐰉', 'bı': '𐰉𐰃', 'ob': '𐰆𐰉', 'bo': '𐰉𐰆',    
+    'ad': '𐰀𐰑', 'da': '𐰑𐰀', 'ıd': '𐰃𐰑', 'dı': '𐰑𐰃', 'od': '𐰆𐰑', 'do': '𐰑𐰆',
+    'ag': '𐰀𐰍', 'ga': '𐰍𐰀', 'ıg': '𐰃𐰍', 'gı': '𐰍𐰃', 'og': '𐰆𐰍', 'go': '𐰍𐰆',    
+    'ak': '𐰀𐰴', 'ka': '𐰴𐰀', 'ık': '𐰶', 'kı': '𐰶𐰃', 'ok': '𐰸', 'ko': '𐰸𐰆',   
+    'al': '𐰀𐰞', 'la': '𐰞𐰀', 'ıl': '𐰃𐰞', 'lı': '𐰞𐰃', 'ol': '𐰆𐰞', 'lo': '𐰞𐰆',  
+    'an': '𐰀𐰣', 'na': '𐰣𐰀', 'ın': '𐰃𐰣', 'nı': '𐰣𐰃', 'on': '𐰆𐰣', 'no': '𐰣𐰆',
+    'ar': '𐰀𐰺', 'ra': '𐰺𐰀', 'ır': '𐰃𐰺', 'rı': '𐰺𐰃', 'or': '𐰆𐰺', 'ro': '𐰺𐰆', 
+    'as': '𐰀𐰽', 'sa': '𐰽𐰀', 'ıs': '𐰃𐰽', 'sı': '𐰽𐰃', 'os': '𐰆𐰽', 'so': '𐰽𐰆',
+    'at': '𐰀𐱃', 'ta': '𐱃𐰀', 'ıt': '𐰃𐱃', 'tı': '𐱃𐰃', 'ot': '𐰆𐱃', 'to': '𐱃𐰆',
+    'ay': '𐰀𐰖', 'ya': '𐰖𐰀', 'ıy': '𐰃𐰖', 'yı': '𐰖𐰃', 'oy': '𐰆𐰖', 'yo': '𐰖𐰆',
+    'a': '𐰀', 'ı': '𐰃', 'o': '𐰆',
+    'b': '𐰉', 'd': '𐰑', 'g': '𐰍', 'k': '𐰴', 'l': '𐰞', 'n': '𐰣', 'r': '𐰺', 's': '𐰽', 't': '𐱃', 'y': '𐰖',
+    'ç': '𐰲', 'm': '𐰢', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔'
+  };
 
-function processInputText(inputText) {
-  var processedText = '';
-  var i = 0;
-  var previousChar = '';
-  var previousVowel = '';
+  const frontVowelMap = {
+    'eb': '𐰀𐰋', 'be': '𐰋𐰀', 'ib': '𐰃𐰋', 'bi': '𐰋𐰃', 'öb': '𐰇𐰋', 'bö': '𐰋𐰇',    
+    'ed': '𐰀𐰓', 'de': '𐰓𐰀', 'id': '𐰃𐰓', 'di': '𐰓𐰃', 'öd': '𐰇𐰓', 'dö': '𐰓𐰇',
+    'eg': '𐰀𐰏', 'ge': '𐰏𐰀', 'ig': '𐰃𐰏', 'gi': '𐰏𐰃', 'ög': '𐰇𐰏', 'gö': '𐰏𐰇',    
+    'ek': '𐰀𐰚', 'ke': '𐰚𐰀', 'ik': '𐰃𐰚', 'ki': '𐰚𐰃', 'ök': '𐰜', 'ük': '𐰜',    
+    'el': '𐰀𐰠', 'le': '𐰠𐰀', 'il': '𐰃𐰠', 'li': '𐰠𐰃', 'öl': '𐰇𐰠', 'lö': '𐰠𐰇',    
+    'en': '𐰀𐰤', 'ne': '𐰤𐰀', 'in': '𐰃𐰤', 'ni': '𐰤𐰃', 'ön': '𐰇𐰤', 'nö': '𐰤𐰇',    
+    'er': '𐰀𐰼', 're': '𐰼𐰀', 'ir': '𐰃𐰼', 'ri': '𐰼𐰃', 'ör': '𐰇𐰼', 'rö': '𐰼𐰇',    
+    'es': '𐰀𐰾', 'se': '𐰾𐰀', 'is': '𐰃𐰾', 'si': '𐰾𐰃', 'ös': '𐰇𐰾', 'sö': '𐰾𐰇',
+    'et': '𐰀𐱅', 'te': '𐱅𐰀', 'it': '𐰃𐱅', 'ti': '𐱅𐰃', 'öt': '𐰇𐱅', 'tö': '𐱅𐰇',   
+    'ey': '𐰀𐰘', 'ye': '𐰘𐰀', 'iy': '𐰃𐰘', 'yi': '𐰘𐰃', 'öy': '𐰇𐰘', 'yö': '𐰘𐰇',
+    'e': '𐰀', 'i': '𐰃', 'ö': '𐰇',    
+    'b': '𐰋', 'd': '𐰓', 'g': '𐰏', 'k': '𐰚', 'l': '𐰠', 'n': '𐰤', 'r': '𐰼', 's': '𐰾', 't': '𐱅', 'y': '𐰘',
+    'ç': '𐰱', 'ç': '𐰲', 'm': '𐰢', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔',
+  };
 
-  while (i < inputText.length) {
-    var doubleChar = inputText.slice(i, i + 2);
+  // define vowels
+  const vowels = new Set(['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü']);
 
-    if (doubleChar in doublesMap) {
-      processedText += doublesMap[doubleChar];
+function convertToOldTurkic(input) {
+  let result = '';
+  let i = 0;
+  let currentMap = backVowelMap; // default map for consonants with no prior syllable
+  let isNewWord = true; // detect start of a new word
+
+  while (i < input.length) {
+    const ch = input[i];
+
+    // handle spaces to reset for new word
+    if (/\s/.test(ch)) {
+      result += ch;
+      isNewWord = true;
       i++;
-    } else {
-      var currentChar = inputText[i];
+      continue;
+    }
 
-      if (currentChar in vowelsMap) {
-        if (
-          vowelsMap[currentChar] !== vowelsMap[previousVowel] ||
-          vowelsMap[currentChar] !== vowelsMap[inputText[i - 2]] ||
-          !isChar(inputText[i + 1]) || !isChar(inputText[i - 1]) ||
-          i === inputText.length - 1
-        ) {
-          processedText += vowelsMap[currentChar];
-          previousVowel = currentChar;
-        }
-      } else if (currentChar in consonantsMap) {
-        var mappedCharacters = consonantsMap[currentChar];
-        // special cases for 'k'
-        if (currentChar === 'k' && i + 1 < inputText.length && inputText[i + 1] === 'ı') {
-          processedText += mappedCharacters[2];
-        } else if (currentChar === 'k' && i + 1 < inputText.length && (inputText[i + 1] === 'u' || inputText[i + 1] === 'o')) {
-          processedText += mappedCharacters[3];
-        } else {
-          // vowel priority
-          if (
-            previousChar in vowelsMap &&          // preceded by a vowel
-            i + 1 < inputText.length &&           
-            inputText[i + 1] in vowelsMap &&      
-            i + 1 < inputText.length - 1 &&       // followed by a vowel, not the last
-            !['ç', 'm', 'p', 'ş', 'z' ].includes(inputText[i + 2]) 
-            ) {
-            if (isFrontVowel(previousChar)) {
-              processedText += mappedCharacters[1];       // front
-            } else {
-              processedText += mappedCharacters[0];       // back
-            }
-          } else {
-            // logic for other consonants
-            if (
-              (i >= 0 && isFrontVowel(inputText[i + 1])) ||
-              (i > 0 && (isFrontVowel(inputText[i - 1]) || isFrontVowel(inputText[i - 2])) &&
-              !isBackVowel(inputText[i + 1]))
-            ) {
-              processedText += mappedCharacters[1];
-            } else {
-              processedText += mappedCharacters[0];
-            }
-          }
-        }
-      } else {
-        processedText += currentChar;
+    // set currentMap to backVowelMap at start
+    if (isNewWord) {
+      currentMap = backVowelMap;
+      isNewWord = false;
+    }
+
+    // check for syllable forming pairs
+    if (i + 1 < input.length) {
+      const first = input[i].toLowerCase();
+      const second = input[i + 1].toLowerCase();
+      const pair1 = first + second;
+      const pair2 = second + first;
+
+      if (backVowelMap.hasOwnProperty(pair1)) {
+        result += backVowelMap[pair1];
+        currentMap = backVowelMap; // update currentMap as syllable
+        i += 2;
+        continue;
+      } else if (frontVowelMap.hasOwnProperty(pair1)) {
+        result += frontVowelMap[pair1];
+        currentMap = frontVowelMap; // update currentMap as syllable
+        i += 2;
+        continue;
+      } else if (backVowelMap.hasOwnProperty(pair2)) {
+        result += backVowelMap[pair2];
+        currentMap = backVowelMap; // update currentMap as syllable
+        i += 2;
+        continue;
+      } else if (frontVowelMap.hasOwnProperty(pair2)) {
+        result += frontVowelMap[pair2];
+        currentMap = frontVowelMap; // update currentMap as syllable
+        i += 2;
+        continue;
       }
     }
 
-    previousChar = currentChar;
+    // process single character
+    const singleChar = input[i].toLowerCase();
+    if (vowels.has(singleChar)) {
+      // single vowel forms a syllable
+      if (backVowelMap.hasOwnProperty(singleChar)) {
+        result += backVowelMap[singleChar];
+        currentMap = backVowelMap; // update currentMap
+      } else if (frontVowelMap.hasOwnProperty(singleChar)) {
+        result += frontVowelMap[singleChar];
+        currentMap = frontVowelMap; // update currentMap
+      } else {
+        result += input[i]; // unmapped char
+      }
+    } else {
+      // single consonant syllable
+      if (currentMap.hasOwnProperty(singleChar)) {
+        result += currentMap[singleChar];
+      } else {
+        result += input[i]; // handle unmapped char
+      }
+    }
     i++;
   }
 
-  return processedText;
+  // haldle special cases
+  result = result.replace(/𐰤𐰍/g, '𐰭');
+  result = result.replace(/𐰣𐰍/g, '𐰭');
+  result = result.replace(/𐰤𐰏/g, '𐰭');
+  result = result.replace(/𐰣𐰏/g, '𐰭');
+  result = result.replace(/𐰤𐰲/g, '𐰨');
+  result = result.replace(/𐰣𐰲/g, '𐰨');
+  result = result.replace(/𐰤𐰑/g, '𐰦');
+  result = result.replace(/𐰤𐱃/g, '𐰦');
+  result = result.replace(/𐰣𐰑/g, '𐰦');
+  result = result.replace(/𐰣𐱃/g, '𐰦');
+  result = result.replace(/𐰤𐰖/g, '𐰪');
+  result = result.replace(/𐰣𐰖/g, '𐰪');
+  result = result.replace(/𐰞𐰑/g, '𐰡');
+  result = result.replace(/𐰞𐱃/g, '𐰡');
+  result = result.replace(/𐰇𐰚/g, '𐰜');
+  result = result.replace(/𐰃𐰴/g, '𐰶');
+  result = result.replace(/𐰆𐰴/g, '𐰸');
+  result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/𐱅𐰇𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=\S)/gu, '');
+  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=\S)/gu, '');
+  result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=\S)/gu, '');
+  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=\S)/gu, '');
+
+return result;
 }
 
-function isFrontVowel(char) {
-  return frontVowels.includes(char);
-}
+// event listener with preprocessing
+  latinInput.addEventListener('input', () => {
+    // input replacement map
+    const replacements = {
+      'Ä': 'e', 'ä': 'e', 'Ə': 'e', 'ə': 'e',
+      'İ': 'i', 'I': 'ı',
+      'h': 'k', 'H': 'k', 'X': 'k', 'x': 'k', 'Q': 'k', 'q': 'k',
+      'C': 'ç', 'c': 'ç', 'J': 'ç', 'j': 'ç',
+      'ğ': 'g', 'Ğ': 'g',
+      'f': 'p', 'F': 'p',
+      'v': 'b', 'V': 'b', 'W': 'b', 'w': 'b',
+      'U': 'o', 'u': 'o',
+      'Ū': 'o', 'ū': 'o',
+      'Ü': 'ö', 'ü': 'ö',
+      'Ý': 'y', 'ý': 'y',
+    };
 
-function isBackVowel(char) {
-  return backVowels.includes(char);
-}
-
-function isChar(char) {
-  return allChars.includes(char);
-}
-
+    // preprocess input
+    let input = latinInput.value.replace(/./g, char => replacements[char] || char);
+//    input = input.toLowerCase();
+    gokturkDiv.textContent = convertToOldTurkic(input);
+  });
+});
