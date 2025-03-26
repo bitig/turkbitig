@@ -119,10 +119,10 @@ function convertToOldTurkic(input) {
   // haldle special cases
 
 //  result = result.replace(/[𐰤𐰣][𐰍𐰏]/gu, '𐰭');
-  result = result.replace(/[𐰤𐰣][𐰑𐱃]/gu, '𐰦');
+  result = result.replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦');
+  result = result.replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡');
   result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
   result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
-  result = result.replace(/𐰞[𐰑𐱃]/gu, '𐰡');
   result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
   result = result.replace(/𐰃𐰴/gu, '𐰶');
   result = result.replace(/𐰆𐰴/gu, '𐰸');
