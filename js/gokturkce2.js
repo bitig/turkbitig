@@ -117,37 +117,26 @@ function convertToOldTurkic(input) {
   }
 
   // haldle special cases
-  result = result.replace(/𐱅𐰇𐰼𐰴/g, '𐱅𐰇𐰼𐰜');
-  result = result.replace(/𐱅𐰇𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
-  result = result.replace(/𐱅𐰇𐰼𐰶/g, '𐱅𐰇𐰼𐰜');
-  result = result.replace(/𐱅𐰇𐰼𐰸/g, '𐱅𐰇𐰼𐰜');
-  result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
-  result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
-  result = result.replace(/𐰤𐰍/g, '𐰭');
-  result = result.replace(/𐰣𐰍/g, '𐰭');
-  result = result.replace(/𐰤𐰏/g, '𐰭');
-  result = result.replace(/𐰣𐰏/g, '𐰭');
-  result = result.replace(/𐰤𐰲/g, '𐰨');
-  result = result.replace(/𐰣𐰲/g, '𐰨');
-  result = result.replace(/𐰤𐰑/g, '𐰦');
-  result = result.replace(/𐰤𐱃/g, '𐰦');
-  result = result.replace(/𐰣𐰑/g, '𐰦');
-  result = result.replace(/𐰣𐱃/g, '𐰦');
-  result = result.replace(/𐰤𐰖/g, '𐰪');
-  result = result.replace(/𐰣𐰖/g, '𐰪');
-  result = result.replace(/𐰞𐰑/g, '𐰡');
-  result = result.replace(/𐰞𐱃/g, '𐰡');
-  result = result.replace(/𐰃𐰴/g, '𐰶');
-  result = result.replace(/𐰆𐰴/g, '𐰸');
-  result = result.replace(/𐰇𐰚/g, '𐰜');
-  result = result.replace(/𐰇𐰜/g, '𐰜');
-  
-//  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰚/gu, '𐰜');
-//  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰴/gu, '𐰸');
+
+  result = result.replace(/[𐰤𐰣][𐰍𐰏]/gu, '𐰭');
+  result = result.replace(/[𐰤𐰣][𐰑𐱃]/gu, '𐰦');
+  result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
+  result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
+  result = result.replace(/𐰞[𐰑𐱃]/gu, '𐰡');
+  result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
+  result = result.replace(/𐰃𐰴/gu, '𐰶');
+  result = result.replace(/𐰆𐰴/gu, '𐰸');
+
+  //  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰚/gu, '𐰜');
+  //  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰴/gu, '𐰸');
   result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=\S)/gu, '');
   result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=\S)/gu, '');
   result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=\S)/gu, '');
   result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=\S)/gu, '');
+
+  result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/𐱅𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
 
 return result;
 }
