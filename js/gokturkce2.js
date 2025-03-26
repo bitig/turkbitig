@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'eb': '𐰀𐰋', 'be': '𐰋𐰀', 'ib': '𐰃𐰋', 'bi': '𐰋𐰃', 'öb': '𐰇𐰋', 'bö': '𐰋𐰇',    
     'ed': '𐰀𐰓', 'de': '𐰓𐰀', 'id': '𐰃𐰓', 'di': '𐰓𐰃', 'öd': '𐰇𐰓', 'dö': '𐰓𐰇',
     'eg': '𐰀𐰏', 'ge': '𐰏𐰀', 'ig': '𐰃𐰏', 'gi': '𐰏𐰃', 'ög': '𐰇𐰏', 'gö': '𐰏𐰇',    
-    'ek': '𐰀𐰚', 'ke': '𐰚𐰀', 'ik': '𐰃𐰚', 'ki': '𐰚𐰃', 'ök': '𐰜', 'ük': '𐰜',    
+    'ek': '𐰀𐰚', 'ke': '𐰚𐰀', 'ik': '𐰃𐰚', 'ki': '𐰚𐰃', 'ök': '𐰇𐰜',  'kö': '𐰚𐰇',
     'el': '𐰀𐰠', 'le': '𐰠𐰀', 'il': '𐰃𐰠', 'li': '𐰠𐰃', 'öl': '𐰇𐰠', 'lö': '𐰠𐰇',    
     'en': '𐰀𐰤', 'ne': '𐰤𐰀', 'in': '𐰃𐰤', 'ni': '𐰤𐰃', 'ön': '𐰇𐰤', 'nö': '𐰤𐰇',    
     'er': '𐰀𐰼', 're': '𐰼𐰀', 'ir': '𐰃𐰼', 'ri': '𐰼𐰃', 'ör': '𐰇𐰼', 'rö': '𐰼𐰇',    
@@ -117,6 +117,12 @@ function convertToOldTurkic(input) {
   }
 
   // haldle special cases
+  result = result.replace(/𐱅𐰇𐰼𐰴/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐱅𐰇𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐱅𐰇𐰼𐰶/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐱅𐰇𐰼𐰸/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
   result = result.replace(/𐰤𐰍/g, '𐰭');
   result = result.replace(/𐰣𐰍/g, '𐰭');
   result = result.replace(/𐰤𐰏/g, '𐰭');
@@ -131,12 +137,13 @@ function convertToOldTurkic(input) {
   result = result.replace(/𐰣𐰖/g, '𐰪');
   result = result.replace(/𐰞𐰑/g, '𐰡');
   result = result.replace(/𐰞𐱃/g, '𐰡');
-  result = result.replace(/𐰇𐰚/g, '𐰜');
   result = result.replace(/𐰃𐰴/g, '𐰶');
   result = result.replace(/𐰆𐰴/g, '𐰸');
-  result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
-  result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
-  result = result.replace(/𐱅𐰇𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐰇𐰚/g, '𐰜');
+  result = result.replace(/𐰇𐰜/g, '𐰜');
+  
+//  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰚/gu, '𐰜');
+//  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰴/gu, '𐰸');
   result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=\S)/gu, '');
   result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=\S)/gu, '');
   result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=\S)/gu, '');
