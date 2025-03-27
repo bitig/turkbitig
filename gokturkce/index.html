@@ -34,6 +34,7 @@
 
 <h1>Göktürkçe Çeviri <span class="xlink"> <a target="_blank" href="https://x.com/turkbitigcom">Sor@&#120143;</a></span></h1>
 
+<!--ceviri baslar-->
 <div><input maxlength="999" type="text" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></div>
 
 <table border="0">
@@ -41,16 +42,15 @@
 <td>Boy&nbsp;</td>
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
 <td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-
-<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯 𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm&nbsp;Harfler</button></td>
-<td style="padding-left:6px;"><button id="clearButton" onclick="clearText()">Sil</button></td>
-
+<td>&nbsp;Aralık</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
 
 <div class="tbs">
-<div class="uuu" id="gokturk" style="font-family:tbldamga;color:#169c60;background-color:#fff;">𐱅𐰇𐰼𐰜</div>
+<div class="uuu" id="gokturk" style="font-family:tbldamga;color:#169c60;background-color:#fff;padding-right:2%;box-sizing: border-box;">𐱅𐰇𐰼𐰜</div>
 </div>
 
 <table border="0" class="fonttable"><tr>
@@ -145,14 +145,16 @@
 <td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="bgColorRadio" value="#09C0F0" onchange="changeBgColor(this.value)">&nbsp;</label></td>
 </tr>
 </tbody></table>
-
+<!--ceviri biter-->
 
 <hr>
 
 <table border="0">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
-<td nowrap><button onclick="downloadAsPng()">Kaydet&nbsp;/&nbsp;Paylaş</button></td>
+<td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯 𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td style="padding-left:6px;"><button id="clearButton" onclick="clearText()"><red><bold>X</red></bold></button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>

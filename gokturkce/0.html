@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Spacing Adjuster</title>
+    <style>
+        #gokturk {
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="gokturk">Adjust my font spacing using the buttons below!</div>
+    <button onclick="adjustSpacing(1)">+</button>
+    <button onclick="adjustSpacing(-1)">-</button>
+
+    <script>
+        function adjustSpacing(value) {
+            const div = document.getElementById("gokturk");
+            const currentSpacing = parseFloat(window.getComputedStyle(div).letterSpacing);
+            div.style.letterSpacing = (currentSpacing + value) + "px";
+        }
+    </script>
+</body>
+</html>
+

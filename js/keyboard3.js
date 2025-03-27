@@ -1,5 +1,19 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
+function changeLetterSpacing(action) {
+    const element = document.getElementById('gokturk');
+    let currentSpacing = window.getComputedStyle(element).letterSpacing;
+    let spacingNum = currentSpacing === 'normal' ? 0 : parseFloat(currentSpacing);
+    
+    if (action === 'increase') {
+        spacingNum = Math.min(99, spacingNum + 3); 
+    } else if (action === 'decrease') {
+        spacingNum = Math.max(-99, spacingNum - 3); 
+    }
+    
+    element.style.letterSpacing = `${spacingNum}px`;
+}
+
 function changeSize(action) {
     const element = document.getElementById('gokturk');
     let currentSize = window.getComputedStyle(element).fontSize;
@@ -7,17 +21,17 @@ function changeSize(action) {
     let target;
     
     if (action === 'increase') {
-        target = sizeNum * 1.08; // Increase by 8%
+        target = sizeNum * 1.08; 
     } else if (action === 'decrease') {
-        target = sizeNum * 0.92; // Decrease by 8%
+        target = sizeNum * 0.92; 
     }
    
     let newSize = Math.round(target / 2) * 2;
     
     if (action === 'increase' && newSize > 800) {
-        newSize = 800; // Cap at 800px
+        newSize = 800; 
     } else if (action === 'decrease' && newSize < 16) {
-        newSize = 14; // Floor at 16px
+        newSize = 14; 
     }
     
     element.style.fontSize = `${newSize}px`;
@@ -85,6 +99,145 @@ function changeStrokeColor(color) {
     element.style.textStrokeColor = color;
 }
 
+function downloadAsPng() {
+    const element = document.getElementById('gokturk');
+    const selection = window.getSelection();
+    let text = '';
+    
+    if (selection.rangeCount > 0 && element.contains(selection.anchorNode)) {
+        text = selection.toString().trim();
+    }
+    if (!text) {
+        text = element.innerText.trim();
+    }
+    if (text === '') text = ' ';
+    
+    const styles = window.getComputedStyle(element);
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    if (!ctx) {
+        console.error('Canvas context not supported');
+        return;
+    }
+    
+    const fontSize = parseFloat(styles.fontSize);
+    const strokeWidth = parseFloat(styles.webkitTextStrokeWidth || '0');
+    const letterSpacing = parseFloat(styles.letterSpacing) || 0;
+    const currentWidth = element.offsetWidth;
+    const paddingLeft = 5;   
+    const paddingRight = 5;  
+    const paddingTop = 30;    
+    const paddingBottom = 2; 
+    
+    ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
+    
+    function measureTextWithSpacing(text) {
+        const graphemes = Array.from(segmenter.segment(text));
+        if (graphemes.length === 0) return 0;
+        const widths = graphemes.map(g => ctx.measureText(g.segment).width);
+        const totalWidth = widths.reduce((sum, w) => sum + w, 0) + letterSpacing * (graphemes.length - 1);
+        return totalWidth;
+    }
+    
+    const words = text.split(' ');
+    let lines = [];
+    let currentLine = '';
+    
+    for (let word of words) {
+        const testLine = currentLine + (currentLine ? ' ' : '') + word;
+        if (measureTextWithSpacing(testLine) <= currentWidth - (paddingLeft + paddingRight)) {
+            currentLine = testLine;
+        } else {
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            const wordWidth = measureTextWithSpacing(word);
+            if (wordWidth > currentWidth - (paddingLeft + paddingRight)) {
+                let subWord = '';
+                for (let char of word) {
+                    const testSubWord = subWord + char;
+                    if (measureTextWithSpacing(testSubWord) <= currentWidth - (paddingLeft + paddingRight)) {
+                        subWord = testSubWord;
+                    } else {
+                        lines.push(subWord);
+                        subWord = char;
+                    }
+                }
+                currentLine = subWord;
+            } else {
+                currentLine = word;
+            }
+        }
+    }
+    if (currentLine) lines.push(currentLine);
+    
+    const textMetrics = ctx.measureText(lines[0]);
+    const lineHeight = (textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent || fontSize) * 1.2;
+    const textHeight = lines.length * lineHeight;
+    const lineWidths = lines.map(line => measureTextWithSpacing(line));
+    const textWidth = Math.max(...lineWidths);
+    
+    canvas.width = textWidth + strokeWidth * 2 + paddingLeft + paddingRight;
+    canvas.height = textHeight + strokeWidth * 2 + paddingTop + paddingBottom;
+    
+    ctx.fillStyle = styles.backgroundColor || 'transparent';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
+    ctx.textAlign = 'left'; 
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = styles.color;
+    if (strokeWidth > 0) {
+        ctx.strokeStyle = styles.webkitTextStrokeColor || 'black';
+        ctx.lineWidth = strokeWidth;
+    }
+    
+    const startY = paddingTop + strokeWidth + lineHeight / 2;
+    const rightX = canvas.width - paddingRight - strokeWidth;
+    lines.forEach((line, index) => {
+        const y = startY + index * lineHeight;
+        const graphemes = Array.from(segmenter.segment(line));
+        let x = rightX;
+        graphemes.forEach((grapheme, i) => {
+            const width = ctx.measureText(grapheme.segment).width;
+            x -= width;
+            if (strokeWidth > 0) {
+                ctx.strokeText(grapheme.segment, x, y);
+            }
+            ctx.fillText(grapheme.segment, x, y);
+            if (i < graphemes.length - 1) {
+                x -= letterSpacing;
+            }
+        });
+    });
+    
+    try {
+        const dataUrl = canvas.toDataURL('image/png');
+        if (!dataUrl || dataUrl === 'data:,') {
+            console.error('Canvas data URL is empty');
+            return;
+        }
+        const now = new Date().toLocaleTimeString('tr-TR', { 
+            timeZone: 'Europe/Istanbul',
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        const timeString = now.replace(/:/g, '-');
+        const fileName = `gokturk-${timeString}.png`;
+        
+        const link = document.createElement('a');
+        link.download = fileName;
+        link.href = dataUrl;
+        link.click();
+        console.log('Download triggered successfully');
+    } catch (err) {
+        console.error('Error generating PNG: ', err);
+    }
+}
+
 document.addEventListener('keydown', function(event) {
     if (event.key === 'ArrowLeft') {
         changeSize('increase');
@@ -93,15 +246,12 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-
-// Initialize the segmenter for graphemes
 const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
 
-// Add event listener to the keyboard
 document.getElementById('keyboard').addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
         const key = event.target.getAttribute('data-key');
-        const output = document.getElementById('gokturk'); // Your text output element
+        const output = document.getElementById('gokturk'); 
         if (key === 'backspace') {
             const text = output.textContent;
             if (text.length > 0) {
@@ -128,128 +278,4 @@ function copyDifferentValues(button) {
 function clearText() {
     document.getElementById('latin').value = '';
     document.getElementById('gokturk').innerText = '';
-}
-
-function downloadAsPng() {
-    const element = document.getElementById('gokturk');
-    const selection = window.getSelection();
-    let text = '';
-    
-    if (selection.rangeCount > 0 && element.contains(selection.anchorNode)) {
-        text = selection.toString().trim();
-    }
-    if (!text) {
-        text = element.innerText.trim();
-    }
-    if (text === '') text = ' ';
-    
-    const styles = window.getComputedStyle(element);
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    if (!ctx) {
-        console.error('Canvas context not supported');
-        return;
-    }
-    
-    const fontSize = parseFloat(styles.fontSize);
-    const strokeWidth = parseFloat(styles.webkitTextStrokeWidth || '0');
-    const currentWidth = element.offsetWidth;
-    const paddingLeft = 5;   // Left padding
-    const paddingRight = 5;  // Right padding
-    const paddingTop = 30;    // Top padding
-    const paddingBottom = 2; // Bottom padding
-    
-    ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
-    
-    const words = text.split(' ');
-    let lines = [];
-    let currentLine = '';
-    
-    for (let word of words) {
-        const testLine = currentLine + (currentLine ? ' ' : '') + word;
-        const metrics = ctx.measureText(testLine);
-        if (metrics.width <= currentWidth - (paddingLeft + paddingRight)) {
-            currentLine = testLine;
-        } else {
-            if (currentLine) {
-                lines.push(currentLine);
-            }
-            const wordMetrics = ctx.measureText(word);
-            if (wordMetrics.width > currentWidth - (paddingLeft + paddingRight)) {
-                let subWord = '';
-                for (let char of word) {
-                    const testSubWord = subWord + char;
-                    if (ctx.measureText(testSubWord).width <= currentWidth - (paddingLeft + paddingRight)) {
-                        subWord = testSubWord;
-                    } else {
-                        lines.push(subWord);
-                        subWord = char;
-                    }
-                }
-                currentLine = subWord;
-            } else {
-                currentLine = word;
-            }
-        }
-    }
-    if (currentLine) lines.push(currentLine);
-    
-    const textMetrics = ctx.measureText(lines[0]);
-    const lineHeight = (textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent || fontSize) * 1.2;
-    const textHeight = lines.length * lineHeight;
-    const textWidth = Math.max(...lines.map(line => ctx.measureText(line).width));
-    
-    canvas.width = textWidth + strokeWidth * 2 + paddingLeft + paddingRight;
-    canvas.height = textHeight + strokeWidth * 2 + paddingTop + paddingBottom;
-    
-    ctx.fillStyle = styles.backgroundColor || 'transparent';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = styles.color;
-    
-    // Only set stroke properties if strokeWidth > 0
-    if (strokeWidth > 0) {
-        ctx.strokeStyle = styles.webkitTextStrokeColor || 'black';
-        ctx.lineWidth = strokeWidth;
-    }
-    
-    const startY = paddingTop + strokeWidth + lineHeight / 2;
-    const rightX = canvas.width - paddingRight - strokeWidth;
-    lines.forEach((line, index) => {
-        const y = startY + index * lineHeight;
-        if (strokeWidth > 0) {
-            ctx.strokeText(line, rightX, y); // Only stroke if width > 0
-        }
-        ctx.fillText(line, rightX, y);
-    });
-    
-    try {
-        const dataUrl = canvas.toDataURL('image/png');
-        if (!dataUrl || dataUrl === 'data:,') {
-            console.error('Canvas data URL is empty');
-            return;
-        }
-        // Get Istanbul time
-        const now = new Date().toLocaleTimeString('tr-TR', { 
-            timeZone: 'Europe/Istanbul',
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
-        const timeString = now.replace(/:/g, '-'); // Replace colons with dashes
-        const fileName = `gokturk-${timeString}.png`;
-        
-        const link = document.createElement('a');
-        link.download = fileName;
-        link.href = dataUrl;
-        link.click();
-        console.log('Download triggered successfully');
-    } catch (err) {
-        console.error('Error generating PNG: ', err);
-    }
 }
