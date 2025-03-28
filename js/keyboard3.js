@@ -71,6 +71,10 @@ function copyGokturk() {
     navigator.clipboard.writeText(textToCopy)
         .then(() => {
             console.log('Text copied to clipboard');
+            setTimeout(() => {
+                selection.removeAllRanges();
+                console.log('Text selection cleared');
+            }, 5000);
         })
         .catch(err => {
             console.error('Failed to copy text: ', err);
