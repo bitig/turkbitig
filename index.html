@@ -13,7 +13,7 @@
 <script src='/js/gokturkce2.js'></script>
 
 <meta name="keywords" content="Göktürk Alfabesi, Orhun alfabesi, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı, Göktürkçe çeviri, Orhun alfabesi çeviri, Göktürkçe klavye, Türk runik alfabesi, eski Türk yazısı">
-<meta name="description" content="Göktürkçe çeviri yazıcı ile Göktürk Alfabesi'ni kolayca yazabilirsiniz. Bu eski Türk alfabesi 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
+<meta name="description" content="Göktürkçe çeviri ve klavye ile Göktürk Alfabesi kolayca yazabilirsiniz. Klavyemizle Göktürkçe yazın, alfabenin 38 harfini keşfedin ve Türk tarihinin eşsiz yazı sistemini deneyin.">
 
 <title>Göktürk Alfabesi Çeviri Yazıcı</title>
 
@@ -153,11 +153,103 @@
 
 <hr>
 
+<table border="0" id="keyboard" class="keytable">
+<tr>
+
+<td><button class="key ae" data-key="𐰀">𐰀</button></td>
+<td><button class="key ii" data-key="𐰃">𐰃</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key kalin" data-key="𐰆">𐰆</button></td>
+<td><button class="key ince" data-key="𐰇">𐰇</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key normal" data-key="𐰲">𐰲</button></td>
+<td><button class="key sil" data-key="delete">X</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰉">𐰉</button></td>
+<td><button class="key ince" data-key="𐰋">𐰋</button></td>
+
+<td><button class="key kalin" data-key="𐰺">𐰺</button></td>
+<td><button class="key ince" data-key="𐰼">𐰼</button></td>
+
+<td><button class="key normal" data-key="𐰢">𐰢</button></td>
+<td><button class="delete key sil" data-key="backspace">&gt;</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰑">𐰑</button></td>
+<td><button class="key ince" data-key="𐰓">𐰓</button></td>
+
+<td><button class="key kalin" data-key="𐰽">𐰽</button></td>
+<td><button class="key ince" data-key="𐰾">𐰾</button></td>
+
+<td><button class="key normal" data-key="𐰯">𐰯</button></td>
+
+<td><button class="key normal" data-key=" "> &nbsp; </button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰍">𐰍</button></td>
+<td><button class="key ince" data-key="𐰏">𐰏</button></td>
+
+<td><button class="key kalin" data-key="𐱃">𐱃</button></td>
+<td><button class="key ince" data-key="𐱅">𐱅</button></td>
+
+<td><button class="key normal" data-key="𐱁">𐱁</button></td>
+<td><button class="key normal" data-key=":">: </button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰴">𐰴</button></td>
+<td><button class="key ince" data-key="𐰚">𐰚</button></td>
+
+<td><button class="key kalin" data-key="𐰖">𐰖</button></td>
+<td><button class="key ince" data-key="𐰘">𐰘</button></td>
+
+<td><button class="key normal" data-key="𐰔">𐰔</button></td>
+<td><button class="key normal" data-key="𐰨">𐰨</button></td>
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰞">𐰞</button></td>
+<td><button class="key ince" data-key="𐰠">𐰠</button></td>
+
+<td><button class="key kalin" data-key="𐰶">𐰶</button></td>
+<td><button class="key ince" data-key="𐰱">𐰱</button></td>
+
+<td><button class="key normal" data-key="𐰭">𐰭</button></td>
+<td><button class="key normal" data-key="𐰦">𐰦</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰣">𐰣</button></td>
+<td><button class="key ince" data-key="𐰤">𐰤</button></td>
+
+<td><button class="key kalin" data-key="𐰸">𐰸</button></td>
+<td><button class="key ince" data-key="𐰜">𐰜</button></td>
+
+<td><button class="key normal" data-key="𐰪">𐰪</button></td>
+<td><button class="key normal" data-key="𐰡">𐰡</button></td>
+
+</tr>
+</table>
+
+<hr>
+
 <table border="0">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
-<td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
-<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯 𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td nowrap><button onclick="downloadAsPng()">Kaydet / paylaş</button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
@@ -165,7 +257,7 @@
 <hr>
 
 <ul>
-<li><a href="/gokturkce/">Klavyeli yazıcı</a></li>
+<li><a href="/gokturkce/">Klavyesiz yazıcı</a></li>
 <li><a href="/isimler/"><b>Göktürkçe isimler</b></a></li>
 <li><a href="/orhun-yazitlari/"><b><red>Orhun yazıtları</red></b></a></li>
 <li><a href="/gokturk-alfabesi/">Alfabenin kuralları</a></li>
@@ -186,6 +278,7 @@
 <span style="font-family:damgaregular;">&nbsp;</span>
 <span style="font-family:damgagenis;">&nbsp;</span>
 <span style="font-family:damgagenisbold;">&nbsp;</span>
+<span style="font-family:damgab;">&nbsp;</span>
 <span style="font-family:damgabb;">&nbsp;</span>
 <span style="font-family:damgatamince;">&nbsp;</span>
 <span style="font-family:gokturkyenib;">&nbsp;</span>
