@@ -1,17 +1,20 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 function changeLetterSpacing(action) {
+    // Changed to make letter spacing relative to text size using 'em' units
     const element = document.getElementById('gokturk');
-    let currentSpacing = window.getComputedStyle(element).letterSpacing;
-    let spacingNum = currentSpacing === 'normal' ? 0 : parseFloat(currentSpacing);
+    const currentSpacingPx = parseFloat(window.getComputedStyle(element).letterSpacing) || 0;
+    const fontSize = parseFloat(window.getComputedStyle(element).fontSize);
+    let spacingEm = currentSpacingPx / fontSize;
     
+    const increment = 0.02; // in em
     if (action === 'increase') {
-        spacingNum = Math.min(99, spacingNum + 3); 
+        spacingEm = Math.min(0.38, spacingEm + increment);
     } else if (action === 'decrease') {
-        spacingNum = Math.max(-99, spacingNum - 3); 
+        spacingEm = Math.max(-0.14, spacingEm - increment);
     }
     
-    element.style.letterSpacing = `${spacingNum}px`;
+    element.style.letterSpacing = `${spacingEm}em`;
 }
 
 function changeSize(action) {

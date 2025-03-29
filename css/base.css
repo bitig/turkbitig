@@ -127,14 +127,19 @@ input[type="color"] {
   unicode-bidi: bidi-override;
   text-align: right;
   font-size: 80px;
+  overflow-wrap: break-word; 
+  min-height: 100px; 
+  width: 100%; 
+  max-width: 1600px;
+  font-family:'tbldamga';
+  color:#169c60;
+  background-color:#fff;
+  padding-right:4%;
+  box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
   text-stroke-color: #000000; 
   -webkit-text-stroke-width: 1px;
   text-stroke-width: 1px; 
-  overflow-wrap: break-word; 
-  min-height: 100px; 
-  width: 100%; 
-  max-width: 1600px;"
 }
 
 .uu {
