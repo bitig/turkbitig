@@ -132,27 +132,16 @@ input[type="color"] {
   width: 100%; 
   max-width: 1600px;
   font-family:'tbldamga';
-  color:#169c60;
   background-color:#fff;
   padding-right:4%;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
   text-stroke-color: #000000; 
-  -webkit-text-stroke-width: 1px;
-  text-stroke-width: 1px; 
+  -webkit-text-stroke-width: 0px;
+  text-stroke-width: 0px; 
+  color:#C00;
 }
 
-.uu {
-  outline: none;
-  border: 2px solid #999;
-  width: 99%;
-  padding-left: 0;
-  direction: rtl;
-  unicode-bidi: bidi-override;
-  text-align: right;
-  font-family: 'tbldamga';
-  font-size: 200%;
-}
 
 .fonttable {
   line-height:1.3;
