@@ -142,6 +142,17 @@ input[type="color"] {
   color:#139;
 }
 
+.uu {
+  outline: none;
+  border: 2px solid #999;
+  width: 99%;
+  padding-left: 0;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  text-align: right;
+  font-family: 'tbldamga';
+  font-size: 200%;
+}
 
 .fonttable {
   line-height:1.3;
