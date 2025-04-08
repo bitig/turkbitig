@@ -11,7 +11,7 @@
 
   <style>
     #gokturk {
-      font-family: 'bilgekaganyenim';
+      font-family: 'bilgekaganyeni';
     }
 
     #gokturk.styleChanged {
@@ -20,8 +20,8 @@
     }
   </style>
 
-<meta name="description" content="Göktürk Alfabesi metin çeviri yazıcı ile uzun metinler yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
-<title>Göktürk Alfabesi</title>
+<meta name="description" content="Göktürk Alfabesi metin çeviri yazıcı ile Göktürkçe uzun metinler yazabilirsiniz, latin altyazısı sayesinde yazınızı görebilirsiniz.">
+<title>Göktürk Alfabesi Yazıcı</title>
 
 </head>
 <body>
@@ -41,10 +41,27 @@
 
 <div><textarea maxlength="9999" rows="6" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
 
-<button onclick="copyToClipboard(event)">Kopyala</button>&nbsp;&nbsp;&nbsp;
-  <input type="checkbox" id="styleCheckbox"><label for="styleCheckbox">Latin Altyazı</label>
+<table border="0">
+<tr>
+<td>Boy&nbsp;</td>
+<td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td nowrap width="90%" align="right"><input type="checkbox" id="styleCheckbox"><label for="styleCheckbox">Latin&nbsp;Altyazı</label></td>
+</tr>
+</table>
 
-<div><textarea rows="12" class="uu" id="gokturk"></textarea></div>
+<div rows="12" class="uu" id="gokturk" contenteditable="true"></div>
+
+<table border="0">
+<tr>
+<td><button onclick="copyToClipboard(event)">Kopyala</button></td>
+<td width="90%">&nbsp;</td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
+</tr>
+</table>
+
+
+
 
 <ul>
 <li><a class="parent" href="/gokturkce/">Göktürkçe kısa yazıcı</a>
@@ -65,7 +82,7 @@
     });
   </script>
 
-<script src="/js/keyboard.js"></script>
+<script src="/js/keyboard3.js"></script>
 
 </div></main>
 

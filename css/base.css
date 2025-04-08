@@ -143,15 +143,18 @@ input[type="color"] {
 }
 
 .uu {
-  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word; 
   border: 2px solid #999;
-  width: 99%;
-  padding-left: 0;
+  padding-right: 1%;
   direction: rtl;
   unicode-bidi: bidi-override;
   text-align: right;
   font-family: 'tbldamga';
   font-size: 200%;
+  min-height:10em;
+  background-color:#F6F6F6;
 }
 
 .fonttable {
