@@ -41,27 +41,28 @@
 
 <div><textarea maxlength="9999" rows="6" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
 
-<table border="0">
+<table border="0" id="fontRadioGroup">
 <tr>
 <td>Boy&nbsp;</td>
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
 <td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td nowrap width="90%" align="right"><input type="checkbox" id="styleCheckbox"><label for="styleCheckbox">Latin&nbsp;Altyazı</label></td>
+<td nowrap width="90%" align="right">&nbsp;</td>
+ <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenim" checked><span>Damga</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga"><span>Alt.</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga2"><span>Öğr.</span></label></td>
 </tr>
 </table>
 
-<div rows="12" class="uu" id="gokturk" contenteditable="true"></div>
+<div class="uu" id="gokturk" contenteditable="true"></div>
 
 <table border="0">
 <tr>
 <td><button onclick="copyToClipboard(event)">Kopyala</button></td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰉𐰋𐰲𐰱 𐰑𐰓𐰍𐰏𐰃 𐰴𐰚𐰶𐰸𐰜 𐰞𐰠𐰢𐰣𐰤𐰭 𐰆𐰇𐰯 𐰺𐰼𐰽𐰾𐱁 𐱃𐱅𐰖𐰘𐰔 𐰪𐰨𐰦𐰡">Tüm&nbsp;Harfler</button></td>
 <td width="90%">&nbsp;</td>
 <td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
-
-
-
 
 <ul>
 <li><a class="parent" href="/gokturkce/">Göktürkçe kısa yazıcı</a>
