@@ -118,6 +118,9 @@ input[type="color"] {
 #colorPicker {width:39px;height:38px;}
 #bgColorPicker {width:39px;height:38px;}
 #strokeColorPicker {width:38px;height:38px;}
+#fontColor {width:60px;height:30px;}
+#bgColor {width:60px;height:30px;}
+
 
 .uuu {
   padding-top:8px;
@@ -390,7 +393,6 @@ td {
   font-weight: bold;
   float: right;
   margin-top: 6px;
-  margin-right: 5%;
 }
 
 hr {
