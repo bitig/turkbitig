@@ -1,7 +1,6 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 function changeLetterSpacing(action) {
-    // Changed to make letter spacing relative to text size using 'em' units
     const element = document.getElementById('gokturk');
     const currentSpacingPx = parseFloat(window.getComputedStyle(element).letterSpacing) || 0;
     const fontSize = parseFloat(window.getComputedStyle(element).fontSize);
@@ -131,7 +130,6 @@ function downloadAsPng() {
     const fontSize = parseFloat(styles.fontSize);
     const strokeWidth = parseFloat(styles.webkitTextStrokeWidth || '0');
     const letterSpacing = parseFloat(styles.letterSpacing) || 0;
-    // Use content width for wrapping, accounting for padding and borders
     const paddingLeft = parseFloat(styles.paddingLeft) || 0;
     const paddingRight = parseFloat(styles.paddingRight) || 0;
     const paddingTop = parseFloat(styles.paddingTop) || 0;
@@ -150,11 +148,11 @@ function downloadAsPng() {
         return totalWidth;
     }
     
-    // Step 1: Split text by newlines to handle <br> tags
+    // br tags
     const explicitLines = text.split('\n');
     let lines = [];
     
-    // Step 2: Process each explicit line and apply word wrapping
+    // word wrapping
     for (let explicitLine of explicitLines) {
         const words = explicitLine.split(' ');
         let currentLine = '';
@@ -190,21 +188,21 @@ function downloadAsPng() {
         }
     }
     
-    // Calculate canvas dimensions
+    // dimensions
     const textMetrics = ctx.measureText(lines[0] || ' ');
     const lineHeight = (textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent || fontSize) * 1.2;
     const textHeight = lines.length * lineHeight;
     const lineWidths = lines.map(line => measureTextWithSpacing(line));
-    const textWidth = Math.max(...lineWidths, 0); // Ensure non-negative
+    const textWidth = Math.max(...lineWidths, 0); 
     
     canvas.width = textWidth + strokeWidth * 2 + paddingLeft + paddingRight;
     canvas.height = textHeight + strokeWidth * 2 + paddingTop + paddingBottom;
     
-    // Draw background
+    // background
     ctx.fillStyle = styles.backgroundColor || 'transparent';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Set text properties
+    // properties
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
@@ -214,7 +212,7 @@ function downloadAsPng() {
         ctx.lineWidth = strokeWidth;
     }
     
-    // Draw each line
+    // draw lines
     const startY = paddingTop + strokeWidth + lineHeight / 2;
     const rightX = canvas.width - paddingRight - strokeWidth;
     lines.forEach((line, index) => {
@@ -234,7 +232,7 @@ function downloadAsPng() {
         });
     });
     
-    // Generate and download PNG
+    // download
     try {
         const dataUrl = canvas.toDataURL('image/png');
         if (!dataUrl || dataUrl === 'data:,') {
@@ -305,42 +303,32 @@ function clearText() {
     document.getElementById('gokturk').innerText = '';
 }
 
-
 const textarea = document.getElementById('latin');
 const lineHeight = parseInt(getComputedStyle(textarea).lineHeight);
 const maxRows = 6;
 const maxHeight = lineHeight * maxRows;
 
 function adjustHeight() {
-    // Store current scroll position
     const scrollTop = textarea.scrollTop;
-    
-    // Reset height to auto and temporarily hide overflow
+   
     textarea.style.height = 'auto';
     textarea.style.overflow = 'hidden';
     
-    // Calculate new height based on scroll height
     const newHeight = textarea.scrollHeight;
     
     if (newHeight <= maxHeight) {
-        // If content height is less than max height, expand normally
         textarea.style.height = newHeight + 'px';
         textarea.classList.remove('scrollable');
         textarea.style.overflow = 'hidden';
     } else {
-        // If content height exceeds max height, set to max height and show scrollbar
         textarea.style.height = maxHeight + 'px';
         textarea.classList.add('scrollable');
         textarea.style.overflow = 'auto';
-        // Restore scroll position
         textarea.scrollTop = scrollTop;
     }
 }
 
-// Add event listeners for both input and window resize
 textarea.addEventListener('input', adjustHeight);
 window.addEventListener('resize', adjustHeight);
-
-// Initial adjustment
 adjustHeight();
 

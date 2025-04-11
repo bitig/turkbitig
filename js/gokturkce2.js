@@ -164,9 +164,7 @@ return result;
 // preprocess input
     let input = latinInput.value.replace(/./g, char => replacements[char] || char);
     let output = convertToOldTurkic(input);
-    // Modification: Replace line breaks with <br> tags to preserve them in the output
     output = output.replace(/\n/g, '<br>');
-    // Modification: Use innerHTML instead of textContent to render <br> tags
     gokturkDiv.innerHTML = output;
   });
 });
