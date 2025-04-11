@@ -261,13 +261,13 @@ function downloadAsPng() {
 
 // downloadAsPng ends
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'ArrowLeft') {
-        changeSize('increase');
-    } else if (event.key === 'ArrowRight') {
-        changeSize('decrease');
-    }
-});
+//document.addEventListener('keydown', function(event) {
+//    if (event.key === 'ArrowLeft') {
+//        changeSize('increase');
+//    } else if (event.key === 'ArrowRight') {
+//        changeSize('decrease');
+//    }
+//});
 
 const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
 
