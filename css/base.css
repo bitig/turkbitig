@@ -214,11 +214,11 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 120%;
+  font-size: 110%;
 }
 
 h2 {
-  font-size: 110%;
+  font-size: 100%;
 }
 
 h3 {
@@ -646,5 +646,8 @@ red {
 #colorPicker {height:33px;}
 #bgColorPicker {height:33px;}
 #strokeColorPicker {height:33px;}
+
+h1 {font-size: 150%;}
+h2 {font-size: 120%;}
 
 }
