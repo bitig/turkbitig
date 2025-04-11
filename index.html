@@ -65,13 +65,17 @@
 </table>
 
 <div class="tbs">
-<div class="uuu" id="gokturk" style="font-size:76px;"></div>
+<div class="uuu" id="gokturk" style="min-height:160px; font-size:76px;">𐱅𐰇𐰼𐰜</div>
 </div>
 
-<table border="0" class="fonttable"><tr>
-<td>
+
+<table class="fonttable" id="fontRadioGroup">
+<tr>
+<td width="8%">
 <select class="fontselect" onchange="changeFont(this.value)">
   <option value="tbldamga2" selected>Yazı tipi</option>
+  <option value="tbldamga2">Öğrenci</option>
+  <option value="tbldamga">Altyazı</option>
   <option value="bala">Bala</option>
   <option value="balab">Bala-K</option>
   <option value="balag">Bala-G</option>
@@ -113,34 +117,28 @@
 </select>
 </td>
 
-<td style="padding-left:10px;text-align:right;">Kıyı</td>
-<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
-<td width="50%">&nbsp;</td>
-</tr></table>
-
-<table class="fonttable" id="fontRadioGroup">
-<tr>
 <td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenib"><span>1</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span>2</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyenib"><span>3</span></label></td>
 <td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span>4</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="balab"><span>5</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalembold"><span>6</span></label></td>
 <td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span>Alt.</span></label></td>
-<td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga2"><span>Öğrenci</span></label></td>
+<td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga2"><span>Öğr.</span></label></td>
 </tr>
 </table>
 
 <table border="0" class="colortable">
 <tbody><tr><td width="3%">Renk&nbsp;</td>
 <td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#113399"></td>
-<td><label class="fc2 bs"><input type="radio" name="colorRadio" value="transparent" onchange="changeColor(this.value)">&nbsp;</label></td>
 
 <td width="3%" style="text-align:right;">&nbsp;Arka&nbsp;</td>
 <td width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
-<td><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+
+<td style="padding-left:10px;text-align:right;">Kıyı</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="50%">&nbsp;</td>
+
 </tr>
 
 </tbody></table>
