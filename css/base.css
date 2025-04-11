@@ -133,7 +133,8 @@ input[type="color"] {
   max-width: 1600px;
   font-family:'tbldamga';
   background-color:#fff;
-  padding-right:4%;
+  padding-left:2%;
+  padding-right:2%;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
   text-stroke-color: #000000; 
