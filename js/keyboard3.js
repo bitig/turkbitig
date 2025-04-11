@@ -109,24 +109,26 @@ function downloadAsPng() {
     const element = document.getElementById('gokturk');
     const selection = window.getSelection();
     let text = '';
-    
+
+    // retrieve text
     if (selection.rangeCount > 0 && element.contains(selection.anchorNode)) {
-        text = selection.toString().trim();
+        text = selection.toString();
     }
     if (!text) {
-        text = element.innerText.trim();
+        text = element.innerText;
     }
     if (text === '') text = ' ';
-    
+
     const styles = window.getComputedStyle(element);
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    
+
     if (!ctx) {
         console.error('Canvas context not supported');
         return;
     }
-    
+
+    // style properties
     const fontSize = parseFloat(styles.fontSize);
     const strokeWidth = parseFloat(styles.webkitTextStrokeWidth || '0');
     const letterSpacing = parseFloat(styles.letterSpacing) || 0;
@@ -137,9 +139,10 @@ function downloadAsPng() {
     const borderLeftWidth = parseFloat(styles.borderLeftWidth) || 0;
     const borderRightWidth = parseFloat(styles.borderRightWidth) || 0;
     const availableWidth = element.offsetWidth - paddingLeft - paddingRight - borderLeftWidth - borderRightWidth;
-    
+
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
-    
+
+    // letter spacing
     function measureTextWithSpacing(text) {
         const graphemes = Array.from(segmenter.segment(text));
         if (graphemes.length === 0) return 0;
@@ -147,26 +150,26 @@ function downloadAsPng() {
         const totalWidth = widths.reduce((sum, w) => sum + w, 0) + letterSpacing * (graphemes.length - 1);
         return totalWidth;
     }
-    
-    // br tags
+
+    // newlines
     const explicitLines = text.split('\n');
     let lines = [];
-    
-    // word wrapping
+
+    // blank lines
     for (let explicitLine of explicitLines) {
         const words = explicitLine.split(' ');
         let currentLine = '';
-        
         for (let word of words) {
+            if (word === '') continue; 
             const testLine = currentLine + (currentLine ? ' ' : '') + word;
             if (measureTextWithSpacing(testLine) <= availableWidth) {
                 currentLine = testLine;
             } else {
                 if (currentLine) {
                     lines.push(currentLine);
-                }
-                const wordWidth = measureTextWithSpacing(word);
-                if (wordWidth > availableWidth) {
+                    currentLine = word;
+                } else {
+                    // split word
                     let subWord = '';
                     for (let char of word) {
                         const testSubWord = subWord + char;
@@ -178,31 +181,28 @@ function downloadAsPng() {
                         }
                     }
                     currentLine = subWord;
-                } else {
-                    currentLine = word;
                 }
             }
         }
-        if (currentLine) {
-            lines.push(currentLine);
-        }
+        // newlines
+        lines.push(currentLine || '');
     }
-    
+
     // dimensions
     const textMetrics = ctx.measureText(lines[0] || ' ');
     const lineHeight = (textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent || fontSize) * 1.2;
     const textHeight = lines.length * lineHeight;
     const lineWidths = lines.map(line => measureTextWithSpacing(line));
-    const textWidth = Math.max(...lineWidths, 0); 
-    
+    const textWidth = Math.max(...lineWidths, 0);
+
     canvas.width = textWidth + strokeWidth * 2 + paddingLeft + paddingRight;
     canvas.height = textHeight + strokeWidth * 2 + paddingTop + paddingBottom;
-    
+
     // background
     ctx.fillStyle = styles.backgroundColor || 'transparent';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // properties
+
+    // text properties
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
@@ -211,35 +211,37 @@ function downloadAsPng() {
         ctx.strokeStyle = styles.webkitTextStrokeColor || 'black';
         ctx.lineWidth = strokeWidth;
     }
-    
-    // draw lines
+
+    // render lines
     const startY = paddingTop + strokeWidth + lineHeight / 2;
     const rightX = canvas.width - paddingRight - strokeWidth;
     lines.forEach((line, index) => {
         const y = startY + index * lineHeight;
-        const graphemes = Array.from(segmenter.segment(line));
-        let x = rightX;
-        graphemes.forEach((grapheme, i) => {
-            const width = ctx.measureText(grapheme.segment).width;
-            x -= width;
-            if (strokeWidth > 0) {
-                ctx.strokeText(grapheme.segment, x, y);
-            }
-            ctx.fillText(grapheme.segment, x, y);
-            if (i < graphemes.length - 1) {
-                x -= letterSpacing;
-            }
-        });
+        if (line) {
+            const graphemes = Array.from(segmenter.segment(line));
+            let x = rightX;
+            graphemes.forEach((grapheme, i) => {
+                const width = ctx.measureText(grapheme.segment).width;
+                x -= width;
+                if (strokeWidth > 0) {
+                    ctx.strokeText(grapheme.segment, x, y);
+                }
+                ctx.fillText(grapheme.segment, x, y);
+                if (i < graphemes.length - 1) {
+                    x -= letterSpacing;
+                }
+            });
+        }
     });
-    
-    // download
+
+    // generate PNG
     try {
         const dataUrl = canvas.toDataURL('image/png');
         if (!dataUrl || dataUrl === 'data:,') {
             console.error('Canvas data URL is empty');
             return;
         }
-        const now = new Date().toLocaleTimeString('tr-TR', { 
+        const now = new Date().toLocaleTimeString('tr-TR', {
             timeZone: 'Europe/Istanbul',
             hour12: false,
             hour: '2-digit',
@@ -248,7 +250,7 @@ function downloadAsPng() {
         });
         const timeString = now.replace(/:/g, '-');
         const fileName = `gokturk-${timeString}.png`;
-        
+
         const link = document.createElement('a');
         link.download = fileName;
         link.href = dataUrl;
