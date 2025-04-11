@@ -23,7 +23,7 @@
 
 #latin {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
     resize: none;
     overflow-y: hidden;
@@ -49,9 +49,11 @@
 <h1>Göktürkçe Çeviri</h1>
 
 <!--ceviri baslar-->
-<div><textarea rows="1" maxlength="3333" type="text" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea>
+<div>
+<textarea rows="1" maxlength="3333" type="text" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea>
+</div>
 
-<table border="0">
+<table border="0" style="margin-bottom:5px;">
 <tr>
 <td>Boy&nbsp;</td>
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
@@ -135,7 +137,7 @@
 
 <td style="padding-left:10px;text-align:right;">Kıyı</td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
 <td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td width="50%">&nbsp;</td>
 

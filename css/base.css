@@ -89,8 +89,8 @@ input[type="color"] {
   width: 99%;
   padding: 1%;
   padding-right: 0;
-  margin-bottom: 1%;
-  font-family: Arial, sans-serif;
+  margin-bottom: 0;
+  font-family: sans-serif;
   font-size: 120%;
 }
 

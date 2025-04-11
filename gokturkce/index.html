@@ -37,7 +37,7 @@
 <!--ceviri baslar-->
 <div><input maxlength="999" type="text" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></div>
 
-<table border="0">
+<table border="0" style="margin-bottom:5px;margin-top:5px;">
 <tr>
 <td>Boy&nbsp;</td>
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
@@ -101,7 +101,7 @@
 
 <td style="padding-left:10px;text-align:right;">Kıyı</td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
 <td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td width="50%">&nbsp;</td>
 </tr></table>
