@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -20,20 +19,6 @@
 <style>
 .sitenav {position: relative;}
 #clearButton {padding:5px;}
-
-#latin {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    resize: none;
-    overflow-y: hidden;
-    min-height: 24px;
-    line-height: 1.5;
-}
-
-#latin.scrollable {
-    overflow-y: auto;
-}
 </style>
 
 </head>
@@ -49,9 +34,39 @@
 <h1>Göktürkçe Çeviri</h1>
 
 <!--ceviri baslar-->
-<div>
-<textarea rows="1" maxlength="3333" type="text" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea>
-</div>
+<div><textarea class="latin" rows="1" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
+
+<script>
+const textarea = document.getElementById('latin');
+const lineHeight = parseInt(getComputedStyle(textarea).lineHeight);
+const maxRows = 6;
+const maxHeight = lineHeight * maxRows;
+
+function adjustHeight() {
+    const scrollTop = textarea.scrollTop;
+   
+    textarea.style.height = 'auto';
+    textarea.style.overflow = 'hidden';
+    
+    const newHeight = textarea.scrollHeight;
+    
+    if (newHeight <= maxHeight) {
+        textarea.style.height = newHeight + 'px';
+        textarea.classList.remove('scrollable');
+        textarea.style.overflow = 'hidden';
+    } else {
+        textarea.style.height = maxHeight + 'px';
+        textarea.classList.add('scrollable');
+        textarea.style.overflow = 'auto';
+        textarea.scrollTop = scrollTop;
+    }
+}
+
+textarea.addEventListener('input', adjustHeight);
+window.addEventListener('resize', adjustHeight);
+adjustHeight();
+</script>
+
 
 <table border="0" style="margin-bottom:5px;">
 <tr>
@@ -260,8 +275,6 @@
 <li><a href="/gokturk-alfabesi/">Alfabenin kuralları</a></li>
 </ul>
 
-<script src="/js/keyboard3.js"></script>
-
 </div></main>
 
 <div>
@@ -313,6 +326,8 @@
 <footer>
 <div class="footer"><a href="/gokturkce/">göktürkçe</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
+
+<script src="/js/keyboard3.js"></script>
 
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>

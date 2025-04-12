@@ -94,6 +94,19 @@ input[type="color"] {
   font-size: 120%;
 }
 
+
+#latin {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+    overflow-y: hidden;
+    min-height: 24px;
+    line-height: 1.5;
+}
+
+#latin.scrollable {overflow-y: auto;}
+
 #textInput {
   width: 99%;
   padding: 1%;

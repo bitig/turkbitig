@@ -305,32 +305,4 @@ function clearText() {
     document.getElementById('gokturk').innerText = '';
 }
 
-const textarea = document.getElementById('latin');
-const lineHeight = parseInt(getComputedStyle(textarea).lineHeight);
-const maxRows = 6;
-const maxHeight = lineHeight * maxRows;
-
-function adjustHeight() {
-    const scrollTop = textarea.scrollTop;
-   
-    textarea.style.height = 'auto';
-    textarea.style.overflow = 'hidden';
-    
-    const newHeight = textarea.scrollHeight;
-    
-    if (newHeight <= maxHeight) {
-        textarea.style.height = newHeight + 'px';
-        textarea.classList.remove('scrollable');
-        textarea.style.overflow = 'hidden';
-    } else {
-        textarea.style.height = maxHeight + 'px';
-        textarea.classList.add('scrollable');
-        textarea.style.overflow = 'auto';
-        textarea.scrollTop = scrollTop;
-    }
-}
-
-textarea.addEventListener('input', adjustHeight);
-window.addEventListener('resize', adjustHeight);
-adjustHeight();
 
