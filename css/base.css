@@ -137,7 +137,7 @@ input[type="color"] {
 
 .uuu {
   padding-top:8px;
-  line-height:1.1;
+  line-height:1;
   border: 2px solid #999;
   direction:rtl;
   unicode-bidi: bidi-override;
@@ -149,8 +149,7 @@ input[type="color"] {
   max-width: 1600px;
   font-family:'tbldamga';
   background-color:#fff;
-  padding-left:2%;
-  padding-right:2%;
+  padding:0.12em;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
   text-stroke-color: #000000; 
