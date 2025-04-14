@@ -86,26 +86,18 @@ input[type="color"] {
 }
 
 #latin {
-  width: 99%;
-  padding: 1%;
-  padding-right: 0;
-  margin-bottom: 0;
   font-family: sans-serif;
-  font-size: 120%;
+  font-size: 100%;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: hidden;
+  min-height: 24px;
+  line-height: 1.5;
 }
 
-
-#latin {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    resize: none;
-    overflow-y: hidden;
-    min-height: 24px;
-    line-height: 1.5;
-}
-
-#llatin.scrollable {overflow-y: auto;}
+#latin.scrollable {overflow-y: auto;}
 
 #textInput {
   width: 99%;
@@ -115,7 +107,6 @@ input[type="color"] {
   font-family: sans-serif;
   font-size: 120%;
 }
-
 
 .fontselect {
   padding:4px;
@@ -666,4 +657,5 @@ red {
 h1 {font-size: 150%;}
 h2 {font-size: 120%;}
 
+#latin{font-size: 120%;}
 }
