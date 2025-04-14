@@ -85,6 +85,15 @@ adjustHeight();
 <div contenteditable="true" class="uuu" id="gokturk" style="min-height:120px; font-size:76px;">𐱅𐰇𐰼𐰜</div>
 </div>
 
+<script>
+const gokturkDiv = document.getElementById("gokturk");
+gokturkDiv.addEventListener("input", () => {
+  if (gokturkDiv.innerHTML === "<br>") {
+    gokturkDiv.innerHTML = ""; // Remove the <br> tag
+  }
+});
+</script>
+
 
 <table class="fonttable" id="fontRadioGroup">
 <tr>
