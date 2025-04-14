@@ -81,24 +81,8 @@ adjustHeight();
 </table>
 
 <div class="tbs">
-<div contenteditable="true" class="uuu" id="gokturk">𐱅𐰇𐰼𐰜</div>
+<div class="uuu" id="gokturk">𐱅𐰇𐰼𐰜</div>
 </div>
-
-<script>
-const gokturkDiv = document.getElementById("gokturk");
-gokturkDiv.addEventListener("input", () => {
-  if (gokturkDiv.innerHTML === "<br>") {
-    gokturkDiv.innerHTML = ""; // Remove the <br> tag
-  }
-});
-
-const div = document.getElementById('gokturk');
-  div.addEventListener('paste', (event) => {
-    event.preventDefault();
-    const text = event.clipboardData.getData('text/plain');
-    document.execCommand('insertText', false, text);
-  });
-</script>
 
 <table border="0" class="fonttable"><tr>
 <td>
