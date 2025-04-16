@@ -122,8 +122,8 @@ input[type="color"] {
 #colorPicker {width:39px;height:38px;}
 #bgColorPicker {width:39px;height:38px;}
 #strokeColorPicker {width:30px;height:38px;}
-#fontColor {width:30px;height:35px;}
-#bgColor {width:30px;height:35px;}
+#fontColor {width:33px;height:35px;}
+#bgColor {width:33px;height:35px;}
 
 
 .uuu {
@@ -652,8 +652,8 @@ red {
 #colorPicker {height:33px;}
 #bgColorPicker {height:33px;}
 #strokeColorPicker {height:33px;}
-#fontColor {width:30px;height:35px;}
-#bgColor {width:30px;height:35px;}
+#fontColor {width:33px;height:35px;}
+#bgColor {width:33px;height:35px;}
 
 h1 {font-size: 150%;}
 h2 {font-size: 120%;}
