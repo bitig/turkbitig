@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Picker</title>
+  <style>
+    #colorPicker {
+      width: 100px;
+      height: 60px;
+      position: relative;
+      border: 1px solid #888;
+      user-select: none;
+      background: #eee;
+      margin-bottom: 20px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    #coortext {
+      border: 1px solid #888;
+      line-height: 60px;
+      text-align: center;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+<div id="colorPicker"></div>
+<div id="coortext"><h1>Preview</h1></div>
+
+<script>
+const picker = document.getElementById('colorPicker');
+const coortext = document.getElementById('coortext');
+
+// Generate 300 colors: HSV evenly spread
+function generateColors() {
+  let colors = [];
+  for (let row = 0; row < 15; row++) {
+    for (let col = 0; col < 20; col++) {
+      // Evenly distribute: 
+      // Hue: 0-360, Sat: 40-100%, Val: 60-100%
+      let h = Math.round((col / 20) * 360);
+      let s = 40 + Math.round((row / 14) * 60);
+      let v = 60 + Math.round((row / 14) * 40);
+      colors.push(hsvToHex(h, s, v));
+    }
+  }
+  return colors;
+}
+
+// HSV to HEX converter
+function hsvToHex(h, s, v) {
+  s /= 100; v /= 100;
+  let c = v * s;
+  let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+  let m = v - c;
+  let r=0,g=0,b=0;
+  if (h < 60)      { r=c; g=x; b=0; }
+  else if (h < 120){ r=x; g=c; b=0; }
+  else if (h < 180){ r=0; g=c; b=x; }
+  else if (h < 240){ r=0; g=x; b=c; }
+  else if (h < 300){ r=x; g=0; b=c; }
+  else             { r=c; g=0; b=x; }
+  r = Math.round((r+m)*255);
+  g = Math.round((g+m)*255);
+  b = Math.round((b+m)*255);
+  return '#' + ((1<<24) + (r<<16) + (g<<8) + b).toString(16).slice(1).toUpperCase();
+}
+
+const colors = generateColors();
+
+function drawPicker() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 100;
+  canvas.height = 60;
+  const ctx = canvas.getContext('2d');
+
+  // Draw black, white, transparent squares
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, 20, 20);
+
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 20, 20, 20);
+
+  // Transparent: checkerboard
+  ctx.fillStyle = '#ccc';
+  ctx.fillRect(0, 40, 20, 20);
+  ctx.fillStyle = '#fff';
+  for (let y = 0; y < 20; y += 5) {
+    for (let x = 0; x < 20; x += 5) {
+      if ((x + y) % 10 === 0) {
+        ctx.fillRect(x, 40 + y, 5, 5);
+      }
+    }
+  }
+
+  // Draw 20x15 grid of 4x4 color cells
+  let i = 0;
+  for (let row = 0; row < 15; row++) {
+    for (let col = 0; col < 20; col++) {
+      ctx.fillStyle = colors[i++];
+      ctx.fillRect(20 + col * 4, row * 4, 4, 4);
+    }
+  }
+
+  picker.innerHTML = '';
+  picker.appendChild(canvas);
+}
+drawPicker();
+
+function pickColorAt(x, y) {
+  let color = '';
+
+  // Black, White, Transparent
+  if (x >= 0 && x < 20) {
+    if (y >= 0 && y < 20) {
+      color = '#000000';
+    } else if (y >= 20 && y < 40) {
+      color = '#FFFFFF';
+    } else if (y >= 40 && y < 60) {
+      color = 'transparent';
+    }
+  } else if (x >= 20 && x < 100) {
+    // Color grid
+    let col = Math.floor((x - 20) / 4);
+    let row = Math.floor(y / 4);
+    if (col >= 0 && col < 20 && row >= 0 && row < 15) {
+      let idx = row * 20 + col;
+      color = colors[idx];
+    }
+  }
+  if (color) {
+    coortext.style.background = color === 'transparent' ? '' : color;
+    coortext.style.backgroundImage = color === 'transparent'
+      ? 'repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% / 10px 10px'
+      : '';
+    coortext.textContent = color.charAt(0) === '#' ? color.toUpperCase() : 'TRANSPARENT';
+    coortext.style.color = (color === '#000000' || color === 'transparent') ? '#fff' : '#000';
+  }
+}
+
+// Mouse/touch drag color picking
+let picking = false;
+
+picker.addEventListener('mousedown', function(e) {
+  picking = true;
+  const rect = picker.getBoundingClientRect();
+  pickColorAt(e.clientX - rect.left, e.clientY - rect.top);
+});
+picker.addEventListener('mousemove', function(e) {
+  if (picking) {
+    const rect = picker.getBoundingClientRect();
+    pickColorAt(e.clientX - rect.left, e.clientY - rect.top);
+  }
+});
+document.addEventListener('mouseup', function() {
+  picking = false;
+});
+
+// Touch support
+picker.addEventListener('touchstart', function(e) {
+  picking = true;
+  const rect = picker.getBoundingClientRect();
+  const touch = e.touches[0];
+  pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
+  e.preventDefault();
+});
+picker.addEventListener('touchmove', function(e) {
+  if (picking) {
+    const rect = picker.getBoundingClientRect();
+    const touch = e.touches[0];
+    pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
+    e.preventDefault();
+  }
+});
+document.addEventListener('touchend', function() {
+  picking = false;
+});
+</script>
+</body>
+</html>
