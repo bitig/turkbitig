@@ -122,8 +122,8 @@ input[type="color"] {
 #colorPicker {width:39px;height:38px;}
 #bgColorPicker {width:39px;height:38px;}
 #strokeColorPicker {width:30px;height:38px;}
-#fontColor {width:30px;height:38px;}
-#bgColor {width:30px;height:38px;}
+#fontColor {width:30px;height:43px;}
+#bgColor {width:30px;height:43px;}
 
 
 .uuu {
@@ -171,7 +171,8 @@ input[type="color"] {
 }
 
 .colortable {
-  line-height:0.9;
+  font-size:1.1rem;
+  line-height:1;
   max-width: 510px;
   margin-top: 12px;
   border-spacing: 0px;
@@ -651,8 +652,8 @@ red {
 #colorPicker {height:33px;}
 #bgColorPicker {height:33px;}
 #strokeColorPicker {height:33px;}
-#fontColor {width:30px;height:33px;}
-#bgColor {width:30px;height:33px;}
+#fontColor {width:30px;height:43px;}
+#bgColor {width:30px;height:43px;}
 
 h1 {font-size: 150%;}
 h2 {font-size: 120%;}
