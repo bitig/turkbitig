@@ -1,7 +1,8 @@
 // --- Parameters ---
-const COLOR_CELL_SIZE = 10; // 10x10 px per color cell
-const GRID_COLS = 8;        // 80px color area / 10px = 8 cols
-const GRID_ROWS = 6;        // 60px color area / 10px = 6 rows
+const COLOR_CELL_WIDTH = 12; // New width (previously 10px)
+const COLOR_CELL_HEIGHT = 10; // Height stays the same
+const GRID_COLS = 8;        // Color grid: 8 columns
+const GRID_ROWS = 6;        // Color grid: 6 rows
 const colors = generateColors();
 
 // Generate color palette for grid
@@ -10,33 +11,38 @@ function generateColors() {
   for (let row = 0; row < GRID_ROWS; row++) {
     for (let col = 0; col < GRID_COLS; col++) {
       let h = Math.round((col / GRID_COLS) * 360);
-      let s = 40 + Math.round((row / (GRID_ROWS-1)) * 60);
-      let v = 60 + Math.round((row / (GRID_ROWS-1)) * 40);
+      let s = 40 + Math.round((row / (GRID_ROWS - 1)) * 60);
+      let v = 60 + Math.round((row / (GRID_ROWS - 1)) * 40);
       arr.push(hsvToHex(h, s, v));
     }
   }
   return arr;
 }
+
 function hsvToHex(h, s, v) {
   s /= 100; v /= 100;
   let c = v * s;
   let x = c * (1 - Math.abs((h / 60) % 2 - 1));
   let m = v - c;
-  let r=0,g=0,b=0;
-  if (h < 60)      { r=c; g=x; b=0; }
-  else if (h < 120){ r=x; g=c; b=0; }
-  else if (h < 180){ r=0; g=c; b=x; }
-  else if (h < 240){ r=0; g=x; b=c; }
-  else if (h < 300){ r=x; g=0; b=c; }
-  else             { r=c; g=0; b=x; }
-  r = Math.round((r+m)*255);
-  g = Math.round((g+m)*255);
-  b = Math.round((b+m)*255);
-  return '#' + ((1<<24) + (r<<16) + (g<<8) + b).toString(16).slice(1).toUpperCase();
+  let r = 0, g = 0, b = 0;
+  if (h < 60)      { r = c; g = x; b = 0; }
+  else if (h < 120){ r = x; g = c; b = 0; }
+  else if (h < 180){ r = 0; g = c; b = x; }
+  else if (h < 240){ r = 0; g = x; b = c; }
+  else if (h < 300){ r = x; g = 0; b = c; }
+  else             { r = c; g = 0; b = x; }
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b)
+    .toString(16)
+    .slice(1)
+    .toUpperCase();
 }
 
 function drawPickerBackground(ctx) {
-  ctx.clearRect(0, 0, 100, 60);
+  // Update the cleared area to include the new grid width
+  ctx.clearRect(0, 0, 20 + GRID_COLS * COLOR_CELL_WIDTH, 60);
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, 20, 20);
   ctx.fillStyle = '#fff';
@@ -56,12 +62,12 @@ function drawPickerBackground(ctx) {
       if ((x + y) % 10 === 0) ctx.fillRect(x, 40 + y, 5, 5);
     }
   }
-  // Draw the color grid
+  // Draw the color grid using new width and existing height
   let idx = 0;
   for (let row = 0; row < GRID_ROWS; row++) {
     for (let col = 0; col < GRID_COLS; col++) {
       ctx.fillStyle = colors[idx++];
-      ctx.fillRect(20 + col * COLOR_CELL_SIZE, row * COLOR_CELL_SIZE, COLOR_CELL_SIZE, COLOR_CELL_SIZE);
+      ctx.fillRect(20 + col * COLOR_CELL_WIDTH, row * COLOR_CELL_HEIGHT, COLOR_CELL_WIDTH, COLOR_CELL_HEIGHT);
     }
   }
 }
@@ -89,7 +95,12 @@ function drawSelection(ctx, selectedColor) {
       let col = idx % GRID_COLS;
       ctx.strokeStyle = '#000';
       ctx.lineWidth = 2;
-      ctx.strokeRect(20 + col * COLOR_CELL_SIZE + 0.5, row * COLOR_CELL_SIZE + 0.5, COLOR_CELL_SIZE-1, COLOR_CELL_SIZE-1);
+      ctx.strokeRect(
+        20 + col * COLOR_CELL_WIDTH + 0.5,
+        row * COLOR_CELL_HEIGHT + 0.5,
+        COLOR_CELL_WIDTH - 1,
+        COLOR_CELL_HEIGHT - 1
+      );
     }
   }
 }
@@ -100,7 +111,7 @@ function normalizeHex(hex) {
   if (hex.charAt(0) !== '#') hex = '#' + hex;
   if (/^#([0-9a-f]{3})$/i.test(hex)) {
     // Expand short form
-    hex = '#' + hex[1]+hex[1]+hex[2]+hex[2]+hex[3]+hex[3];
+    hex = '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
   }
   if (!/^#([0-9a-f]{6})$/i.test(hex)) return ''; // Invalid
   return hex.toUpperCase();
@@ -115,9 +126,9 @@ function setupPicker(canvas, input, getColor, setColor, updatePreview) {
       if (y >= 0 && y < 20) color = '#000000';
       else if (y >= 20 && y < 40) color = '#FFFFFF';
       else if (y >= 40 && y < 60) color = 'transparent';
-    } else if (x >= 20 && x < 100) {
-      let col = Math.floor((x - 20) / COLOR_CELL_SIZE);
-      let row = Math.floor(y / COLOR_CELL_SIZE);
+    } else if (x >= 20 && x < 20 + GRID_COLS * COLOR_CELL_WIDTH) {
+      let col = Math.floor((x - 20) / COLOR_CELL_WIDTH);
+      let row = Math.floor(y / COLOR_CELL_HEIGHT);
       if (col >= 0 && col < GRID_COLS && row >= 0 && row < GRID_ROWS) {
         let idx = row * GRID_COLS + col;
         color = colors[idx];
@@ -132,41 +143,49 @@ function setupPicker(canvas, input, getColor, setColor, updatePreview) {
     }
   }
   // Mouse events
-  canvas.addEventListener('mousedown', function(e) {
+  canvas.addEventListener('mousedown', function (e) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
     pickColorAt(e.clientX - rect.left, e.clientY - rect.top);
   });
-  canvas.addEventListener('mousemove', function(e) {
+  canvas.addEventListener('mousemove', function (e) {
     if (picking) {
       const rect = canvas.getBoundingClientRect();
       pickColorAt(e.clientX - rect.left, e.clientY - rect.top);
     }
   });
-  document.addEventListener('mouseup', function() {
+  document.addEventListener('mouseup', function () {
     picking = false;
   });
   // Touch events
-  canvas.addEventListener('touchstart', function(e) {
-    picking = true;
-    const rect = canvas.getBoundingClientRect();
-    const touch = e.touches[0];
-    pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
-    e.preventDefault();
-  }, {passive:false});
-  canvas.addEventListener('touchmove', function(e) {
-    if (picking) {
+  canvas.addEventListener(
+    'touchstart',
+    function (e) {
+      picking = true;
       const rect = canvas.getBoundingClientRect();
       const touch = e.touches[0];
       pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
       e.preventDefault();
-    }
-  }, {passive:false});
-  document.addEventListener('touchend', function() {
+    },
+    { passive: false }
+  );
+  canvas.addEventListener(
+    'touchmove',
+    function (e) {
+      if (picking) {
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
+  document.addEventListener('touchend', function () {
     picking = false;
   });
   // Hex input
-  input.addEventListener('input', function() {
+  input.addEventListener('input', function () {
     let val = input.value.trim();
     if (val === '') return;
     let color = normalizeHex(val);
@@ -185,7 +204,7 @@ let bgColor = "#FFFFFF";
 
 // Get DOM elements
 const fontColorPicker = document.getElementById('fontColorPicker');
-const bgColorPicker = document.getElementById('bgColorPicker');
+const bgColorPicker = document.getElementById('bggColorPicker');
 const fontColorInput = document.getElementById('fontColorInput');
 const bgColorInput = document.getElementById('bgColorInput');
 
@@ -200,17 +219,19 @@ function updatePreview() {
   let ct = document.getElementById('gokturk');
   ct.style.color = fontColor === 'transparent' ? "#000" : fontColor;
   ct.style.background = bgColor === 'transparent' ? "" : bgColor;
-  ct.style.backgroundImage = bgColor === 'transparent'
-    ? 'repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% / 10px 10px'
-    : '';
+  ct.style.backgroundImage =
+    bgColor === 'transparent'
+      ? 'repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% / 10px 10px'
+      : '';
 }
 
 // ---- INITIALIZE THE PICKERS ----
 
 // Font color picker
-(function() {
+(function () {
   const canvas = document.createElement('canvas');
-  canvas.width = 100;
+  // Update canvas width to match new grid dimensions.
+  canvas.width = 20 + GRID_COLS * COLOR_CELL_WIDTH;
   canvas.height = 60;
   fontColorPicker.innerHTML = '';
   fontColorPicker.appendChild(canvas);
@@ -221,9 +242,9 @@ function updatePreview() {
 })();
 
 // Background color picker
-(function() {
+(function () {
   const canvas = document.createElement('canvas');
-  canvas.width = 100;
+  canvas.width = 20 + GRID_COLS * COLOR_CELL_WIDTH;
   canvas.height = 60;
   bgColorPicker.innerHTML = '';
   bgColorPicker.appendChild(canvas);
@@ -239,3 +260,4 @@ bgColorInput.value = bgColor;
 
 // Initial preview update
 updatePreview();
+
