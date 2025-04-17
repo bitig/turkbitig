@@ -1,13 +1,13 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-const COLOR_CELL_WIDTH = 7; 
+const COLOR_CELL_WIDTH = 8; 
 const COLOR_CELL_HEIGHT = 10; 
-const GRID_COLS = 14;       
-const GRID_ROWS = 6;         
+const GRID_COLS = 14;
+const GRID_ROWS = 6;
 const GRAY_COLUMN_INDEX = 0; 
 const colors = generateColors();
 
-// color palette
+// color palette generation
 function generateColors() {
   let arr = [];
   for (let row = 0; row < GRID_ROWS; row++) {
@@ -15,15 +15,14 @@ function generateColors() {
       let color;
       if (col === GRAY_COLUMN_INDEX) {
         // grayscale saturation and brightness
-        let v = 20 + Math.round((row / (GRID_ROWS - 1)) * 60);
+        let v = 40 + Math.round((row / (GRID_ROWS - 1)) * 60);
         color = hsvToHex(0, 0, v);
       } else {
-        let effectiveColIndex = col - 1;
-        let effectiveCols = GRID_COLS - 1;
+        let effectiveColIndex = col - 1; 
+        let effectiveCols = GRID_COLS - 1; 
         let h = Math.round((effectiveColIndex / effectiveCols) * 360);
-        // other colors saturation and brightness
-        let s = 60 + Math.round((row / (GRID_ROWS - 1)) * 40);
-        let v = 40 + Math.round((row / (GRID_ROWS - 1)) * 60);
+        let s = 60 + Math.round((row / (GRID_ROWS - 1)) * 40); // saturation 60 to 100
+        let v = 40 + Math.round((row / (GRID_ROWS - 1)) * 60); // brightness 40 to 100
         color = hsvToHex(h, s, v);
       }
       arr.push(color);
@@ -55,10 +54,10 @@ function hsvToHex(h, s, v) {
 }
 
 function drawPickerBackground(ctx) {
-  // background dimensions
+  // background dimensions.
   ctx.clearRect(0, 0, 20 + GRID_COLS * COLOR_CELL_WIDTH, 60);
   
-  // fixed left cells (Black, White, Transparent)
+  // left cells (Black, White, Transparent)
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, 20, 20);
   ctx.fillStyle = '#fff';
@@ -90,7 +89,7 @@ function drawPickerBackground(ctx) {
 }
 
 function drawSelection(ctx, selectedColor) {
-  // outline selected color
+  // outline around the selected color
   if (!selectedColor) return;
   if (/^#?000000$/i.test(selectedColor)) {
     ctx.strokeStyle = '#FF0';
@@ -200,7 +199,7 @@ function setupPicker(canvas, input, getColor, setColor, updatePreview) {
   document.addEventListener('touchend', function () {
     picking = false;
   });
-  // hex input
+  // hex input changes
   input.addEventListener('input', function () {
     let val = input.value.trim();
     if (val === '') return;
@@ -224,7 +223,7 @@ const bgColorPicker = document.getElementById('bggColorPicker');
 const fontColorInput = document.getElementById('fontColorInput');
 const bgColorInput = document.getElementById('bgColorInput');
 
-// current color getters/setters
+// current color
 function getFontColor() { return fontColor; }
 function setFontColor(val) { fontColor = val; }
 function getBgColor() { return bgColor; }
@@ -240,7 +239,7 @@ function updatePreview() {
       : '';
 }
 
-// font color picker initialization
+// font color picker
 (function () {
   const canvas = document.createElement('canvas');
   canvas.width = 20 + GRID_COLS * COLOR_CELL_WIDTH;
@@ -253,7 +252,7 @@ function updatePreview() {
   setupPicker(canvas, fontColorInput, getFontColor, setFontColor, updatePreview);
 })();
 
-// background color picker initialization
+// background color picker
 (function () {
   const canvas = document.createElement('canvas');
   canvas.width = 20 + GRID_COLS * COLOR_CELL_WIDTH;
