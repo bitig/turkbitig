@@ -16,6 +16,25 @@
 
 <title>Göktürkçe Çeviri</title>
 
+  <style>
+    .picker-block{padding:0;border:1px solid #999;}
+    
+    .colorPicker {
+      cursor: pointer;
+    }
+
+    .hex-input {
+      width: 86px;
+      padding: 3px 5px;
+      font-size: 15px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      text-align: center;
+      margin-top: 2px;
+    }     
+  </style>
+
+
 <style>
 .sitenav {position: relative;}
 #clearButton {padding:5px;}
@@ -150,35 +169,24 @@ adjustHeight();
 </table>
 
 <table border="0" class="colortable">
-<tbody><tr>
-<td rowspan="2" width="3%" style="font-size:1rem;">Renk</td>
-<td rowspan="2" width="3%" ><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#1144AA" style="height:48px;"></td>
-<td><label class="fc2" style="background-color:#FFFFFF;"><input type="radio" name="colorRadio" value="#FFFFFF" onchange="changeColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#000000;"><input type="radio" name="colorRadio" value="#000000" onchange="changeColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#F00000;"><input type="radio" name="colorRadio" value="#E30A17" onchange="changeColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#1144AA;"><input type="radio" name="colorRadio" value="#1144AA" onchange="changeColor(this.value)">&nbsp;</label></td>
 
-<td rowspan="2" width="3%" style="font-size:1rem;text-align:center;">&nbsp;Arka</td>
-<td rowspan="2" width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"  style="height:48px;"></td>
-<td><label class="fc2" style="background-color:#FFFFFF;"><input type="radio" name="bgColorRadio" value="#FFFFFF" checked="" onchange="changeBgColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#000000;"><input type="radio" name="bgColorRadio" value="#000000" onchange="changeBgColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#F00000;"><input type="radio" name="bgColorRadio" value="#E30A17" onchange="changeBgColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#1144AA;"><input type="radio" name="bgColorRadio" value="#1144AA" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<tr>
+<td width="3%" style="font-size:1rem;">Renk</td>
+<td class="picker-block"><div id="fontColorPicker" class="colorPicker"></div></td>
+<td width="3%" style="font-size:1rem;text-align:center;">&nbsp;Arka</td>
+<td class="picker-block"><div id="bggColorPicker" class="colorPicker"></div></td>
+<td width="50%">&nbsp;</td>
 </tr>
 
 <tr>
-<td><label class="fc2 bs"><input type="radio" name="colorRadio" value="transparent" onchange="changeColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#830030;"><input type="radio" name="colorRadio" value="#830030" onchange="changeColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#FFD030;"><input type="radio" name="colorRadio" value="#FFD030" onchange="changeColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="colorRadio" value="#09C0F0" onchange="changeColor(this.value)">&nbsp;</label></td>
-
-<td><label class="fc2 bs"><input type="radio" name="bgColorRadio" value="transparent" onchange="changeBgColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#830030;"><input type="radio" name="bgColorRadio" value="#830030" onchange="changeBgColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#FFD030;"><input type="radio" name="bgColorRadio" value="#FFD030" onchange="changeBgColor(this.value)">&nbsp;</label></td>
-<td><label class="fc2" style="background-color:#09C0F0;"><input type="radio" name="bgColorRadio" value="#09C0F0" onchange="changeBgColor(this.value)">&nbsp;</label></td>
+<td>&nbsp;</td>
+<td><input class="hex-input" type="text" id="fontColorInput" maxlength="9" placeholder="#RRGGBB or transparent" autocomplete="off"></td>
+<td>&nbsp;</td>
+<td><input class="hex-input" type="text" id="bgColorInput" maxlength="9" placeholder="#RRGGBB or transparent" autocomplete="off"></div></td>
+<td width="50%">&nbsp;</td>
 </tr>
 
-</tbody></table>
+</table>
 <!--ceviri biter-->
 
 <hr>
@@ -254,6 +262,7 @@ adjustHeight();
 <div class="footer"><a href="/gokturkce/">göktürkçe</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
 
+<script src="/js/colorpicker.js"></script>
 <script src="/js/keyboard3.js"></script>
 
 <!-- Google tag (gtag.js) -->
