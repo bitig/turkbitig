@@ -15,7 +15,7 @@ function generateColors() {
       let color;
       if (col === GRAY_COLUMN_INDEX) {
         // grayscale saturation and brightness
-        let v = 40 + Math.round((row / (GRID_ROWS - 1)) * 60);
+        let v = 20 + Math.round((row / (GRID_ROWS - 1)) * 60);
         color = hsvToHex(0, 0, v);
       } else {
         let effectiveColIndex = col - 1; 
