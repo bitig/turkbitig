@@ -175,6 +175,7 @@ function setCurrentColor(val) {
 function setupPickerWithTabs(canvas, input, updatePreview) {
   const ctx = canvas.getContext('2d');
   let picking = false;
+  let startedInTabs = false; // New flag to track the starting region
 
   function redrawFullCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -184,8 +185,10 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
   }
 
   function pickColorAt(x, y) {
+    // Decide what to do based on where the y coordinate falls.
     if (y < TAB_HEIGHT) {
-      // tab area.
+      // If we are processing a tap event (touchstart/mousedown) in the tab area,
+      // then update the property. (This block is only executed on the initial event.)
       const tabCount = 3;
       const tabWidth = canvas.width / tabCount;
       const tabIndex = Math.floor(x / tabWidth);
@@ -202,7 +205,7 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
       return;
     }
 
-    // selected grid area.
+    // Selected grid area.
     const gridY = y - TAB_HEIGHT;
     let color = '';
     if (x >= 0 && x < 20) {
@@ -230,18 +233,27 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
   canvas.addEventListener('mousedown', function(e) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
-    pickColorAt(e.clientX - rect.left, e.clientY - rect.top);
+    const startX = e.clientX - rect.left;
+    const startY = e.clientY - rect.top;
+    startedInTabs = (startY < TAB_HEIGHT);
+    pickColorAt(startX, startY);
   });
 
   canvas.addEventListener('mousemove', function(e) {
-    if (picking) {
+    if (picking && !startedInTabs) {
       const rect = canvas.getBoundingClientRect();
-      pickColorAt(e.clientX - rect.left, e.clientY - rect.top);
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
+      // For grid picking, if the pointer goes above the grid,
+      // clamp it so that the tab area is not re-interpreted.
+      if (y < TAB_HEIGHT) y = TAB_HEIGHT;
+      pickColorAt(x, y);
     }
   });
 
   document.addEventListener('mouseup', function() {
     picking = false;
+    startedInTabs = false;
   });
 
   // touch events.
@@ -249,21 +261,28 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
     const touch = e.touches[0];
-    pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
+    const startX = touch.clientX - rect.left;
+    const startY = touch.clientY - rect.top;
+    startedInTabs = (startY < TAB_HEIGHT);
+    pickColorAt(startX, startY);
     e.preventDefault();
   }, { passive: false });
 
   canvas.addEventListener('touchmove', function(e) {
-    if (picking) {
+    if (picking && !startedInTabs) {
       const rect = canvas.getBoundingClientRect();
       const touch = e.touches[0];
-      pickColorAt(touch.clientX - rect.left, touch.clientY - rect.top);
+      let x = touch.clientX - rect.left;
+      let y = touch.clientY - rect.top;
+      if (y < TAB_HEIGHT) y = TAB_HEIGHT;
+      pickColorAt(x, y);
       e.preventDefault();
     }
   }, { passive: false });
 
   document.addEventListener('touchend', function() {
     picking = false;
+    startedInTabs = false;
   });
 
   // hex input.
