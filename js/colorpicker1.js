@@ -2,7 +2,7 @@
 
 const TAB_HEIGHT = 25;
 const COLOR_CELL_WIDTH = 12;
-const COLOR_CELL_HEIGHT = 10;
+const COLOR_CELL_HEIGHT = 12;
 const GRID_COLS = 14;
 const GRID_ROWS = 6;
 const GRAY_COLUMN_INDEX = 0;
@@ -90,21 +90,21 @@ function drawTabs(ctx, canvasWidth) {
 function drawColorGrid(ctx, offsetY) {
   // black, white, transparent.
   ctx.fillStyle = '#000';
-  ctx.fillRect(0, offsetY, 20, 20);
+  ctx.fillRect(0, offsetY, 20, 24);
   ctx.fillStyle = '#fff';
-  ctx.fillRect(0, offsetY + 20, 20, 20);
+  ctx.fillRect(0, offsetY + 24, 20, 24);
   ctx.beginPath();
   ctx.strokeStyle = '#888';
   ctx.lineWidth = 2;
-  ctx.moveTo(0, offsetY + 40);
-  ctx.lineTo(20, offsetY + 40);
+  ctx.moveTo(0, offsetY + 48);
+  ctx.lineTo(20, offsetY + 48);
   ctx.stroke();
   ctx.fillStyle = '#ccc';
-  ctx.fillRect(0, offsetY + 40, 20, 20);
+  ctx.fillRect(0, offsetY + 48, 20, 24);
   ctx.fillStyle = '#fff';
-  for (let y = 0; y < 20; y += 5) {
-    for (let x = 0; x < 20; x += 5) {
-      if ((x + y) % 10 === 0) ctx.fillRect(x, offsetY + 40 + y, 5, 5);
+  for (let y = 0; y < 24; y += 6) {
+    for (let x = 0; x < 20; x += 6) {
+      if ((x + y) % 12 === 0) ctx.fillRect(x, offsetY + 48 + y, 6, 6);
     }
   }
 
@@ -124,13 +124,13 @@ function drawSelectionOnGrid(ctx, selectedColor, offsetY) {
   ctx.lineWidth = 2;
   if (/^#?000000$/i.test(selectedColor)) {
     ctx.strokeStyle = '#FF0';
-    ctx.strokeRect(1, offsetY + 1, 18, 18);
+    ctx.strokeRect(1, offsetY + 1, 18, 22);
   } else if (/^#?FFFFFF$/i.test(selectedColor)) {
     ctx.strokeStyle = '#000';
-    ctx.strokeRect(1, offsetY + 21, 18, 18);
+    ctx.strokeRect(1, offsetY + 25, 18, 22);
   } else if (selectedColor === 'transparent') {
     ctx.strokeStyle = '#000';
-    ctx.strokeRect(1, offsetY + 41, 18, 18);
+    ctx.strokeRect(1, offsetY + 49, 18, 22);
   } else {
     let colorUpper = selectedColor.toUpperCase();
     let idx = colors.indexOf(colorUpper);
@@ -206,9 +206,9 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
     const gridY = y - TAB_HEIGHT;
     let color = '';
     if (x >= 0 && x < 20) {
-      if (gridY >= 0 && gridY < 20) color = '#000000';
-      else if (gridY >= 20 && gridY < 40) color = '#FFFFFF';
-      else if (gridY >= 40 && gridY < 60) color = 'transparent';
+      if (gridY >= 0 && gridY < 24) color = '#000000';
+      else if (gridY >= 24 && gridY < 48) color = '#FFFFFF';
+      else if (gridY >= 48 && gridY < 72) color = 'transparent';
     } else if (x >= 20 && x < 20 + GRID_COLS * COLOR_CELL_WIDTH) {
       const col = Math.floor((x - 20) / COLOR_CELL_WIDTH);
       const row = Math.floor(gridY / COLOR_CELL_HEIGHT);
@@ -297,8 +297,9 @@ const colorInput = document.getElementById('colorInput');
 
 const canvas = document.createElement('canvas');
 canvas.width = 20 + GRID_COLS * COLOR_CELL_WIDTH;
-canvas.height = TAB_HEIGHT + 60;
+canvas.height = TAB_HEIGHT + 72;
 colorPickerContainer.appendChild(canvas);
 
 setupPickerWithTabs(canvas, colorInput, updatePreview);
 updatePreview();
+
