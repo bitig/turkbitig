@@ -82,7 +82,7 @@ adjustHeight();
 </table>
 
 <div class="tbs">
-<div contenteditable="true" class="uuu" id="gokturk" style="background-color:#FFFFFF;min-height:120px; font-size:76px;">𐱅𐰇𐰼𐰜</div>
+<div class="uuu" id="gokturk" style="background-color:#FFFFFF;min-height:120px; font-size:76px;">𐱅𐰇𐰼𐰜</div>
 </div>
 
 <script>
@@ -99,11 +99,6 @@ const div = document.getElementById('gokturk');
     const text = event.clipboardData.getData('text/plain');
     document.execCommand('insertText', false, text);
   });
-  
-  
-document.getElementById('gokturk').addEventListener('touchstart', function(event) {
-    event.preventDefault();
-});
 </script>
 
 <table class="fonttable" id="fontRadioGroup">
