@@ -3,7 +3,7 @@
 const TAB_HEIGHT = 25;
 const COLOR_CELL_WIDTH = 12;
 const COLOR_CELL_HEIGHT = 12;
-const GRID_COLS = 14;
+const GRID_COLS = 16; 
 const GRID_ROWS = 6;
 const GRAY_COLUMN_INDEX = 0;
 const colors = generateColors();
@@ -175,7 +175,7 @@ function setCurrentColor(val) {
 function setupPickerWithTabs(canvas, input, updatePreview) {
   const ctx = canvas.getContext('2d');
   let picking = false;
-  let startedInTabs = false; // New flag to track the starting region
+  let startedInTabs = false; 
 
   function redrawFullCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -185,10 +185,7 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
   }
 
   function pickColorAt(x, y) {
-    // Decide what to do based on where the y coordinate falls.
     if (y < TAB_HEIGHT) {
-      // If we are processing a tap event (touchstart/mousedown) in the tab area,
-      // then update the property. (This block is only executed on the initial event.)
       const tabCount = 3;
       const tabWidth = canvas.width / tabCount;
       const tabIndex = Math.floor(x / tabWidth);
@@ -244,8 +241,6 @@ function setupPickerWithTabs(canvas, input, updatePreview) {
       const rect = canvas.getBoundingClientRect();
       let x = e.clientX - rect.left;
       let y = e.clientY - rect.top;
-      // For grid picking, if the pointer goes above the grid,
-      // clamp it so that the tab area is not re-interpreted.
       if (y < TAB_HEIGHT) y = TAB_HEIGHT;
       pickColorAt(x, y);
     }
