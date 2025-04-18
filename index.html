@@ -99,6 +99,11 @@ const div = document.getElementById('gokturk');
     const text = event.clipboardData.getData('text/plain');
     document.execCommand('insertText', false, text);
   });
+  
+  
+document.getElementById('gokturk').addEventListener('touchstart', function(event) {
+    event.preventDefault();
+});
 </script>
 
 <table class="fonttable" id="fontRadioGroup">

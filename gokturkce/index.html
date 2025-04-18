@@ -29,7 +29,6 @@
       font-size: 15px;
       border: 1px solid #aaa;
       border-radius: 3px;
-      text-align: center;
       margin-top: 2px;
     }     
   </style>
@@ -151,7 +150,6 @@ adjustHeight();
 <td style="padding-left:10px;text-align:right;">Kıyı</td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td width="50%">&nbsp;</td>
 </tr></table>
 
@@ -171,19 +169,13 @@ adjustHeight();
 <table border="0" class="colortable">
 
 <tr>
-<td width="3%" style="font-size:1rem;">Renk</td>
-<td class="picker-block"><div id="fontColorPicker" class="colorPicker"></div></td>
-<td width="3%" style="font-size:1rem;text-align:center;">&nbsp;Arka</td>
-<td class="picker-block"><div id="bggColorPicker" class="colorPicker"></div></td>
-<td width="50%">&nbsp;</td>
+<td width="3%">Renkler</td>
+<td rowspan="2" class="picker-block"><div id="colorPicker" class="colorPicker"></div></td>
+<td rowspan="2" width="80%">&nbsp;</td>
 </tr>
 
 <tr>
-<td>&nbsp;</td>
-<td><input class="hex-input" type="text" id="fontColorInput" maxlength="9" placeholder="#RRGGBB or transparent" autocomplete="off"></td>
-<td>&nbsp;</td>
-<td><input class="hex-input" type="text" id="bgColorInput" maxlength="9" placeholder="#RRGGBB or transparent" autocomplete="off"></div></td>
-<td width="50%">&nbsp;</td>
+<td><input class="hex-input" type="text" id="colorInput" maxlength="9" placeholder="#RRGGBB or transparent" autocomplete="off"></td>
 </tr>
 
 </table>
