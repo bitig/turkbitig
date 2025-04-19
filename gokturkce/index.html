@@ -17,20 +17,11 @@
 <title>Göktürkçe Çeviri</title>
 
   <style>
-    .picker-block{padding:0;border:1px solid #999;}
+    .picker-block{padding:0;border:1px solid #333;}
     
-    .colorPicker {
+    .colorPicker, .fontPicker {
       cursor: pointer;
     }
-
-    .hex-input {
-      width: 86px;
-      padding: 3px 5px;
-      font-size: 15px;
-      border: 1px solid #aaa;
-      border-radius: 3px;
-      margin-top: 2px;
-    }     
   </style>
 
 
@@ -85,93 +76,45 @@ window.addEventListener('resize', adjustHeight);
 adjustHeight();
 </script>
 
-<table border="0" style="margin-bottom:5px;">
-<tr>
-<td>Boy&nbsp;</td>
-<td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
-<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td>&nbsp;Aralık</td>
-<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
-<td width="90%">&nbsp;</td>
-<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
-</tr>
-</table>
-
 <div class="tbs">
 <div class="uuu" id="gokturk">𐱅𐰇𐰼𐰜</div>
 </div>
 
-<table border="0" class="fonttable"><tr>
-<td>
-<select class="fontselect" onchange="changeFont(this.value)">
-  <option value="tbldamga2" selected>Yazı tipi</option>
-  <option value="bala">Bala</option>
-  <option value="balab">Bala-K</option>
-  <option value="balag">Bala-G</option>
-  <option value="cizgi">Çizgi</option>
-  <option value="damgaregular">Damga-Y</option>
-  <option value="damgab">Damga-K</option>
-  <option value="damgabb">Damga-A</option>
-  <option value="damgagenis">Damga-G</option>
-  <option value="damgagenisbold">Damga-GK</option>
-  <option value="gokturkyeni">Göktürk</option>
-  <option value="gokturkyenib">Göktürk-K</option>
-  <option value="irkbitig">Irk Bitig</option>
-  <option value="gokturkkalem">Kalem</option>
-  <option value="gokturkkalembold">Kalem-K</option>
-  <option value="gokturkkalemduz">Kalem-D</option>
-  <option value="gokturkkalemegri">Kalem-E</option>
-  <option value="karluk">Karluk</option>
-  <option value="karlukbold">Karluk-K</option>
-  <option value="koncuy">Konçuy</option>
-  <option value="kultigin">Kültiğin</option>
-  <option value="kultiginbold">Kültiğin-K</option>
-  <option value="oguzbold">Oğuz-K</option>
-  <option value="damgaroman">Roman</option>
-  <option value="tatarbold">Tatar-K</option>
-  <option value="tonyukuk">Tonyukuk</option>
-  <option value="tonyukukagir">Tonyukuk-B</option>
-  <option value="tonyukukdar">Tonyukuk-D</option>
-  <option value="tonyukukdarkalin">Tonyuk-GK</option>
-  <option value="bilgekaganyeni">Türük-YY</option>
-  <option value="bilgekaganyenim">Türük-YM</option>
-  <option value="bilgekaganyenib">Türük-YK</option>
-  <option value="turkbitigyeni">TB-Yeni</option>
-  <option value="turkbitigyenib">TB-YeniK</option>
-  <option value="yaksi">Yakşı</option>
-  <option value="yaksib">Yakşı-K</option>
-  <option value="yolluktigingenis">Yolluk-G</option>
-  <option value="yolluktigin">Yolluktiğin</option>
-  <option value="yolluktiginb">Yolluk-K</option>
-</select>
-</td>
+<table border="0" class="fonttable">
 
-<td style="padding-left:10px;text-align:right;">Kıyı</td>
+<tr>
+<td>Font</td>
+<td>&nbsp;&nbsp;</td>
+<td>Renk</td>
+<td width="80%">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="picker-block"><div id="fontPicker" class="fontPicker"></div></td>
+<td>&nbsp;</td>
+<td class="picker-block"><div id="colorPicker" class="colorPicker"></div></td>
+<td width="80%">&nbsp;</td>
+</tr>
+
+</table>
+<!--ceviri biter-->
+
+<hr>
+
+<table border="0" style="margin-bottom:5px;">
+<tr>
+<td>Boy</td>
+<td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td>Ara</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
+<td>Kıyı</td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td width="50%">&nbsp;</td>
-</tr></table>
-
-<table class="fonttable" id="fontRadioGroup">
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenib"><span>1</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span>2</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyenib"><span>3</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span>4</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="balab"><span>5</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalembold"><span>6</span></label></td>
-<td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span>Alt.</span></label></td>
-<td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga2"><span>Öğrenci</span></label></td>
+<td width="90%">&nbsp;</td>
 </tr>
 </table>
-
-<table border="0" class="colortable"><tr>
-<td width="3%">Renk</td>
-<td rowspan="2" class="picker-block"><div id="colorPicker" class="colorPicker"></div></td>
-<td rowspan="2" width="80%">&nbsp;</td>
-</tr></table>
-<!--ceviri biter-->
 
 <hr>
 
@@ -180,6 +123,8 @@ adjustHeight();
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
 <td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
