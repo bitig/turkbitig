@@ -1,6 +1,6 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-const TAB_ITEM_WIDTH = 50;      // tab width.
+const TAB_ITEM_WIDTH = 55;      // tab width.
 const TAB_BAR_HEIGHT = 24;      // tab height.
 
 const COLOR_CELL_WIDTH = 12;
@@ -114,7 +114,7 @@ function drawHorizontalTabs(ctx) {
     const isActive = (currentProperty === tabs[i].property);
     ctx.fillStyle = isActive ? "#fff" : "#ddd";
     ctx.fillRect(x, y, TAB_ITEM_WIDTH, TAB_BAR_HEIGHT);
-    ctx.strokeStyle = "#ccc";
+    ctx.strokeStyle = "#666";
     ctx.lineWidth = 1;
     ctx.strokeRect(x, y, TAB_ITEM_WIDTH, TAB_BAR_HEIGHT);
     ctx.fillStyle = "#000";
