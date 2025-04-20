@@ -49,7 +49,7 @@ const fontFamilies = [
   "turkbitigyenib",
   "yaksi",
   "yaksib",
-  "yolluktigtenis",
+  "yolluktigingenis"
 ];
 let currentFont = fontFamilies[0];
 
