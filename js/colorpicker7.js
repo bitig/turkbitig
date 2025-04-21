@@ -1,3 +1,5 @@
+// Copyright (C) turkbitig.com. All Rights Reserved.
+
 const tabItemWidth = 55;      // tab width.
 const tabBarHeight = 24;      // tab height.
 
