@@ -27,6 +27,10 @@ div {
   padding-right: 1px;
 }
 
+canvas {
+  vertical-align: top;
+}
+
 #canvas {
   max-width: 100%;
   font-family: 'damgab';
