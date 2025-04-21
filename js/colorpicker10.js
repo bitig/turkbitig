@@ -7,7 +7,7 @@ const gridCols = 12;           // grid columns
 const gridRows = 10;           // grid rows
 const colors = generateColors();
 
-let fontColor = 'hsl(165, 92%, 48%)'; // approximately #12E0B0
+let fontColor = 'hsl(152, 100%, 37%)'; // approximately #12E0B0
 let bgColor = 'hsl(0, 0%, 100%)';     // white
 let strokeColor = 'hsl(0, 0%, 0%)';   // black
 let currentProperty = "fontColor";    // default property
