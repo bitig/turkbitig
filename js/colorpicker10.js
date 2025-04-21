@@ -1,5 +1,3 @@
-// Copyright (C) turkbitig.com. All Rights Reserved.
-
 const tabItemWidth = 55;      // tab width.
 const tabBarHeight = 24;      // tab height.
 
@@ -9,27 +7,25 @@ const gridCols = 12;           // grid columns
 const gridRows = 10;           // grid rows
 const colors = generateColors();
 
-let fontColor = "#12E0B0";
-let bgColor = "#FFFFFF";
-let strokeColor = "#000000";
-let currentProperty = "fontColor"; // default property
+let fontColor = 'hsl(165, 92%, 48%)'; // approximately #12E0B0
+let bgColor = 'hsl(0, 0%, 100%)';     // white
+let strokeColor = 'hsl(0, 0%, 0%)';   // black
+let currentProperty = "fontColor";    // default property
 
-// color grid.
+// Generate predefined color palette using HSL
 function generateColors() {
   let arr = [];
   for (let row = 0; row < gridRows; row++) {
     for (let col = 0; col < gridCols; col++) {
       let color;
-      if (col === 0) {  // grays.
-        let v = 20 + Math.round((row / (gridRows - 1)) * 60);
-        color = hsvToHex(0, 0, v);
-      } else {
-        let effectiveColIndex = col - 1;
-        let effectiveCols = gridCols - 1;
-        let h = Math.round((effectiveColIndex / effectiveCols) * 360);
-        let s = 60 + Math.round((row / (gridRows - 1)) * 40);
-        let v = 40 + Math.round((row / (gridRows - 1)) * 60);
-        color = hsvToHex(h, s, v);
+      if (col === 0) { // Grayscale
+        let l = Math.round(100 * (row / (gridRows - 1)));
+        color = `hsl(0, 0%, ${l}%)`;
+      } else { // Colored columns
+        let h = 30 * (col - 1);
+        let s = 100;
+        let l = 10 + Math.round(80 * (row / (gridRows - 1)));
+        color = `hsl(${h}, ${s}%, ${l}%)`;
       }
       arr.push(color);
     }
@@ -37,29 +33,7 @@ function generateColors() {
   return arr;
 }
 
-function hsvToHex(h, s, v) {
-  s /= 100;
-  v /= 100;
-  let c = v * s;
-  let x = c * (1 - Math.abs((h / 60) % 2 - 1));
-  let m = v - c;
-  let r = 0, g = 0, b = 0;
-  if (h < 60)       { r = c; g = x; b = 0; }
-  else if (h < 120) { r = x; g = c; b = 0; }
-  else if (h < 180) { r = 0; g = c; b = x; }
-  else if (h < 240) { r = 0; g = x; b = c; }
-  else if (h < 300) { r = x; g = 0; b = c; }
-  else              { r = c; g = 0; b = x; }
-  r = Math.round((r + m) * 255);
-  g = Math.round((g + m) * 255);
-  b = Math.round((b + m) * 255);
-  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b)
-    .toString(16)
-    .slice(1)
-    .toUpperCase();
-}
-
-// color picker
+// Draw horizontal tabs
 function drawHorizontalTabs(ctx) {
   const tabs = [
     { label: 'Yazı', property: 'fontColor' },
@@ -83,14 +57,15 @@ function drawHorizontalTabs(ctx) {
   }
 }
 
+// Draw color grid
 function drawColorGrid(ctx, offsetX, offsetY) {
   let specialCellHeight = (gridRows * colorCellHeight) / 3;  // (10*12)/3 = 40.
   
-  // black, white, transparent.
-  ctx.fillStyle = '#000';
+  // Black, white, transparent
+  ctx.fillStyle = 'hsl(0, 0%, 0%)';
   ctx.fillRect(offsetX, offsetY, 20, specialCellHeight);
   
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = 'hsl(0, 0%, 100%)';
   ctx.fillRect(offsetX, offsetY + specialCellHeight, 20, specialCellHeight);
   
   ctx.beginPath();
@@ -111,7 +86,7 @@ function drawColorGrid(ctx, offsetX, offsetY) {
     }
   }
   
-  // color grid cells.
+  // Color grid cells
   let idx = 0;
   for (let row = 0; row < gridRows; row++) {
     for (let col = 0; col < gridCols; col++) {
@@ -121,24 +96,23 @@ function drawColorGrid(ctx, offsetX, offsetY) {
   }
 }
 
-// selected cell.
+// Draw selection on grid
 function drawSelectionOnGrid(ctx, selectedColor, offsetX, offsetY) {
   if (!selectedColor) return;
   ctx.save();
   ctx.lineWidth = 2;
   let specialCellHeight = (gridRows * colorCellHeight) / 3;
-  if (/^#?000000$/i.test(selectedColor)) {
+  if (selectedColor === 'hsl(0, 0%, 0%)') {
     ctx.strokeStyle = "#FF0";
     ctx.strokeRect(offsetX + 1, offsetY + 1, 18, specialCellHeight - 2);
-  } else if (/^#?FFFFFF$/i.test(selectedColor)) {
+  } else if (selectedColor === 'hsl(0, 0%, 100%)') {
     ctx.strokeStyle = "#000";
     ctx.strokeRect(offsetX + 1, offsetY + specialCellHeight + 1, 18, specialCellHeight - 2);
   } else if (selectedColor === "transparent") {
     ctx.strokeStyle = "#000";
     ctx.strokeRect(offsetX + 1, offsetY + 2 * specialCellHeight + 1, 18, specialCellHeight - 2);
   } else {
-    let colorUpper = selectedColor.toUpperCase();
-    let idx = colors.indexOf(colorUpper);
+    let idx = colors.indexOf(selectedColor);
     if (idx !== -1) {
       let row = Math.floor(idx / gridCols);
       let col = idx % gridCols;
@@ -166,7 +140,7 @@ function setCurrentColor(val) {
   else if (currentProperty === "strokeColor") strokeColor = val;
 }
 
-// mouse/touch events.
+// Setup picker with tabs
 function setupPickerWithTabs(canvas, updatePreview) {
   const ctx = canvas.getContext("2d");
   let picking = false;
@@ -194,14 +168,14 @@ function setupPickerWithTabs(canvas, updatePreview) {
       return;
     }
 
-    // color grid y-coordinate.
+    // Color grid y-coordinate
     const gridX = x;
     const gridY = y - tabBarHeight;
     let specialCellHeight = (gridRows * colorCellHeight) / 3;
     let color = "";
     if (gridX >= 0 && gridX < 20) {
-      if (gridY >= 0 && gridY < specialCellHeight) color = "#000000";
-      else if (gridY >= specialCellHeight && gridY < 2 * specialCellHeight) color = "#FFFFFF";
+      if (gridY >= 0 && gridY < specialCellHeight) color = 'hsl(0, 0%, 0%)';
+      else if (gridY >= specialCellHeight && gridY < 2 * specialCellHeight) color = 'hsl(0, 0%, 100%)';
       else if (gridY >= 2 * specialCellHeight && gridY < 3 * specialCellHeight) color = "transparent";
     } else if (gridX >= 20 && gridX < 20 + gridCols * colorCellWidth) {
       const col = Math.floor((gridX - 20) / colorCellWidth);
@@ -273,7 +247,7 @@ function setupPickerWithTabs(canvas, updatePreview) {
   redrawFullCanvas();
 }
 
-// updates the preview.
+// Update the preview
 function updatePreview() {
   let ct = document.getElementById("gokturk");
   ct.style.color = fontColor === "transparent" ? "#000" : fontColor;
@@ -282,13 +256,13 @@ function updatePreview() {
   ct.style.textStrokeColor = strokeColor;
 }
 
-// create color picker 
+// Create color picker 
 const colorPickerContainer = document.getElementById("colorPicker");
 const canvas = document.createElement("canvas");
 canvas.width = 20 + gridCols * colorCellWidth;  // 20 + (12*12) = 164px.
 canvas.height = tabBarHeight + gridRows * colorCellHeight;  // 24 + (10*12) = 144px.
 colorPickerContainer.appendChild(canvas);
 
-// start color picker.
+// Start color picker
 setupPickerWithTabs(canvas, updatePreview);
 updatePreview();
