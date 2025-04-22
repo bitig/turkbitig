@@ -3,7 +3,7 @@
 // Constants for layout
 const tabBarHeight = 24;      // Fixed height for the tab bar
 const colorCellHeight = 12;   // Static height for color cells
-const gridCols = 12;          // Number of columns in the color grid
+const gridCols = 16;          // Number of columns in the color grid
 const gridRows = 10;          // Number of rows in the color grid
 const colors = generateColors();
 
@@ -27,7 +27,8 @@ function generateColors() {
         let l = Math.round(100 * (row / (gridRows - 1)));
         color = `hsl(0, 0%, ${l}%)`;
       } else {
-        let h = 30 * (col - 1);
+//        let h = 30 * (col - 1);
+        let h = (col - 1) * (360 / (gridCols - 1));
         let s = 100;
         let l = 10 + Math.round(80 * (row / (gridRows - 1)));
         color = `hsl(${h}, ${s}%, ${l}%)`;
