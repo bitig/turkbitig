@@ -1,29 +1,32 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-const tabItemWidth = 55;      // tab width.
-const tabBarHeight = 24;      // tab height.
-
-const colorCellWidth = 12;
-const colorCellHeight = 12;
-const gridCols = 12;           // grid columns 
-const gridRows = 10;           // grid rows
+// Constants for layout
+const tabBarHeight = 24;      // Fixed height for the tab bar
+const colorCellHeight = 12;   // Static height for color cells
+const gridCols = 12;          // Number of columns in the color grid
+const gridRows = 10;          // Number of rows in the color grid
 const colors = generateColors();
 
-let fontColor = 'hsl(152, 100%, 37%)'; // approximately #12E0B0
-let bgColor = 'hsl(0, 0%, 100%)';     // white
-let strokeColor = 'hsl(0, 0%, 0%)';   // black
-let currentProperty = "fontColor";    // default property
+// Calculate fixed heights
+const gridHeight = gridRows * colorCellHeight; // 120px
+const totalCanvasHeight = tabBarHeight + gridHeight; // 144px
 
-// Generate predefined color palette using HSL
+// Global color variables
+let fontColor = 'hsl(152, 100%, 37%)';
+let bgColor = 'hsl(0, 0%, 100%)';
+let strokeColor = 'hsl(0, 0%, 0%)';
+let currentProperty = "fontColor";
+
+// Generate the color array for the grid
 function generateColors() {
   let arr = [];
   for (let row = 0; row < gridRows; row++) {
     for (let col = 0; col < gridCols; col++) {
       let color;
-      if (col === 0) { // Grayscale
+      if (col === 0) {
         let l = Math.round(100 * (row / (gridRows - 1)));
         color = `hsl(0, 0%, ${l}%)`;
-      } else { // Colored columns
+      } else {
         let h = 30 * (col - 1);
         let s = 100;
         let l = 10 + Math.round(80 * (row / (gridRows - 1)));
@@ -35,8 +38,9 @@ function generateColors() {
   return arr;
 }
 
-// Draw horizontal tabs
-function drawHorizontalTabs(ctx) {
+// Draw the tabs at the top
+function drawHorizontalTabs(ctx, canvasWidth, numberOfTabs) {
+  const tabWidth = canvasWidth / numberOfTabs;
   const tabs = [
     { label: 'Yazı', property: 'fontColor' },
     { label: 'Arka', property: 'bgColor' },
@@ -46,73 +50,75 @@ function drawHorizontalTabs(ctx) {
   ctx.font = 'bold 15px sans-serif';
   ctx.textAlign = "center";
   for (let i = 0; i < tabs.length; i++) {
-    let x = i * tabItemWidth;
+    let x = i * tabWidth;
     let y = 0;
     const isActive = (currentProperty === tabs[i].property);
     ctx.fillStyle = isActive ? "#fff" : "#ddd";
-    ctx.fillRect(x, y, tabItemWidth, tabBarHeight);
+    ctx.fillRect(x, y, tabWidth, tabBarHeight);
     ctx.strokeStyle = "#666";
     ctx.lineWidth = 1;
-    ctx.strokeRect(x, y, tabItemWidth, tabBarHeight);
+    ctx.strokeRect(x, y, tabWidth, tabBarHeight);
     ctx.fillStyle = "#000";
-    ctx.fillText(tabs[i].label, x + tabItemWidth / 2, y + tabBarHeight / 2);
+    ctx.fillText(tabs[i].label, x + tabWidth / 2, y + tabBarHeight / 2);
   }
 }
 
-// Draw color grid
-function drawColorGrid(ctx, offsetX, offsetY) {
-  let specialCellHeight = (gridRows * colorCellHeight) / 3;  // (10*12)/3 = 40.
-  
-  // Black, white, transparent
+// Draw the color grid, including special column
+function drawColorGrid(ctx, offsetX, offsetY, specialColumnWidth, colorCellWidth, colorCellHeight) {
+  const specialCellHeight = gridHeight / 3; // 40px each
+
+  // Special column: Black
   ctx.fillStyle = 'hsl(0, 0%, 0%)';
-  ctx.fillRect(offsetX, offsetY, 20, specialCellHeight);
-  
+  ctx.fillRect(offsetX, offsetY, specialColumnWidth, specialCellHeight);
+
+  // Special column: White
   ctx.fillStyle = 'hsl(0, 0%, 100%)';
-  ctx.fillRect(offsetX, offsetY + specialCellHeight, 20, specialCellHeight);
-  
+  ctx.fillRect(offsetX, offsetY + specialCellHeight, specialColumnWidth, specialCellHeight);
+
+  // Special column: Transparent
   ctx.beginPath();
   ctx.strokeStyle = '#888';
   ctx.lineWidth = 2;
   ctx.moveTo(offsetX, offsetY + 2 * specialCellHeight);
-  ctx.lineTo(offsetX + 20, offsetY + 2 * specialCellHeight);
+  ctx.lineTo(offsetX + specialColumnWidth, offsetY + 2 * specialCellHeight);
   ctx.stroke();
-  
+
   ctx.fillStyle = '#ccc';
-  ctx.fillRect(offsetX, offsetY + 2 * specialCellHeight, 20, specialCellHeight);
-  
+  ctx.fillRect(offsetX, offsetY + 2 * specialCellHeight, specialColumnWidth, specialCellHeight);
+
   ctx.fillStyle = '#fff';
   for (let y = 0; y < specialCellHeight; y += 6) {
-    for (let x = 0; x < 20; x += 6) {
+    for (let x = 0; x < specialColumnWidth; x += 6) {
       if ((x + y) % 12 === 0)
         ctx.fillRect(offsetX + x, offsetY + 2 * specialCellHeight + y, 6, 6);
     }
   }
-  
-  // Color grid cells
+
+  // Main color grid
   let idx = 0;
   for (let row = 0; row < gridRows; row++) {
     for (let col = 0; col < gridCols; col++) {
       ctx.fillStyle = colors[idx++];
-      ctx.fillRect(offsetX + 20 + col * colorCellWidth, offsetY + row * colorCellHeight, colorCellWidth, colorCellHeight);
+      ctx.fillRect(offsetX + specialColumnWidth + col * colorCellWidth, offsetY + row * colorCellHeight, colorCellWidth, colorCellHeight);
     }
   }
 }
 
-// Draw selection on grid
-function drawSelectionOnGrid(ctx, selectedColor, offsetX, offsetY) {
+// Highlight the selected color
+function drawSelectionOnGrid(ctx, selectedColor, offsetX, offsetY, specialColumnWidth, colorCellWidth, colorCellHeight) {
   if (!selectedColor) return;
   ctx.save();
   ctx.lineWidth = 2;
-  let specialCellHeight = (gridRows * colorCellHeight) / 3;
+  const specialCellHeight = gridHeight / 3;
   if (selectedColor === 'hsl(0, 0%, 0%)') {
     ctx.strokeStyle = "#FF0";
-    ctx.strokeRect(offsetX + 1, offsetY + 1, 18, specialCellHeight - 2);
+    ctx.strokeRect(offsetX + 1, offsetY + 1, specialColumnWidth - 2, specialCellHeight - 2);
   } else if (selectedColor === 'hsl(0, 0%, 100%)') {
     ctx.strokeStyle = "#000";
-    ctx.strokeRect(offsetX + 1, offsetY + specialCellHeight + 1, 18, specialCellHeight - 2);
+    ctx.strokeRect(offsetX + 1, offsetY + specialCellHeight + 1, specialColumnWidth - 2, specialCellHeight - 2);
   } else if (selectedColor === "transparent") {
     ctx.strokeStyle = "#000";
-    ctx.strokeRect(offsetX + 1, offsetY + 2 * specialCellHeight + 1, 18, specialCellHeight - 2);
+    ctx.strokeRect(offsetX + 1, offsetY + 2 * specialCellHeight + 1, specialColumnWidth - 2, specialCellHeight - 2);
   } else {
     let idx = colors.indexOf(selectedColor);
     if (idx !== -1) {
@@ -120,7 +126,7 @@ function drawSelectionOnGrid(ctx, selectedColor, offsetX, offsetY) {
       let col = idx % gridCols;
       ctx.strokeStyle = "#000";
       ctx.strokeRect(
-        offsetX + 20 + col * colorCellWidth + 0.5,
+        offsetX + specialColumnWidth + col * colorCellWidth + 0.5,
         offsetY + row * colorCellHeight + 0.5,
         colorCellWidth - 1,
         colorCellHeight - 1
@@ -130,6 +136,7 @@ function drawSelectionOnGrid(ctx, selectedColor, offsetX, offsetY) {
   ctx.restore();
 }
 
+// Get and set current color based on property
 function getCurrentColor() {
   if (currentProperty === "fontColor") return fontColor;
   else if (currentProperty === "bgColor") return bgColor;
@@ -142,22 +149,41 @@ function setCurrentColor(val) {
   else if (currentProperty === "strokeColor") strokeColor = val;
 }
 
-// Setup picker with tabs
+// Setup the color picker with fixed height
 function setupPickerWithTabs(canvas, updatePreview) {
   const ctx = canvas.getContext("2d");
   let picking = false;
   let startedInTabs = false;
+  const numberOfTabs = 3;
 
-  function redrawFullCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawHorizontalTabs(ctx);
-    drawColorGrid(ctx, 0, tabBarHeight);
-    drawSelectionOnGrid(ctx, getCurrentColor(), 0, tabBarHeight);
+  // Set canvas to fixed height and dynamic width
+  function resizeCanvas() {
+    const displayWidth = colorPickerContainer.clientWidth;
+    canvas.width = displayWidth;
+    canvas.height = totalCanvasHeight; // Fixed height: 144px
+    redrawFullCanvas();
   }
 
+  // Redraw the canvas
+  function redrawFullCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const specialColumnWidth = 0.12 * canvas.width;
+    const colorGridWidth = canvas.width - specialColumnWidth;
+    const colorCellWidth = colorGridWidth / gridCols;
+    drawHorizontalTabs(ctx, canvas.width, numberOfTabs);
+    drawColorGrid(ctx, 0, tabBarHeight, specialColumnWidth, colorCellWidth, colorCellHeight);
+    drawSelectionOnGrid(ctx, getCurrentColor(), 0, tabBarHeight, specialColumnWidth, colorCellWidth, colorCellHeight);
+  }
+
+  // Handle color picking
   function pickColorAt(x, y) {
+    const tabWidth = canvas.width / numberOfTabs;
+    const specialColumnWidth = 0.12 * canvas.width;
+    const colorGridWidth = canvas.width - specialColumnWidth;
+    const colorCellWidth = colorGridWidth / gridCols;
+
     if (y < tabBarHeight) {
-      const tabIndex = Math.floor(x / tabItemWidth);
+      const tabIndex = Math.floor(x / tabWidth);
       const tabs = [
         { property: "fontColor" },
         { property: "bgColor" },
@@ -170,37 +196,39 @@ function setupPickerWithTabs(canvas, updatePreview) {
       return;
     }
 
-    // Color grid y-coordinate
-    const gridX = x;
-    const gridY = y - tabBarHeight;
-    let specialCellHeight = (gridRows * colorCellHeight) / 3;
-    let color = "";
-    if (gridX >= 0 && gridX < 20) {
-      if (gridY >= 0 && gridY < specialCellHeight) color = 'hsl(0, 0%, 0%)';
-      else if (gridY >= specialCellHeight && gridY < 2 * specialCellHeight) color = 'hsl(0, 0%, 100%)';
-      else if (gridY >= 2 * specialCellHeight && gridY < 3 * specialCellHeight) color = "transparent";
-    } else if (gridX >= 20 && gridX < 20 + gridCols * colorCellWidth) {
-      const col = Math.floor((gridX - 20) / colorCellWidth);
-      const row = Math.floor(gridY / colorCellHeight);
-      if (col >= 0 && col < gridCols && row >= 0 && row < gridRows) {
-        const idx = row * gridCols + col;
-        color = colors[idx];
+    if (y < tabBarHeight + gridHeight) {
+      const gridX = x;
+      const gridY = y - tabBarHeight;
+      const specialCellHeight = gridHeight / 3;
+      let color = "";
+      if (gridX >= 0 && gridX < specialColumnWidth) {
+        if (gridY >= 0 && gridY < specialCellHeight) color = 'hsl(0, 0%, 0%)';
+        else if (gridY >= specialCellHeight && gridY < 2 * specialCellHeight) color = 'hsl(0, 0%, 100%)';
+        else if (gridY >= 2 * specialCellHeight && gridY < 3 * specialCellHeight) color = "transparent";
+      } else if (gridX >= specialColumnWidth && gridX < canvas.width) {
+        const col = Math.floor((gridX - specialColumnWidth) / colorCellWidth);
+        const row = Math.floor(gridY / colorCellHeight);
+        if (col >= 0 && col < gridCols && row >= 0 && row < gridRows) {
+          const idx = row * gridCols + col;
+          color = colors[idx];
+        }
       }
-    }
-    if (color) {
-      setCurrentColor(color);
-      redrawFullCanvas();
-      updatePreview();
+      if (color) {
+        setCurrentColor(color);
+        redrawFullCanvas();
+        updatePreview();
+      }
     }
   }
 
+  // Event listeners
   canvas.addEventListener("mousedown", function (e) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
-    const startX = e.clientX - rect.left;
-    const startY = e.clientY - rect.top;
-    startedInTabs = (startY < tabBarHeight);
-    pickColorAt(startX, startY);
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    startedInTabs = (y < tabBarHeight);
+    pickColorAt(x, y);
   });
 
   canvas.addEventListener("mousemove", function (e) {
@@ -222,10 +250,10 @@ function setupPickerWithTabs(canvas, updatePreview) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
     const touch = e.touches[0];
-    const startX = touch.clientX - rect.left;
-    const startY = touch.clientY - rect.top;
-    startedInTabs = (startY < tabBarHeight);
-    pickColorAt(startX, startY);
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    startedInTabs = (y < tabBarHeight);
+    pickColorAt(x, y);
     e.preventDefault();
   }, { passive: false });
 
@@ -246,10 +274,11 @@ function setupPickerWithTabs(canvas, updatePreview) {
     startedInTabs = false;
   });
 
-  redrawFullCanvas();
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
 }
 
-// Update the preview
+// Update the preview element
 function updatePreview() {
   let ct = document.getElementById("gokturk");
   ct.style.color = fontColor === "transparent" ? "#000" : fontColor;
@@ -258,13 +287,12 @@ function updatePreview() {
   ct.style.textStrokeColor = strokeColor;
 }
 
-// Create color picker 
+// Initialize
 const colorPickerContainer = document.getElementById("colorPicker");
 const canvas = document.createElement("canvas");
-canvas.width = 20 + gridCols * colorCellWidth;  // 20 + (12*12) = 164px.
-canvas.height = tabBarHeight + gridRows * colorCellHeight;  // 24 + (10*12) = 144px.
+canvas.style.width = "100%";
+canvas.style.height = totalCanvasHeight + "px"; // Fixed height
 colorPickerContainer.appendChild(canvas);
 
-// Start color picker
 setupPickerWithTabs(canvas, updatePreview);
 updatePreview();
