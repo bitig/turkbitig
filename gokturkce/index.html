@@ -35,18 +35,16 @@
 <body>
 
 <div class="sitenav">
-<table><tr>
-<td style="width:58px;"><a href="/icerik.html"><img class="logo1" alt="Türk Bitig" src="/image/logo1.png"></a></td>
-<td nowrap style="text-align:left; vertical-align:middle;"><a style="font-size:1.5rem;font-weight:bold;text-decoration:none;color:#333;" href="/">Göktürkçe Çeviri</a></td>
-<td><span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span></td>
-</tr></table>
-<!--logo end-->
+<span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span>
+<div id="logo"><a href="/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a></div><!--logo end-->
 </div><!--sitenav end-->
 
 <main><div class="contenti">
 
+<h1>Göktürkçe Çeviri</h1>
+
 <!--ceviri baslar-->
-<div style="margin-top:10px;"><textarea class="latin" rows="2" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
+<div><textarea class="latin" rows="1" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
 
 <script>
 const textarea = document.getElementById('latin');
@@ -114,7 +112,9 @@ adjustHeight();
 </table>
 <!--ceviri biter-->
 
-<table border="0" class="fonttable">
+<hr>
+
+<table border="0">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
