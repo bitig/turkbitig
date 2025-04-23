@@ -643,6 +643,20 @@ red {
   height: 46px;
 }
 
+.logo1 {
+  vertical-align: bottom;
+  width: 58px;
+  height: 46px;
+}
+
+.tbtitle {
+font-size:1.5rem;
+font-weight:bold;
+text-decoration:none;
+color:#333;
+}
+
+
 /* Consolidated Media Query */
 @media only screen and (min-width: 600px) {
   body {

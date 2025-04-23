@@ -35,16 +35,18 @@
 <body>
 
 <div class="sitenav">
-<span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span>
-<div id="logo"><a href="/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a></div><!--logo end-->
+<table><tr>
+<td style="width:58px;"><a href="/icerik.html"><img class="logo1" alt="Türk Bitig" src="/image/logo1.png"></a></td>
+<td nowrap style="text-align:left; vertical-align:middle;"><a class="tbtitle" href="/">Göktürkçe Çeviri</a></td>
+<td><span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span></td>
+</tr></table>
+<!--logo end-->
 </div><!--sitenav end-->
 
 <main><div class="contenti">
 
-<h1>Göktürkçe Çeviri</h1>
-
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="1" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
+<div style="margin-top:10px;"><textarea class="latin" rows="2" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
 
 <script>
 const textarea = document.getElementById('latin');
