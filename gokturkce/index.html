@@ -44,7 +44,7 @@
 <h1>Göktürkçe Çeviri</h1>
 
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="1" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
+<div><textarea class="latin" rows="2" maxlength="3333" placeholder="buna yaz..." id="latin" oninput="updateDiv()"></textarea></div>
 
 <script>
 const textarea = document.getElementById('latin');
@@ -112,9 +112,7 @@ adjustHeight();
 </table>
 <!--ceviri biter-->
 
-<hr>
-
-<table border="0">
+<table border="0" class="fonttable">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
