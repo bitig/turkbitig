@@ -12,7 +12,7 @@ const gridHeight = gridRows * colorCellHeight; // 120px
 const totalCanvasHeight = tabBarHeight + gridHeight; // 144px
 
 // Global color variables
-let fontColor = 'hsl(152, 100%, 37%)';
+let fontColor = '';
 let bgColor = 'hsl(0, 0%, 100%)';
 let strokeColor = 'hsl(0, 0%, 0%)';
 let currentProperty = "fontColor";
