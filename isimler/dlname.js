@@ -23,7 +23,7 @@ function adjustFontSize() {
   const scale = desiredWidth / currentWidth;
   let newFontSize = currentFontSize * scale;
   // clamp the font size between 16px and 200px
-  newFontSize = Math.max(16, Math.min(200, newFontSize));
+  newFontSize = Math.max(16, Math.min(130, newFontSize));
   container.style.fontSize = newFontSize + 'px';
 }
 
