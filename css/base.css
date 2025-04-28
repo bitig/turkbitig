@@ -508,8 +508,8 @@ ul li {
 #isim {
   white-space: nowrap;
   font-family: tamga;
-  margin: 10px;
   border: 1px solid #ccc;
+  line-height:1.1;
 }
 
 button {
