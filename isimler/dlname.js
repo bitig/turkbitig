@@ -1,59 +1,154 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-window.onload = function() {
-    const damgaDiv = document.getElementById('isim');
+const textContainer = document.getElementById('isim');
 
-    document.querySelectorAll('button[id]').forEach(button => {
-        if (button.id !== 'downloadImage') {
-            button.addEventListener('click', function() {
-                const font = button.id.charAt(0).toUpperCase() + button.id.slice(1);
-                damgaDiv.style.fontFamily = `${font}, sans-serif`;
-            });
-        }
-    });
+// adjust font size
+function measureTextWidth(text, fontFamily, fontSize) {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.font = `${fontSize}px ${fontFamily}`;
+  const metrics = ctx.measureText(text);
+  return metrics.width;
+}
 
-    window.downloadImage = function() {
-        const element = document.getElementById("isim");
+function adjustFontSize() {
+  const container = document.getElementById('isim');
+  const containerWidth = container.offsetWidth;
+  const desiredWidth = containerWidth * 0.96;
+  const text = container.innerText || container.textContent;
+  const fontFamily = window.getComputedStyle(container).fontFamily;
+  const currentFontSize = parseFloat(window.getComputedStyle(container).fontSize);
+  const currentWidth = measureTextWidth(text, fontFamily, currentFontSize);
+  if (currentWidth === 0) return; // avoid division by zero
+  const scale = desiredWidth / currentWidth;
+  let newFontSize = currentFontSize * scale;
+  // clamp the font size between 16px and 200px
+  newFontSize = Math.max(16, Math.min(200, newFontSize));
+  container.style.fontSize = newFontSize + 'px';
+}
 
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
+// select font
+document.getElementById('kultiginbold').addEventListener('click', function () {
+  textContainer.style.fontFamily = 'kultiginbold';
+  adjustFontSize();
+});
 
-        canvas.width = element.offsetWidth;
-        canvas.height = element.offsetHeight;
+document.getElementById('oguzbold').addEventListener('click', function () {
+  textContainer.style.fontFamily = 'oguzbold';
+  adjustFontSize();
+});
 
-        context.fillStyle = "#FFFFFF";
-        context.fillRect(0, 0, canvas.width, canvas.height);
+document.getElementById('gokturkkalembold').addEventListener('click', function () {
+  textContainer.style.fontFamily = 'gokturkkalembold';
+  adjustFontSize();
+});
 
-        context.fillStyle = "#000000";
+document.getElementById('cizgi').addEventListener('click', function () {
+  textContainer.style.fontFamily = 'cizgi';
+  adjustFontSize();
+});
 
-        const fontSize = 70;
-        const font = window.getComputedStyle(element).fontFamily;
-        context.font = fontSize + "px " + font;
+document.getElementById('tamga').addEventListener('click', function () {
+  textContainer.style.fontFamily = 'tamga';
+  adjustFontSize();
+});
 
-        const textWidth = context.measureText(element.innerText).width;
-        const textX = (canvas.width - textWidth) / 2;
-        const textY = fontSize;
+// adjust font size on window resize
+window.addEventListener('resize', adjustFontSize);
 
-        context.fillText(element.innerText, textX, textY);
+// initial font size 
+adjustFontSize();
 
-        const dataUrl = canvas.toDataURL("image/png");
+// time hh-mm-ss
+function getIstanbulFormattedTime() {
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Istanbul',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+  const parts = formatter.formatToParts(now);
+  let hh = '00', mm = '00', ss = '00';
+  parts.forEach(({ type, value }) => {
+    if (type === 'hour') hh = value;
+    if (type === 'minute') mm = value;
+    if (type === 'second') ss = value;
+  });
+  return `${hh}-${mm}-${ss}`;
+}
 
-        const link = document.createElement("a");
-        link.href = dataUrl;
+// download button
+document.getElementById('downloadBtn').addEventListener('click', function() {
+  const element = document.getElementById('isim');
+  const text = element.innerText || element.textContent;
+  
+  // check if there's text
+  if (!text) {
+    alert('No text to download');
+    return;
+  }
 
-        // Get current time and format it
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const timeString = `${hours}${minutes}${seconds}`;
+  // compute styles
+  const computedStyle = window.getComputedStyle(element);
+  const font = computedStyle.font || `${computedStyle.fontSize} ${computedStyle.fontFamily}`;
+  const bgColor = computedStyle.backgroundColor;
 
-        // Add time to the file name
-        link.download = `Gokturkce_${timeString}.png`;
+  // temporary canvas to measure text metrics
+  const tempCanvas = document.createElement('canvas');
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCtx.font = font;
+  const metrics = tempCtx.measureText(text);
 
-        link.click();
-    };
-};
+  // calculate text dimensions
+  const textWidth = metrics.actualBoundingBoxRight - metrics.actualBoundingBoxLeft;
+  const textHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+
+  // add 10px padding on all sides
+  const padding = 10;
+  const paddedWidth = textWidth + 2 * padding;
+  const paddedHeight = textHeight + 2 * padding;
+
+  // final canvas with padded dimensions
+  const canvas = document.createElement('canvas');
+  canvas.width = paddedWidth;
+  canvas.height = paddedHeight;
+  const ctx = canvas.getContext('2d');
+
+  // background color 
+  ctx.fillStyle = (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') ? bgColor : '#fff';
+  ctx.fillRect(0, 0, paddedWidth, paddedHeight);
+
+  // font and text properties
+  ctx.font = font;
+  ctx.fillStyle = computedStyle.color || '#000';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+
+  // position with padding
+  const x = padding - metrics.actualBoundingBoxLeft;
+  const y = padding + metrics.actualBoundingBoxAscent;
+
+  // draw text
+  ctx.fillText(text, x, y);
+
+  // filename formatted time
+  const timeStr = getIstanbulFormattedTime();
+  const fileName = `isim-${timeStr}.png`;
+
+  // download link
+  const dataURL = canvas.toDataURL('image/png');
+  const link = document.createElement('a');
+  link.href = dataURL;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
+
+// copy text
 
 function copyElementContent() {
     var element = document.getElementById("isim");
@@ -63,11 +158,9 @@ function copyElementContent() {
     window.getSelection().addRange(range);
     document.execCommand("copy");
 
-    // Optionally, you can add a class to highlight the selected text temporarily
     element.classList.add("highlighted-text");
     
-    // Remove the highlight after a certain period
     setTimeout(function() {
         element.classList.remove("highlighted-text");
-    }, 1000); // Remove the highlight after 1 second (adjust this delay as needed)
+    }, 1000); // remove the highlight after 1 second
 }

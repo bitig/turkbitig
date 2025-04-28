@@ -508,8 +508,6 @@ ul li {
 #isim {
   white-space: nowrap;
   font-family: tamga;
-  font-size: 380%;
-  padding: 10px;
   margin: 10px;
   border: 1px solid #ccc;
 }
@@ -551,6 +549,11 @@ button:active {
   padding-right: 2%;
 }
 
+.content100 {
+  width: 98%;
+  padding-top: 9px;
+  padding-left: 2%;
+}
 .footer {
   margin-top: 3em;
   padding-left: 10%;
