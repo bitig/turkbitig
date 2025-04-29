@@ -34,7 +34,7 @@ document.getElementById('kultiginbold').addEventListener('click', function () {
 });
 
 document.getElementById('oguzbold').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'oguzbold';
+  textContainer.style.fontFamily = 'bilgekaganyenib';
   adjustFontSize();
 });
 
@@ -49,7 +49,7 @@ document.getElementById('cizgi').addEventListener('click', function () {
 });
 
 document.getElementById('tamga').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'tamga';
+  textContainer.style.fontFamily = 'tbldamga';
   adjustFontSize();
 });
 
