@@ -129,7 +129,6 @@ input[type="color"] {
 #fontColor {width:33px;height:35px;}
 #bgColor {width:33px;height:35px;}
 
-
 .uuu {
   padding-top:8px;
   line-height:1;
@@ -651,7 +650,6 @@ red {
   width: 58px;
   height: 46px;
 }
-
 
 /* Consolidated Media Query */
 @media only screen and (min-width: 600px) {

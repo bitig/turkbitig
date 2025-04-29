@@ -147,7 +147,6 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
   document.body.removeChild(link);
 });
 
-
 // copy text
 
 function copyElementContent() {
