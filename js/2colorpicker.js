@@ -3,7 +3,7 @@
 // Constants for layout
 const tabBarHeight = 24;      // Fixed height for the tab bar
 const colorCellHeight = 12;   // Static height for color cells
-const gridCols = 14;          // Number of columns in the color grid
+const gridCols = 18;          // Number of columns in the color grid
 const gridRows = 10;          // Number of rows in the color grid
 const colors = generateColors();
 

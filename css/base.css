@@ -12,10 +12,6 @@ a:active {
   text-decoration: none;
 }
 
-div {
-  border-radius: 4px;
-}
-
 .key {
   width: 100%;
   font-family: 'tbkeys';
@@ -62,15 +58,6 @@ input[type="radio"] {
 input[type="color"] {
   width: 38px;
   height: 53px;
-}
-
-.rs {
-  border: 1px solid #888;
-  display: block;
-  text-align: center;
-  cursor: pointer;
-  padding: 3px;
-  border-radius: 4px;
 }
 
 .fc2 {
@@ -608,6 +595,14 @@ button:active {
 
 red {
   color: #C00;
+}
+
+.rs {
+  border: 1px solid #888;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .rs:active {
