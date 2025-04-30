@@ -601,6 +601,7 @@ red {
   border: 1px solid #888;
   display: block;
   text-align: center;
+  padding:1px;
   cursor: pointer;
   border-radius: 4px;
 }
