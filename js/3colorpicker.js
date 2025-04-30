@@ -55,7 +55,7 @@ function drawHorizontalTabs(ctx, canvasWidth, numberOfTabs) {
     ctx.fillStyle = isActive ? "#fff" : "#ddd";
     ctx.fillRect(x, y, tabWidth, tabBarHeight);
     if (i === 1) {
-      ctx.strokeStyle = "#666";
+      ctx.strokeStyle = "#333";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(x, y);
