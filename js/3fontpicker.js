@@ -5,6 +5,7 @@ const fontGridCols = 5;
 const fontGridRows = 6;
 const fontFamilies = [
   "tbldamga",
+  "tbldamga2",
   "bilgekaganyenim",
   "bilgekaganyenib",
   "oguzbold",
@@ -33,7 +34,6 @@ const fontFamilies = [
   "turkbitigyenib",
   "yaksi",
   "yaksib",
-  "yolluktigingenis"
 ];
 let currentFont = fontFamilies[0];
 
@@ -50,10 +50,10 @@ function drawFontGrid(ctx, offsetX, offsetY) {
       let x = offsetX + col * cellWidth;
       let y = offsetY + row * cellHeight;
       // Cell background
-      ctx.fillStyle = "#D3D3D3";
+      ctx.fillStyle = "#EEE";
       ctx.fillRect(x, y, cellWidth, cellHeight);
       // Cell border
-      ctx.strokeStyle = "#000";
+      ctx.strokeStyle = "#666";
       ctx.lineWidth = 1;
       ctx.strokeRect(x, y, cellWidth, cellHeight);
       // Cell number

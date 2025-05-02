@@ -23,9 +23,13 @@
   .picker-block1{width:44%;padding:0;}
   .picker-block2{width:56%;padding:0;}
 
-  .colorPicker, .fontPicker {
+  .fontPicker {
     cursor: pointer;
     border:1px solid #666;
+  }
+  .colorPicker {
+    cursor: pointer;
+    border:2px solid #777;
   }
 </style>
 
@@ -101,64 +105,20 @@ adjustHeight();
 <div class="uuu" id="gokturk" style="background-color:#FFFFFF;">𐱅𐰇𐰼𐰜</div>
 </div>
 
-<table border="0" class="fonttable" id="fontRadioGroup" style="font-size:14px;">
+<table border="0" class="fonttable">
 <tr>
-<td colspan="5"><b>Yazı tipi</b></td>
-<td rowspan="7">&nbsp;</td>
-<td><b>Renkler</b></td>
+<td>Yazı tipi</td>
+<td>&nbsp;</td>
+<td>Renkler</td>
 </tr>
 
 <tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span>L1</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tbldamga2"><span>L2</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenim"><span>2</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenib"><span>3</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="oguzbold"><span>4</span></label></td>
-
-<td rowspan="6" class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
+<td class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
+<td>&nbsp;</td>
+<td class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
-
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="balab"><span>5</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="balag"><span>7</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span>8</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgaregular"><span>9</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgab"><span>10</span></label></td>
-</tr>
-
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgagenis"><span>11</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgagenisbold"><span>12</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyeni"><span>13</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyenib"><span>14</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalem"><span>15</span></label></td>
-</tr>
-
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalembold"><span>16</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkkalemegri"><span>17</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="koncuy"><span>18</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultigin"><span>19</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span>20</span></label></td>
-</tr>
-
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="damgaroman"><span>21</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tatarbold"><span>22</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukuk"><span>23</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="tonyukukagir"><span>24</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="turkbitigyeni"><span>25</span></label></td>
-</tr>
-
-<tr>
-<td><label class="rs"><input type="radio" name="fontRadio" value="turkbitigyenib"><span>26</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span>27</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="yaksi"><span>28</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="yaksib"><span>29</span></label></td>
-<td><label class="rs"><input type="radio" name="fontRadio" value="yolluktigingenis"><span>30</span></label></td>
-</tr>
-
 </table>
+
 <!--ceviri biter-->
 
 <hr>
@@ -190,6 +150,7 @@ adjustHeight();
 </footer>
 
 <script src="/js/3colorpicker.js"></script>
+<script src="/js/3fontpicker.js"></script>
 <script src="/js/keyboard6.js"></script>
 
 
