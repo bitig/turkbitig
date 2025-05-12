@@ -138,18 +138,24 @@ input[type="color"] {
 }
 
 .uu {
-  width: 100%;
-  box-sizing: border-box;
-  overflow-wrap: break-word; 
+  padding-top:8px;
+  line-height:1;
   border: 2px solid #999;
-  padding-right: 1%;
-  direction: rtl;
+  direction:rtl;
   unicode-bidi: bidi-override;
   text-align: right;
-  font-family: 'tbldamga';
-  font-size: 200%;
-  min-height:300px;
-  background-color:#F6F6F6;
+  font-size: 80px;
+  overflow-wrap: break-word; 
+  min-height: 110px; 
+  width: 100%; 
+  max-width: 1600px;
+  font-family:'tbldamga';
+  padding:0.12em;
+  box-sizing: border-box;
+  -webkit-text-stroke-color: #000000;
+  text-stroke-color: #000000; 
+  -webkit-text-stroke-width: 0px;
+  text-stroke-width: 0px; 
 }
 
 .fonttable {
@@ -492,6 +498,7 @@ ul li {
 }
 
 #isim {
+  background-color:#f6f6f6;
   white-space: nowrap;
   font-family: tbldamga;
   border: 1px solid #ccc;
