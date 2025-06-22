@@ -32,26 +32,20 @@
     border:2px solid #777;
   }
   
-    #addToHomePrompt {
+    #aprompt {
+      display: none;
       position: fixed;
-      top: 20%;
+      top: 50%;
       left: 50%;
-      transform: translate(-50%, -20%);
-      width: 80%;
-      max-width: 300px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transform: translate(-50%, -50%);
+      background-color: white;
       padding: 20px;
-      text-align: center;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
       z-index: 1000;
-      font-family: Arial, sans-serif;
+      text-align: center;
     }
-    #addToHomePrompt button {
-      margin: 10px;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
+
 </style>
 
 
@@ -171,44 +165,47 @@ adjustHeight();
 <div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
 
-  <div id="addToHomePrompt" style="display: none;">
-    <p>Bağlantı ekle?</p>
-    <button id="yesButton">Tamam</button>
-    <button id="noButton">Yok</button>
+  <div id="aprompt">
+    <p>Ekrana ekle?</p>
+    <button id="add">Evet</button>
+    <button id="no">Yok</button>
   </div>
 
   <script>
-    // Function to check if the user is on a handheld/mobile device
-    function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    // Detect if the device is handheld
+    const isHandheld = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    // Check if the prompt has already been shown
+    const hasSeenPrompt = localStorage.getItem('hasSeenPrompt');
+
+    // Show the prompt if it's a handheld device and hasn't been shown before
+    if (isHandheld && !hasSeenPrompt) {
+      document.getElementById('prompt').style.display = 'block';
     }
 
-    // Function to handle popup dismissal and persist the decision
-    function dismissPrompt() {
-      localStorage.setItem("homePromptDismissed", "true");
-      document.getElementById("addToHomePrompt").style.display = "none";
-    }
+    // Handle "No, thanks" button click
+    document.getElementById('no').addEventListener('click', () => {
+      localStorage.setItem('hasSeenPrompt', 'true');
+      document.getElementById('prompt').style.display = 'none';
+    });
 
-    document.addEventListener("DOMContentLoaded", function () {
-      // Only show prompt on mobile devices and if not already dismissed
-      if (isMobileDevice() && !localStorage.getItem("homePromptDismissed")) {
-        // Display the prompt
-        document.getElementById("addToHomePrompt").style.display = "block";
-
-        // Hook up the Yes button
-        document.getElementById("yesButton").addEventListener("click", function () {
-          // Here you can trigger an actual "add to home" action if you are a PWA
-          // or provide further instructions. For now, we simply dismiss the prompt.
-          dismissPrompt();
-        });
-
-        // Hook up the No button
-        document.getElementById("noButton").addEventListener("click", function () {
-          dismissPrompt();
-        });
+    // Handle "Add to Home Screen" button click
+    document.getElementById('add').addEventListener('click', () => {
+      localStorage.setItem('hasSeenPrompt', 'true');
+      document.getElementById('prompt').style.display = 'none';
+      if (isIOS) {
+        alert("To add this site to your home screen, tap the share button and select 'Add to Home Screen'.");
+      } else if (isAndroid) {
+        alert("To add this site to your home screen, tap the menu button and select 'Add to Home screen'.");
+      } else {
+        alert("To add this site to your home screen, please follow your device's instructions.");
       }
     });
   </script>
+
+
 <script src="/js/3colorpicker.js"></script>
 <script src="/js/3fontpicker.js"></script>
 <script src="/js/keyboard6.js"></script>
