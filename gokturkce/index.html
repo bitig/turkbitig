@@ -32,19 +32,26 @@
     border:2px solid #777;
   }
   
-#addhome {
-      display: none;
+    #addToHomePrompt {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      padding: 15px;
-      background: #333;
-      color: #fff;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      width: 80%;
+      max-width: 300px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
       text-align: center;
-      border-radius: 5px;
       z-index: 1000;
-    }  
+      font-family: Arial, sans-serif;
+    }
+    #addToHomePrompt button {
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
 </style>
 
 
@@ -164,19 +171,44 @@ adjustHeight();
 <div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
 
-  <div id="addhome">
-    <button onclick="document.getElementById('a2hsPrompt').style.display='none'">Ekrana ekle!</button>
+  <div id="addToHomePrompt" style="display: none;">
+    <p>Bağlantı ekle?</p>
+    <button id="yesButton">Tamam</button>
+    <button id="noButton">Yok</button>
   </div>
 
   <script>
-    const isHandheld = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-    if (isHandheld) {
-      window.addEventListener('load', () => {
-        document.getElementById('addhome').style.display = 'block';
-      });
+    // Function to check if the user is on a handheld/mobile device
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
-  </script>
 
+    // Function to handle popup dismissal and persist the decision
+    function dismissPrompt() {
+      localStorage.setItem("homePromptDismissed", "true");
+      document.getElementById("addToHomePrompt").style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Only show prompt on mobile devices and if not already dismissed
+      if (isMobileDevice() && !localStorage.getItem("homePromptDismissed")) {
+        // Display the prompt
+        document.getElementById("addToHomePrompt").style.display = "block";
+
+        // Hook up the Yes button
+        document.getElementById("yesButton").addEventListener("click", function () {
+          // Here you can trigger an actual "add to home" action if you are a PWA
+          // or provide further instructions. For now, we simply dismiss the prompt.
+          dismissPrompt();
+        });
+
+        // Hook up the No button
+        document.getElementById("noButton").addEventListener("click", function () {
+          dismissPrompt();
+        });
+      }
+    });
+  </script>
 <script src="/js/3colorpicker.js"></script>
 <script src="/js/3fontpicker.js"></script>
 <script src="/js/keyboard6.js"></script>
