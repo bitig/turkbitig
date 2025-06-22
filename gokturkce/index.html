@@ -182,25 +182,25 @@ adjustHeight();
 
     // Show the prompt if it's a handheld device and hasn't been shown before
     if (isHandheld && !hasSeenPrompt) {
-      document.getElementById('prompt').style.display = 'block';
+      document.getElementById('aprompt').style.display = 'block';
     }
 
     // Handle "No, thanks" button click
     document.getElementById('no').addEventListener('click', () => {
       localStorage.setItem('hasSeenPrompt', 'true');
-      document.getElementById('prompt').style.display = 'none';
+      document.getElementById('aprompt').style.display = 'none';
     });
 
     // Handle "Add to Home Screen" button click
     document.getElementById('add').addEventListener('click', () => {
       localStorage.setItem('hasSeenPrompt', 'true');
-      document.getElementById('prompt').style.display = 'none';
+      document.getElementById('aprompt').style.display = 'none';
       if (isIOS) {
-        alert("To add this site to your home screen, tap the share button and select 'Add to Home Screen'.");
+        alert("Ekrana ekle düğmesine basınız");
       } else if (isAndroid) {
-        alert("To add this site to your home screen, tap the menu button and select 'Add to Home screen'.");
+        alert("Ekrana ekle düğmesine basınız");
       } else {
-        alert("To add this site to your home screen, please follow your device's instructions.");
+        alert("Ekrana ekle düğmesine basınız");
       }
     });
   </script>
