@@ -31,21 +31,6 @@
     cursor: pointer;
     border:2px solid #777;
   }
-  
-    #aprompt {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 20px;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      z-index: 1000;
-      text-align: center;
-    }
-
 </style>
 
 
@@ -164,47 +149,6 @@ adjustHeight();
 <footer>
 <div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
-
-  <div id="aprompt">
-    <p>Ekrana ekle?</p>
-    <button id="add">Evet</button>
-    <button id="no">Yok</button>
-  </div>
-
-  <script>
-    // Detect if the device is handheld
-    const isHandheld = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isAndroid = /Android/i.test(navigator.userAgent);
-
-    // Check if the prompt has already been shown
-    const hasSeenPrompt = localStorage.getItem('hasSeenPrompt');
-
-    // Show the prompt if it's a handheld device and hasn't been shown before
-    if (isHandheld && !hasSeenPrompt) {
-      document.getElementById('aprompt').style.display = 'block';
-    }
-
-    // Handle "No, thanks" button click
-    document.getElementById('no').addEventListener('click', () => {
-      localStorage.setItem('hasSeenPrompt', 'true');
-      document.getElementById('aprompt').style.display = 'none';
-    });
-
-    // Handle "Add to Home Screen" button click
-    document.getElementById('add').addEventListener('click', () => {
-      localStorage.setItem('hasSeenPrompt', 'true');
-      document.getElementById('aprompt').style.display = 'none';
-      if (isIOS) {
-        alert("Ekrana ekle düğmesine basınız");
-      } else if (isAndroid) {
-        alert("Ekrana ekle düğmesine basınız");
-      } else {
-        alert("Ekrana ekle düğmesine basınız");
-      }
-    });
-  </script>
-
 
 <script src="/js/3colorpicker.js"></script>
 <script src="/js/3fontpicker.js"></script>
