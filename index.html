@@ -22,11 +22,16 @@
 .uuu {color:#0091bd;background-color:#FFFFFF;}
 </style>
 
-
 <script>
-        document.addEventListener('keydown', function(event) {
-            document.getElementById('latin').focus();
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (!isMobile) {
+        const input = document.getElementById('latin');
+        if (input) {
+            input.focus();
+        }
+    }
+});
 </script>
 
 </head>
