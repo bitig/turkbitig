@@ -239,7 +239,7 @@ function downloadAsPng() {
             second: '2-digit'
         });
         const timeString = now.replace(/:/g, '-');
-        const fileName = `gokturk-${timeString}.png`;
+        const fileName = `gokturkce-${timeString}-tb.png`;
 
         const link = document.createElement('a');
         link.download = fileName;
