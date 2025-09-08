@@ -42,6 +42,10 @@ img {
 filter: none;
 }
 
+#isim {
+  background-color:#FFF;
+}
+
 .invert {
 filter: none;
 }
