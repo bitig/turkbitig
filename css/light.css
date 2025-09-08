@@ -1,6 +1,10 @@
 html, body {
-background-color:#FDFDFD;
+background-color:#F8F9FA;
 color:#111;
+}
+
+.content {
+background-color:#FFF;
 }
 
 a:link 	{
