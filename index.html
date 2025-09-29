@@ -80,10 +80,10 @@ adjustHeight();
 
 <table border="0" style="margin-bottom:5px;">
 <tr>
-<td>Boy&nbsp;</td>
+<td>Boy</td>
 <td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
 <td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
-<td>&nbsp;Aralık</td>
+<td style="padding-left:10px;">Aralık</td>
 <td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
 <td width="90%">&nbsp;</td>
@@ -92,7 +92,7 @@ adjustHeight();
 </table>
 
 <div class="tbs">
-<div class="uu" id="gokturk" style="background-color:#FFFFFF;min-height:120px; font-size:76px;"></div>
+<div class="uu" id="gokturk" style="color:#0ED;background-color:#FFF;min-height:120px; font-size:76px;"></div>
 </div>
 
 <script>
@@ -169,16 +169,16 @@ const div = document.getElementById('gokturk');
 </table>
 
 <table border="0" class="colortable">
-<tbody><tr><td width="3%">Renk&nbsp;</td>
-<td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#FFBB00"></td>
+<tbody><tr><td width="3%">Renk</td>
+<td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#00EEDD"></td>
 
-<td width="3%" style="text-align:right;">&nbsp;Arka&nbsp;</td>
+<td width="3%" style="padding-left:10px;text-align:right;">Arka</td>
 <td width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
 
 <td style="padding-left:10px;text-align:right;">Kıyı</td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td width="50%">&nbsp;</td>
 
 </tr>
