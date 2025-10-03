@@ -217,6 +217,12 @@ color:#333;
 color:#900;
 }
 
+.mtr {
+padding-bottom: 1em;
+border-bottom: solid 2px #999;
+}
+
+
 red {color:#C00;}
 
 .hover-highlight {background-color: #FF3;}

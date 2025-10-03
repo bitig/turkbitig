@@ -421,21 +421,20 @@ ul li {
   padding-left: 1%;
   padding-right: 1%;
   padding-bottom: 4px;
-  cursor: pointer; /* From .mu, .mt, .mtr combined rule */
+  cursor: pointer; 
 }
 
 .mt {
+  padding-top: 1em;
+  padding-bottom: 1em;
   line-height: 1.3;
-  padding: 0.5%;
-  padding-bottom: 0.5em;
   font-family: monospace;
-  cursor: pointer; /* From .mu, .mt, .mtr combined rule */
+  cursor: pointer; 
 }
 
 .mtr {
   font-size: 90%;
-  padding: 0.5%;
-  cursor: pointer; /* From .mu, .mt, .mtr combined rule */
+  cursor: pointer; 
 }
 
 .irk {
