@@ -135,7 +135,7 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
 
   // filename formatted time
   const timeStr = getIstanbulFormattedTime();
-  const fileName = `isim-${timeStr}.png`;
+  const fileName = `isim-${timeStr}-turkbitig.png`;
 
   // download link
   const dataURL = canvas.toDataURL('image/png');
