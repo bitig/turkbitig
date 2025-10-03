@@ -226,6 +226,6 @@ border-bottom: solid 2px #999;
 red {color:#C00;}
 
 .hover-highlight {background-color: #FF3;}
-.clicked-highlight {background-color: #FE0;}
-.hover-highlight.clicked-highlight {background-color: #FE0;}
+.clicked-highlight {background-color: #FD0;}
+.hover-highlight.clicked-highlight {background-color: #FD0;}
 

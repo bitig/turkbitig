@@ -36,7 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const { containerId, newIndex } = getContainerDetails(wordElement);
 
     if (e.type === 'click') {
-      updateClickedHighlight(containerId, newIndex, state);
+      // Check if clicking on already highlighted words
+      if (state.clickedContainer === containerId && state.clickedIndex === newIndex) {
+        clearClickedHighlight(state);
+      } else {
+        updateClickedHighlight(containerId, newIndex, state);
+      }
     } else if (e.type === 'mouseover') {
       updateHoverHighlight(containerId, newIndex, state);
     } else if (e.type === 'mouseleave') {
@@ -65,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
     words.forEach(word => {
       word.classList.add('clicked-highlight');
     });
+    state.clickedContainer = containerId;
+    state.clickedIndex = index;
   };
 
   const clearClickedHighlight = (state) => {
