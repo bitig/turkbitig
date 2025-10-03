@@ -1,5 +1,3 @@
-// Copyright (C) turkbitig.com. All Rights Reserved.
-
 document.addEventListener('DOMContentLoaded', () => {
   const state = {
     currentContainer: null,
@@ -12,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const containers = document.querySelectorAll('[id] .mu, [id] .mt, [id] .mtr');
     containers.forEach(element => {
       element.innerHTML = element.textContent
-        .split(' ')
-        .map((word, index) => `<span class="word" data-index="${index}">${word}</span> `)
+        .split(':')
+        .map((word, index) => `<span class="word" data-index="${index}">${word}</span>${index < element.textContent.split(':').length - 1 ? ':' : ''}`)
         .join('');
     });
   };
@@ -56,9 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById(containerId);
     const words = container.querySelectorAll(`.word[data-index="${index}"]`);
     words.forEach(word => {
-      if (!word.textContent.includes(':')) {
-        word.classList.add('hover-highlight');
-      }
+      word.classList.add('hover-highlight');
     });
   };
 
@@ -67,9 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById(containerId);
     const words = container.querySelectorAll(`.word[data-index="${index}"]`);
     words.forEach(word => {
-      if (!word.textContent.includes(':')) {
-        word.classList.add('clicked-highlight');
-      }
+      word.classList.add('clicked-highlight');
     });
   };
 
@@ -95,4 +89,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
