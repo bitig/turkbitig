@@ -1,6 +1,6 @@
 html, body {
 background-color:#F8F9FA;
-color:#111;
+color:#000;
 }
 
 .content {
@@ -120,7 +120,7 @@ border:1px dashed #cccccc;
 }
 
 .tr a {
-color:#006600;
+color:#060;
 }
 
 hr {
