@@ -102,7 +102,7 @@ input[type="color"] {
 .fontselect {
   padding:4px;
   font-family: sans-serif;
-  font-size:1rem;
+  font-size:1.1rem;
   border-radius:3px;  
 }
 
@@ -166,7 +166,7 @@ input[type="color"] {
 }
 
 .colortable {
-  font-size:1.3rem;
+  font-size:1.2rem;
   line-height:1;
   max-width: 510px;
   margin-top: 12px;

@@ -78,13 +78,46 @@ window.addEventListener('resize', adjustHeight);
 adjustHeight();
 </script>
 
+<table border="0" style="margin-bottom:5px;">
+<tr>
+<td>Boy</td>
+<td nowrap><button onclick="changeSize('increase')">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;&nbsp;-&nbsp;&nbsp;</button></td>
+<td style="padding-left:10px;">Aralık</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
+<td width="90%">&nbsp;</td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
+</tr>
+</table>
+
+<div class="tbs">
+<div class="uu" id="gokturk" style="color:#0ED;background-color:#FFF;min-height:120px; font-size:76px;"></div>
+</div>
+
+<script>
+const gokturkDiv = document.getElementById("gokturk");
+gokturkDiv.addEventListener("input", () => {
+  if (gokturkDiv.innerHTML === "<br>") {
+    gokturkDiv.innerHTML = ""; // Remove the <br> tag
+  }
+});
+
+const div = document.getElementById('gokturk');
+  div.addEventListener('paste', (event) => {
+    event.preventDefault();
+    const text = event.clipboardData.getData('text/plain');
+    document.execCommand('insertText', false, text);
+  });
+</script>
+
 <table class="fonttable" id="fontRadioGroup">
 <tr>
-<td>Font&nbsp;</td>
-<td width="99%" >
+<td width="8%">
 <select class="fontselect" onchange="changeFont(this.value)">
-  <option value="tbldamga" selected>Altyazılı</option>
-  <option value="tbldamga2">Öğrenci için</option>
+  <option value="tbldamga2" selected>Font</option>
+  <option value="tbldamga2">Öğrenci</option>
+  <option value="tbldamga">Altyazı</option>
   <option value="bala">Bala</option>
   <option value="balab">Bala-K</option>
   <option value="balag">Bala-G</option>
@@ -125,68 +158,28 @@ adjustHeight();
   <option value="yolluktigingenis">Yolluk-G</option>
 </select>
 </td>
-<td width="90%">&nbsp;</td>
-<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Harfler</button></td>
-<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
+
+<td><label class="rs"><input type="radio" name="fontRadio" value="bilgekaganyenib"><span>1</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="kultiginbold"><span>2</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="gokturkyenib"><span>3</span></label></td>
+<td><label class="rs"><input type="radio" name="fontRadio" value="cizgi"><span>4</span></label></td>
+<td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga" checked><span>Alt.</span></label></td>
+<td width="12%"><label class="rs"><input type="radio" name="fontRadio" value="tbldamga2"><span>Öğr.</span></label></td>
 </tr>
 </table>
-
-
-<table class="colortable" border="0" style="margin-bottom:5px;">
-<tr>
-<td>Boy&nbsp;</td>
-<td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap>&nbsp;</td>
-<td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td style="padding-left:10px;">Aralık</td>
-<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap>&nbsp;</td>
-<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
-<td width="90%">&nbsp;</td>
-</tr>
-</table>
-
-<style>
-.uu {
-  -webkit-text-stroke-color: #000000;
-  text-stroke-color: #000000; 
-  -webkit-text-stroke-width: 0px;
-  text-stroke-width: 0px; 
-}
-</style>
-
-<div class="tbs">
-<div class="uu" id="gokturk" style="color:#000;background-color:#FFF;min-height:120px; font-size:76px;"></div>
-</div>
-
-<script>
-const gokturkDiv = document.getElementById("gokturk");
-gokturkDiv.addEventListener("input", () => {
-  if (gokturkDiv.innerHTML === "<br>") {
-    gokturkDiv.innerHTML = ""; // Remove the <br> tag
-  }
-});
-
-const div = document.getElementById('gokturk');
-  div.addEventListener('paste', (event) => {
-    event.preventDefault();
-    const text = event.clipboardData.getData('text/plain');
-    document.execCommand('insertText', false, text);
-  });
-</script>
 
 <table border="0" class="colortable">
 <tbody><tr><td width="3%">Renk</td>
 <td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#00EEDD"></td>
 
-<td width="3%" style="padding-left:8px;text-align:right;">Arka</td>
+<td width="3%" style="padding-left:10px;text-align:right;">Arka</td>
 <td width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
 
-<td style="padding-left:8px;text-align:right;">Kıyı</td>
+<td style="padding-left:10px;text-align:right;">Kıyı</td>
 <td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td width="50%"></td>
+<td width="50%">&nbsp;</td>
 
 </tr>
 
@@ -289,10 +282,11 @@ const div = document.getElementById('gokturk');
 
 <hr>
 
-<table border="0" style="font-size:1.2rem;">
+<table border="0">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
