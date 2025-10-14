@@ -77,7 +77,7 @@ input[type="color"] {
 }
 
 #latin {
-  font-family: turkbitig, sans-serif;
+  font-family: sans-serif, turkbitig;
   font-size: 100%;
   width: 100%;
   padding: 6px;
