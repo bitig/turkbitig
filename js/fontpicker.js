@@ -30,8 +30,8 @@ const fontFamilies = [
   "tatarbold",
   "tonyukuk",
   "tonyukukagir",
-  "turkbitigyeni",
-  "turkbitigyenib",
+  "turkbitig",
+  "turkbitigb",
   "yaksi",
   "yaksib",
 ];
