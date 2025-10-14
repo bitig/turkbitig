@@ -36,15 +36,9 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (!isMobile) {
-        const input = document.getElementById('latin');
-        if (input) {
-            input.focus();
-        }
-    }
-});
+        document.addEventListener('keydown', function(event) {
+            document.getElementById('latin').focus();
+        });
 </script>
 
 </head>
@@ -114,57 +108,15 @@ adjustHeight();
 
 <table border="0" class="fonttable">
 <tr>
-<td width="10%">Font</td>
+<td>Font</td>
+<td>&nbsp;</td>
 <td>Renk</td>
 </tr>
 
 <tr>
-<td rowspan="2">
-
-<select class="fontselect" onchange="changeFont(this.value)" size="8">
-  <option value="tbldamga" selected>Altyazılı</option>
-  <option value="tbldamga2">Öğrenci için</option>
-  <option value="bala">Bala</option>
-  <option value="balab">Bala-K</option>
-  <option value="balag">Bala-G</option>
-  <option value="cizgi">Çizgi</option>
-  <option value="damgaregular">Damga</option>
-  <option value="damgabb">Damga-A</option>
-  <option value="damgagenis">Damga-G</option>
-  <option value="damgagenisbold">Damga-GK</option>
-  <option value="gokturkyeni">Göktürk</option>
-  <option value="gokturkyenib">Göktürk-K</option>
-  <option value="irkbitig">Irk Bitig</option>
-  <option value="gokturkkalem">Kalem</option>
-  <option value="gokturkkalembold">Kalem-K</option>
-  <option value="gokturkkalemegri">Kalem-E</option>
-  <option value="karluk">Karluk</option>
-  <option value="karlukbold">Karluk-K</option>
-  <option value="koncuyi">Konçuy</option>
-  <option value="koncuy">Konçuy-K</option>
-  <option value="kultigin">Kültiğin</option>
-  <option value="kultiginbold">Kültiğin-K</option>
-  <option value="bilgekaganyeni">Oguz</option>
-  <option value="bilgekaganyenim">Oğuz-M</option>
-  <option value="oguzbold">Oğuz-A</option>
-  <option value="damgaroman">Roman</option>
-  <option value="tatarbold">Tatar-K</option>
-  <option value="tonyukuk">Tonyukuk</option>
-  <option value="tonyukukagir">Tonyukuk-B</option>
-  <option value="tonyukukdar">Tonyukuk-D</option>
-  <option value="tonyukukdarkalin">Tonyukuk-G</option>
-  <option value="tungatigin">Tungatiğin</option>
-  <option value="tungatigina">Tungatiğin-A</option>
-  <option value="turkbitig">Türk Bitig</option>
-  <option value="turkbitigb">Türk Bitig-K</option>
-  <option value="yaksi">Yakşı</option>
-  <option value="yaksib">Yakşı-K</option>
-</select>
-
-</td>
+<td class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
+<td>&nbsp;</td>
 <td class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
-</tr>
-<tr><td><input size="10" type="text" id="colorcode" style="font-size:1rem" maxlength="9"></td>
 </tr>
 </table>
 
@@ -196,7 +148,8 @@ adjustHeight();
 </footer>
 
 <script src="/js/gokturkce2.js"></script>
-<script src="/js/colorpicker1.js"></script>
+<script src="/js/colorpicker.js"></script>
+<script src="/js/fontpicker.js"></script>
 <script src="/js/keyboard6.js"></script>
 
 <div>
