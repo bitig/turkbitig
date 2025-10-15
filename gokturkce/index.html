@@ -12,6 +12,9 @@
 <meta name="keywords" content="Göktürkçe, Göktürk Alfabesi, Orhun alfabesi, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı">
 <meta name="description" content="Göktürkçe çeviri yazıcı ile Göktürk alfabesi yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
 
+<link rel="preload" href="/js/fontpicker2.js" as="script">
+<link rel="preload" href="/js/colorpicker2.js" as="script">
+
 <title>Göktürkçe Çeviri</title>
 
 <style>
@@ -93,7 +96,7 @@ window.addEventListener('resize', adjustHeight);
 adjustHeight();
 </script>
 
-<table border="0" style="margin-bottom:5px;">
+<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
 <tr>
 <td>Boy</td>
 <td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
@@ -115,13 +118,14 @@ adjustHeight();
 <table border="0" class="fonttable">
 <tr>
 <td width="10%">Font</td>
-<td rowspan="2">&nbsp;</td>
+<td>&nbsp;</td>
 <td>Renk</td>
 <td style="text-align:right;"><input size="10" type="text" id="colorcode" style="font-size:1rem;text-transform: uppercase;" maxlength="11"></td>
 </tr>
 
 <tr>
 <td class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
+<td><img width="1" height="150" src="/image/dot.png"></td>
 <td colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
 
@@ -156,7 +160,7 @@ adjustHeight();
 
 <script src="/js/gokturkce2.js"></script>
 <script src="/js/fontpicker2.js"></script>
-<script src="/js/colorpicker2.js" defer></script>
+<script src="/js/colorpicker2.js"></script>
 <script src="/js/keyboard6.js"></script>
 
 <div>
