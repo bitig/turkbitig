@@ -123,8 +123,7 @@ adjustHeight();
 </select>
 </td>
 <td width="90%">&nbsp;</td>
-<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Harfler</button></td>
-<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
 </tr>
 </table>
 
@@ -286,18 +285,20 @@ const div = document.getElementById('gokturk');
 
 <hr>
 
-<table border="0" style="font-size:1.2rem;">
+<table border="0" style="font-size:1.2rem;max-width:500px;">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
 <td width="90%">&nbsp;</td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
 
 <hr>
 
 <ul>
-<li><a href="/orhun-yazitlari/"><b>Orhun Yazıtları</b></a></li>
+<li><a href="/orhun-yazitlari/" style="color:#900;"><b>Orhun Yazıtları</b></a></li>
+<li><a href="/gokturkce/"><b>Klavyesiz Yazıcı</b></a></li>
 </ul>
 
 </div></main>
