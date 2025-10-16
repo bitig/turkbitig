@@ -1,10 +1,10 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 // layout
-const tabBarHeight = 24;      
-const colorCellHeight = 12;   
-const gridCols = 16;          
-const gridRows = 10;          
+const tabBarHeight = 28;      
+const colorCellHeight = 10;   
+const gridCols = 22;          
+const gridRows = 12;          
 const colors = generateColors();
 
 const gridHeight = gridRows * colorCellHeight; // 120px
@@ -39,7 +39,7 @@ function generateColors() {
 
 // tabs at the top
 function drawHorizontalTabs(ctx, canvasWidth, numberOfTabs) {
-  const tabWidth = canvasWidth / numberOfTabs;
+  const tabWidth = canvas.width / numberOfTabs;
   const tabs = [
     { label: 'Yazı', property: 'fontColor' },
     { label: 'Arka', property: 'bgColor' },
@@ -155,6 +155,36 @@ function setCurrentColor(val) {
   else if (currentProperty === "strokeColor") strokeColor = val;
 }
 
+// HSL-transparent to hex string.
+function hslToHex(hslString) {
+  if (hslString === "transparent") {
+    return "transparent";
+  }
+  const tempDiv = document.createElement('div');
+  tempDiv.style.color = hslString;
+  document.body.appendChild(tempDiv);
+  const rgbString = window.getComputedStyle(tempDiv).color;
+  document.body.removeChild(tempDiv);
+
+  // parse RGB string
+  const match = rgbString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  if (!match) {
+    return "#000000"; // handle fallback
+  }
+
+  const r = parseInt(match[1], 10);
+  const g = parseInt(match[2], 10);
+  const b = parseInt(match[3], 10);
+
+  // Convert to hex
+  const toHex = (c) => {
+    const hex = c.toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  };
+
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
 // color picker with fixed height
 function setupPickerWithTabs(canvas, updatePreview) {
   const ctx = canvas.getContext("2d");
@@ -166,7 +196,7 @@ function setupPickerWithTabs(canvas, updatePreview) {
   function resizeCanvas() {
     const displayWidth = colorPickerContainer.clientWidth;
     canvas.width = displayWidth;
-    canvas.height = totalCanvasHeight; // Fixed height: 144px
+    canvas.height = totalCanvasHeight; // fixed height: 144px
     redrawFullCanvas();
   }
 
@@ -198,6 +228,9 @@ function setupPickerWithTabs(canvas, updatePreview) {
       if (tabIndex >= 0 && tabIndex < tabs.length) {
         currentProperty = tabs[tabIndex].property;
         redrawFullCanvas();
+        const currentColor = getCurrentColor();
+        const hexColor = hslToHex(currentColor);
+        document.getElementById("colorcode").value = hexColor;
       }
       return;
     }
@@ -223,6 +256,8 @@ function setupPickerWithTabs(canvas, updatePreview) {
         setCurrentColor(color);
         redrawFullCanvas();
         updatePreview();
+        const hexColor = hslToHex(color);
+        document.getElementById("colorcode").value = hexColor;
       }
     }
   }
@@ -280,6 +315,19 @@ function setupPickerWithTabs(canvas, updatePreview) {
     startedInTabs = false;
   });
 
+  // text box listener
+  const colorcodeInput = document.getElementById("colorcode");
+  colorcodeInput.addEventListener("input", function() {
+    const hexValue = this.value;
+    const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    
+    if (hexRegex.test(hexValue)) {
+      setCurrentColor(hexValue);
+      redrawFullCanvas();
+      updatePreview();
+    }
+  });
+
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
 }
@@ -297,8 +345,12 @@ function updatePreview() {
 const colorPickerContainer = document.getElementById("colorPicker");
 const canvas = document.createElement("canvas");
 canvas.style.width = "100%";
-canvas.style.height = totalCanvasHeight + "px"; // Fixed height
+canvas.style.height = totalCanvasHeight + "px"; // fixed height
 colorPickerContainer.appendChild(canvas);
 
 setupPickerWithTabs(canvas, updatePreview);
 updatePreview();
+
+// initialize  text box 
+const initialColor = getCurrentColor();
+document.getElementById("colorcode").value = hslToHex(initialColor);
