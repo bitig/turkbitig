@@ -1,3 +1,5 @@
+// Copyright (C) turkbitig.com. All Rights Reserved.
+
 const fontCellHeight = 25;
 const fontGridCols = 5;
 const fontGridRows = 6;
@@ -35,7 +37,7 @@ const fontFamilies = [
 ];
 let currentFont = fontFamilies[0];
 
-// NEW: Mapping of technical font names to human-friendly names
+// Human-friendly names
 const humanFriendlyFontNames = {
   "tbldamga": "Altyazılı",
   "tbldamga2": "Öğrenci için",
@@ -122,11 +124,9 @@ function drawSelectionOnFontGrid(ctx, offsetX, offsetY) {
   }
 }
 
-// MODIFIED: Update the selected font input field with a human-friendly name
 function updateSelectedFontInput() {
   const selectedFontInput = document.querySelector('input[name="selectedfont"]');
   if (selectedFontInput) {
-    // Look up the friendly name, or fall back to the technical name if not found
     const friendlyName = humanFriendlyFontNames[currentFont] || currentFont;
     selectedFontInput.value = friendlyName;
   }
@@ -154,7 +154,6 @@ function setupFontPicker(canvas, updatePreview) {
         currentFont = fontFamilies[idx];
         redrawFullFontCanvas();
         updatePreview();
-        // Update the selected font input when a font is picked
         updateSelectedFontInput();
       }
     }
