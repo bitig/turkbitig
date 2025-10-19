@@ -41,8 +41,8 @@ let currentFont = fontFamilies[0];
 const humanFriendlyFontNames = {
   "tbldamga": "Altyazılı",
   "tbldamga2": "Öğrenci için",
-  "bilgekaganyenim": "BilgeKağan",
-  "bilgekaganyenib": "BilgeKağan (K)",
+  "bilgekaganyenim": "Bilge Kağan",
+  "bilgekaganyenib": "Bilge Kağan (K)",
   "oguzbold": "BilgeKağan (A)",
   "bala": "Bala",
   "balab": "Bala (K)",
@@ -59,16 +59,16 @@ const humanFriendlyFontNames = {
   "gokturkkalembold": "Kalem (K)",
   "gokturkkalemegri": "Kalem Eğri",
   "koncuy": "Koncuy",
-  "kultigin": "Kültigin",
-  "kultiginbold": "Kültigin (K)",
+  "kultigin": "Kültiğin",
+  "kultiginbold": "Kültiğin (K)",
   "damgaroman": "Roman",
   "tatarbold": "Tatar",
   "tonyukuk": "Tonyukuk",
   "tonyukukagir": "Tonyukuk (K)",
   "turkbitig": "Türk Bitig",
   "turkbitigb": "Türk Bitig (K)",
-  "yaksi": "Yaksi",
-  "yaksib": "Yaksi (K)",
+  "yaksi": "Yakşı",
+  "yaksib": "Yakşı (K)",
 };
 
 // Font picker grid drawing
