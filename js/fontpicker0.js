@@ -58,7 +58,7 @@ const humanFriendlyFontNames = {
   "gokturkkalem": "Kalem",
   "gokturkkalembold": "Kalem (K)",
   "gokturkkalemegri": "Kalem Eğri",
-  "koncuy": "Koncuy",
+  "koncuy": "Konçuy",
   "kultigin": "Kültiğin",
   "kultiginbold": "Kültiğin (K)",
   "damgaroman": "Roman",
