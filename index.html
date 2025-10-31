@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <main><div class="contenti">
 
-<h1>Göktürkçe Çeviri</h1>
-
+<h1>Göktürkçe Çeviri <span style="float:right;font-size:1rem;font-weight:normal;">w:ü x:ç q:ğ j:ş I:ı</span></h1>
+  
 <!--ceviri baslar-->
 <div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk</textarea></div>
 
@@ -94,6 +94,22 @@ function adjustHeight() {
 textarea.addEventListener('input', adjustHeight);
 window.addEventListener('resize', adjustHeight);
 adjustHeight();
+</script>
+
+<script>
+const input = document.getElementById('latin');
+const replacements = {
+    'w': 'ü',
+    'x': 'ç', 
+    'q': 'ğ',
+    'j': 'ş'
+};
+
+input.addEventListener('input', function() {
+    this.value = this.value.replace(/[wxqj]/gi, (match) => {
+        return replacements[match.toLowerCase()];
+    });
+});
 </script>
 
 <table border="0" style="margin-bottom:5px;font-size:1.2rem;">
@@ -161,10 +177,10 @@ adjustHeight();
 <div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
 
-<script src="/js/gokturkce2.js"></script>
+<script src="/js/gokturkce0.js"></script>
 <script src="/js/fontpicker0.js"></script>
 <script src="/js/colorpicker0.js"></script>
-<script src="/js/keyboard6.js"></script>
+<script src="/js/keyboard0.js"></script>
 
 <div>
 <span style="font-family:tbldamga;">&nbsp;</span>
