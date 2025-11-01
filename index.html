@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <main><div class="contenti">
 
-<h1>Göktürkçe Çeviri <span style="float:right;font-size:1rem;font-weight:normal;">w:ü x:ç q:ğ j:ş I:ı</span></h1>
+<h1>Göktürkçe Çeviri <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#FFF;padding:3px;">W:ö w:ü X:ç x:ş Q:ğ q:ı</span></h1>
   
 <!--ceviri baslar-->
 <div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk</textarea></div>
@@ -97,20 +97,10 @@ adjustHeight();
 </script>
 
 <script>
-const input = document.getElementById('latin');
-const replacements = {
-    'w': 'ü',
-    'x': 'ç', 
-    'q': 'ğ',
-    'j': 'ş'
-};
-
-input.addEventListener('input', function() {
-    this.value = this.value.replace(/[wxqj]/gi, (match) => {
-        return replacements[match.toLowerCase()];
-    });
-});
-</script>
+  const input = document.getElementById('latin');
+  const charMap = {'W': 'ö', 'w': 'ü', 'X': 'ç', 'x': 'ş', 'Q': 'ğ', 'q': 'ı'};
+  input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxQq]/g, matched => charMap[matched]);});
+</script> 
 
 <table border="0" style="margin-bottom:5px;font-size:1.2rem;">
 <tr>
