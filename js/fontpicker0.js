@@ -87,7 +87,7 @@ function drawFontGrid(ctx, offsetX, offsetY) {
       ctx.fillStyle = "#EEE";
       ctx.fillRect(x, y, cellWidth, cellHeight);
       // Cell border
-      ctx.strokeStyle = "#666";
+      ctx.strokeStyle = "#333";
       ctx.lineWidth = 1;
       ctx.strokeRect(x, y, cellWidth, cellHeight);
       // Cell number
