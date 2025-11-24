@@ -1,7 +1,7 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 const fontCellHeight = 25;
-const fontGridCols = 5;
+const fontGridCols = 6;
 const fontGridRows = 6;
 const fontFamilies = [
   "tbldamga",
@@ -12,6 +12,7 @@ const fontFamilies = [
   "bala",
   "balab",
   "balag",
+  "bediz",
   "cizgi",
   "damgaregular",
   "damgab",
@@ -23,6 +24,7 @@ const fontFamilies = [
   "gokturkkalem",
   "gokturkkalemegri",
   "gokturkkalembold",
+  "gokturkkalemg",
   "koncuy",
   "kultigin",
   "kultiginbold",
@@ -34,6 +36,10 @@ const fontFamilies = [
   "turkbitigb",
   "yaksi",
   "yaksib",
+  "tungatigin",
+  "tungatigina",
+  "karluk",
+  "irkbitig",
 ];
 let currentFont = fontFamilies[0];
 
@@ -42,33 +48,39 @@ const humanFriendlyFontNames = {
   "tbldamga": "Altyazılı",
   "tbldamga2": "Öğrenci için",
   "bilgekaganyenim": "Bilge Kağan",
-  "bilgekaganyenib": "Bilge Kağan (K)",
-  "oguzbold": "BilgeKağan (A)",
+  "bilgekaganyenib": "Bilge Kağan(K)",
+  "oguzbold": "BilgeKağan(A)",
   "bala": "Bala",
-  "balab": "Bala (K)",
-  "balag": "Bala (G)",
+  "balab": "Bala(K)",
+  "balag": "Bala(G)",
+  "bediz": "Bediz",
   "cizgi": "Çizgi",
   "damgaregular": "Damga",
-  "damgab": "Damga (K)",
-  "damgabb": "Damga (A)",
-  "damgagenis": "Damga (G)",
-  "damgagenisbold": "Damga (GB)",
+  "damgab": "Damga(K)",
+  "damgabb": "Damga(A)",
+  "damgagenis": "Damga(G)",
+  "damgagenisbold": "Damga(GB)",
   "gokturkyeni": "Göktürk",
-  "gokturkyenib": "Göktürk (K)",
+  "gokturkyenib": "Göktürk(K)",
   "gokturkkalem": "Kalem",
-  "gokturkkalembold": "Kalem (K)",
+  "gokturkkalemg": "Kalem(G)",
+  "gokturkkalembold": "Kalem(K)",
   "gokturkkalemegri": "Kalem Eğri",
   "koncuy": "Konçuy",
   "kultigin": "Kültiğin",
-  "kultiginbold": "Kültiğin (K)",
+  "kultiginbold": "Kültiğin(K)",
   "damgaroman": "Roman",
   "tatarbold": "Tatar",
   "tonyukuk": "Tonyukuk",
-  "tonyukukagir": "Tonyukuk (K)",
+  "tonyukukagir": "Tonyukuk(K)",
   "turkbitig": "Türk Bitig",
-  "turkbitigb": "Türk Bitig (K)",
+  "turkbitigb": "Türk Bitig(K)",
   "yaksi": "Yakşı",
-  "yaksib": "Yakşı (K)",
+  "yaksib": "Yakşı(K)",
+  "tungatigin":"Tunga Tiğin",
+  "tungatigina": "Tunga Tiğin(A)",
+  "karluk": "Karluk",
+  "irkbitig": "Irk Bitig",
 };
 
 // Font picker grid drawing
