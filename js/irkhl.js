@@ -1,5 +1,4 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-
 document.addEventListener('DOMContentLoaded', () => {
   const state = {
     clickedRootId: null,
