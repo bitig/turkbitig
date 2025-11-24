@@ -66,37 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div><textarea class="latin" rows="2" maxlength="33333" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk</textarea></div>
 
 <script>
-const textarea = document.getElementById('latin');
-const lineHeight = parseInt(getComputedStyle(textarea).lineHeight);
-const maxRows = 4;
-const maxHeight = lineHeight * maxRows;
-
-function adjustHeight() {
-    const scrollTop = textarea.scrollTop;
-   
-    textarea.style.height = 'auto';
-    textarea.style.overflow = 'hidden';
-    
-    const newHeight = textarea.scrollHeight;
-    
-    if (newHeight <= maxHeight) {
-        textarea.style.height = newHeight + 'px';
-        textarea.classList.remove('scrollable');
-        textarea.style.overflow = 'hidden';
-    } else {
-        textarea.style.height = maxHeight + 'px';
-        textarea.classList.add('scrollable');
-        textarea.style.overflow = 'auto';
-        textarea.scrollTop = scrollTop;
-    }
-}
-
-textarea.addEventListener('input', adjustHeight);
-window.addEventListener('resize', adjustHeight);
-adjustHeight();
-</script>
-
-<script>
   const input = document.getElementById('latin');
   const charMap = {'W': 'ö', 'w': 'ü', 'X': 'ç', 'x': 'ş', 'Q': 'ğ', 'q': 'ı'};
   input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxQq]/g, matched => charMap[matched]);});
