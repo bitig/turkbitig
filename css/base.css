@@ -82,8 +82,7 @@ input[type="color"] {
   width: 100%;
   padding: 6px;
   box-sizing: border-box;
-  resize: none;
-  overflow-y: hidden;
+  resize: vertical;
   min-height: 24px;
   line-height: 1.5;
 }

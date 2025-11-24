@@ -1,98 +1,86 @@
 document.addEventListener('DOMContentLoaded', () => {
   const state = {
-    currentContainer: null,
-    currentIndex: null,
-    clickedContainer: null,
+    clickedRootId: null,
     clickedIndex: null
   };
-
+  const CONTAINER_SELECTOR = '[id] .mu, [id] .mt, [id] .mtr';
   const processContainers = () => {
-    const containers = document.querySelectorAll('[id] .mu, [id] .mt, [id] .mtr');
+    const containers = document.querySelectorAll(CONTAINER_SELECTOR);
     containers.forEach(element => {
-      element.innerHTML = element.textContent
-        .split(':')
-        .map((word, index) => `<span class="word" data-index="${index}">${word}</span>${index < element.textContent.split(':').length - 1 ? ':' : ''}`)
+      const parts = element.textContent.split(':');
+      element.innerHTML = parts
+        .map((word, index) =>
+          `<span class="word" data-index="${index}">${word}</span>${index < parts.length - 1 ? ':' : ''}`
+        )
         .join('');
     });
   };
-
   const bindEventListeners = () => {
-    document.querySelectorAll('.word').forEach(word => {
-      word.addEventListener('mouseover', handleWordInteraction);
-      word.addEventListener('mouseleave', handleWordInteraction);
-      word.addEventListener('click', handleWordInteraction);
+    document.addEventListener('mouseover', handleWordInteraction);
+    document.addEventListener('mouseout', handleWordInteraction);
+    document.addEventListener('click', handleWordInteraction);
+
+    document.querySelectorAll(CONTAINER_SELECTOR).forEach(container => {
+      container.addEventListener('mouseleave', clearHoverHighlight);
     });
   };
-
   const handleWordInteraction = (e) => {
     const wordElement = e.target.closest('.word');
     if (!wordElement) {
-      if (e.type === 'click') {
-        clearClickedHighlight(state);
-      }
+      if (e.type === 'click') clearClickedHighlight();
       return;
     }
 
-    const { containerId, newIndex } = getContainerDetails(wordElement);
+    const rootElement = wordElement.closest('[id]');
+    if (!rootElement) return;
+
+    const rootId = rootElement.id;
+    const newIndex = parseInt(wordElement.dataset.index, 10);
 
     if (e.type === 'click') {
-      // Check if clicking on already highlighted words
-      if (state.clickedContainer === containerId && state.clickedIndex === newIndex) {
-        clearClickedHighlight(state);
+      if (state.clickedRootId === rootId && state.clickedIndex === newIndex) {
+        clearClickedHighlight();
       } else {
-        updateClickedHighlight(containerId, newIndex, state);
+        updateClickedHighlight(rootElement, newIndex);
       }
     } else if (e.type === 'mouseover') {
-      updateHoverHighlight(containerId, newIndex, state);
-    } else if (e.type === 'mouseleave') {
-      clearHoverHighlight();
+      updateHoverHighlight(rootElement, newIndex);
+    } else if (e.type === 'mouseout') {
+      if (!wordElement.contains(e.relatedTarget)) {
+        clearHoverHighlight();
+      }
     }
   };
-
-  const getContainerDetails = (wordElement) => {
-    const containerId = wordElement.closest('[id]').id;
-    const newIndex = parseInt(wordElement.dataset.index);
-    return { containerId, newIndex };
-  };
-
-  const updateHoverHighlight = (containerId, index, state) => {
-    const container = document.getElementById(containerId);
-    const words = container.querySelectorAll(`.word[data-index="${index}"]`);
-    words.forEach(word => {
+  const updateHoverHighlight = (rootElement, index) => {
+    clearHoverHighlight();
+    const words = rootElement.querySelectorAll(`.word[data-index="${index}"]`);
+    for (const word of words) {
       word.classList.add('hover-highlight');
-    });
+    }
   };
-
-  const updateClickedHighlight = (containerId, index, state) => {
-    clearClickedHighlight(state);
-    const container = document.getElementById(containerId);
-    const words = container.querySelectorAll(`.word[data-index="${index}"]`);
-    words.forEach(word => {
+  const updateClickedHighlight = (rootElement, index) => {
+    clearClickedHighlight();
+    const words = rootElement.querySelectorAll(`.word[data-index="${index}"]`);
+    for (const word of words) {
       word.classList.add('clicked-highlight');
-    });
-    state.clickedContainer = containerId;
+    }
+    state.clickedRootId = rootElement.id;
     state.clickedIndex = index;
   };
-
-  const clearClickedHighlight = (state) => {
-    document.querySelectorAll('.clicked-highlight').forEach(word => word.classList.remove('clicked-highlight'));
-    state.clickedContainer = null;
+  const clearClickedHighlight = () => {
+    const elements = document.querySelectorAll('.clicked-highlight');
+    for (const el of elements) {
+      el.classList.remove('clicked-highlight');
+    }
+    state.clickedRootId = null;
     state.clickedIndex = null;
   };
-
   const clearHoverHighlight = () => {
-    document.querySelectorAll('.hover-highlight').forEach(word => word.classList.remove('hover-highlight'));
+    const elements = document.querySelectorAll('.hover-highlight');
+    for (const el of elements) {
+      el.classList.remove('hover-highlight');
+    }
   };
-
   processContainers();
   bindEventListeners();
-
-  // Unbind event listeners when the script ends or the page is unloaded
-  window.addEventListener('beforeunload', () => {
-    document.querySelectorAll('.word').forEach(word => {
-      word.removeEventListener('mouseover', handleWordInteraction);
-      word.removeEventListener('mouseleave', handleWordInteraction);
-      word.removeEventListener('click', handleWordInteraction);
-    });
-  });
 });
