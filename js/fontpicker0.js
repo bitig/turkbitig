@@ -1,5 +1,4 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-
 const fontCellHeight = 25;
 const fontGridCols = 6;
 const fontGridRows = 6;
@@ -42,7 +41,6 @@ const fontFamilies = [
   "irkbitig",
 ];
 let currentFont = fontFamilies[0];
-
 // Human-friendly names
 const humanFriendlyFontNames = {
   "tbldamga": "Altyazılı",
@@ -82,7 +80,6 @@ const humanFriendlyFontNames = {
   "karluk": "Karluk",
   "irkbitig": "Irk Bitig",
 };
-
 // Font picker grid drawing
 function drawFontGrid(ctx, offsetX, offsetY) {
   const cellWidth = fontCanvas.width / fontGridCols;
@@ -109,7 +106,6 @@ function drawFontGrid(ctx, offsetX, offsetY) {
     }
   }
 }
-
 // Selected font cell
 function drawSelectionOnFontGrid(ctx, offsetX, offsetY) {
   const cellWidth = fontCanvas.width / fontGridCols;
@@ -135,7 +131,6 @@ function drawSelectionOnFontGrid(ctx, offsetX, offsetY) {
     ctx.fillText(idx + 1, x + cellWidth / 2, y + cellHeight / 2);
   }
 }
-
 function updateSelectedFontInput() {
   const selectedFontInput = document.querySelector('input[name="selectedfont"]');
   if (selectedFontInput) {
@@ -143,18 +138,15 @@ function updateSelectedFontInput() {
     selectedFontInput.value = friendlyName;
   }
 }
-
 // Font picker mouse/touch setup
 function setupFontPicker(canvas, updatePreview) {
   const ctx = canvas.getContext("2d");
   let picking = false;
-
   function redrawFullFontCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawFontGrid(ctx, 0, 0);
     drawSelectionOnFontGrid(ctx, 0, 0);
   }
-
   function pickFontAt(x, y) {
     const cellWidth = canvas.width / fontGridCols;
     const cellHeight = fontCellHeight;
@@ -170,7 +162,6 @@ function setupFontPicker(canvas, updatePreview) {
       }
     }
   }
-
   canvas.addEventListener("mousedown", function(e) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
@@ -178,7 +169,6 @@ function setupFontPicker(canvas, updatePreview) {
     const y = e.clientY - rect.top;
     pickFontAt(x, y);
   });
-
   canvas.addEventListener("mousemove", function(e) {
     if (picking) {
       const rect = canvas.getBoundingClientRect();
@@ -187,11 +177,9 @@ function setupFontPicker(canvas, updatePreview) {
       pickFontAt(x, y);
     }
   });
-
   document.addEventListener("mouseup", function() {
     picking = false;
   });
-
   canvas.addEventListener("touchstart", function(e) {
     picking = true;
     const rect = canvas.getBoundingClientRect();
@@ -201,7 +189,6 @@ function setupFontPicker(canvas, updatePreview) {
     pickFontAt(x, y);
     e.preventDefault();
   }, { passive: false });
-
   canvas.addEventListener("touchmove", function(e) {
     if (picking) {
       const rect = canvas.getBoundingClientRect();
@@ -212,15 +199,35 @@ function setupFontPicker(canvas, updatePreview) {
       e.preventDefault();
     }
   }, { passive: false });
-
   document.addEventListener("touchend", function() {
     picking = false;
+  });
+
+  // Add keyboard navigation
+  canvas.tabIndex = 0; // Make canvas focusable
+  canvas.addEventListener("keydown", function(e) {
+    const idx = fontFamilies.indexOf(currentFont);
+    let newIdx = idx;
+    const totalFonts = fontFamilies.length;
+
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      newIdx = (idx > 0) ? idx - 1 : totalFonts - 1;
+    } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      newIdx = (idx < totalFonts - 1) ? idx + 1 : 0;
+    }
+
+    if (newIdx !== idx) {
+      currentFont = fontFamilies[newIdx];
+      redrawFullFontCanvas();
+      updatePreview();
+      updateSelectedFontInput();
+      e.preventDefault();
+    }
   });
 
   // Set canvas styles for responsiveness
   canvas.style.width = "100%";
   canvas.style.height = `${fontCellHeight * fontGridRows}px`; // 144px
-
   // Update canvas pixel dimensions
   function updateCanvasPixelWidth() {
     const parentWidth = fontPickerContainer.getBoundingClientRect().width;
@@ -228,23 +235,19 @@ function setupFontPicker(canvas, updatePreview) {
     canvas.height = fontCellHeight * fontGridRows; // 144px
     redrawFullFontCanvas();
   }
-
   // Initial setup and resize handling
   updateCanvasPixelWidth();
   window.addEventListener("resize", updateCanvasPixelWidth);
 }
-
 // Updates the preview (font only)
 function updatePreview() {
   let ct = document.getElementById("gokturk");
   ct.style.fontFamily = currentFont;
 }
-
 // Create font picker
 const fontPickerContainer = document.getElementById("fontPicker");
 const fontCanvas = document.createElement("canvas");
 fontPickerContainer.appendChild(fontCanvas);
-
 // Start font picker
 setupFontPicker(fontCanvas, updatePreview);
 updatePreview();
