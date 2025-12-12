@@ -31,11 +31,28 @@
   }
 </style>
 
-
 <style>
 .sitenav {position: relative;}
 #clearButton {padding:5px;}
 .uuuu {color:#09D;}
+</style>
+
+
+<style>
+  #gokturk {
+    /* iOS 13+ */
+    -webkit-user-modify: read-write-plaintext-only;
+    
+    /* Disable contextual suggestions completely (iOS 15+) */
+    -webkit-touch-callout: none;
+    !important;
+    -webkit-user-select: text         !important;
+    
+    /* Android Chrome / Samsung keyboard */
+    autocorrect: off;
+    autocapitalize: off;
+    spellcheck: false;
+  }
 </style>
 
 <script>
@@ -80,12 +97,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div>
 <textarea class="uuuu" id="gokturk" 
-  spellcheck="false" 
-  autocorrect="off" 
-  autocomplete="off" 
-  autocapitalize="off" 
-  placeholder="buna yaz">
-</textarea>
+  autocomplete="off"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false"
+  translate="no"
+  inputmode="text"
+  enterkeyhint="done"></textarea>
 </div>
 
 <table border="0" class="fonttable">
