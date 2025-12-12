@@ -117,7 +117,7 @@ input[type="color"] {
 
 .uuu {
   padding-top:8px;
-  line-height:1;
+  line-height:1.1;
   border: 2px solid #999;
   direction:rtl;
   unicode-bidi: bidi-override;
@@ -133,7 +133,7 @@ input[type="color"] {
   -webkit-text-stroke-color: #000000;
   text-stroke-color: #000000; 
   -webkit-text-stroke-width: 1px;
-  text-stroke-width: 0px; 
+  text-stroke-width: 1px; 
 }
 
 .uu {
@@ -156,6 +156,30 @@ input[type="color"] {
   -webkit-text-stroke-width: 1px;
   text-stroke-width: 1px; 
 }
+
+.uuuu {
+  background-image: url("/image/transp.png");
+  background-color: transparent;
+  padding-top:8px;
+  line-height:1.1;
+  border: 2px solid #999;
+  direction:rtl;
+  unicode-bidi: bidi-override;
+  text-align: right;
+  font-size: 62px;
+  overflow-wrap: break-word; 
+  min-height: 150px; 
+  width: 100%; 
+  max-width: 1600px;
+  font-family:'tbldamga';
+  padding:0.12em;
+  box-sizing: border-box;
+  -webkit-text-stroke-color: #000000;
+  text-stroke-color: #000000; 
+  -webkit-text-stroke-width: 1px;
+  text-stroke-width: 1px; 
+}
+
 
 .fonttable {
   margin-top: 10px;
@@ -662,6 +686,7 @@ red {
 .keytable {font-size:110%;}
 
 .uuu {font-size: 120px;  min-height: 220px;}
+.uuuu {font-size: 96px;  min-height: 320px;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}

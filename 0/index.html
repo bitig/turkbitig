@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/gray.css">
+<link rel="shortcut icon" href="/image/favicon.ico" type="image/png">
+<link rel="canonical" href="https://www.turkbitig.com/" />
+
+<meta name="keywords" content="Göktürkçe, Göktürk Alfabesi, Orhun alfabesi, Orhun yazısı, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı, Göktürk alfabesi çeviri, Göktürkçe Türk, eski Türk alfabesi, eski Türk yazısı">
+<meta name="description" content="Göktürkçe çeviri yazıcı ile isim yazabilirsiniz. Göktürk Alfabesi sağdan sola doğru yazılır. 4 ünlü, 25 ünsüz ve 9 çift sesli olarak toplam 38 harfden oluşur.">
+
+<link rel="preload" href="/js/fontpicker2.js" as="script">
+<link rel="preload" href="/js/colorpicker2.js" as="script">
+
+<title>Göktürkçe Çeviri</title>
+
+<style>
+  .picker-block1{width:44%;padding:0;}
+  .picker-block2{width:56%;padding:0;}
+
+  .fontPicker {
+    cursor: pointer;
+    border:1px solid #666;
+  }
+  .colorPicker {
+    cursor: pointer;
+    border:2px solid #777;
+  }
+</style>
+
+
+<style>
+.sitenav {position: relative;}
+#clearButton {padding:5px;}
+.uuuu {color:#09D;}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (!isMobile) {
+        const input = document.getElementById('gokturk');
+        if (input) {
+            input.focus();
+        }
+    }
+});
+</script>
+
+</head>
+<body>
+
+<div class="sitenav">
+<span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span>
+<div id="logo"><a href="/"><img class="logo" alt="Türk Bitig" src="/image/logo.png"></a></div><!--logo end-->
+</div><!--sitenav end-->
+
+<main><div class="contenti">
+
+<h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:ö/ü x:ç j:ş q:ğ</span></h1>
+  
+<!--ceviri baslar-->
+<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
+<tr>
+<td>Boy</td>
+<td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td>Aralık</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
+<td>Kıyı</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td width="90%">&nbsp;</td>
+</tr>
+</table>
+
+<div>
+<textarea class="uuuu" id="gokturk" spellcheck="false"></textarea>
+</div>
+
+<table border="0" class="fonttable">
+<tr>
+<td width="10%">Font</td>
+<td style="text-align:right;"><input type="text" name="selectedfont" style="font-size:1rem;width:90%;" disabled></td>
+<td>&nbsp;</td>
+<td>Renk</td>
+<td style="text-align:right;"><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11"></td>
+</tr>
+
+<tr>
+<td colspan="2" class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
+<td><img width="1" height="150" src="/image/dot.png"></td>
+<td colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
+</tr>
+
+</table>
+
+<!--ceviri biter-->
+
+
+<table border="0" class="fonttable">
+<tr>
+<td><button onclick="copyGokturk()">Kopyala</button></td>
+<td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
+<td width="90%">&nbsp;</td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
+</tr>
+</table>
+
+<hr>
+
+<ul>
+<li><a href="/isimler/kiz.html">Göktürkçe İsimler</a></li>
+<li><a href="/orhun-yazitlari/" style="color:#080;"><b>Orhun Yazıtları</b></a></li>
+<li><a href="/gokturkce/klavye.html">Klavyeli Yazıcı</a></li>
+<li><a href="/gokturk-alfabesi/">Göktürkçe Kuralları</a></li>
+</ul>
+
+</div></main>
+
+<footer>
+<div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
+</footer>
+
+<script src="gokce.js"></script>
+<script src="fpicker.js"></script>
+<script src="cpicker.js"></script>
+<script src="kboard.js"></script>
+
+<div>
+<span style="font-family:bala;">&nbsp;</span>
+<span style="font-family:balab;">&nbsp;</span>
+<span style="font-family:balag;">&nbsp;</span>
+<span style="font-family:bediz;">&nbsp;</span>
+<span style="font-family:bilgekaganyenib;">&nbsp;</span>
+<span style="font-family:bilgekaganyenim;">&nbsp;</span>
+<span style="font-family:cizgi;">&nbsp;</span>
+<span style="font-family:damgab;">&nbsp;</span>
+<span style="font-family:damgabb;">&nbsp;</span>
+<span style="font-family:damgagenis;">&nbsp;</span>
+<span style="font-family:damgagenisbold;">&nbsp;</span>
+<span style="font-family:damgaregular;">&nbsp;</span>
+<span style="font-family:damgaroman;">&nbsp;</span>
+<span style="font-family:gokturkkalem;">&nbsp;</span>
+<span style="font-family:gokturkkalembold;">&nbsp;</span>
+<span style="font-family:gokturkkalemegri;">&nbsp;</span>
+<span style="font-family:gokturkkalemg;">&nbsp;</span>
+<span style="font-family:gokturkyeni;">&nbsp;</span>
+<span style="font-family:gokturkyenib;">&nbsp;</span>
+<span style="font-family:irkbitig;">&nbsp;</span>
+<span style="font-family:karluk;">&nbsp;</span>
+<span style="font-family:koncuy;">&nbsp;</span>
+<span style="font-family:kultigin;">&nbsp;</span>
+<span style="font-family:kultiginbold;">&nbsp;</span>
+<span style="font-family:oguzbold;">&nbsp;</span>
+<span style="font-family:tatarbold;">&nbsp;</span>
+<span style="font-family:tbldamga;">&nbsp;</span>
+<span style="font-family:tbldamga2;">&nbsp;</span>
+<span style="font-family:tonyukuk;">&nbsp;</span>
+<span style="font-family:tonyukukagir;">&nbsp;</span>
+<span style="font-family:tungatigin;">&nbsp;</span>
+<span style="font-family:tungatigina;">&nbsp;</span>
+<span style="font-family:turkbitig;">&nbsp;</span>
+<span style="font-family:turkbitigb;">&nbsp;</span>
+<span style="font-family:yaksi;">&nbsp;</span>
+<span style="font-family:yaksib;">&nbsp;</span>
+</div>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XB6M7JR5GW');
+</script>
+
+</body>
+</html>
+
