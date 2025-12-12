@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div>
 <input type="text" autocomplete="off" style="display:none;">
-<textarea
+<textarea onfocus="this.setAttribute('readonly', 'readonly'); setTimeout(() => { this.removeAttribute('readonly'); }, 10);"
     class="uuuu"
     id="gokturk"
     autocomplete="off"         
