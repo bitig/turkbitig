@@ -124,13 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Post-processing ligatures and historical orthographic adjustments
-    result = result.replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦');     // n + d/t → special nd/nt glyph
-    result = result.replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡');     // l + d/t → special ld/lt glyph
-    result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');              // n + ç → special nç glyph
-    result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');              // n + y → special ny glyph
-    result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');              // ö + k → special ök glyph
-    result = result.replace(/𐰃𐰴/gu, '𐰶');                  // ı + k → special ık glyph
-    result = result.replace(/𐰆𐰴/gu, '𐰸');                  // o + k → special ok glyph
+    result = result.replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦');
+    result = result.replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡');
+    result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
+    result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
+    result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
+    result = result.replace(/𐰃𐰴/gu, '𐰶');
+    result = result.replace(/𐰆𐰴/gu, '𐰸');
 
     // Remove redundant vowel letters in certain contexts (historical spelling simplification)
     result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[^\s\x00-\x7F])/gu, '');
@@ -148,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return result;
   }
 
-  // Normalisation map: replaces non-standard or foreign Latin letters with closest Turkish equivalents
   const replacements = {
     'Ä': 'e', 'ä': 'e',
     'Ə': 'e', 'ə': 'e',
@@ -168,9 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'Ý': 'y', 'ý': 'y',
   };
 
-  // Hidden source text in modern Latin Turkish (not visible to user)
-  let latinSource = '';
   // Zero-width space used as a marker to help with cursor positioning at end of lines
+  let latinSource = '';
   const ZWS = '\u200B';
 
   // Apply letter normalisation before conversion
