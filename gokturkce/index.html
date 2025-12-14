@@ -45,23 +45,6 @@
 </style>
 
 
-<style>
-  #gokturk {
-    /* iOS 13+ */
-    -webkit-user-modify: read-write-plaintext-only;
-    
-    /* Disable contextual suggestions completely (iOS 15+) */
-    -webkit-touch-callout: none;
-    !important;
-    -webkit-user-select: text         !important;
-    
-    /* Android Chrome / Samsung keyboard */
-    autocorrect: off;
-    autocapitalize: off;
-    spellcheck: false;
-  }
-</style>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -103,18 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </table>
 
 <div>
+
 <input type="text" id="latin" hidden>
-<textarea onfocus="this.setAttribute('readonly', 'readonly'); setTimeout(() => { this.removeAttribute('readonly'); }, 10);"
-    class="uuuu"
-    id="gokturk"
-    autocomplete="off"         
-    autocorrect="off"          
-    autocapitalize="off"       
-    spellcheck="false"         
-    translate="no"  
-    inputmode="text"
-    data-lpignore="true">
-    </textarea>
+<textarea class="uuuu" id="gokturk"></textarea>
 
 <table border="0" class="fonttable">
 <tr>
