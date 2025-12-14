@@ -131,9 +131,9 @@ function convertToOldTurkic(input) {
   //  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰴/gu, '𐰸');
   //  result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=\S)/gu, '');
   result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[^\s\x00-\x7F])/gu, '');
-  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=\S)/gu, '');
-  result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=\S)/gu, '');
-  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=\S)/gu, '');
+  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[^\s\x00-\x7F])/gu, '');
+  result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[^\s\x00-\x7F])/gu, '');
+  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[^\s\x00-\x7F])/gu, '');
 
   result = result.replace(/𐰀𐱃𐱃𐰇𐰼𐰚/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
   result = result.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
