@@ -3,8 +3,8 @@
 <head>
 
 <script>
-  if (window.innerWidth >= 700) {
-    window.location.replace("/gokturkce/");
+  if (window.innerWidth <= 699) {
+    window.location.replace("/");
   }
 </script>
 
@@ -38,18 +38,35 @@
   }
 </style>
 
-
 <style>
 .sitenav {position: relative;}
 #clearButton {padding:5px;}
-.uuu {color:#09D;}
+.uuuu {color:#09D;}
+</style>
+
+
+<style>
+  #gokturk {
+    /* iOS 13+ */
+    -webkit-user-modify: read-write-plaintext-only;
+    
+    /* Disable contextual suggestions completely (iOS 15+) */
+    -webkit-touch-callout: none;
+    !important;
+    -webkit-user-select: text         !important;
+    
+    /* Android Chrome / Samsung keyboard */
+    autocorrect: off;
+    autocapitalize: off;
+    spellcheck: false;
+  }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (!isMobile) {
-        const input = document.getElementById('latin');
+        const input = document.getElementById('gokturk');
         if (input) {
             input.focus();
         }
@@ -67,17 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <main><div class="contenti">
 
-<h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">W:ö w:ü X:ç x:ş Q:ğ q:ı</span></h1>
+<h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:ö/ü x:ç j:ş q:ğ</span></h1>
   
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk</textarea></div>
-
-<script>
-  const input = document.getElementById('latin');
-  const charMap = {'W': 'ö', 'w': 'ü', 'X': 'ç', 'x': 'ş', 'Q': 'ğ', 'q': 'ı'};
-  input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxQq]/g, matched => charMap[matched]);});
-</script> 
-
 <table border="0" style="margin-bottom:5px;font-size:1.2rem;">
 <tr>
 <td>Boy</td>
@@ -93,9 +102,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </tr>
 </table>
 
-<div class="tbs">
-<div class="uuu" id="gokturk" style="background-color:#FFFFFF;" contenteditable="true" spellcheck="false">𐱅𐰇𐰼𐰜</div>
-</div>
+<div>
+<input type="text" autocomplete="off" style="display:none;">
+<textarea onfocus="this.setAttribute('readonly', 'readonly'); setTimeout(() => { this.removeAttribute('readonly'); }, 10);"
+    class="uuuu"
+    id="gokturk"
+    autocomplete="off"         
+    autocorrect="off"          
+    autocapitalize="off"       
+    spellcheck="false"         
+    translate="no"  
+    inputmode="text"
+    data-lpignore="true">
+    </textarea>
 
 <table border="0" class="fonttable">
 <tr>
@@ -142,10 +161,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
 </footer>
 
-<script src="/js/gokturkce0.js"></script>
-<script src="/js/fontpicker0.js"></script>
-<script src="/js/colorpicker0.js"></script>
-<script src="/js/keyboard0.js"></script>
+<script src="gokce.js"></script>
+<script src="fpicker.js"></script>
+<script src="cpicker.js"></script>
+<script src="kboard.js"></script>
 
 <div>
 <span style="font-family:bala;">&nbsp;</span>
