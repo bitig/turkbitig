@@ -686,7 +686,7 @@ red {
 .keytable {font-size:110%;}
 
 .uuu {font-size: 120px;  min-height: 220px;}
-.uuuu {font-size: 96px;  min-height: 380px;}
+.uuuu {font-size: 96px;  height: 380px; max-width:100%;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}
