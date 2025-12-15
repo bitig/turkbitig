@@ -2,10 +2,10 @@
 <html lang="tr">
 <head>
 
-<script>
-  if (window.innerWidth >= 800) {
-    window.location.replace("/gokturkce/");
-  }
+<script type="text/javascript">
+  const isMobile = window.matchMedia("(any-pointer: coarse)").matches;
+  const currentPath = window.location.pathname;  
+  if (!isMobile) {window.location.replace('/gokturkce/');}
 </script>
 
 <meta charset="utf-8">

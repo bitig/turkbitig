@@ -2,10 +2,10 @@
 <html lang="tr">
 <head>
 
-<script>
-  if (window.innerWidth <= 799) {
-    window.location.replace("/");
-  }
+<script type="text/javascript">
+  const isMobile = window.matchMedia("(any-pointer: coarse)").matches;
+  const currentPath = window.location.pathname; 
+  if (isMobile) {window.location.replace('/');}
 </script>
 
 <meta charset="utf-8">
