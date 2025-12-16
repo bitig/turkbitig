@@ -254,8 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Initial setup
-  latinText = '';
+  latinText = 'török';
   const init = convertToOldTurkic(latinText);
   gokturk.value = init.result;
+  setCaretTextarea(gokturk, init.result.length);
   currentPosMap = init.posMap;
 });
