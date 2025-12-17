@@ -225,6 +225,14 @@ img {
   max-width: 100%;
 }
 
+.dlimg {
+    border: 3px solid #EEE; 
+    transition: border-color 0.3s ease; 
+}
+.dlimg:hover {
+    border-color: #999;
+}
+
 code {
   font-weight: bold;
 }
