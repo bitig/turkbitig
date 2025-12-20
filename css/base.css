@@ -158,6 +158,7 @@ input[type="color"] {
 }
 
 .uuuu {
+  resize: vertical;
   background-image: url("/image/transp.png");
   padding-top:8px;
   line-height:1.1;
@@ -165,11 +166,10 @@ input[type="color"] {
   direction:rtl;
   unicode-bidi: bidi-override;
   text-align: right;
-  font-size: 62px;
-  overflow-wrap: break-word; 
-  min-height: 150px; 
+  font-size: 96px;  
+  height: 399px; 
+  min-height: 200px; 
   width: 100%; 
-  max-width: 1600px;
   font-family:'tbldamga';
   padding:0.12em;
   box-sizing: border-box;
@@ -178,7 +178,6 @@ input[type="color"] {
   -webkit-text-stroke-width: 1px;
   text-stroke-width: 1px; 
 }
-
 
 .fonttable {
   margin-top: 10px;
@@ -567,7 +566,6 @@ button:active {
 }
 
 .contenti {
-  max-width: 1600px;
   padding-top: 9px;
   padding-left: 2%;
   padding-right: 2%;
@@ -693,7 +691,6 @@ red {
 .keytable {font-size:110%;}
 
 .uuu {font-size: 120px;  min-height: 220px;}
-.uuuu {font-size: 96px;  height: 380px; min-height: 200px; min-width:200px; max-width:100%;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}
