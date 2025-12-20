@@ -159,7 +159,6 @@ input[type="color"] {
 
 .uuuu {
   background-image: url("/image/transp.png");
-  background-color: transparent;
   padding-top:8px;
   line-height:1.1;
   border: 2px solid #999;
