@@ -3,8 +3,8 @@ const fontCellHeight = 25;
 const fontGridCols = 6;
 const fontGridRows = 6;
 const fontFamilies = [
-  "tbldamga",
   "tbldamga2",
+  "tbldamga",
   "bilgekaganyenim",
   "bilgekaganyenib",
   "oguzbold",
@@ -43,8 +43,8 @@ const fontFamilies = [
 let currentFont = fontFamilies[0];
 // Human-friendly names
 const humanFriendlyFontNames = {
-  "tbldamga": "Altyazılı",
   "tbldamga2": "Öğrenci için",
+  "tbldamga": "Altyazılı",
   "bilgekaganyenim": "Bilge Kağan",
   "bilgekaganyenib": "Bilge Kağan(K)",
   "oguzbold": "BilgeKağan(A)",
