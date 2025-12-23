@@ -1,8 +1,7 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 document.addEventListener('DOMContentLoaded', () => {
   const gokturk = document.getElementById('gokturk');
-  const clearButton = document.getElementById('clearGokturk');
-  const charsetButton = document.getElementById('charset1'); // Get charset1 button
+  const clearButton = document.getElementById('clearGokturk'); // Get the clear button element
   let latinText = '';
   let currentPosMap = [0];
   const backVowelMap = {
@@ -184,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     textarea.setSelectionRange(safe, safe);
     textarea.focus();
   }
+  // Simple and reliable auto-scroll to bottom when typing
   function scrollToBottom() {
     gokturk.scrollTop = gokturk.scrollHeight;
   }
@@ -209,18 +209,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (startOut === endOut) {
         if (isDeleteBackward && startOut > 0) {
           const inEnd = currentPosMap[startOut];
-          // Use spread operator to correctly identify the start of the previous character
-          // even if it is a multi-byte surrogate pair.
-          const chars = [...latinText.slice(0, inEnd)];
-          chars.pop(); 
-          const inStart = chars.join('').length;
+          const inStart = currentPosMap[startOut - 1];
           latinText = latinText.slice(0, inStart) + latinText.slice(inEnd);
           newInputPos = inStart;
         } else if (isDeleteForward && endOut < gokturk.value.length) {
           const inStart = currentPosMap[endOut];
-          const nextChars = [...latinText.slice(inStart)];
-          nextChars.shift();
-          const inEnd = inStart + (latinText.length - inStart - nextChars.join('').length);
+          const inEnd = currentPosMap[endOut + 1];
           latinText = latinText.slice(0, inStart) + latinText.slice(inEnd);
           newInputPos = inStart;
         } else {
@@ -242,32 +236,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     setCaretTextarea(gokturk, newOutputPos);
+    // Always scroll to the bottom after any change so you see what you're typing
     scrollToBottom();
   });
 
+  // Add clear button functionality
   if (clearButton) {
     clearButton.addEventListener('click', () => {
-      latinText = ''; 
-      const init = convertToOldTurkic(latinText); 
-      gokturk.value = init.result; 
-      currentPosMap = init.posMap;
-      setCaretTextarea(gokturk, 0); 
-      scrollToBottom(); 
+      latinText = ''; // Reset internal Latin text
+      const init = convertToOldTurkic(latinText); // Re-convert (should be empty)
+      gokturk.value = init.result; // Clear the textarea
+      currentPosMap = init.posMap; // Reset position map
+      setCaretTextarea(gokturk, 0); // Set cursor to start
+      scrollToBottom(); // Scroll to bottom (though empty)
     });
   }
 
-  // all allChars
-  if (charsetButton) {
-    charsetButton.addEventListener('click', () => {
-      latinText = '𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡'; 
-      const { result, posMap } = convertToOldTurkic(latinText);
-      gokturk.value = result;
-      currentPosMap = posMap;
-      setCaretTextarea(gokturk, result.length);
-      scrollToBottom();
-    });
-  }
-
+  // Initial setup
   latinText = 'török';
   const init = convertToOldTurkic(latinText);
   gokturk.value = init.result;
