@@ -119,8 +119,6 @@ input[type="color"] {
   padding-top:8px;
   line-height:1.1;
   border: 2px solid #999;
-  direction:rtl;
-  unicode-bidi: bidi-override;
   text-align: right;
   font-size: 66px;
   overflow-wrap: break-word; 
@@ -163,14 +161,12 @@ input[type="color"] {
   padding-top:8px;
   line-height:1.1;
   border: 2px solid #999;
-  direction:rtl;
-  unicode-bidi: bidi-override;
   text-align: right;
   font-size: 96px;  
   height: 399px; 
   min-height: 200px; 
   width: 100%; 
-  font-family:'tbldamga';
+  font-family:'tbldamga', sans-serif;
   padding:0.12em;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;

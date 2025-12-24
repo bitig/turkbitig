@@ -1,4 +1,5 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
+
 document.addEventListener('DOMContentLoaded', () => {
   const gokturk = document.getElementById('gokturk');
   const clearButton = document.getElementById('clearGokturk');
