@@ -5,7 +5,6 @@ const fontGridRows = 6;
 const fontFamilies = [
   "tbldamga",
   "tbldamga2",
-  "bilgekaganyenim",
   "bilgekaganyenib",
   "oguzbold",
   "bala",
@@ -23,6 +22,7 @@ const fontFamilies = [
   "gokturkkalemegri",
   "gokturkkalembold",
   "gokturkkalemg",
+  "kirgiz",
   "koncuy",
   "kultigin",
   "kultiginbold",
@@ -45,8 +45,7 @@ let currentFont = fontFamilies[0];
 const humanFriendlyFontNames = {
   "tbldamga": "Altyazılı",
   "tbldamga2": "Öğrenci için",
-  "bilgekaganyenim": "Bilge Kağan",
-  "bilgekaganyenib": "Bilge Kağan(K)",
+  "bilgekaganyenib": "Bilge Kağan",
   "oguzbold": "BilgeKağan(A)",
   "bala": "Bala",
   "balab": "Bala(K)",
@@ -63,6 +62,7 @@ const humanFriendlyFontNames = {
   "gokturkkalemg": "Kalem(G)",
   "gokturkkalembold": "Kalem(K)",
   "gokturkkalemegri": "Kalem Eğri",
+  "kirgiz": "Kırgız",
   "koncuy": "Konçuy",
   "kultigin": "Kültiğin",
   "kultiginbold": "Kültiğin(K)",
