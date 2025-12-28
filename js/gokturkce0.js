@@ -129,12 +129,10 @@ function convertToOldTurkic(input) {
 
   //  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰚/gu, '𐰜');
   //  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰴/gu, '𐰸');
-  //  result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=\S)/gu, '');
-  //result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[^\s\x00-\x7F])/gu, '');
-  result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[^𐰀\s\x00-\x7F])/gu, '');
-  result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[^𐰃\s\x00-\x7F])/gu, '');
-  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[^𐰆\s\x00-\x7F])/gu, '');
-  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[^𐰇\s\x00-\x7F])/gu, '');
+  result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
+  result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
+  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '');
+  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '');
 
   result = result.replace(/𐰀𐱃𐱃𐰇𐰼𐰚/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
   result = result.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
