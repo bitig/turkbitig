@@ -5,7 +5,6 @@ const fontGridRows = 6;
 const fontFamilies = [
   "tbldamga",
   "tbldamga2",
-  "bilgekaganyenim",
   "bilgekaganyenib",
   "oguzbold",
   "bala",
