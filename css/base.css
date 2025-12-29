@@ -73,7 +73,13 @@ input[type="color"] {
 }
 
 .tbs {
-  background-image: url("/image/transp.png");
+  background-image: 
+    linear-gradient(
+      to bottom, 
+      rgba(220, 220, 220, 0) 0%,   
+      rgba(220, 220, 220, 1) 100% 
+    ), 
+    url('/image/transp.png'); 
 }
 
 #latin {
@@ -116,6 +122,8 @@ input[type="color"] {
 #bgColor {width:33px;height:35px;}
 
 .uuu {
+  background-color: transparent;
+  resize: vertical;
   padding-top:8px;
   line-height:1.1;
   border: 2px solid #999;
@@ -156,8 +164,8 @@ input[type="color"] {
 }
 
 .uuuu {
+  background-color: transparent;
   resize: vertical;
-  background-image: url("/image/transp.png");
   padding-top:8px;
   line-height:1.1;
   border: 2px solid #999;
