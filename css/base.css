@@ -130,7 +130,7 @@ input[type="color"] {
   text-align: right;
   font-size: 66px;
   overflow-wrap: break-word; 
-  min-height: 110px; 
+  min-height: 180px; 
   width: 100%; 
   max-width: 1600px;
   font-family:'tbldamga';
@@ -694,7 +694,7 @@ red {
   }
 .keytable {font-size:110%;}
 
-.uuu {font-size: 120px;  min-height: 220px;}
+.uuu {font-size: 80px;  min-height: 380px;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}
