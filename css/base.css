@@ -89,7 +89,7 @@ input[type="color"] {
   padding: 6px;
   box-sizing: border-box;
   resize: vertical;
-  min-height: 24px;
+  min-height: 50px;
   line-height: 1.5;
 }
 
@@ -130,7 +130,7 @@ input[type="color"] {
   text-align: right;
   font-size: 66px;
   overflow-wrap: break-word; 
-  min-height: 180px; 
+  min-height: 200px; 
   width: 100%; 
   max-width: 1600px;
   font-family:'tbldamga';
@@ -172,7 +172,7 @@ input[type="color"] {
   text-align: right;
   font-size: 96px;  
   height: 399px; 
-  min-height: 200px; 
+  min-height: 160px; 
   width: 100%; 
   font-family:'tbldamga', sans-serif;
   padding:0.12em;
@@ -694,7 +694,7 @@ red {
   }
 .keytable {font-size:110%;}
 
-.uuu {font-size: 80px;  min-height: 380px;}
+.uuu {font-size: 80px;  height: 320px; min-height: 160px;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}
