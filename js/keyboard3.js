@@ -80,6 +80,8 @@ function changeStrokeSize(action) {
     element.style.webkitTextStrokeWidth = `${strokeNum}px`;
     element.style.textStrokeWidth = `${strokeNum}px`;
 }
+
+// download as PNG
 function downloadAsPng() {
     const element = document.getElementById('gokturk');
     const selection = window.getSelection();
@@ -113,14 +115,14 @@ function downloadAsPng() {
     const backgroundColor = styles.backgroundColor || 'transparent';
     const fontColor = styles.color || 'black';
     const strokeColor = styles.webkitTextStrokeColor || 'black';
+    // Set font and other properties early for accurate measurement
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
-    // letter spacing
+    ctx.direction = 'rtl'; // Enable RTL with bidi support
+    ctx.letterSpacing = `${letterSpacing}px`; // Apply letter spacing (supported in modern browsers)
+    // Simplified measurement using native measureText (accounts for spacing and bidi width)
     function measureTextWithSpacing(text) {
-        const graphemes = Array.from(segmenter.segment(text));
-        if (graphemes.length === 0) return 0;
-        const widths = graphemes.map(g => ctx.measureText(g.segment).width);
-        const totalWidth = widths.reduce((sum, w) => sum + w, 0) + letterSpacing * (graphemes.length - 1);
-        return totalWidth;
+        if (!text) return 0;
+        return ctx.measureText(text).width;
     }
     // newlines
     const explicitLines = text.split('\n');
@@ -168,34 +170,27 @@ function downloadAsPng() {
     // apply background color
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    // text properties
+    // text properties (reset after background fill)
     ctx.font = `${styles.fontSize} ${styles.fontFamily}`;
-    ctx.textAlign = 'left';
+    ctx.direction = 'rtl';
+    ctx.letterSpacing = `${letterSpacing}px`;
+    ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = fontColor;
     if (strokeWidth > 0) {
         ctx.strokeStyle = strokeColor;
         ctx.lineWidth = strokeWidth;
     }
-    // render lines
+    // render lines using native methods for bidi handling
     const startY = paddingTop + strokeWidth + lineHeight / 2;
     const rightX = canvas.width - paddingRight - strokeWidth;
     lines.forEach((line, index) => {
         const y = startY + index * lineHeight;
         if (line) {
-            const graphemes = Array.from(segmenter.segment(line));
-            let x = rightX;
-            graphemes.forEach((grapheme, i) => {
-                const width = ctx.measureText(grapheme.segment).width;
-                x -= width;
-                if (strokeWidth > 0) {
-                    ctx.strokeText(grapheme.segment, x, y);
-                }
-                ctx.fillText(grapheme.segment, x, y);
-                if (i < graphemes.length - 1) {
-                    x -= letterSpacing;
-                }
-            });
+            if (strokeWidth > 0) {
+                ctx.strokeText(line, rightX, y);
+            }
+            ctx.fillText(line, rightX, y);
         }
     });
     // generate PNG
@@ -222,15 +217,4 @@ function downloadAsPng() {
     } catch (err) {
         console.error('Error generating PNG: ', err);
     }
-}
-function copyDifferentValues(button) {
-    const latinText = button.getAttribute('data-latin-text');
-    const gokturkText = button.getAttribute('data-gokturk-text');
-    document.getElementById('latin').value = '';
-    document.getElementById('latin').value = latinText;
-    document.getElementById('gokturk').value = gokturkText;
-}
-function clearText() {
-    document.getElementById('latin').value = '';
-    document.getElementById('gokturk').value = '';
 }
