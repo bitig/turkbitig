@@ -143,6 +143,7 @@ input[type="color"] {
 }
 
 .uu {
+  resize: vertical;
   padding-top:8px;
   line-height:1;
   border: 2px solid #999;
@@ -170,11 +171,11 @@ input[type="color"] {
   line-height:1.1;
   border: 2px solid #999;
   text-align: right;
-  font-size: 96px;  
+  font-size: 80px;  
   height: 399px; 
   min-height: 160px; 
   width: 100%; 
-  font-family:'tbldamga', sans-serif;
+  font-family:'tbldamga';
   padding:0.12em;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
@@ -695,6 +696,7 @@ red {
 .keytable {font-size:110%;}
 
 .uuu {font-size: 80px;  height: 320px; min-height: 160px;}
+.uuuu {height: 530px;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}
@@ -706,7 +708,9 @@ h1 {font-size: 150%;}
 h2 {font-size: 120%;}
 
 #latin{font-size: 120%;}
+
 }
+/* Media Query ends */
 
 .redback {background-color:#faa;}
 .yellowback {background-color:#fd6;}

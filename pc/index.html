@@ -61,14 +61,82 @@ document.addEventListener('DOMContentLoaded', function() {
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:ö/ü x:ç j:ş q:ğ</span></h1>
   
 <!--ceviri baslar-->
+
+<div>
+
+<input type="text" id="latin" hidden>
+
+
+<table class="fonttable" id="fontRadioGroup">
+<tr>
+<td>Font&nbsp;</td>
+<td nowrap>
+<select class="fontselect" onchange="changeFont(this.value)">
+  <option value="tbldamga" selected>Altyazılı</option>
+  <option value="tbldamga2">Öğrenci için</option>
+  <option value="bala">Bala</option>
+  <option value="balab">Bala-K</option>
+  <option value="balag">Bala-G</option>
+  <option value="bediz">Bediz</option>
+  <option value="cizgi">Çizgi</option>
+  <option value="damgaregular">Damga</option>
+  <option value="damgabb">Damga-A</option>
+  <option value="damgagenis">Damga-G</option>
+  <option value="damgagenisbold">Damga-GK</option>
+  <option value="gokturkyeni">Göktürk</option>
+  <option value="gokturkyenib">Göktürk-K</option>
+  <option value="irkbitig">Irk Bitig</option>
+  <option value="gokturkkalem">Kalem</option>
+  <option value="gokturkkalemg">Kalem-G</option>
+  <option value="gokturkkalembold">Kalem-K</option>
+  <option value="gokturkkalemegri">Kalem-E</option>
+  <option value="karluk">Karluk</option>
+  <option value="karlukbold">Karluk-K</option>
+  <option value="kirgiz">Kırgız</option>
+  <option value="koncuyi">Konçuy</option>
+  <option value="koncuy">Konçuy-K</option>
+  <option value="kultigin">Kültiğin</option>
+  <option value="kultiginbold">Kültiğin-K</option>
+  <option value="bilgekaganyeni">Oguz</option>
+  <option value="bilgekaganyenim">Oğuz-M</option>
+  <option value="oguzbold">Oğuz-A</option>
+  <option value="damgaroman">Roman</option>
+  <option value="tatarbold">Tatar-K</option>
+  <option value="tonyukuk">Tonyukuk</option>
+  <option value="tonyukukagir">Tonyukuk-B</option>
+  <option value="tonyukukdar">Tonyukuk-D</option>
+  <option value="tonyukukdarkalin">Tonyukuk-G</option>
+  <option value="tungatigin">Tungatiğin</option>
+  <option value="tungatigina">Tungatiğin-A</option>
+  <option value="turkbitig">Türk Bitig</option>
+  <option value="turkbitigb">Türk Bitig-K</option>
+  <option value="uygur">Uygur</option>
+  <option value="yaksi">Yakşı</option>
+  <option value="yaksib">Yakşı-K</option>
+</select>
+</td>
+
+<td width="3%">Renk</td>
+<td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#00EEDD"></td>
+<td width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="90%"></td>
+
+</tr>
+</table>
+
+
 <table border="0" style="margin-bottom:5px;font-size:1.2rem;">
 <tr>
-<td>Boy</td>
+
+<td>Boy&nbsp;&nbsp;</td>
+
 <td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td>Aralık</td>
+<td nowrap>Aralık</td>
 <td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
+
 <td>Kıyı</td>
 <td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
 <td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
@@ -76,30 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </tr>
 </table>
 
-<div>
-
-<input type="text" id="latin" hidden>
-
 <div class="tbs">
-<textarea class="uuuu" id="gokturk" spellcheck="false" dir="rtl"></textarea>
+<textarea class="uuuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;"></textarea>
 </div>
-
-<table border="0" class="fonttable">
-<tr>
-<td width="10%">Font</td>
-<td style="text-align:right;"><input type="text" name="selectedfont" style="font-size:1rem;width:90%;" disabled></td>
-<td>&nbsp;</td>
-<td>Renk</td>
-<td style="text-align:right;"><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11"></td>
-</tr>
-
-<tr>
-<td colspan="2" class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
-<td><img width="1" height="150" src="/image/dot.png"></td>
-<td colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
-</tr>
-
-</table>
 
 <!--ceviri biter-->
 
@@ -119,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <ul>
 <li><a href="/isimler/kiz.html">Göktürkçe İsimler</a></li>
 <li><a href="/orhun-yazitlari/" style="color:#080;"><b>Orhun Yazıtları</b></a></li>
+<li><a href="/">Eski Yazıcı</a></li>
 <li><a href="/gokturkce/klavye.html">Klavyeli Yazıcı</a></li>
 <li><a href="/gokturk-alfabesi/">Göktürkçe Kuralları</a></li>
 </ul>
@@ -130,9 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </footer>
 
 <script src="gokce.js"></script>
-<script src="/js/fontpicker3.js"></script>
-<script src="/js/colorpicker3.js"></script>
-<script src="/js/keyboard3.js"></script>
+<script src="/js/keyboard1.js"></script>
 
 <div>
 <span style="font-family:bala;">&nbsp;</span>
@@ -176,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Google tag (gtag.js) -->
-<script async="" src="ttps://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
