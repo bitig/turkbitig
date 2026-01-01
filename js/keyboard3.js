@@ -226,6 +226,7 @@ function copyDifferentValues(button) {
     document.getElementById('latin').value = latinText;
     document.getElementById('gokturk').value = gokturkText;
 }
+
 function clearText() {
     document.getElementById('latin').value = '';
     document.getElementById('gokturk').value = '';
