@@ -128,7 +128,7 @@ input[type="color"] {
   line-height:1.1;
   border: 2px solid #999;
   text-align: right;
-  font-size: 66px;
+  font-size: 56px;
   overflow-wrap: break-word; 
   min-height: 200px; 
   width: 100%; 
@@ -171,7 +171,7 @@ input[type="color"] {
   line-height:1;
   border: 2px solid #999;
   text-align: right;
-  font-size: 80px;  
+  font-size: 56px;  
   height: 399px; 
   min-height: 160px; 
   width: 100%; 
@@ -696,7 +696,7 @@ red {
 .keytable {font-size:110%;}
 
 .uuu {font-size: 80px;  height: 320px; min-height: 160px;}
-.uuuu {height: 530px;}
+.uuuu {height: 530px;   font-size: 80px;}
 
 #ccolorPicker {height:33px;}
 #bgColorPicker {height:33px;}
