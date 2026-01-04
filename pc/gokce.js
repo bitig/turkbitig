@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // all allChars
   if (charsetButton) {
     charsetButton.addEventListener('click', () => {
-      latinText = '𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡'; 
+      latinText = '𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶𐰸𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡'; 
       const { result, posMap } = convertToOldTurkic(latinText);
       gokturk.value = result;
       currentPosMap = posMap;
