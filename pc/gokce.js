@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     const rules = [
-      { regex: /[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, repl: '𐰦' },
-      { regex: /[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, repl: '𐰡' },
+      { regex: /[𐰤𐰣][𐰓𐰑]/gu, repl: '𐰦' },
+      { regex: /[𐰞𐰠][𐰓𐰑]/gu, repl: '𐰡' },
       { regex: /[𐰤𐰣]𐰲/gu, repl: '𐰨' },
       { regex: /[𐰤𐰣]𐰖/gu, repl: '𐰪' },
       { regex: /𐰇[𐰚𐰜]/gu, repl: '𐰜' },
