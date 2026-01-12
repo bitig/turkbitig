@@ -1,3 +1,5 @@
+// Copyright (C) turkbitig.com. All Rights Reserved.
+
 const back_consonants = {
   'b': '𐰉', 'v': '𐰉',
   'd': '𐰑',
@@ -92,45 +94,50 @@ function convert() {
   
   input = input.toLowerCase();
 
-  let words = input.split(/\s+/);
-  let outputWords = [];
-  for (let word of words) {
-    let wordOut = '';
-    let syllables = getSyllables(word);
-    for (let syl of syllables) {
-      let harmony = null;
-      for (let ch of syl) {
-        if (back_vowels[ch]) {
-          harmony = 'back';
-          break;
-        } else if (front_vowels[ch]) {
-          harmony = 'front';
-          break;
+  let lines = input.split('\n');
+  let outputLines = [];
+  for (let line of lines) {
+    let words = line.split(/\s+/);
+    let outputWords = [];
+    for (let word of words) {
+      let wordOut = '';
+      let syllables = getSyllables(word);
+      for (let syl of syllables) {
+        let harmony = null;
+        for (let ch of syl) {
+          if (back_vowels[ch]) {
+            harmony = 'back';
+            break;
+          } else if (front_vowels[ch]) {
+            harmony = 'front';
+            break;
+          }
         }
-      }
-      
-      if (harmony === null) {
-        harmony = 'back';
-      }
-      for (let ch of syl) {
-        if (back_vowels[ch]) {
-          wordOut += back_vowels[ch];
-        } else if (front_vowels[ch]) {
-          wordOut += front_vowels[ch];
-        } else {
-          if (harmony === 'back' && back_consonants[ch]) {
-            wordOut += back_consonants[ch];
-          } else if (harmony === 'front' && front_consonants[ch]) {
-            wordOut += front_consonants[ch];
+        
+        if (harmony === null) {
+          harmony = 'back';
+        }
+        for (let ch of syl) {
+          if (back_vowels[ch]) {
+            wordOut += back_vowels[ch];
+          } else if (front_vowels[ch]) {
+            wordOut += front_vowels[ch];
           } else {
-            wordOut += ch;
+            if (harmony === 'back' && back_consonants[ch]) {
+              wordOut += back_consonants[ch];
+            } else if (harmony === 'front' && front_consonants[ch]) {
+              wordOut += front_consonants[ch];
+            } else {
+              wordOut += ch;
+            }
           }
         }
       }
+      outputWords.push(wordOut);
     }
-    outputWords.push(wordOut);
+    outputLines.push(outputWords.join(' '));
   }
-  let output = outputWords.join(' ');
+  let output = outputLines.join('\n');
 
   output = output.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
   output = output.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
