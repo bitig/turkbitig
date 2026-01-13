@@ -1,188 +1,275 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-const back_consonants = {
-  'b': '𐰉', 'v': '𐰉',
-  'd': '𐰑',
-  'g': '𐰍', 'ğ': '𐰍',
-  'k': '𐰴', 'h': '𐰴',
-  'l': '𐰞',
-  'n': '𐰣',
-  'r': '𐰺',
-  's': '𐰽',
-  't': '𐱃',
-  'y': '𐰖',
-  'ç': '𐰲', 'c': '𐰲',
-  'm': '𐰢',
-  'ñ': '𐰭',
-  'p': '𐰯', 'f': '𐰯',
-  'ş': '𐱁', 'j': '𐱁',
-  'z': '𐰔',
-};
-const front_consonants = {
-  'b': '𐰋', 'v': '𐰉',
-  'd': '𐰓',
-  'g': '𐰏', 'ğ': '𐰏',
-  'k': '𐰚', 'h': '𐰚',
-  'l': '𐰠',
-  'n': '𐰤',
-  'r': '𐰼',
-  's': '𐰾',
-  't': '𐱅',
-  'y': '𐰘',
-  'ç': '𐰲', 'c': '𐰲',
-  'ñ': '𐰭',
-  'm': '𐰢',
-  'p': '𐰯', 'f': '𐰯',
-  'ş': '𐱁', 'j': '𐱁', 
-  'z': '𐰔',
-};
-const back_vowels = {
-  'a': '𐰀',
-  'ı': '𐰃',
-  'o': '𐰆',
-  'u': '𐰆',
-};
-const front_vowels = {
-  'e': '𐰀', 'ə': '𐰀', 'ä': '𐰀', 
-  'i': '𐰃',
-  'ö': '𐰇',
-  'ü': '𐰇',
-};
-const all_vowels = new Set([...Object.keys(back_vowels), ...Object.keys(front_vowels)]);
-
-function isVowel(c) {
-  return all_vowels.has(c);
-}
-
-function getSyllables(word) {
-  if (!word.length) return [];
-  let vowelIndices = [];
-  for (let i = 0; i < word.length; i++) {
-    if (isVowel(word[i])) {
-      vowelIndices.push(i);
-    }
-  }
-  if (!vowelIndices.length) return [word]; 
-  let syllables = [];
-  let start = 0;
-  for (let k = 0; k < vowelIndices.length; k++) {
-    let vowelPos = vowelIndices[k];
-    let nextVowelPos = (k + 1 < vowelIndices.length) ? vowelIndices[k + 1] : word.length;
-    let consBetween = nextVowelPos - vowelPos - 1;
-    let codaLength;
-    if (k + 1 === vowelIndices.length) {
-      codaLength = consBetween;
-    } else {
-      codaLength = consBetween - 1 < 0 ? 0 : consBetween - 1;
-    }
-    let sylEnd = vowelPos + 1 + codaLength;
-    let syl = word.slice(start, sylEnd);
-    syllables.push(syl);
-    start = sylEnd;
-  }
-  return syllables;
-}
-
-function convertLogic(input) {
-  if (!input) return "";
-  
-  input = input.replace(/I/g, 'ı');
-  input = input.replace(/İ/g, 'i');
-  input = input.toLowerCase();
-  
-  let lines = input.split('\n');
-  let outputLines = [];
-  
-  for (let line of lines) {
-    let words = line.split(/\s+/);
-    let outputWords = [];
-    for (let word of words) {
-        if(word === "") {
-             outputWords.push("");
-             continue;
-        }
-      let wordOut = '';
-      let syllables = getSyllables(word);
-      for (let syl of syllables) {
-        let harmony = null;
-        for (let ch of syl) {
-          if (back_vowels[ch]) {
-            harmony = 'back';
-            break;
-          } else if (front_vowels[ch]) {
-            harmony = 'front';
-            break;
-          }
-        }
-        
-        if (harmony === null) {
-          harmony = 'back';
-        }
-        for (let ch of syl) {
-          if (back_vowels[ch]) {
-            wordOut += back_vowels[ch];
-          } else if (front_vowels[ch]) {
-            wordOut += front_vowels[ch];
-          } else {
-            if (harmony === 'back' && back_consonants[ch]) {
-              wordOut += back_consonants[ch];
-            } else if (harmony === 'front' && front_consonants[ch]) {
-              wordOut += front_consonants[ch];
-            } else {
-              wordOut += ch;
-            }
-          }
+document.addEventListener('DOMContentLoaded', () => {
+  const gokturk = document.getElementById('gokturk');
+  const clearButton = document.getElementById('clearGokturk');
+  const charsetButton = document.getElementById('charset1'); // Get charset1 button
+  let latinText = '';
+  let currentPosMap = [0];
+  const backVowelMap = {
+    'ab': '𐰀𐰉','ba': '𐰉𐰀','ıb': '𐰃𐰉','bı': '𐰉𐰃','ob': '𐰆𐰉','bo': '𐰉𐰆',
+    'ad': '𐰀𐰑','da': '𐰑𐰀','ıd': '𐰃𐰑','dı': '𐰑𐰃','od': '𐰆𐰑','do': '𐰑𐰆',
+    'ag': '𐰀𐰍','ga': '𐰍𐰀','ıg': '𐰃𐰍','gı': '𐰍𐰃','og': '𐰆𐰍','go': '𐰍𐰆',
+    'ak': '𐰀𐰴','ka': '𐰴𐰀','ık': '𐰶','kı': '𐰶𐰃','ok': '𐰸','ko': '𐰸𐰆',
+    'al': '𐰀𐰞','la': '𐰞𐰀','ıl': '𐰃𐰞','lı': '𐰞𐰃','ol': '𐰆𐰞','lo': '𐰞𐰆',
+    'an': '𐰀𐰣','na': '𐰣𐰀','ın': '𐰃𐰣','nı': '𐰣𐰃','on': '𐰆𐰣','no': '𐰣𐰆',
+    'ar': '𐰀𐰺','ra': '𐰺𐰀','ır': '𐰃𐰺','rı': '𐰺𐰃','or': '𐰆𐰺','ro': '𐰺𐰆',
+    'as': '𐰀𐰽','sa': '𐰽𐰀','ıs': '𐰃𐰽','sı': '𐰽𐰃','os': '𐰆𐰽','so': '𐰽𐰆',
+    'at': '𐰀𐱃','ta': '𐱃𐰀','ıt': '𐰃𐱃','tı': '𐱃𐰃','ot': '𐰆𐱃','to': '𐱃𐰆',
+    'ay': '𐰀𐰖','ya': '𐰖𐰀','ıy': '𐰃𐰖','yı': '𐰖𐰃','oy': '𐰆𐰖','yo': '𐰖𐰆',
+    'a': '𐰀','ı': '𐰃','o': '𐰆',
+    'b': '𐰉','d': '𐰑','g': '𐰍','k': '𐰴','l': '𐰞','n': '𐰣','r': '𐰺','s': '𐰽','t': '𐱃','y': '𐰖',
+    'ç': '𐰲','m': '𐰢','ñ': '𐰭','p': '𐰯','ş': '𐱁','z': '𐰔'
+  };
+  const frontVowelMap = {
+    'eb': '𐰀𐰋','be': '𐰋𐰀','ib': '𐰃𐰋','bi': '𐰋𐰃','öb': '𐰇𐰋','bö': '𐰋𐰇',
+    'ed': '𐰀𐰓','de': '𐰓𐰀','id': '𐰃𐰓','di': '𐰓𐰃','öd': '𐰇𐰓','dö': '𐰓𐰇',
+    'eg': '𐰀𐰏','ge': '𐰏𐰀','ig': '𐰃𐰏','gi': '𐰏𐰃','ög': '𐰇𐰏','gö': '𐰏𐰇',
+    'ek': '𐰀𐰚','ke': '𐰚𐰀','ik': '𐰃𐰚','ki': '𐰚𐰃','ök': '𐰇𐰜','kö': '𐰚𐰇',
+    'el': '𐰀𐰠','le': '𐰠𐰀','il': '𐰃𐰠','li': '𐰠𐰃','öl': '𐰇𐰠','lö': '𐰠𐰇',
+    'en': '𐰀𐰤','ne': '𐰤𐰀','in': '𐰃𐰤','ni': '𐰤𐰃','ön': '𐰇𐰤','nö': '𐰤𐰇',
+    'er': '𐰀𐰼','re': '𐰼𐰀','ir': '𐰃𐰼','ri': '𐰼𐰃','ör': '𐰇𐰼','rö': '𐰼𐰇',
+    'es': '𐰀𐰾','se': '𐰾𐰀','is': '𐰃𐰾','si': '𐰾𐰃','ös': '𐰇𐰾','sö': '𐰾𐰇',
+    'et': '𐰀𐱅','te': '𐱅𐰀','it': '𐰃𐱅','ti': '𐱅𐰃','öt': '𐰇𐱅','tö': '𐱅𐰇',
+    'ey': '𐰀𐰘','ye': '𐰘𐰀','iy': '𐰃𐰘','yi': '𐰘𐰃','öy': '𐰇𐰘','yö': '𐰘𐰇',
+    'e': '𐰀','i': '𐰃','ö': '𐰇',
+    'b': '𐰋','d': '𐰓','g': '𐰏','k': '𐰚','l': '𐰠','n': '𐰤','r': '𐰼','s': '𐰾','t': '𐱅','y': '𐰘',
+    'ç': '𐰱','m': '𐰢','ñ': '𐰭','p': '𐰯','ş': '𐱁','z': '𐰔'
+  };
+  const vowels = new Set(['a','e','ı','i','o','ö','u','ü']);
+  const replacements = {
+    'Ä':'e','ä':'e','Ə':'e','ə':'e',
+    'İ':'i','I':'ı',
+    'h':'k','H':'k','X':'Ç','x':'ç','Q':'G','q':'g',
+    'C':'ç','c':'ç','J':'Ş','j':'ş',
+    'ğ':'g','Ğ':'g',
+    'f':'p','F':'p',
+    'v':'b','V':'b','W':'Ö','w':'ö',
+    'U':'o','u':'o',
+    'Ū':'o','ū':'o',
+    'Ü':'ö','ü':'ö',
+    'Ý':'y','ý':'y'
+  };
+  function applyReplacement(result, posMap, regex, repl) {
+    let newResult = '';
+    let newPosMap = [posMap[0]];
+    let lastEnd = 0;
+    regex.lastIndex = 0;
+    let match;
+    while ((match = regex.exec(result)) !== null) {
+      const start = match.index;
+      const end = start + match[0].length;
+      newResult += result.slice(lastEnd, start);
+      for (let k = 1; k <= start - lastEnd; k++) newPosMap.push(posMap[lastEnd + k]);
+      const rep = typeof repl === 'function' ? repl(match) : repl;
+      const repLen = rep.length;
+      newResult += rep;
+      const inputStart = posMap[start];
+      const inputEnd = posMap[end];
+      const delta = inputEnd - inputStart;
+      if (repLen === 0) {
+        newPosMap[newPosMap.length - 1] = inputEnd;
+      } else {
+        for (let j = 1; j <= repLen; j++) {
+          const frac = j / repLen;
+          newPosMap.push(inputStart + Math.floor(frac * delta));
         }
       }
-      outputWords.push(wordOut);
+      lastEnd = end;
     }
-    outputLines.push(outputWords.join(' '));
+    newResult += result.slice(lastEnd);
+    for (let k = 1; k <= result.length - lastEnd; k++) newPosMap.push(posMap[lastEnd + k]);
+    return { result: newResult, posMap: newPosMap };
   }
-  
-  let output = outputLines.join('\n');
-  
-  // spacial cases
-  output = output.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
-  output = output.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
-  output = output.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
-  output = output.replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪');
-  output = output.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
-  output = output.replace(/𐰃𐰴/gu, '𐰶');
-//  output = output.replace(/𐰴𐰃/gu, '𐰶𐰃');
-  output = output.replace(/(?<=^|\s)𐰴𐰃/gu, '𐰶𐰃');
-  output = output.replace(/𐰆𐰴/gu, '𐰸');
-//  output = output.replace(/𐰴𐰆/gu, '𐰸𐰆');
-  output = output.replace(/(?<=^|\s)𐰴𐰆/gu, '𐰸𐰆');
-  output = output.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
-  output = output.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
-  output = output.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '');
-  output = output.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '');
-  output = output.replace(/𐰀𐱃𐱅𐰇𐰼𐰚/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
-  output = output.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
-  output = output.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
-  output = output.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
-  output = output.replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
-  
-  return output;
-}
-
-const textArea = document.getElementById('gokturk');
-let latinBuffer = ""; 
-
-textArea.addEventListener('input', (e) => {
-    if (e.inputType === 'insertText' && e.data) {
-        latinBuffer += e.data;
-    } else if (e.inputType === 'deleteContentBackward') {
-        latinBuffer = latinBuffer.slice(0, -1);
-    } else if (e.inputType === 'insertLineBreak') {
-        latinBuffer += '\n';
-    } else if (e.inputType === 'insertFromPaste') {
-         if (e.data) latinBuffer += e.data;
-    } else if (textArea.value === '') {
-        latinBuffer = "";
+  function convertToOldTurkic(input) {
+    let result = '';
+    let posMap = [0];
+    let i = 0;
+    let currentMap = backVowelMap;
+    let isNewWord = true;
+    while (i < input.length) {
+      const oldI = i;
+      const oldLen = result.length;
+      const ch = input[i];
+      if (/\s/.test(ch)) {
+        result += ch;
+        isNewWord = true;
+        i++;
+      } else {
+        if (isNewWord) {
+          currentMap = backVowelMap;
+          isNewWord = false;
+        }
+        let processed = false;
+        if (i + 1 < input.length) {
+          const first = input[i].toLowerCase();
+          const second = input[i + 1].toLowerCase();
+          const pair1 = first + second;
+          const pair2 = second + first;
+          if (backVowelMap.hasOwnProperty(pair1)) {
+            result += backVowelMap[pair1];
+            currentMap = backVowelMap;
+            i += 2;
+            processed = true;
+          } else if (frontVowelMap.hasOwnProperty(pair1)) {
+            result += frontVowelMap[pair1];
+            currentMap = frontVowelMap;
+            i += 2;
+            processed = true;
+          } else if (backVowelMap.hasOwnProperty(pair2)) {
+            result += backVowelMap[pair2];
+            currentMap = backVowelMap;
+            i += 2;
+            processed = true;
+          } else if (frontVowelMap.hasOwnProperty(pair2)) {
+            result += frontVowelMap[pair2];
+            currentMap = frontVowelMap;
+            i += 2;
+            processed = true;
+          }
+        }
+        if (!processed) {
+          const singleChar = input[i].toLowerCase();
+          if (vowels.has(singleChar)) {
+            if (backVowelMap.hasOwnProperty(singleChar)) {
+              result += backVowelMap[singleChar];
+              currentMap = backVowelMap;
+            } else if (frontVowelMap.hasOwnProperty(singleChar)) {
+              result += frontVowelMap[singleChar];
+              currentMap = frontVowelMap;
+            } else {
+              result += input[i];
+            }
+          } else {
+            if (currentMap.hasOwnProperty(singleChar)) {
+              result += currentMap[singleChar];
+            } else {
+              result += input[i];
+            }
+          }
+          i++;
+        }
+      }
+      const addedInput = i - oldI;
+      const addedOutput = result.length - oldLen;
+      for (let j = 1; j <= addedOutput; j++) {
+        const fraction = j / addedOutput;
+        posMap.push(oldI + Math.floor(fraction * addedInput));
+      }
     }
+    const rules = [
+      { regex: /[𐰤𐰣][𐰓𐰑]/gu, repl: '𐰦' },
+      { regex: /[𐰞𐰠][𐰓𐰑]/gu, repl: '𐰡' },
+      { regex: /[𐰤𐰣]𐰲/gu, repl: '𐰨' },
+      { regex: /[𐰤𐰣]𐰖/gu, repl: '𐰪' },
+      { regex: /𐰇[𐰚𐰜]/gu, repl: '𐰜' },
+      { regex: /𐰃𐰴/gu, repl: '𐰶' },
+      { regex: /𐰆𐰴/gu, repl: '𐰸' },
+      { regex: /(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, repl: '' },
+      { regex: /(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, repl: '' },
+      { regex: /(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, repl: '' },
+      { regex: /(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, repl: '' },
+      { regex: /𐰀𐱃𐱃𐰇𐰼𐰚/gu, repl: '𐰀𐱃𐰀𐱅𐰇𐰼𐰜' },
+      { regex: /𐱅𐰼𐰚/gu, repl: '𐱅𐰇𐰼𐰜' },
+      { regex: /𐱅𐰀𐰭𐰼𐰃/gu, repl: '𐱅𐰭𐰼𐰃' },
+      { regex: /𐱃𐰀𐰣𐰺𐰃/gu, repl: '𐱅𐰭𐰼𐰃' },
+      { regex: /[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, repl: '𐱅𐰇𐰼𐰜' }
+    ];
+    for (const rule of rules) {
+      ({ result, posMap } = applyReplacement(result, posMap, rule.regex, rule.repl));
+    }
+    return { result, posMap };
+  }
+  function setCaretTextarea(textarea, pos) {
+    const safe = Math.max(0, Math.min(pos, textarea.value.length));
+    textarea.setSelectionRange(safe, safe);
+    textarea.focus();
+  }
+  function scrollToBottom() {
+    gokturk.scrollTop = gokturk.scrollHeight;
+  }
+  gokturk.addEventListener('beforeinput', (e) => {
+    const inputType = e.inputType;
+    let data = e.data || '';
+    const isInsert = inputType === 'insertText' || inputType === 'insertCompositionText' || inputType === 'insertLineBreak' || inputType === 'insertFromPaste';
+    const isDeleteBackward = inputType === 'deleteContentBackward';
+    const isDeleteForward = inputType === 'deleteContentForward';
+    if (!(isInsert || isDeleteBackward || isDeleteForward)) return;
+    e.preventDefault();
+    if (inputType === 'insertLineBreak') data = '\n';
+    data = data.replace(/./g, ch => replacements[ch] || ch);
+    const startOut = gokturk.selectionStart || 0;
+    const endOut = gokturk.selectionEnd || 0;
+    const inputStart = currentPosMap[startOut] !== undefined ? currentPosMap[startOut] : latinText.length;
+    const inputEnd = currentPosMap[endOut] !== undefined ? currentPosMap[endOut] : latinText.length;
+    let newInputPos;
+    if (isInsert) {
+      latinText = latinText.slice(0, inputStart) + data + latinText.slice(inputEnd);
+      newInputPos = inputStart + data.length;
+    } else {
+      if (startOut === endOut) {
+        if (isDeleteBackward && startOut > 0) {
+          const inEnd = currentPosMap[startOut];
+          const chars = [...latinText.slice(0, inEnd)];
+          chars.pop(); 
+          const inStart = chars.join('').length;
+          latinText = latinText.slice(0, inStart) + latinText.slice(inEnd);
+          newInputPos = inStart;
+        } else if (isDeleteForward && endOut < gokturk.value.length) {
+          const inStart = currentPosMap[endOut];
+          const nextChars = [...latinText.slice(inStart)];
+          nextChars.shift();
+          const inEnd = inStart + (latinText.length - inStart - nextChars.join('').length);
+          latinText = latinText.slice(0, inStart) + latinText.slice(inEnd);
+          newInputPos = inStart;
+        } else {
+          return;
+        }
+      } else {
+        latinText = latinText.slice(0, inputStart) + latinText.slice(inputEnd);
+        newInputPos = inputStart;
+      }
+    }
+    const { result, posMap } = convertToOldTurkic(latinText);
+    gokturk.value = result;
+    currentPosMap = posMap;
+    let newOutputPos = posMap.length - 1;
+    for (let m = 0; m < posMap.length; m++) {
+      if (posMap[m] >= newInputPos) {
+        newOutputPos = m;
+        break;
+      }
+    }
+    setCaretTextarea(gokturk, newOutputPos);
+    scrollToBottom();
+  });
 
-    const convertedText = convertLogic(latinBuffer);
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      latinText = ''; 
+      const init = convertToOldTurkic(latinText); 
+      gokturk.value = init.result; 
+      currentPosMap = init.posMap;
+      setCaretTextarea(gokturk, 0); 
+      scrollToBottom(); 
+    });
+  }
 
-    textArea.value = convertedText;
+  // all allChars
+  if (charsetButton) {
+    charsetButton.addEventListener('click', () => {
+      latinText = '𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶𐰸𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡'; 
+      const { result, posMap } = convertToOldTurkic(latinText);
+      gokturk.value = result;
+      currentPosMap = posMap;
+      setCaretTextarea(gokturk, result.length);
+      scrollToBottom();
+    });
+  }
+
+  latinText = 'török';
+  const init = convertToOldTurkic(latinText);
+  gokturk.value = init.result;
+  setCaretTextarea(gokturk, init.result.length);
+  currentPosMap = init.posMap;
 });
