@@ -1,5 +1,4 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-
 const back_consonants = {
   'b': '𐰉', 'v': '𐰉',
   'd': '𐰑',
@@ -11,13 +10,6 @@ const back_consonants = {
   's': '𐰽',
   't': '𐱃',
   'y': '𐰖',
-
-  'ç': '𐰲', 'c': '𐰲',
-  'm': '𐰢',
-  'ñ': '𐰭',
-  'p': '𐰯', 'f': '𐰯',
-  'ş': '𐱁', 'j': '𐱁',
-  'z': '𐰔',
 };
 const front_consonants = {
   'b': '𐰋', 'v': '𐰉',
@@ -30,12 +22,13 @@ const front_consonants = {
   's': '𐰾',
   't': '𐱅',
   'y': '𐰘',
-
+};
+const regular_consonants = {
   'ç': '𐰲', 'c': '𐰲',
-  'ñ': '𐰭',
   'm': '𐰢',
+  'ñ': '𐰭',
   'p': '𐰯', 'f': '𐰯',
-  'ş': '𐱁', 'j': '𐱁', 
+  'ş': '𐱁', 'j': '𐱁',
   'z': '𐰔',
 };
 const back_vowels = {
@@ -45,18 +38,16 @@ const back_vowels = {
   'u': '𐰆',
 };
 const front_vowels = {
-  'e': '𐰀', 'ə': '𐰀', 'ä': '𐰀', 
+  'e': '𐰀', 'ə': '𐰀', 'ä': '𐰀',
   'i': '𐰃',
   'ö': '𐰇',
   'ü': '𐰇',
 };
-
 const all_vowels = new Set([...Object.keys(back_vowels), ...Object.keys(front_vowels)]);
-
+const all_letters = new Set([...Object.keys(back_vowels), ...Object.keys(front_vowels), ...Object.keys(back_consonants), ...Object.keys(front_consonants), ...Object.keys(regular_consonants)]);
 function isVowel(c) {
   return all_vowels.has(c);
 }
-
 function getSyllables(word) {
   if (!word.length) return [];
   let vowelIndices = [];
@@ -65,7 +56,7 @@ function getSyllables(word) {
       vowelIndices.push(i);
     }
   }
-  if (!vowelIndices.length) return [word]; 
+  if (!vowelIndices.length) return [word];
   let syllables = [];
   let start = 0;
   for (let k = 0; k < vowelIndices.length; k++) {
@@ -76,24 +67,25 @@ function getSyllables(word) {
     if (k + 1 === vowelIndices.length) {
       codaLength = consBetween;
     } else {
-      codaLength = consBetween - 1 < 0 ? 0 : consBetween - 1;
+      codaLength = consBetween > 0 ? 1 : 0;
     }
     let sylEnd = vowelPos + 1 + codaLength;
     let syl = word.slice(start, sylEnd);
     syllables.push(syl);
     start = sylEnd;
   }
+  // Append any trailing non-letters (e.g., punctuation) to the last syllable if present
+  if (start < word.length) {
+    syllables[syllables.length - 1] += word.slice(start);
+  }
   return syllables;
 }
-
 function convert() {
   let input = document.getElementById('latin').value;
-
   input = input.replace(/I/g, 'ı');
   input = input.replace(/İ/g, 'i');
-  
+ 
   input = input.toLowerCase();
-
   let lines = input.split('\n');
   let outputLines = [];
   for (let line of lines) {
@@ -113,7 +105,7 @@ function convert() {
             break;
           }
         }
-        
+       
         if (harmony === null) {
           harmony = 'back';
         }
@@ -122,6 +114,8 @@ function convert() {
             wordOut += back_vowels[ch];
           } else if (front_vowels[ch]) {
             wordOut += front_vowels[ch];
+          } else if (regular_consonants[ch]) {
+            wordOut += regular_consonants[ch];
           } else {
             if (harmony === 'back' && back_consonants[ch]) {
               wordOut += back_consonants[ch];
@@ -138,31 +132,24 @@ function convert() {
     outputLines.push(outputWords.join(' '));
   }
   let output = outputLines.join('\n');
-
   output = output.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
   output = output.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
   output = output.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
   output = output.replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪');
   output = output.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
   output = output.replace(/𐰃𐰴/gu, '𐰶');
-//  output = output.replace(/𐰴𐰃/gu, '𐰶𐰃');
   output = output.replace(/(?<=^|\s)𐰴𐰃/gu, '𐰶𐰃');
   output = output.replace(/𐰆𐰴/gu, '𐰸');
-//  output = output.replace(/𐰴𐰆/gu, '𐰸𐰆');
   output = output.replace(/(?<=^|\s)𐰴𐰆/gu, '𐰸𐰆');
-
   output = output.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
   output = output.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
   output = output.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '');
   output = output.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '');
-
   output = output.replace(/𐰀𐱃𐱅𐰇𐰼𐰚/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
   output = output.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
   output = output.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
   output = output.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
   output = output.replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
-
   document.getElementById('gokturk').value = output;
 }
-
 document.getElementById('latin').addEventListener('input', convert);
