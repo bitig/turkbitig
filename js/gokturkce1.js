@@ -142,12 +142,14 @@ function convert() {
   output = output.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
   output = output.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
   output = output.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
-  output = output.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
+  output = output.replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪');
   output = output.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
   output = output.replace(/𐰃𐰴/gu, '𐰶');
-  output = output.replace(/𐰴𐰃/gu, '𐰶𐰃');
+//  output = output.replace(/𐰴𐰃/gu, '𐰶𐰃');
+  output = output.replace(/(?<=^|\s)𐰴𐰃/gu, '𐰶𐰃');
   output = output.replace(/𐰆𐰴/gu, '𐰸');
-  output = output.replace(/𐰴𐰆/gu, '𐰸𐰆');
+//  output = output.replace(/𐰴𐰆/gu, '𐰸𐰆');
+  output = output.replace(/(?<=^|\s)𐰴𐰆/gu, '𐰸𐰆');
 
   output = output.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
   output = output.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
