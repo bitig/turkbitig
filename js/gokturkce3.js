@@ -186,7 +186,7 @@ const replacementGroups = {
     's': ['с', 'ц'], // kz сц
     'ş': ['ш'], // kz ш
     't': ['т'], // kz т
-    'y': ['Ý', 'ý', 'ж', 'ё', 'ю','я', 'й', 'и'], // kz жёюя
+    'y': ['Ý', 'ý', 'ж', 'ё', 'ю','я', 'й'], // kz жёюя
     'z': ['з'], // kz з
   };
 
@@ -198,7 +198,11 @@ const replacementGroups = {
   }
 
     // preprocess lower input
-    let input = latinInput.value.replace(/I/g, 'ı').replace(/İ/g, 'i').toLowerCase('tr-TR').replace(/./g, char => replacements[char] || char);
+    let input = latinInput.value.replace(/I/g, 'ı')
+    .replace(/İ/g, 'i').toLowerCase('tr-TR')
+    .replace(/./g, char => replacements[char] || char)
+    .replace(/и/g, 'iy'); // kz и > iy
+
     let output = convertToOldTurkic(input);
     gokturkTextarea.value = output;
   });
