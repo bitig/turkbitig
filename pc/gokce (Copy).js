@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const gokturk = document.getElementById('gokturk');
   const clearButton = document.getElementById('clearGokturk');
-  const charsetButton = document.getElementById('charset1'); // Get charset1 button
+  const charsetButton = document.getElementById('charset1'); 
   let latinText = '';
   let currentPosMap = [0];
   const backVowelMap = {
@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Ü':'ö','ü':'ö',
     'Ý':'y','ý':'y'
   };
+  
   function applyReplacement(result, posMap, regex, repl) {
     let newResult = '';
     let newPosMap = [posMap[0]];
@@ -81,82 +82,75 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let k = 1; k <= result.length - lastEnd; k++) newPosMap.push(posMap[lastEnd + k]);
     return { result: newResult, posMap: newPosMap };
   }
-  function convertToOldTurkic(input) {
-    let result = '';
-    let posMap = [0];
-    let i = 0;
-    let currentMap = backVowelMap;
-    let isNewWord = true;
-    while (i < input.length) {
-      const oldI = i;
-      const oldLen = result.length;
-      const ch = input[i];
-      if (/\s/.test(ch)) {
-        result += ch;
-        isNewWord = true;
+  
+
+function convertToOldTurkic(input) {
+  let result = '';
+  let posMap = [0];
+  let i = 0;
+  
+  // current harmony 
+  let currentMap = backVowelMap;
+
+  function getNextVowelHarmony(index) {
+    for (let j = index; j < input.length; j++) {
+      const char = input[j].toLowerCase();
+      if (vowels.has(char)) {
+        return (['a', 'ı', 'o', 'u'].includes(char)) ? backVowelMap : frontVowelMap;
+      }
+      if (/\s/.test(char)) break; 
+    }
+    return null;
+  }
+
+  while (i < input.length) {
+    const oldI = i;
+    const oldLen = result.length;
+    const ch = input[i].toLowerCase();
+
+    if (/\s/.test(ch)) {
+      result += ch;
+      currentMap = backVowelMap; 
+      i++;
+    } else {
+      if (vowels.has(ch)) {
+        currentMap = (['a', 'ı', 'o', 'u'].includes(ch)) ? backVowelMap : frontVowelMap;
+        result += currentMap[ch] || ch;
         i++;
       } else {
-        if (isNewWord) {
-          currentMap = backVowelMap;
-          isNewWord = false;
-        }
-        let processed = false;
+        let lookAheadMap = getNextVowelHarmony(i + 1);
+        let activeMap = lookAheadMap || currentMap; 
+        
+        let pairMatched = false;
         if (i + 1 < input.length) {
-          const first = input[i].toLowerCase();
-          const second = input[i + 1].toLowerCase();
-          const pair1 = first + second;
-          const pair2 = second + first;
-          if (backVowelMap.hasOwnProperty(pair1)) {
-            result += backVowelMap[pair1];
-            currentMap = backVowelMap;
+          const nextCh = input[i+1].toLowerCase();
+          const pair = ch + nextCh;
+          if (activeMap.hasOwnProperty(pair)) {
+            result += activeMap[pair];
             i += 2;
-            processed = true;
-          } else if (frontVowelMap.hasOwnProperty(pair1)) {
-            result += frontVowelMap[pair1];
-            currentMap = frontVowelMap;
-            i += 2;
-            processed = true;
-          } else if (backVowelMap.hasOwnProperty(pair2)) {
-            result += backVowelMap[pair2];
-            currentMap = backVowelMap;
-            i += 2;
-            processed = true;
-          } else if (frontVowelMap.hasOwnProperty(pair2)) {
-            result += frontVowelMap[pair2];
-            currentMap = frontVowelMap;
-            i += 2;
-            processed = true;
+            pairMatched = true;
+            if (vowels.has(nextCh)) {
+               currentMap = (['a', 'ı', 'o', 'u'].includes(nextCh)) ? backVowelMap : frontVowelMap;
+            }
           }
         }
-        if (!processed) {
-          const singleChar = input[i].toLowerCase();
-          if (vowels.has(singleChar)) {
-            if (backVowelMap.hasOwnProperty(singleChar)) {
-              result += backVowelMap[singleChar];
-              currentMap = backVowelMap;
-            } else if (frontVowelMap.hasOwnProperty(singleChar)) {
-              result += frontVowelMap[singleChar];
-              currentMap = frontVowelMap;
-            } else {
-              result += input[i];
-            }
-          } else {
-            if (currentMap.hasOwnProperty(singleChar)) {
-              result += currentMap[singleChar];
-            } else {
-              result += input[i];
-            }
-          }
+
+        if (!pairMatched) {
+          result += activeMap[ch] || ch;
           i++;
         }
       }
-      const addedInput = i - oldI;
-      const addedOutput = result.length - oldLen;
-      for (let j = 1; j <= addedOutput; j++) {
-        const fraction = j / addedOutput;
-        posMap.push(oldI + Math.floor(fraction * addedInput));
-      }
     }
+
+    const addedInput = i - oldI;
+    const addedOutput = result.length - oldLen;
+    for (let j = 1; j <= addedOutput; j++) {
+      const fraction = j / addedOutput;
+      posMap.push(oldI + Math.floor(fraction * addedInput));
+    }
+  }
+
+  // special cases
     const rules = [
       { regex: /[𐰤𐰣][𐰓𐰑]/gu, repl: '𐰦' },
       { regex: /[𐰞𐰠][𐰓𐰑]/gu, repl: '𐰡' },
@@ -175,11 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
       { regex: /𐱃𐰀𐰣𐰺𐰃/gu, repl: '𐱅𐰭𐰼𐰃' },
       { regex: /[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, repl: '𐱅𐰇𐰼𐰜' }
     ];
-    for (const rule of rules) {
-      ({ result, posMap } = applyReplacement(result, posMap, rule.regex, rule.repl));
-    }
-    return { result, posMap };
+
+  for (const rule of rules) {
+    ({ result, posMap } = applyReplacement(result, posMap, rule.regex, rule.repl));
   }
+  return { result, posMap };
+}
+
   function setCaretTextarea(textarea, pos) {
     const safe = Math.max(0, Math.min(pos, textarea.value.length));
     textarea.setSelectionRange(safe, safe);
@@ -210,8 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (startOut === endOut) {
         if (isDeleteBackward && startOut > 0) {
           const inEnd = currentPosMap[startOut];
-          // Use spread operator to correctly identify the start of the previous character
-          // even if it is a multi-byte surrogate pair.
           const chars = [...latinText.slice(0, inEnd)];
           chars.pop(); 
           const inStart = chars.join('').length;
