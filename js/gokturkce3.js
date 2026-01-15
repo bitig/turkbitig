@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const latinInput = document.getElementById('latin');
   const gokturkTextarea = document.getElementById('gokturk');
 
+// syllable maps
   const backVowelMap = {
     'ab': '𐰀𐰉', 'ba': '𐰉𐰀', 'ıb': '𐰃𐰉', 'bı': '𐰉𐰃', 'ob': '𐰆𐰉', 'bo': '𐰉𐰆',
     'ad': '𐰀𐰑', 'da': '𐰑𐰀', 'ıd': '𐰃𐰑', 'dı': '𐰑𐰃', 'od': '𐰆𐰑', 'do': '𐰑𐰆',
@@ -46,139 +47,133 @@ document.addEventListener('DOMContentLoaded', () => {
     'ç': '𐰱', 'ç': '𐰲', 'm': '𐰢', 'ñ': '𐰭', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔',
   };
 
-  // define vowels
+// vowels
   const vowels = new Set(['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü']);
   const backVowels = new Set(['a', 'ı', 'o', 'u']);
   const frontVowels = new Set(['e', 'i', 'ö', 'ü']);
 
-  function convertToOldTurkic(input) {
-    let result = '';
-    let i = 0;
-    let currentMap = backVowelMap; 
-    let isNewWord = true; 
-    while (i < input.length) {
-      const ch = input[i];
-      if (/\s/.test(ch)) {
-        result += ch;
-        isNewWord = true;
-        i++;
-        continue;
+// converter
+function convertToOldTurkic(input) {
+  let result = '';
+  let i = 0;
+  let currentMap = backVowelMap;
+  let isNewWord = true;
+  while (i < input.length) {
+    const ch = input[i];
+    if (/\s/.test(ch)) {
+      result += ch;
+      isNewWord = true;
+      i++;
+      continue;
+    }
+    if (isNewWord) {
+      currentMap = backVowelMap;
+      isNewWord = false;
+    }
+    if (i + 1 < input.length) {
+      const first = input[i];  
+      const second = input[i + 1];  
+      if (!vowels.has(first) && vowels.has(second)) {
+        const pair = first + second;
+        if (backVowelMap.hasOwnProperty(pair)) {
+          result += backVowelMap[pair];
+          currentMap = backVowelMap;
+          i += 2;
+          continue;
+        } else if (frontVowelMap.hasOwnProperty(pair)) {
+          result += frontVowelMap[pair];
+          currentMap = frontVowelMap;
+          i += 2;
+          continue;
+        }
       }
-      if (isNewWord) {
-        currentMap = backVowelMap;
-        isNewWord = false;
-      }
-      if (i + 1 < input.length) {
-        const first = input[i].toLowerCase();
-        const second = input[i + 1].toLowerCase();
-        if (!vowels.has(first) && vowels.has(second)) {
+      if (vowels.has(first) && !vowels.has(second)) {
+        let shouldMatch = true;
+        if (i + 2 < input.length) {
+          const nextNext = input[i + 2];
+          if (vowels.has(nextNext)) {
+            const isBack1 = backVowels.has(first);
+            const isFront1 = frontVowels.has(first);
+            const isBack2 = backVowels.has(nextNext);
+            const isFront2 = frontVowels.has(nextNext);
+            if ((isBack1 && isBack2) || (isFront1 && isFront2)) {
+              shouldMatch = false;
+            }
+          }
+        }
+        if (shouldMatch) {
           const pair = first + second;
           if (backVowelMap.hasOwnProperty(pair)) {
             result += backVowelMap[pair];
-            currentMap = backVowelMap; 
+            currentMap = backVowelMap;
             i += 2;
             continue;
           } else if (frontVowelMap.hasOwnProperty(pair)) {
             result += frontVowelMap[pair];
-            currentMap = frontVowelMap; 
+            currentMap = frontVowelMap;
             i += 2;
             continue;
           }
         }
-        if (vowels.has(first) && !vowels.has(second)) {
-          let shouldMatch = true;
-          if (i + 2 < input.length) {
-            const nextNext = input[i + 2].toLowerCase();
-            if (vowels.has(nextNext)) {
-              const isBack1 = backVowels.has(first);
-              const isFront1 = frontVowels.has(first);
-              const isBack2 = backVowels.has(nextNext);
-              const isFront2 = frontVowels.has(nextNext);
-              if ((isBack1 && isBack2) || (isFront1 && isFront2)) {
-                shouldMatch = false;
-              }
-            }
-          }
-          if (shouldMatch) {
-            const pair = first + second;
-            if (backVowelMap.hasOwnProperty(pair)) {
-              result += backVowelMap[pair];
-              currentMap = backVowelMap; 
-              i += 2;
-              continue;
-            } else if (frontVowelMap.hasOwnProperty(pair)) {
-              result += frontVowelMap[pair];
-              currentMap = frontVowelMap; 
-              i += 2;
-              continue;
-            }
-          }
-        }
       }
-      // process single character
-      const singleChar = input[i].toLowerCase();
-      if (vowels.has(singleChar)) {
-        if (backVowelMap.hasOwnProperty(singleChar)) {
-          result += backVowelMap[singleChar];
-          currentMap = backVowelMap; 
-        } else if (frontVowelMap.hasOwnProperty(singleChar)) {
-          result += frontVowelMap[singleChar];
-          currentMap = frontVowelMap; 
-        } else {
-          result += input[i]; 
-        }
-      } else {
-        if (currentMap.hasOwnProperty(singleChar)) {
-          result += currentMap[singleChar];
-        } else {
-          result += input[i]; 
-        }
-      }
-      i++;
     }
-
-    // special cases
-    // result = result.replace(/[𐰤𐰣][𐰍𐰏]/gu, '𐰭');
-    result = result.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
-    result = result.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
-    result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
-    result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
-    result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
-    result = result.replace(/𐰃𐰴/gu, '𐰶');
-    result = result.replace(/𐰆𐰴/gu, '𐰸');
-    //output = output.replace(/(?<=^|\s)𐰴𐰃/gu, '𐰶𐰃');
-    //output = output.replace(/(?<=^|\s)𐰴𐰆/gu, '𐰸𐰆');
-    // result = result.replace(/(?<=\S𐰇|𐰇\S)𐰚/gu, '𐰜');
-    // result = result.replace(/(?<=\S𐰆|𐰆\S)𐰴/gu, '𐰸');
-    result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
-    result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
-    result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '');
-    result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '');
-    result = result.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
-    result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
-    result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
-    result = result.replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
-    result = result.replace(/𐰀𐱃𐱅𐰇𐰼𐰜/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
-    return result;
+    const singleChar = input[i];  
+    if (vowels.has(singleChar)) {
+      if (backVowelMap.hasOwnProperty(singleChar)) {
+        result += backVowelMap[singleChar];
+        currentMap = backVowelMap;
+      } else if (frontVowelMap.hasOwnProperty(singleChar)) {
+        result += frontVowelMap[singleChar];
+        currentMap = frontVowelMap;
+      } else {
+        result += input[i];
+      }
+    } else {
+      if (currentMap.hasOwnProperty(singleChar)) {
+        result += currentMap[singleChar];
+      } else {
+        result += input[i];
+      }
+    }
+    i++;
   }
-  // event listener with preprocessing
-  latinInput.addEventListener('input', () => {
-    // input replacement map
+  // Special cases
+  result = result.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
+  result = result.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
+  result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
+  result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
+  result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
+  result = result.replace(/𐰃𐰴/gu, '𐰶');
+  result = result.replace(/𐰆𐰴/gu, '𐰸');
+  result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
+  result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
+  result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '');
+  result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '');
+  result = result.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
+  result = result.replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
+  result = result.replace(/𐰀𐱃𐱅𐰇𐰼𐰜/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
+  return result;
+}
 
+latinInput.addEventListener('input', () => {
+
+// replace chars
 const replacementGroups = {
     'a': ['а'], // kz а
     'b': ['v', 'w', 'б', 'в'], // kz бв
     'ç': ['c', 'j', 'ч'], // kz ч
     'd': ['д'], // kz д
     'e': ['ä', 'ə', 'э', 'ә', 'е'], // kz еэә, az ə
-    'g': ['ğ', 'г', 'ғ'],
+    'g': ['ğ', 'г', 'ғ'], // kz гғ
     'ı': ['ы'], // kz ыI
     'i': ['İ', 'і'], // kz і
     'k': ['h', 'x', 'q', 'қ', 'к', 'һ', 'х'], // kz һх
     'l': ['л'], // kz л
     'm': ['м'], // kz м
     'n': ['н'], // kz н
-    'ñ': ['ң'], // kz ң
+    'ñ': ['ң', 'ň'], // kz ң, tm ň
     'o': ['u', 'ū', 'ұ', 'у', 'о'], // kz ұуо
     'ö': ['ü', 'ү', 'ө'], // kz үө
     'p': ['f', 'ф', 'п'], // kz пф
@@ -186,7 +181,7 @@ const replacementGroups = {
     's': ['с', 'ц'], // kz сц
     'ş': ['ш'], // kz ш
     't': ['т'], // kz т
-    'y': ['Ý', 'ý', 'ж', 'ё', 'ю','я', 'й'], // kz жёюя
+    'y': ['ý', 'ж', 'ё', 'ю','я', 'й', 'ž'], // kz ýжёюя, tm ž
     'z': ['з'], // kz з
   };
 
@@ -197,7 +192,7 @@ const replacementGroups = {
     }
   }
 
-    // preprocess lower input
+// lowercase input, I-ı İ-i
     let input = latinInput.value.replace(/I/g, 'ı')
     .replace(/İ/g, 'i').toLowerCase('tr-TR')
     .replace(/./g, char => replacements[char] || char)

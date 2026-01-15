@@ -1,5 +1,4 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-
 document.addEventListener('DOMContentLoaded', () => {
   const gokturk = document.getElementById('gokturk');
   const clearButton = document.getElementById('clearGokturk');
@@ -37,19 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
     'ç': '𐰱','m': '𐰢','ñ': '𐰭','p': '𐰯','ş': '𐱁','z': '𐰔'
   };
   const vowels = new Set(['a','e','ı','i','o','ö','u','ü']);
+  const backVowels = new Set(['a', 'ı', 'o', 'u']);
+  const frontVowels = new Set(['e', 'i', 'ö', 'ü']);
   const replacements = {
-    'Ä':'e','ä':'e','Ə':'e','ə':'e',
-    'İ':'i','I':'ı',
-    'h':'k','H':'k','X':'Ç','x':'ç','Q':'G','q':'g',
-    'C':'ç','c':'ç','J':'Ş','j':'ş',
-    'ğ':'g','Ğ':'g',
-    'f':'p','F':'p',
-    'v':'b','V':'b','W':'Ö','w':'ö',
-    'U':'o','u':'o',
-    'Ū':'o','ū':'o',
-    'Ü':'ö','ü':'ö',
-    'Ý':'y','ý':'y'
+    'a': ['а'], // kz а
+    'b': ['v', 'w', 'б', 'в'], // kz бв
+    'ç': ['c', 'j', 'ч'], // kz ч
+    'd': ['д'], // kz д
+    'e': ['ä', 'ə', 'э', 'ә', 'е'], // kz еэә, az ə
+    'g': ['ğ', 'г', 'ғ'],
+    'ı': ['ы'], // kz ыI
+    'i': ['İ', 'і'], // kz і
+    'k': ['h', 'x', 'q', 'қ', 'к', 'һ', 'х'], // kz һх
+    'l': ['л'], // kz л
+    'm': ['м'], // kz м
+    'n': ['н'], // kz н
+    'ñ': ['ң'], // kz ң
+    'o': ['u', 'ū', 'ұ', 'у', 'о'], // kz ұуо
+    'ö': ['ü', 'ү', 'ө'], // kz үө
+    'p': ['f', 'ф', 'п'], // kz пф
+    'r': ['р'], // kz р
+    's': ['с', 'ц'], // kz сц
+    'ş': ['ш'], // kz ш
+    't': ['т'], // kz т
+    'y': ['Ý', 'ý', 'ж', 'ё', 'ю','я', 'й'], // kz жёюя
+    'z': ['з'], // kz з
   };
+  const replaceMap = {};
+  for (const [target, sources] of Object.entries(replacements)) {
+    for (let src of sources) {
+      const lowSrc = src.toLocaleLowerCase('tr-TR');
+      replaceMap[lowSrc] = target;
+    }
+  }
   function applyReplacement(result, posMap, regex, repl) {
     let newResult = '';
     let newPosMap = [posMap[0]];
@@ -95,61 +114,89 @@ document.addEventListener('DOMContentLoaded', () => {
         result += ch;
         isNewWord = true;
         i++;
-      } else {
-        if (isNewWord) {
-          currentMap = backVowelMap;
-          isNewWord = false;
-        }
-        let processed = false;
-        if (i + 1 < input.length) {
-          const first = input[i].toLowerCase();
-          const second = input[i + 1].toLowerCase();
-          const pair1 = first + second;
-          const pair2 = second + first;
-          if (backVowelMap.hasOwnProperty(pair1)) {
-            result += backVowelMap[pair1];
+        posMap.push(oldI);
+        continue;
+      }
+      if (isNewWord) {
+        currentMap = backVowelMap;
+        isNewWord = false;
+      }
+      let processed = false;
+      if (i + 1 < input.length) {
+        const first = input[i];
+        const second = input[i + 1];
+        if (!vowels.has(first) && vowels.has(second)) {
+          const pair = first + second;
+          if (backVowelMap.hasOwnProperty(pair)) {
+            result += backVowelMap[pair];
             currentMap = backVowelMap;
             i += 2;
             processed = true;
-          } else if (frontVowelMap.hasOwnProperty(pair1)) {
-            result += frontVowelMap[pair1];
-            currentMap = frontVowelMap;
-            i += 2;
-            processed = true;
-          } else if (backVowelMap.hasOwnProperty(pair2)) {
-            result += backVowelMap[pair2];
-            currentMap = backVowelMap;
-            i += 2;
-            processed = true;
-          } else if (frontVowelMap.hasOwnProperty(pair2)) {
-            result += frontVowelMap[pair2];
+          } else if (frontVowelMap.hasOwnProperty(pair)) {
+            result += frontVowelMap[pair];
             currentMap = frontVowelMap;
             i += 2;
             processed = true;
           }
         }
-        if (!processed) {
-          const singleChar = input[i].toLowerCase();
-          if (vowels.has(singleChar)) {
-            if (backVowelMap.hasOwnProperty(singleChar)) {
-              result += backVowelMap[singleChar];
+        if (!processed && vowels.has(first) && !vowels.has(second)) {
+          let shouldMatch = true;
+          if (i + 2 < input.length) {
+            const nextNext = input[i + 2];
+            if (vowels.has(nextNext)) {
+              const isBack1 = backVowels.has(first);
+              const isFront1 = frontVowels.has(first);
+              const isBack2 = backVowels.has(nextNext);
+              const isFront2 = frontVowels.has(nextNext);
+              if ((isBack1 && isBack2) || (isFront1 && isFront2)) {
+                shouldMatch = false;
+              }
+            }
+          }
+          if (shouldMatch) {
+            const pair = first + second;
+            if (backVowelMap.hasOwnProperty(pair)) {
+              result += backVowelMap[pair];
               currentMap = backVowelMap;
-            } else if (frontVowelMap.hasOwnProperty(singleChar)) {
-              result += frontVowelMap[singleChar];
+              i += 2;
+              processed = true;
+            } else if (frontVowelMap.hasOwnProperty(pair)) {
+              result += frontVowelMap[pair];
               currentMap = frontVowelMap;
-            } else {
-              result += input[i];
-            }
-          } else {
-            if (currentMap.hasOwnProperty(singleChar)) {
-              result += currentMap[singleChar];
-            } else {
-              result += input[i];
+              i += 2;
+              processed = true;
             }
           }
-          i++;
+        }
+        if (processed) {
+          const addedInput = i - oldI;
+          const addedOutput = result.length - oldLen;
+          for (let j = 1; j <= addedOutput; j++) {
+            const fraction = j / addedOutput;
+            posMap.push(oldI + Math.floor(fraction * addedInput));
+          }
+          continue;
         }
       }
+      const singleChar = input[i];
+      if (vowels.has(singleChar)) {
+        if (backVowelMap.hasOwnProperty(singleChar)) {
+          result += backVowelMap[singleChar];
+          currentMap = backVowelMap;
+        } else if (frontVowelMap.hasOwnProperty(singleChar)) {
+          result += frontVowelMap[singleChar];
+          currentMap = frontVowelMap;
+        } else {
+          result += input[i];
+        }
+      } else {
+        if (currentMap.hasOwnProperty(singleChar)) {
+          result += currentMap[singleChar];
+        } else {
+          result += input[i];
+        }
+      }
+      i++;
       const addedInput = i - oldI;
       const addedOutput = result.length - oldLen;
       for (let j = 1; j <= addedOutput; j++) {
@@ -197,7 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!(isInsert || isDeleteBackward || isDeleteForward)) return;
     e.preventDefault();
     if (inputType === 'insertLineBreak') data = '\n';
-    data = data.replace(/./g, ch => replacements[ch] || ch);
+    data = data.toLocaleLowerCase('tr-TR');
+    data = [...data].map(ch => replaceMap[ch] || ch).join('');
     const startOut = gokturk.selectionStart || 0;
     const endOut = gokturk.selectionEnd || 0;
     const inputStart = currentPosMap[startOut] !== undefined ? currentPosMap[startOut] : latinText.length;
@@ -210,10 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (startOut === endOut) {
         if (isDeleteBackward && startOut > 0) {
           const inEnd = currentPosMap[startOut];
-          // Use spread operator to correctly identify the start of the previous character
-          // even if it is a multi-byte surrogate pair.
           const chars = [...latinText.slice(0, inEnd)];
-          chars.pop(); 
+          chars.pop();
           const inStart = chars.join('').length;
           latinText = latinText.slice(0, inStart) + latinText.slice(inEnd);
           newInputPos = inStart;
@@ -245,22 +291,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setCaretTextarea(gokturk, newOutputPos);
     scrollToBottom();
   });
-
   if (clearButton) {
     clearButton.addEventListener('click', () => {
-      latinText = ''; 
-      const init = convertToOldTurkic(latinText); 
-      gokturk.value = init.result; 
+      latinText = '';
+      const init = convertToOldTurkic(latinText);
+      gokturk.value = init.result;
       currentPosMap = init.posMap;
-      setCaretTextarea(gokturk, 0); 
-      scrollToBottom(); 
+      setCaretTextarea(gokturk, 0);
+      scrollToBottom();
     });
   }
 
   // all allChars
   if (charsetButton) {
     charsetButton.addEventListener('click', () => {
-      latinText = '𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶𐰸𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡'; 
+      latinText = '𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶𐰸𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡';
       const { result, posMap } = convertToOldTurkic(latinText);
       gokturk.value = result;
       currentPosMap = posMap;
