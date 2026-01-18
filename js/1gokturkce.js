@@ -1,22 +1,10 @@
-const back_consonants = { 
-        'b': '𐰉', 'd': '𐰑', 'g': '𐰍', 'k': '𐰴', 'l': '𐰞', 'n': '𐰣', 'r': '𐰺', 's': '𐰽', 't': '𐱃', 'y': '𐰖'
-        };
-                          
-const front_consonants = {
-        'b': '𐰋', 'd': '𐰓', 'g': '𐰏', 'k': '𐰚', 'l': '𐰠', 'n': '𐰤', 'r': '𐰼', 's': '𐰾', 't': '𐱅', 'y': '𐰘'
-        };
-                          
-const normal_consonants = { 
-        'ç': '𐰲', 'm': '𐰢', 'ñ': '𐰭', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔'
-        };
+// Copyright (C) turkbitig.com. All Rights Reserved.
 
-const back_vowels = { 
-        'a': '𐰀', 'ı': '𐰃', 'o': '𐰆'
-        };
-        
-const front_vowels = {
-        'e': '𐰀', 'i': '𐰃', 'ö': '𐰇'
-        };
+const back_consonants = {'b': '𐰉', 'd': '𐰑', 'g': '𐰍', 'k': '𐰴', 'l': '𐰞', 'n': '𐰣', 'r': '𐰺', 's': '𐰽', 't': '𐱃', 'y': '𐰖'};
+const front_consonants = {'b': '𐰋', 'd': '𐰓', 'g': '𐰏', 'k': '𐰚', 'l': '𐰠', 'n': '𐰤', 'r': '𐰼', 's': '𐰾', 't': '𐱅', 'y': '𐰘'};
+const normal_consonants = {'ç': '𐰲', 'm': '𐰢', 'ñ': '𐰭', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔'};
+const back_vowels = {'a': '𐰀', 'ı': '𐰃', 'o': '𐰆'};
+const front_vowels = {'e': '𐰀', 'i': '𐰃', 'ö': '𐰇'};
 
 const replacement_groups = {
         'a':  ['а'],

@@ -1,3 +1,5 @@
+// Copyright (C) turkbitig.com. All Rights Reserved.
+
 const back_consonants = {
   'b': '𐰉', 'v': '𐰉',
   'd': '𐰑',
