@@ -1,11 +1,10 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-const back_consonants = {'b': '𐰉', 'd': '𐰑', 'g': '𐰍', 'k': '𐰴', 'l': '𐰞', 'n': '𐰣', 'r': '𐰺', 's': '𐰽', 't': '𐱃', 'y': '𐰖'};
+const back_consonants =  {'b': '𐰉', 'd': '𐰑', 'g': '𐰍', 'k': '𐰴', 'l': '𐰞', 'n': '𐰣', 'r': '𐰺', 's': '𐰽', 't': '𐱃', 'y': '𐰖'};
 const front_consonants = {'b': '𐰋', 'd': '𐰓', 'g': '𐰏', 'k': '𐰚', 'l': '𐰠', 'n': '𐰤', 'r': '𐰼', 's': '𐰾', 't': '𐱅', 'y': '𐰘'};
 const normal_consonants = {'ç': '𐰲', 'm': '𐰢', 'ñ': '𐰭', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔'};
 const back_vowels = {'a': '𐰀', 'ı': '𐰃', 'o': '𐰆'};
 const front_vowels = {'e': '𐰀', 'i': '𐰃', 'ö': '𐰇'};
-
 const replacement_groups = {
         'a':  ['а'],
         'b':  ['v', 'w', 'б', 'в'],
@@ -48,7 +47,6 @@ function getHarmony(cleanChars, index, lastConsonantHarmony) {
             break;
         }
     }
-
     for (let i = index + 1; i < cleanChars.length; i++) {
         if (back_vowels[cleanChars[i].char] || front_vowels[cleanChars[i].char]) {
             rightVowel = cleanChars[i].char;
@@ -71,20 +69,12 @@ function getHarmony(cleanChars, index, lastConsonantHarmony) {
         }
         return hL;
     }
-
     return getH(leftVowel || rightVowel) || 'back';
 }
 
-function convert() {
-    let input = latinInput.value.replace(/I/g, 'ı').replace(/İ/g, 'i').toLowerCase();
-    for (let target in replacement_groups) {
-        replacement_groups[target].forEach(char => {
-            input = input.split(char).join(target);
-        });
-    }
-
+function convertSingleWord(word) {
     let cleanChars = [];
-    let template = input.split('').map((char, originalIdx) => {
+    let template = word.split('').map((char, originalIdx) => {
         const isConv = back_consonants[char] || front_consonants[char] || 
                       normal_consonants[char] || back_vowels[char] || front_vowels[char];
         if (isConv) {
@@ -107,27 +97,45 @@ function convert() {
         return (h === 'back') ? back_consonants[char] : front_consonants[char];
     });
 
-    let result = template.map(item => 
+    return template.map(item => 
         item.type === 'placeholder' ? processed[item.cleanIdx] : item.value
     ).join('');
+}
+
+function convert() {
+    let rawInput = latinInput.value.toLowerCase();
+
+    for (let target in replacement_groups) {
+        replacement_groups[target].forEach(char => {
+            rawInput = rawInput.split(char).join(target);
+        });
+    }
+
+    const tokens = rawInput.split(/([^a-zçğıñöşü]+)/);
+
+    let result = tokens.map(token => {
+        if (!/[a-zçğıñöşü]/.test(token)) return token;
+        return convertSingleWord(token);
+    }).join('');
 
     // special cases
-    result = result.replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦');
-    result = result.replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡');
-    result = result.replace(/[𐰤𐰣]𐰲/gu, '𐰨');
-    result = result.replace(/[𐰤𐰣]𐰖/gu, '𐰪');
-    result = result.replace(/𐰇[𐰚𐰜]/gu, '𐰜');
-    result = result.replace(/𐰃𐰴/gu, '𐰶');
-    result = result.replace(/𐰆𐰴/gu, '𐰸');
-    result = result.replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '');
-    result = result.replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '');
-    result = result.replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '');
-    result = result.replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '');
-    result = result.replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜');
-    result = result.replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃');
-    result = result.replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃');
-    result = result.replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
-    result = result.replace(/𐰀𐱃𐱅𐰇𐰼𐰜/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
+    result = result
+            .replace(/[𐰤𐰣][𐰓𐰑]/gu, '𐰦')
+            .replace(/[𐰞𐰠][𐰓𐰑]/gu, '𐰡')
+            .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
+            .replace(/[𐰤𐰣]𐰖/gu, '𐰪')
+            .replace(/𐰇[𐰚𐰜]/gu, '𐰜')
+            .replace(/𐰃𐰴/gu, '𐰶')
+            .replace(/𐰆𐰴/gu, '𐰸')
+            .replace(/(?<=\S𐰀|𐰀\S)𐰀(?=[\u{10C01}-\u{10C48}])/gu, '')
+            .replace(/(?<=\S𐰃|𐰃\S)𐰃(?=[\u{10C00}-\u{10C02}\u{10C04}-\u{10C48}])/gu, '')
+            .replace(/(?<=\S𐰆|𐰆\S)𐰆(?=[\u{10C00}-\u{10C05}\u{10C07}-\u{10C48}])/gu, '')
+            .replace(/(?<=\S𐰇|𐰇\S)𐰇(?=[\u{10C00}-\u{10C06}\u{10C08}-\u{10C48}])/gu, '')
+            .replace(/𐱅𐰼𐰚/g, '𐱅𐰇𐰼𐰜')
+            .replace(/𐱅𐰀𐰭𐰼𐰃/g, '𐱅𐰭𐰼𐰃')
+            .replace(/𐱃𐰀𐰣𐰺𐰃/g, '𐱅𐰭𐰼𐰃')
+            .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜')
+            .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/g, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
 
     gokturkOutput.value = result;
 }
