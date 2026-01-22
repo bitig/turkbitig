@@ -103,7 +103,10 @@ function convertSingleWord(word) {
 }
 
 function convert() {
-    let rawInput = latinInput.value.toLowerCase();
+    let rawInput = latinInput.value
+    .replace(/I/g, 'ı')
+    .replace(/İ/g, 'i')
+    .toLowerCase();
 
     for (let target in replacement_groups) {
         replacement_groups[target].forEach(char => {
