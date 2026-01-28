@@ -107,8 +107,9 @@ function convert() {
     .replace(/I/g, 'ı')
     .replace(/İ/g, 'i')
     .toLowerCase()
-    .replace(/(?<!\p{L})([aeıioöuüçmñpşz]*)([aı])([bcdfgğhjklnrstvy])([ei])([aeıioöuüçmñpşz]*)(?!\p{L})/gu, '$1$2$3$3$4$5')
-    .replace(/(?<!\p{L})([aeıioöuüçmñpşz]*)([ei])([bcdfgğhjklnrstvy])([aı])([aeıioöuüçmñpşz]*)(?!\p{L})/gu, '$1$2$3$3$4$5');
+//    .replace(/(?<!\p{L})([aeıioöuüçmñpşz]*)([aı])([bcdfgğhjklnrstvy])([ei])([aeıioöuüçmñpşz]*)(?!\p{L})/gu, '$1$2$3$3$4$5')
+//    .replace(/(?<!\p{L})([aeıioöuüçmñpşz]*)([ei])([bcdfgğhjklnrstvy])([aı])([aeıioöuüçmñpşz]*)(?!\p{L})/gu, '$1$2$3$3$4$5')
+    ;
 
     for (let target in replacement_groups) {
         replacement_groups[target].forEach(char => {
