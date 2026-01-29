@@ -130,7 +130,8 @@ input[type="color"] {
   text-align: right;
   font-size: 56px;
   overflow-wrap: break-word; 
-  min-height: 160px; 
+  height: 160px; 
+  min-height: 80px; 
   width: 100%; 
   max-width: 1600px;
   font-family:'tbldamga';
