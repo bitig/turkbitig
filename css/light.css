@@ -181,6 +181,12 @@ background: linear-gradient(to right,
 }
 
 .iblat {
+padding-bottom:6px;
+border-bottom:2px solid #EEE;
+}
+
+.ibtr {
+padding-top:6px;
 }
 
 .turuk  {

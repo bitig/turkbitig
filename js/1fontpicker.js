@@ -1,5 +1,5 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-const fontCellHeight = 25;
+const fontCellHeight = 21;
 const fontGridCols = 6;
 const fontGridRows = 6;
 const fontFamilies = [
@@ -101,7 +101,7 @@ function drawFontGrid(ctx, offsetX, offsetY) {
       ctx.strokeRect(x, y, cellWidth, cellHeight);
       // Cell number
       ctx.fillStyle = "#000";
-      ctx.font = "14px sans-serif";
+      ctx.font = "13px sans-serif";
       ctx.fillText(index + 1, x + cellWidth / 2, y + cellHeight / 2);
     }
   }
@@ -125,7 +125,7 @@ function drawSelectionOnFontGrid(ctx, offsetX, offsetY) {
     ctx.strokeRect(x + 1, y + 1, cellWidth - 2, cellHeight - 2);
     // Draw cell number
     ctx.fillStyle = "#000";
-    ctx.font = "14px sans-serif";
+    ctx.font = "13px sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(idx + 1, x + cellWidth / 2, y + cellHeight / 2);
