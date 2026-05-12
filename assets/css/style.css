@@ -1,3 +1,7 @@
+html * {
+    max-height: 999999px;
+}
+
 body {
   margin: 0;
   color: #000;
@@ -18,7 +22,12 @@ td, button, select, option {
 
 @font-face {
   font-family: 'damga';
-  src: url('/assets/fonts/turkbitigweb.woff2') format('woff2'), url('/assets/fonts/css/turkbitigweb.woff') format('woff');
+  src: url('/assets/fonts/turkbitigweb.woff2') format('woff2'), url('/assets/fonts/turkbitigweb.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'tbldamga';
+  src: url('/assets/fonts/tbldamga.woff2') format('woff2'), url('/assets/fonts/tbldamga.woff') format('woff');
 }
 
 a:active {
@@ -341,8 +350,8 @@ ul li {
   direction: rtl;
   unicode-bidi: bidi-override;
   text-align: right;
-  font-family: yazitlar;
-  font-size: 150%;
+  font-family: yazitlar, damga;
+  font-size: 1.8rem;
   padding-left: 1%;
   padding-right: 1%;
   padding-bottom: 4px;
@@ -352,6 +361,7 @@ ul li {
 }
 
 .mt {
+  font-size: 1rem;
   padding-top: 1em;
   padding-bottom: 1em;
   line-height: 1.3;
@@ -361,7 +371,7 @@ ul li {
 }
 
 .mtr {
-  font-size: 90%;
+  font-size: 1rem;
   cursor: pointer;
   border-bottom: solid 2px #999;
 }
