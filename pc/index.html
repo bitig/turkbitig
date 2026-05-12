@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="shortcut icon" href="/assets/image/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/assets/image/apple-touch-icon.png">
+
+<link rel="canonical" href="https://www.turkbitig.com/pc/">
+<meta name="keywords" content="Göktürkçe, Göktürk Alfabesi, Orhun alfabesi, Orhun yazısı, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı, Göktürk alfabesi çeviri, Göktürkçe Türk, eski Türk alfabesi, eski Türk yazısı">
+<meta name="description" content="Göktürkçe çeviri yazıcı ile isim yazabilirsiniz. Göktürk Alfabesi sağdan sola doğru yazılır. 4 ünlü, 25 ünsüz ve 9 çift sesli olarak toplam 38 harfden oluşur.">
+<title>Göktürk Alfabesi (çeviri yazıcı)</title>
+</head>
+<body>
+
+<div class="sitenav">
+<span class="menu"><a class="menulink" href="/icerik.html">&nbsp;&#9776;&nbsp;</a></span>
+<div id="logo"><a href="/"><img class="logo" title="Türk Bitig" alt="Türk Bitig" src="/assets/image/logo.png"></a></div>
+</div><!--sitenav end-->
+
+<div class="content">
+<main>
+
+<h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:ö/ü x:ç j:ş q:ğ</span></h1>
+  
+<!--ceviri baslar-->
+
+<style>
+h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
+.sitenav {position: relative;}
+.content {max-width: 1600px;margin-top:0;background-color:#DCDCDC;}
+</style>
+
+<input type="text" id="latin" hidden>
+
+<table class="fonttable" id="fontRadioGroup">
+<tr>
+<td>Font&nbsp;</td>
+<td nowrap>
+<select class="fontselect" onchange="changeFont(this.value)">
+  <option value="tbldamga" selected>Altyazılı</option>
+  <option value="tbldamga2">Öğrenci için</option>
+  <option value="bala">Bala</option>
+  <option value="balab">Bala-K</option>
+  <option value="balag">Bala-G</option>
+  <option value="basmil">Basmıl</option>
+  <option value="bediz">Bediz</option>
+  <option value="bilgekagan">Bilge Kağan</option>
+  <option value="bilgekaganbold">Bilge Kağan-K</option>
+  <option value="cizgi">Çizgi</option>
+  <option value="damgaregular">Damga</option>
+  <option value="damgabb">Damga-A</option>
+  <option value="damgagenis">Damga-G</option>
+  <option value="damgagenisbold">Damga-GK</option>
+  <option value="gokturkyeni">Göktürk</option>
+  <option value="gokturkyenib">Göktürk-K</option>
+  <option value="irkbitig">Irk Bitig</option>
+  <option value="gokturkkalem">Kalem</option>
+  <option value="gokturkkalemg">Kalem-G</option>
+  <option value="gokturkkalembold">Kalem-K</option>
+  <option value="gokturkkalemegri">Kalem-E</option>
+  <option value="karluk">Karluk</option>
+  <option value="karlukbold">Karluk-K</option>
+  <option value="kirgiz">Kırgız</option>
+  <option value="koncuyi">Konçuy</option>
+  <option value="koncuy">Konçuy-K</option>
+  <option value="kultigin">Kültiğin</option>
+  <option value="kultiginbold">Kültiğin-K</option>
+  <option value="oguz">Oğuz</option>
+  <option value="oguzbold">Oğuz-K</option>
+  <option value="damgaroman">Roman</option>
+  <option value="tatarbold">Tatar-K</option>
+  <option value="tonyukuk">Tonyukuk</option>
+  <option value="tonyukukagir">Tonyukuk-A</option>
+  <option value="tonyukukboylu">Tonyukuk-B</option>
+  <option value="tonyukukdar">Tonyukuk-D</option>
+  <option value="tonyukukdarkalin">Tonyukuk-G</option>
+  <option value="tungatigin">Tungatiğin</option>
+  <option value="tungatigina">Tungatiğin-A</option>
+  <option value="turkbitig">Türk Bitig</option>
+  <option value="turkbitigb">Türk Bitig-K</option>
+  <option value="uygur">Uygur</option>
+  <option value="yaksi">Yakşı</option>
+  <option value="yaksib">Yakşı-K</option>
+</select>
+</td>
+
+<td width="3%">Renk</td>
+<td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#00EEDD"></td>
+<td width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td width="90%"></td>
+
+</tr>
+</table>
+
+<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
+<tr>
+
+<td>Boy&nbsp;&nbsp;</td>
+
+<td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td nowrap>Aralık</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
+
+<td>Kıyı</td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td width="90%">&nbsp;</td>
+</tr>
+</table>
+
+<div class="tbs">
+<textarea class="uuuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;"></textarea>
+</div>
+<!--ceviri biter-->
+
+<table border="0" class="fonttable">
+<tr>
+<td><button onclick="copyGokturk()">Kopyala</button></td>
+<td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
+<td width="90%">&nbsp;</td>
+<td nowrap><button id="charset1">Tüm&nbsp;Harfler</button></td>
+<td nowrap><button id="clearGokturk">&nbsp;Sil&nbsp;</button></td>
+</tr>
+</table>
+
+<hr>
+
+<ul>
+<li><a href="/gokturkce/klavye.html">Klavyeli yazıcı</a></li>
+<li><a href="/gokturk-alfabesi/">Göktürkçe Kuralları</a></li>
+</ul>
+
+<script src="/assets/js/gokce.js"></script>
+<script src="/assets/js/keyboard1.js"></script>
+
+<div>
+  <span style="font-family:tbldamga;">&nbsp;</span>
+  <span style="font-family:tbldamga2;">&nbsp;</span>
+  <span style="font-family:bala;">&nbsp;</span>
+  <span style="font-family:balab;">&nbsp;</span>
+  <span style="font-family:balag;">&nbsp;</span>
+  <span style="font-family:basmil;">&nbsp;</span>
+  <span style="font-family:bediz;">&nbsp;</span>
+  <span style="font-family:bilgekagan;">&nbsp;</span>
+  <span style="font-family:bilgekaganbold;">&nbsp;</span>
+  <span style="font-family:cizgi;">&nbsp;</span>
+  <span style="font-family:damgaregular;">&nbsp;</span>
+  <span style="font-family:damgabb;">&nbsp;</span>
+  <span style="font-family:damgagenis;">&nbsp;</span>
+  <span style="font-family:damgagenisbold;">&nbsp;</span>
+  <span style="font-family:gokturkyeni;">&nbsp;</span>
+  <span style="font-family:gokturkyenib;">&nbsp;</span>
+  <span style="font-family:irkbitig;">&nbsp;</span>
+  <span style="font-family:gokturkkalem;">&nbsp;</span>
+  <span style="font-family:gokturkkalemg;">&nbsp;</span>
+  <span style="font-family:gokturkkalembold;">&nbsp;</span>
+  <span style="font-family:gokturkkalemegri;">&nbsp;</span>
+  <span style="font-family:karluk;">&nbsp;</span>
+  <span style="font-family:karlukbold;">&nbsp;</span>
+  <span style="font-family:kirgiz;">&nbsp;</span>
+  <span style="font-family:koncuyi;">&nbsp;</span>
+  <span style="font-family:koncuy;">&nbsp;</span>
+  <span style="font-family:kultigin;">&nbsp;</span>
+  <span style="font-family:kultiginbold;">&nbsp;</span>
+  <span style="font-family:oguz;">&nbsp;</span>
+  <span style="font-family:oguzbold;">&nbsp;</span>
+  <span style="font-family:damgaroman;">&nbsp;</span>
+  <span style="font-family:tatarbold;">&nbsp;</span>
+  <span style="font-family:tonyukuk;">&nbsp;</span>
+  <span style="font-family:tonyukukagir;">&nbsp;</span>
+  <span style="font-family:tonyukukboylu;">&nbsp;</span>
+  <span style="font-family:tonyukukdar;">&nbsp;</span>
+  <span style="font-family:tonyukukdarkalin;">&nbsp;</span>
+  <span style="font-family:tungatigin;">&nbsp;</span>
+  <span style="font-family:tungatigina;">&nbsp;</span>
+  <span style="font-family:turkbitig;">&nbsp;</span>
+  <span style="font-family:turkbitigb;">&nbsp;</span>
+  <span style="font-family:uygur;">&nbsp;</span>
+  <span style="font-family:yaksi;">&nbsp;</span>
+  <span style="font-family:yaksib;">&nbsp;</span>
+  <span style="font-family:yaksib;">&nbsp;</span>
+</div>
+
+</main>
+</div>
+
+<footer>
+  <div class="footer"><a href="/isimler/erkek.html">Göktürkçe isimler</a> | <a href="/icerik.html">içerik</a></div>
+</footer>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XB6M7JR5GW');
+</script>
+
+</body>
+</html>
