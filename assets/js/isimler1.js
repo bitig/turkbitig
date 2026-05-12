@@ -33,11 +33,6 @@ document.getElementById('kultiginbold').addEventListener('click', function () {
   adjustFontSize();
 });
 
-document.getElementById('oguzbold').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'bilgekaganyenib';
-  adjustFontSize();
-});
-
 document.getElementById('gokturkkalembold').addEventListener('click', function () {
   textContainer.style.fontFamily = 'gokturkkalembold';
   adjustFontSize();
