@@ -30,6 +30,11 @@ td, button, select, option {
   src: url('/assets/fonts/tbldamga.woff2') format('woff2'), url('/assets/fonts/tbldamga.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'irkbitig';
+  src: url('/assets/fonts/irkbitig.woff2') format('woff2'), url('/assets/fonts/irkbitig.woff') format('woff');
+}
+
 a:active {
   filter: brightness(106%);
   text-decoration: none;
