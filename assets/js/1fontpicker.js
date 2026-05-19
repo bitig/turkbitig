@@ -25,7 +25,7 @@ const fontFamilies = [
   "damgaroman",
   "tatarbold",
   "tonyukuk",
-  "tonyukukagir",
+  "tonyukukbold",
   "turkbitig",
   "turkbitigb",
   "uygur",

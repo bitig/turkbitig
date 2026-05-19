@@ -22,22 +22,32 @@ td, button, select, option {
 
 @font-face {
   font-family: 'damga';
-  src: url('/assets/fonts/turkbitigweb.woff2') format('woff2'), url('/assets/fonts/turkbitigweb.woff') format('woff');
+  src: url('/assets/fonts/turkbitigweb.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tonyukuk';
+  src: url('/assets/fonts/tonyukuk.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tonyukukbold';
+  src: url('/assets/fonts/tonyukukbold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'tbldamga';
-  src: url('/assets/fonts/tbldamga.woff2') format('woff2'), url('/assets/fonts/tbldamga.woff') format('woff');
+  src: url('/assets/fonts/tbldamga.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'tbldamga2';
-  src: url('/assets/fonts/tbldamga2.woff2') format('woff2'), url('/assets/fonts/tbldamga2.woff') format('woff');
+  src: url('/assets/fonts/tbldamga2.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'irkbitig';
-  src: url('/assets/fonts/irkbitig.woff2') format('woff2'), url('/assets/fonts/irkbitig.woff') format('woff');
+  src: url('/assets/fonts/irkbitig.woff2') format('woff2');
 }
 
 a:active {
