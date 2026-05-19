@@ -26,6 +26,16 @@ td, button, select, option {
 }
 
 @font-face {
+  font-family: 'turkbitig';
+  src: url('/assets/fonts/turkbitig.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'turkbitigbold';
+  src: url('/assets/fonts/turkbitigbold.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'tonyukuk';
   src: url('/assets/fonts/tonyukuk.woff2') format('woff2');
 }
