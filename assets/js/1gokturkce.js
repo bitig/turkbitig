@@ -51,6 +51,11 @@ const replacementKeys = Object.keys(replacementMap).sort((a, b) => b.length - a.
 const VOWELS = 'aeıioöuü';
 const NEUTRAL_CONSONANTS = 'çmpsşz';
 
+const convertibleSet = new Set([
+  ...Object.keys(backVowelMap),
+  ...Object.keys(frontVowelMap)
+]);
+
 function isNeutralConsonant(ch) {
   return NEUTRAL_CONSONANTS.includes(ch);
 }
@@ -160,15 +165,24 @@ function latinToGokturk(input) {
     text = text.split(key).join(replacementMap[key]);
   }
 
-  const parts = text.split(/(\s+)/);
   let result = '';
+  let currentWord = '';
 
-  for (const part of parts) {
-    if (/^\s+$/.test(part)) {
-      result += part; 
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (convertibleSet.has(ch)) {
+      currentWord += ch;
     } else {
-      result += processWord(part);
+      if (currentWord.length > 0) {
+        result += processWord(currentWord);
+        currentWord = '';
+      }
+      result += ch;
     }
+  }
+
+  if (currentWord.length > 0) {
+    result += processWord(currentWord);
   }
 
   result = result
@@ -196,7 +210,7 @@ function latinToGokturk(input) {
   return result;
 }
 
-// DOM 
+// dom...
 document.addEventListener('DOMContentLoaded', () => {
   const latinInput    = document.getElementById('latin');
   const gokturkOutput = document.getElementById('gokturk');
