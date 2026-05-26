@@ -49,6 +49,11 @@ for (const [standard, alts] of Object.entries(replacements)) {
 const replacementKeys = Object.keys(replacementMap).sort((a, b) => b.length - a.length);
 
 const VOWELS = 'aeıioöuü';
+const NEUTRAL_CONSONANTS = 'çmpsşz';
+
+function isNeutralConsonant(ch) {
+  return NEUTRAL_CONSONANTS.includes(ch);
+}
 
 function syllabify(word) {
   const vowelIndices = [];
@@ -82,11 +87,16 @@ function syllabify(word) {
       let v2HasTrailing = false;
 
       if (isLastSpan) {
-        v2HasTrailing = (rightVowelPos + 1 < word.length);
+        for (let k = rightVowelPos + 1; k < word.length; k++) {
+          if (!VOWELS.includes(word[k]) && !isNeutralConsonant(word[k])) {
+            v2HasTrailing = true;
+            break;
+          }
+        }
       } else {
         const nextVowelPos = vowelIndices[i + 2];
         for (let k = rightVowelPos + 1; k < nextVowelPos; k++) {
-          if (!VOWELS.includes(word[k])) {
+          if (!VOWELS.includes(word[k]) && !isNeutralConsonant(word[k])) {
             v2HasTrailing = true;
             break;
           }
@@ -112,7 +122,6 @@ function syllabify(word) {
 function convertSyllable(syllable, map) {
   let out = '';
   let i = 0;
-
   while (i < syllable.length) {
     const ch = syllable[i];
     out += map[ch] ?? ch;
@@ -172,7 +181,7 @@ function latinToGokturk(input) {
   return result;
 }
 
-//  DOM
+// DOM
 document.addEventListener('DOMContentLoaded', () => {
   const latinInput    = document.getElementById('latin');
   const gokturkOutput = document.getElementById('gokturk');
