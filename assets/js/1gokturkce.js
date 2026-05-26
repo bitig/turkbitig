@@ -130,6 +130,26 @@ function convertSyllable(syllable, map) {
   return out;
 }
 
+function processWord(word) {
+  const syllables = syllabify(word);
+  let out = '';
+
+  for (const syl of syllables) {
+    const vowel = [...syl].find(c => VOWELS.includes(c));
+
+    if (!vowel) {
+      out += convertSyllable(syl, backVowelMap);
+      continue;
+    }
+
+    const isBack = 'aıou'.includes(vowel);
+    const map = isBack ? backVowelMap : frontVowelMap;
+    out += convertSyllable(syl, map);
+  }
+
+  return out;
+}
+
 function latinToGokturk(input) {
   let text = input
     .replace(/I/g, 'ı')
@@ -140,20 +160,15 @@ function latinToGokturk(input) {
     text = text.split(key).join(replacementMap[key]);
   }
 
-  const syllables = syllabify(text);
+  const parts = text.split(/(\s+)/);
   let result = '';
 
-  for (const syl of syllables) {
-    const vowel = [...syl].find(c => VOWELS.includes(c));
-
-    if (!vowel) {
-      result += convertSyllable(syl, backVowelMap);
-      continue;
+  for (const part of parts) {
+    if (/^\s+$/.test(part)) {
+      result += part; 
+    } else {
+      result += processWord(part);
     }
-
-    const isBack = 'aıou'.includes(vowel);
-    const map = isBack ? backVowelMap : frontVowelMap;
-    result += convertSyllable(syl, map);
   }
 
   result = result
@@ -181,7 +196,7 @@ function latinToGokturk(input) {
   return result;
 }
 
-// DOM
+// DOM 
 document.addEventListener('DOMContentLoaded', () => {
   const latinInput    = document.getElementById('latin');
   const gokturkOutput = document.getElementById('gokturk');
