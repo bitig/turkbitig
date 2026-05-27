@@ -228,70 +228,26 @@ function fp_updateInput() {
   if (inp) inp.value = fp_fontNames[fp_currentFont] || fp_currentFont;
 }
 
-// Mouse-only press-and-hold
-function fp_attachMouseHold(element, stepDelta) {
-  let holdTimeout = null;
-  let holdInterval = null;
+function fp_attach(btn, step) {
+  let to, iv;
 
-  function start(e) {
+  btn.onmousedown = e => {
     if (e.button !== 0) return;
-    fp_currentIdx += stepDelta;
-    fp_refresh();
-    holdTimeout = setTimeout(() => {
-      holdInterval = setInterval(() => {
-        fp_currentIdx += stepDelta;
-        fp_refresh();
-      }, 100);
+    fp_currentIdx += step; fp_refresh();
+    to = setTimeout(() => {
+      iv = setInterval(() => { fp_currentIdx += step; fp_refresh(); }, 100);
     }, 350);
-  }
+  };
+  btn.onmouseup = btn.onmouseleave = () => { clearTimeout(to); clearInterval(iv); };
 
-  function stop() {
-    clearTimeout(holdTimeout);
-    clearInterval(holdInterval);
-    holdTimeout = null;
-    holdInterval = null;
-  }
-
-  element.addEventListener("mousedown", start);
-  element.addEventListener("mouseup", stop);
-  element.addEventListener("mouseleave", stop);
+  btn.ontouchend = e => { e.preventDefault(); fp_currentIdx += step; fp_refresh(); };
 }
 
-// Touch-only single tap (no hold, no skip)
-function fp_attachTouchTap(element, stepDelta) {
-  element.addEventListener("touchend", (e) => {
-    e.preventDefault();
-    fp_currentIdx += stepDelta;
-    fp_refresh();
-  }, { passive: false });
-}
-
-// Wire mouse hold on all buttons
-fp_attachMouseHold(fp_btnPrev, -1);
-fp_attachMouseHold(fp_btnCurr, +1);
-fp_attachMouseHold(fp_btnNext, +1);
-fp_attachMouseHold(fp_btnUp,   -1);
-fp_attachMouseHold(fp_btnDown, +1);
-
-// Wire touch tap on all buttons
-fp_attachTouchTap(fp_btnPrev, -1);
-fp_attachTouchTap(fp_btnCurr, +1);
-fp_attachTouchTap(fp_btnNext, +1);
-fp_attachTouchTap(fp_btnUp,   -1);
-fp_attachTouchTap(fp_btnDown, +1);
-
-// Physical keyboard arrow keys
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowUp") {
-    fp_currentIdx--;
-    fp_refresh();
-    e.preventDefault();
-  } else if (e.key === "ArrowDown") {
-    fp_currentIdx++;
-    fp_refresh();
-    e.preventDefault();
-  }
-});
+fp_attach(fp_btnPrev, -1);
+fp_attach(fp_btnCurr, +1);
+fp_attach(fp_btnNext, +1);
+fp_attach(fp_btnUp,   -1);
+fp_attach(fp_btnDown, +1);
 
 fp_refresh();
 </script>
