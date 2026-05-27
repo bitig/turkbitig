@@ -191,7 +191,9 @@ function latinToGokturk(input) {
     .replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡')
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣]𐰖/gu, '𐰪')
+    .replace(/(?<!\S)𐰴𐰃/gu, '𐰶𐰃')   // kı
     .replace(/𐰃𐰴/gu, '𐰶')   // ık
+//  .replace(/(?<=\S)𐰃𐰴/gu, '𐰶')   // ık 
     .replace(/𐰆𐰴/gu, '𐰸')   // ok/uk
     .replace(/𐰇[𐰚𐰜]/gu, '𐰜') // ök/ük
 
