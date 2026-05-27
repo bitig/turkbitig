@@ -2,13 +2,13 @@
 
 const backVowelMap = {
   'a':'𐰀', 'ı':'𐰃', 'o':'𐰆', 'u':'𐰆',
-  'ç': '𐰲', 'm': '𐰢', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔',
+  'ç': '𐰲', 'm': '𐰢', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔', 'ñ': '𐰭', 
   'b': '𐰉', 'd': '𐰑', 'g': '𐰍', 'k': '𐰴', 'l': '𐰞', 'n': '𐰣', 'r': '𐰺', 's': '𐰽', 't': '𐱃', 'y': '𐰖'
 };
 
 const frontVowelMap = {
   'e':'𐰀', 'i':'𐰃', 'ö':'𐰇', 'ü':'𐰇',
-  'ç': '𐰲', 'm': '𐰢', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔',
+  'ç': '𐰲', 'm': '𐰢', 'p': '𐰯', 'ş': '𐱁', 'z': '𐰔', 'ñ': '𐰭', 
   'b': '𐰋', 'd': '𐰓', 'g': '𐰏', 'k': '𐰚', 'l': '𐰠', 'n': '𐰤', 'r': '𐰼', 's': '𐰾', 't': '𐱅', 'y': '𐰘'
 };
 
@@ -49,7 +49,7 @@ for (const [standard, alts] of Object.entries(replacements)) {
 const replacementKeys = Object.keys(replacementMap).sort((a, b) => b.length - a.length);
 
 const VOWELS = 'aeıioöuü';
-const NEUTRAL_CONSONANTS = 'çmpsşz';
+const NEUTRAL_CONSONANTS = 'çmpsşzñ';
 
 const convertibleSet = new Set([
   ...Object.keys(backVowelMap),
@@ -205,6 +205,8 @@ function latinToGokturk(input) {
 
     // special cases
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
+    .replace(/𐱃𐰀𐰭𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
+    .replace(/𐱅𐰀𐰤𐰏𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰭𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
