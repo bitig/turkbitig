@@ -48,6 +48,12 @@
     background: #fff;
     font-weight: bold;            /* selected: bold */
   }
+
+#fpBtnPrev, #fpBtnCurr, #fpBtnNext, #fpBtnUp, #fpBtnDown, #fpBtnReset {
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
 </style>
 
 
@@ -110,7 +116,7 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <table border="0" class="fonttable">
 <tr>
 <td>Font</td>
-<td style="text-align:right;"><button id="fpBtnReset">Alt.</button>&nbsp;<button id="fpBtnUp">&nbsp;▲&nbsp;</button>&nbsp;<button id="fpBtnDown">&nbsp;▼&nbsp;</button></td>
+<td style="text-align:right;"><button id="fpBtnReset">Baş</button>&nbsp;<button id="fpBtnUp">&nbsp;▲&nbsp;</button>&nbsp;<button id="fpBtnDown">&nbsp;▼&nbsp;</button></td>
 <td>&nbsp;</td>
 <td>Renk</td>
 <td style="text-align:right;"><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11" spellcheck="false"></td>
