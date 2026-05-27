@@ -186,16 +186,16 @@ function latinToGokturk(input) {
   }
 
   result = result
-    // Ligatures
+    // ligatures
     .replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦')
     .replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡')
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣]𐰖/gu, '𐰪')
-    .replace(/(?<!\S)𐰴𐰃/gu, '𐰶𐰃')   // kı
-    .replace(/𐰃𐰴/gu, '𐰶')   // ık
-//  .replace(/(?<=\S)𐰃𐰴/gu, '𐰶')   // ık 
-    .replace(/𐰆𐰴/gu, '𐰸')   // ok/uk
-    .replace(/𐰇[𐰚𐰜]/gu, '𐰜') // ök/ük
+    .replace(/(?<!\S)𐰴𐰃/gu, '𐰶𐰃')   
+    .replace(/𐰃𐰴/gu, '𐰶')   
+    .replace(/(?<!\S)𐰴𐰆/gu, '𐰸𐰆')   
+    .replace(/𐰆𐰴/gu, '𐰸')   
+    .replace(/𐰇[𐰚𐰜]/gu, '𐰜')
 
     // vowels
     .replace(/(\S𐰀|𐰀\S)𐰀(?=\S)/gu, '$1')
@@ -203,7 +203,7 @@ function latinToGokturk(input) {
     .replace(/(\S𐰃|𐰃\S)𐰃(?=\S)/gu, '$1')
     .replace(/(\S𐰇|𐰇\S)𐰇(?=\S)/gu, '$1')
 
-    // Special cases
+    // special cases
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐱅𐰀𐰭𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
