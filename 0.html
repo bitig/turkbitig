@@ -181,11 +181,11 @@ const fp_fontNames = {
   "karluk": "Karluk", "irkbitig": "Irk Bitig"
 };
 
-const fp_btnPrev = document.getElementById("fpBtnPrev");
-const fp_btnCurr = document.getElementById("fpBtnCurr");
-const fp_btnNext = document.getElementById("fpBtnNext");
-const fp_btnUp   = document.getElementById("fpBtnUp");
-const fp_btnDown = document.getElementById("fpBtnDown");
+const fp_btnPrev  = document.getElementById("fpBtnPrev");
+const fp_btnCurr  = document.getElementById("fpBtnCurr");
+const fp_btnNext  = document.getElementById("fpBtnNext");
+const fp_btnUp    = document.getElementById("fpBtnUp");
+const fp_btnDown  = document.getElementById("fpBtnDown");
 const fp_btnReset = document.getElementById("fpBtnReset");
 
 let fp_currentIdx = fp_fontFamilies.indexOf(fp_currentFont);
@@ -228,6 +228,7 @@ function fp_attach(btn, step) {
 
   btn.onmousedown = e => {
     if (e.button !== 0) return;
+    btn.focus();
     fp_currentIdx += step; fp_refresh();
     to = setTimeout(() => {
       iv = setInterval(() => { fp_currentIdx += step; fp_refresh(); }, 100);
@@ -235,7 +236,13 @@ function fp_attach(btn, step) {
   };
   btn.onmouseup = btn.onmouseleave = () => { clearTimeout(to); clearInterval(iv); };
 
-  btn.ontouchend = e => { e.preventDefault(); fp_currentIdx += step; fp_refresh(); };
+  btn.ontouchend = e => { e.preventDefault(); btn.focus(); fp_currentIdx += step; fp_refresh(); };
+
+  // Keyboard: only when this button has focus
+  btn.onkeydown = e => {
+    if (e.key === "ArrowUp")   { fp_currentIdx--; fp_refresh(); e.preventDefault(); }
+    if (e.key === "ArrowDown") { fp_currentIdx++; fp_refresh(); e.preventDefault(); }
+  };
 }
 
 fp_attach(fp_btnPrev, -1);
@@ -247,8 +254,13 @@ fp_attach(fp_btnDown, +1);
 // Reset button
 fp_btnReset.onmousedown = fp_btnReset.ontouchend = e => {
   if (e.type === "touchend") e.preventDefault();
+  fp_btnReset.focus();
   fp_currentIdx = 0;
   fp_refresh();
+};
+fp_btnReset.onkeydown = e => {
+  if (e.key === "ArrowUp")   { fp_currentIdx--; fp_refresh(); e.preventDefault(); }
+  if (e.key === "ArrowDown") { fp_currentIdx++; fp_refresh(); e.preventDefault(); }
 };
 
 fp_refresh();
