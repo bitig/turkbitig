@@ -228,12 +228,13 @@ function fp_updateInput() {
   if (inp) inp.value = fp_fontNames[fp_currentFont] || fp_currentFont;
 }
 
-function fp_attachHold(element, stepDelta) {
+// Mouse-only press-and-hold
+function fp_attachMouseHold(element, stepDelta) {
   let holdTimeout = null;
   let holdInterval = null;
 
   function start(e) {
-    if (e.type === "mousedown" && e.button !== 0) return;
+    if (e.button !== 0) return;
     fp_currentIdx += stepDelta;
     fp_refresh();
     holdTimeout = setTimeout(() => {
@@ -252,18 +253,32 @@ function fp_attachHold(element, stepDelta) {
   }
 
   element.addEventListener("mousedown", start);
-  element.addEventListener("touchstart", start, { passive: true });
   element.addEventListener("mouseup", stop);
   element.addEventListener("mouseleave", stop);
-  element.addEventListener("touchend", stop);
-  element.addEventListener("touchcancel", stop);
 }
 
-fp_attachHold(fp_btnPrev, -1);
-fp_attachHold(fp_btnCurr, +1);
-fp_attachHold(fp_btnNext, +1);
-fp_attachHold(fp_btnUp,   -1);
-fp_attachHold(fp_btnDown, +1);
+// Touch-only single tap (no hold, no skip)
+function fp_attachTouchTap(element, stepDelta) {
+  element.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    fp_currentIdx += stepDelta;
+    fp_refresh();
+  }, { passive: false });
+}
+
+// Wire mouse hold on all buttons
+fp_attachMouseHold(fp_btnPrev, -1);
+fp_attachMouseHold(fp_btnCurr, +1);
+fp_attachMouseHold(fp_btnNext, +1);
+fp_attachMouseHold(fp_btnUp,   -1);
+fp_attachMouseHold(fp_btnDown, +1);
+
+// Wire touch tap on all buttons
+fp_attachTouchTap(fp_btnPrev, -1);
+fp_attachTouchTap(fp_btnCurr, +1);
+fp_attachTouchTap(fp_btnNext, +1);
+fp_attachTouchTap(fp_btnUp,   -1);
+fp_attachTouchTap(fp_btnDown, +1);
 
 // Physical keyboard arrow keys
 document.addEventListener("keydown", (e) => {
