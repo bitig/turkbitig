@@ -466,6 +466,9 @@ button {
   color: #333;
   background-color: #EEE;
   border: 1px solid #999;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 button:active {

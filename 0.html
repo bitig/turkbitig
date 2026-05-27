@@ -48,12 +48,6 @@
     background: #fff;
     font-weight: bold;            /* selected: bold */
   }
-
-#fpBtnPrev, #fpBtnCurr, #fpBtnNext, #fpBtnUp, #fpBtnDown, #fpBtnReset {
-  -webkit-touch-callout: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
 </style>
 
 
@@ -198,53 +192,41 @@ let fp_currentIdx = fp_fontFamilies.indexOf(fp_currentFont);
 if (fp_currentIdx < 0) fp_currentIdx = 0;
 
 function fp_wrap(i) {
-  const len = fp_fontFamilies.length;
-  if (i < 0) return len - 1;
-  if (i >= len) return 0;
-  return i;
+  const n = fp_fontFamilies.length;
+  return i < 0 ? n - 1 : i >= n ? 0 : i;
 }
 
 function fp_refresh() {
   fp_currentIdx = fp_wrap(fp_currentIdx);
   fp_currentFont = fp_fontFamilies[fp_currentIdx];
 
-  const prevIdx = fp_wrap(fp_currentIdx - 1);
-  const nextIdx = fp_wrap(fp_currentIdx + 1);
+  const p = fp_wrap(fp_currentIdx - 1);
+  const n = fp_wrap(fp_currentIdx + 1);
 
-  fp_btnPrev.textContent = fp_fontNames[fp_fontFamilies[prevIdx]] || fp_fontFamilies[prevIdx];
-  fp_btnCurr.textContent = fp_fontNames[fp_fontFamilies[fp_currentIdx]] || fp_fontFamilies[fp_currentIdx];
-  fp_btnNext.textContent = fp_fontNames[fp_fontFamilies[nextIdx]] || fp_fontFamilies[nextIdx];
+  fp_btnPrev.textContent = fp_fontNames[fp_fontFamilies[p]] || fp_fontFamilies[p];
+  fp_btnCurr.textContent = fp_fontNames[fp_currentFont] || fp_currentFont;
+  fp_btnNext.textContent = fp_fontNames[fp_fontFamilies[n]] || fp_fontFamilies[n];
 
-  fp_updatePreview();
-  fp_updateInput();
-}
-
-function fp_updatePreview() {
   const el = document.getElementById("gokturk");
   if (el) el.style.fontFamily = fp_currentFont;
-}
 
-function fp_updateInput() {
   const inp = document.querySelector('input[name="selectedfont"]');
   if (inp) inp.value = fp_fontNames[fp_currentFont] || fp_currentFont;
 }
 
 function fp_attach(btn, step) {
   let to, iv;
+  const go = () => { fp_currentIdx += step; fp_refresh(); };
+  const stop = () => { clearTimeout(to); clearInterval(iv); };
 
-  btn.onmousedown = e => {
-    if (e.button !== 0) return;
+  btn.onpointerdown = e => {
+    e.preventDefault();
     btn.focus();
-    fp_currentIdx += step; fp_refresh();
-    to = setTimeout(() => {
-      iv = setInterval(() => { fp_currentIdx += step; fp_refresh(); }, 100);
-    }, 350);
+    go();
+    to = setTimeout(() => iv = setInterval(go, 100), 350);
   };
-  btn.onmouseup = btn.onmouseleave = () => { clearTimeout(to); clearInterval(iv); };
+  btn.onpointerup = btn.onpointerleave = btn.onpointercancel = stop;
 
-  btn.ontouchend = e => { e.preventDefault(); btn.focus(); fp_currentIdx += step; fp_refresh(); };
-
-  // Keyboard: only when this button has focus
   btn.onkeydown = e => {
     if (e.key === "ArrowUp")   { fp_currentIdx--; fp_refresh(); e.preventDefault(); }
     if (e.key === "ArrowDown") { fp_currentIdx++; fp_refresh(); e.preventDefault(); }
@@ -257,9 +239,9 @@ fp_attach(fp_btnNext, +1);
 fp_attach(fp_btnUp,   -1);
 fp_attach(fp_btnDown, +1);
 
-// Reset button
-fp_btnReset.onmousedown = fp_btnReset.ontouchend = e => {
-  if (e.type === "touchend") e.preventDefault();
+// Reset: single tap, no hold
+fp_btnReset.onpointerdown = e => {
+  e.preventDefault();
   fp_btnReset.focus();
   fp_currentIdx = 0;
   fp_refresh();
