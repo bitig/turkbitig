@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -32,7 +33,9 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 #clearButton {padding:5px;}
 #fpBtnCurr {border: 2px solid red;background: #fff;}
 #fpBtnCurr, #fpBtnNext, #fpBtnPrev, #fpBtnReset {width: 100%;}
-#fpBtnCurr, #fpBtnNext, #fpBtnPrev {text-align:left;font-weight:normal;}
+#fpBtnCurr, #fpBtnNext, #fpBtnPrev {text-align:left;font-weight:normal;outline: none;}
+#fpBtnUp, #fpBtnDown, #fpBtnReset {outline: none;}  
+.ft-cell {width: 38%;}
 </style>
 
 <script>
@@ -44,10 +47,7 @@ if (input) {
 input.focus();
 if (input.value.length > 0) {
 input.selectionStart = input.selectionEnd = input.value.length;
-}
-}
-}
-});
+}}}});
 </script>
 
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
@@ -82,14 +82,14 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td>Font seç (30)</td><td></td><td rowspan="4">&nbsp;</td>
+<td>Font seç (30)</td><td>&nbsp;</td><td rowspan="4">&nbsp;</td>
 <td>Color</td>
 <td><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11" spellcheck="false"></td>
 </tr>
 
 <tr>
-<td width="48%"><button id="fpBtnPrev"></button></td><td width="4%"><button id="fpBtnUp">&nbsp;▲&nbsp;</button></td>
-<td width="48%" rowspan="3" colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div>
+<td class="ft-cell"><button id="fpBtnPrev"></button></td><td width="4%"><button id="fpBtnUp">&nbsp;▲&nbsp;</button></td>
+<td class="ft-cell" rowspan="3" colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div>
 </tr>
 
 <tr>
@@ -187,3 +187,4 @@ gtag('config', 'G-XB6M7JR5GW');
 
 </body>
 </html>
+
