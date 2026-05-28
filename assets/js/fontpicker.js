@@ -86,12 +86,23 @@ function fp_attach(btn, step) {
 }
 
 fp_attach(fp_btnPrev, -1);
-fp_attach(fp_btnCurr, +1);
 fp_attach(fp_btnNext, +1);
 fp_attach(fp_btnUp,   -1);
 fp_attach(fp_btnDown, +1);
 
-// Reset: single tap, no hold
+// Middle row: single tap resets to first font, no hold
+fp_btnCurr.onpointerdown = e => {
+  e.preventDefault();
+  fp_btnCurr.focus();
+  fp_currentIdx = 0;
+  fp_refresh();
+};
+fp_btnCurr.onkeydown = e => {
+  if (e.key === "ArrowUp")   { fp_currentIdx--; fp_refresh(); e.preventDefault(); }
+  if (e.key === "ArrowDown") { fp_currentIdx++; fp_refresh(); e.preventDefault(); }
+};
+
+// Reset button: single tap, no hold
 fp_btnReset.onpointerdown = e => {
   e.preventDefault();
   fp_btnReset.focus();
