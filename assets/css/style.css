@@ -16,7 +16,7 @@ body, input, textarea {
   font-size: 1.2rem;
 }
 
-td, button, select, option {
+td, select, option {
   font-size: 1rem;
 }
 
@@ -58,6 +58,26 @@ td, button, select, option {
 @font-face {
   font-family: 'irkbitig';
   src: url('/assets/fonts/irkbitig.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'oguzbold';
+  src: url('/assets/fonts/oguzbold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'ozbek';
+  src: url('/assets/fonts/ozbek.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'kazak';
+  src: url('/assets/fonts/kazak.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'baskurt';
+  src: url('/assets/fonts/baskurt.woff2') format('woff2');
 }
 
 a:active {
@@ -458,6 +478,7 @@ ul li {
 }
 
 button {
+  font-size: 1rem;
   font-weight:bold;
   padding: 5px;
   box-shadow: 1px 1px 2px #BBB;
@@ -473,7 +494,7 @@ button {
 
 button:active {
   filter: brightness(110%);
-  box-shadow: 1px 1px 1px #BBB inset;
+  box-shadow: 1px 1px 1px #666 inset;
 }
 
 #accessbuttons button {
