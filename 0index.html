@@ -26,13 +26,14 @@
 h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .sitenav {position: relative;}
 .content {max-width: 1600px;margin-top:0;background-color:#DCDCDC;}
+
+.picker-block1{width:44%;padding:0;}
 .picker-block2{width:56%;padding:0;}
+
+.fontPicker {cursor: pointer;border:1px solid #666;}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#fpBtnCurr {border: 2px solid red;background: #fff;}
-#fpBtnCurr, #fpBtnNext, #fpBtnPrev, #fpBtnReset {width: 100%;}
-#fpBtnCurr, #fpBtnNext, #fpBtnPrev {text-align:left;font-weight:normal;}
 </style>
 
 <script>
@@ -82,21 +83,19 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td>Font seç (30)</td><td></td><td rowspan="4">&nbsp;</td>
-<td>Color</td>
-<td><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11" spellcheck="false"></td>
+<td width="10%">Font</td>
+<td style="text-align:right;"><input type="text" name="selectedfont" style="font-size:1rem;width:90%;" disabled></td>
+<td>&nbsp;</td>
+<td>Renk</td>
+<td style="text-align:right;"><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11" spellcheck="false"></td>
 </tr>
 
 <tr>
-<td width="48%"><button id="fpBtnPrev"></button></td><td width="4%"><button id="fpBtnUp">&nbsp;▲&nbsp;</button></td>
-<td width="48%" rowspan="3" colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div>
+<td colspan="2" class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
+<td><img width="1" height="94" src="/assets/image/dot.png"></td>
+<td colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
 
-<tr>
-<td><button id="fpBtnCurr" class="current"></button></td><td><button id="fpBtnReset">&nbsp;◼&nbsp;</button></td>
-<tr>
-<td><button id="fpBtnNext"></button></td><td><button id="fpBtnDown">&nbsp;▼&nbsp;</button></td>
-</tr>
 </table>
 
 <!--ceviri biter-->
@@ -111,8 +110,6 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 </tr>
 </table>
 
-<input type="hidden" name="selectedfont" value="">
-
 <hr>
 
 <ul>
@@ -122,7 +119,7 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 </ul>
 
 <script src="/assets/js/1gokturkce.js"></script>
-<script src="/assets/js/fontpicker.js"></script>
+<script src="/assets/js/1fontpicker.js"></script>
 <script src="/assets/js/1colorpicker.js"></script>
 <script src="/assets/js/1keyboard.js"></script>
 
