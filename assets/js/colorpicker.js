@@ -1,7 +1,7 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 // layout
-const tabBarHeight = 20;      
+const tabBarHeight = 22;      
 const colorCellHeight = 5;   
 const gridCols = 22;          
 const gridRows = 8;          
