@@ -127,40 +127,44 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <script>
 const fonts = [
-  {name:"Altyazılı", font:"tbldamga" },
-  {name:"Bilge Kağan", font:"bilgekaganyenib" },
-  {name:"Başkurt", font:"baskurt" },
-  {name:"Bala", font:"bala" },
-  {name:"Bala(K)", font:"balab" },
-  {name:"Kalem", font:"gokturkkalem" },
-  {name:"Kalem(G)", font:"gokturkkalemg" },
-  {name:"Bediz", font:"bediz" },
-  {name:"Çizgi", font:"cizgi" },
-  {name:"Damga", font:"damgaregular" },
-  {name:"Damga(K)", font:"damgab" },
-  {name:"Damga(A)", font:"damgabb" },
-  {name:"Damga(GB)", font:"damgagenisbold" },
-  {name:"Karluk", font:"karluk" },
-  {name:"Kazak", font:"kazak" },
-  {name:"Kırgız", font:"kirgiz" },
-  {name:"Konçuy", font:"koncuy" },
-  {name:"Kurgu", font:"gokturkyeni" },
-  {name:"Kurgu(K)", font:"gokturkyenib" },
-  {name:"Kültiğin", font:"kultigin" },
-  {name:"Oğuz (K)", font:"oguzbold" },
-  {name:"Özbek", font:"ozbek" },
-  {name:"Kültiğin(K)", font:"kultiginbold" },
-  {name:"Roman", font:"damgaroman" },
-  {name:"Tatar", font:"tatarbold" },
-  {name:"Tonyukuk", font:"tonyukuk" },
-  {name:"Tonyukuk (K)", font:"tonyukukbold" },
-  {name:"Türk Bitig", font:"turkbitig" },
-  {name:"Türk Bitig(K)", font:"turkbitigbold" },
-  {name:"Uygur", font:"uygur" },
-  {name:"Yakşı", font:"yaksi" },
-  {name:"Yakşı(K)", font:"yaksib" },
-  {name:"Irk Bitig", font:"irkbitig" },
-  {name:"Öğrenci için", font:"tbldamga2" },
+  {name:"Altyazılı", font:"tbldamga"},
+  {name:"Bala", font:"bala"},
+  {name:"Bala(K)", font:"balab"},
+  {name:"Başkurt", font:"baskurt"},
+  {name:"Bediz", font:"bediz"},
+  {name:"Bilge Kağan", font:"bilgekaganyenib"},
+  {name:"Çizgi", font:"cizgi"},
+  {name:"Damga(A)", font:"damgabb"},
+  {name:"Damga", font:"damgaregular"},
+  {name:"Damga(GB)", font:"damgagenisbold"},
+  {name:"Damga(K)", font:"damgab"},
+  {name:"Irk Bitig", font:"irkbitig"},
+  {name:"Kalem", font:"gokturkkalem"},
+  {name:"Kalem(G)", font:"gokturkkalemg"},
+  {name:"Kalem(K)", font:"gokturkkalemb"},
+  {name:"Karluk", font:"karluk"},
+  {name:"Kazak", font:"kazak"},
+  {name:"Kibar(A)", font:"kibarbb"},
+  {name:"Kibar", font:"kibar"},
+  {name:"Kibar(K)", font:"kibarb"},
+  {name:"Kırgız", font:"kirgiz"},
+  {name:"Konçuy", font:"koncuy"},
+  {name:"Kültiğin", font:"kultigin"},
+  {name:"Kültiğin(K)", font:"kultiginbold"},
+  {name:"Kurgu", font:"gokturkyeni"},
+  {name:"Kurgu(K)", font:"gokturkyenib"},
+  {name:"Oğuz (K)", font:"oguzbold"},
+  {name:"Özbek", font:"ozbek"},
+  {name:"Roman", font:"damgaroman"},
+  {name:"Tatar", font:"tatarbold"},
+  {name:"Tonyukuk", font:"tonyukuk"},
+  {name:"Tonyukuk (K)", font:"tonyukukbold"},
+  {name:"Türk Bitig", font:"turkbitig"},
+  {name:"Türk Bitig(K)", font:"turkbitigbold"},
+  {name:"Uygur", font:"uygur"},
+  {name:"Yakşı", font:"yaksi"},
+  {name:"Yakşı(K)", font:"yaksib"},
+  {name:"Öğrenci için", font:"tbldamga2"},
 ];
 
 const HOLD_DELAY_MS = 350;
@@ -276,6 +280,7 @@ fp_refresh();
 <span style="font-family:damgaregular;">&nbsp;</span>
 <span style="font-family:damgaroman;">&nbsp;</span>
 <span style="font-family:gokturkkalem;">&nbsp;</span>
+<span style="font-family:gokturkkalemb;">&nbsp;</span>
 <span style="font-family:gokturkkalembold;">&nbsp;</span>
 <span style="font-family:gokturkkalemegri;">&nbsp;</span>
 <span style="font-family:gokturkkalemg;">&nbsp;</span>
@@ -285,6 +290,9 @@ fp_refresh();
 <span style="font-family:karluk;">&nbsp;</span>
 <span style="font-family:kazak;">&nbsp;</span>
 <span style="font-family:kirgiz;">&nbsp;</span>
+<span style="font-family:kibar;">&nbsp;</span>
+<span style="font-family:kibarb;">&nbsp;</span>
+<span style="font-family:kibarbb;">&nbsp;</span>
 <span style="font-family:koncuy;">&nbsp;</span>
 <span style="font-family:kultigin;">&nbsp;</span>
 <span style="font-family:kultiginbold;">&nbsp;</span>
