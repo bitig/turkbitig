@@ -158,7 +158,6 @@ input[type="color"] {
   line-height:1;
   border: 2px solid #999;
   text-align: right;
-  font-size: 52px;
   overflow-wrap: break-word;
   height: 180px;
   min-height: 80px;
@@ -608,7 +607,6 @@ body, input, textarea {
   }
 
   .uuu {
-    font-size: 72px;
     height: 320px;
     min-height: 160px;
   }
