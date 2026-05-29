@@ -65,24 +65,24 @@ const charMap = {'W': 'ö', 'w': 'ü', 'X': 'Ş', 'x': 'ş',  'J': 'Ç', 'j': '�
 input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxJjQq]/g, matched => charMap[matched]);});
 </script> 
 
-<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
-<tr>
-<td>Boy</td>
-<td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td>Aralık</td>
-<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
-<td>Kıyı</td>
-<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
-<td width="90%">&nbsp;</td>
-</tr>
-</table>
-
 <div class="tbs">
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
+
+<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
+<tr>
+<td>Boy</td>
+<td nowrap><button onclick="changeSize('increase')"><big>&nbsp;+&nbsp;</big></button></td>
+<td nowrap><button onclick="changeSize('decrease')"><big>&nbsp;-&nbsp;</big></button></td>
+<td>Aralık</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')"><big>&nbsp;+&nbsp;</big></button></td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')"><big>&nbsp;-&nbsp;</big></button></td>
+<td>Kıyı</td>
+<td nowrap><button onclick="changeStrokeSize('increase')"><big>&nbsp;+&nbsp;</big></button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')"><big>&nbsp;-&nbsp;</big></button></td>
+<td width="90%">&nbsp;</td>
+</tr>
+</table>
 
 <table border="0" class="fonttable">
 <tr>
