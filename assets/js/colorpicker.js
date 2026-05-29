@@ -2,7 +2,7 @@
 
 // layout
 const tabBarHeight = 22;      
-const colorCellHeight = 7;   
+const colorCellHeight = 6;   
 const gridCols = 14;          
 const gridRows = 8;          
 const colors = generateColors();
