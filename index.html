@@ -29,7 +29,7 @@ body {
   user-select: none; 
 }
 
-.uuu {font-size: 76px;color:#F93;
+.uuu {font-size: 76px;color:#0C9;
 -webkit-text-stroke-color: #000000;
 text-stroke-color: #000000;
 -webkit-text-stroke-width: 1px;
@@ -42,9 +42,22 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#fpBtnCurr {width: 100%;border: 2px solid red;background: #fff;text-align:left;outline: none;}
+#fpBtnCurr {width: 100%;border: 1px solid red;background: #fff;text-align:left;outline: none;}
 #fpBtnUp, #fpBtnDown, #fpBtnReset {padding:8px;width: 100%; outline: none;}  
 .ft-cell {width: 38%;}
+
+
+
+
+.adjust-controls label {
+  cursor: pointer;
+  padding:5px 1px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+/* Red border only on the label whose radio is checked */
+.adjust-controls label:has(input[type="radio"]:checked) {background-color:#EEE;border-color: #C00;}
 </style>
 
 <script>
@@ -74,20 +87,19 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
 
+<div class="adjust-controls">
 <table border="0" style="margin-bottom:5px;font-size:1.2rem;">
 <tr>
-<td>Boy</td>
-<td nowrap><button onclick="changeSize('increase')"><big>&nbsp;+&nbsp;</big></button></td>
-<td nowrap><button onclick="changeSize('decrease')"><big>&nbsp;-&nbsp;</big></button></td>
-<td>&nbsp;Ara</td>
-<td nowrap><button onclick="changeLetterSpacing('increase')"><big>&nbsp;+&nbsp;</big></button></td>
-<td nowrap><button onclick="changeLetterSpacing('decrease')"><big>&nbsp;-&nbsp;</big></button></td>
-<td>&nbsp;Kıyı</td>
-<td nowrap><button onclick="changeStrokeSize('increase')"><big>&nbsp;+&nbsp;</big></button></td>
-<td nowrap><button onclick="changeStrokeSize('decrease')"><big>&nbsp;-&nbsp;</big></button></td>
+<td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;+&nbsp;</big></button></td>
+<td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;−&nbsp;</big></button></td>
+
+<td nowrap style="vertical-align:middle;"><label>&nbsp;BOY&nbsp;<input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;KIYI&nbsp;<input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;ARA&nbsp;<input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)"></label></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
+</div>
 
 <table border="0" class="fonttable">
 <tr>
@@ -256,7 +268,7 @@ fp_refresh();
 
 <script src="/assets/js/1gokturkce.js"></script>
 <script src="/assets/js/colorpicker.js"></script>
-<script src="/assets/js/1keyboard.js"></script>
+<script src="/assets/js/keyboard.js"></script>
 
 <link rel="stylesheet" href="/assets/css/fonts.css">
 
@@ -326,4 +338,3 @@ gtag('config', 'G-XB6M7JR5GW');
 
 </body>
 </html>
-
