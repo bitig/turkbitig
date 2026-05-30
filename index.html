@@ -42,17 +42,14 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#fpBtnCurr {width: 100%;border: 1px solid red;background: #fff;text-align:left;outline: none;}
+#fpBtnCurr {width: 100%;border: 2px solid #C00;background: #fff;text-align:left;outline: none;}
 #fpBtnUp, #fpBtnDown, #fpBtnReset {padding:8px;width: 100%; outline: none;}  
 .ft-cell {width: 38%;}
-
-
-
 
 .adjust-controls label {
   cursor: pointer;
   padding:5px 1px;
-  border: 1px solid #999;
+  border: 2px solid #AAA;
   border-radius: 4px;
 }
 
@@ -90,12 +87,13 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <div class="adjust-controls">
 <table border="0" style="margin-bottom:5px;font-size:1.2rem;">
 <tr>
-<td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;+&nbsp;</big></button></td>
-<td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;−&nbsp;</big></button></td>
-
-<td nowrap style="vertical-align:middle;"><label>&nbsp;BOY&nbsp;<input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)"></label></td>
-<td nowrap style="vertical-align:middle;"><label>&nbsp;KIYI&nbsp;<input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)"></label></td>
-<td nowrap style="vertical-align:middle;"><label>&nbsp;ARA&nbsp;<input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;&nbsp;+&nbsp;&nbsp;</big></button></td>
+<td>&nbsp;</td>
+<td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;&nbsp;−&nbsp;&nbsp;</big></button></td>
+<td>&nbsp;&nbsp;</td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Boy&nbsp;<input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Kıyı&nbsp;<input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Ara&nbsp;<input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)"></label></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
