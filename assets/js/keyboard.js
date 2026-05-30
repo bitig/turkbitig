@@ -212,7 +212,7 @@ function downloadAsPng() {
             second: '2-digit'
         });
         const timeString = now.replace(/:/g, '-');
-        const fileName = `gokturkce-${timeString}-turkbitig.png`;
+        const fileName = `turkbitig-${timeString}.png`;
         const link = document.createElement('a');
         link.download = fileName;
         link.href = dataUrl;
