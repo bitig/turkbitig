@@ -65,6 +65,25 @@ function changeStrokeSize(action) {
     element.style.textStrokeWidth = `${strokeNum}px`;
 }
 
+function copyGokturk() {
+    const element = document.getElementById('gokturk');
+    const textToCopy = element.value;
+   
+    element.select();
+   
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            console.log('Text copied to clipboard');
+            setTimeout(() => {
+                document.getSelection().removeAllRanges();
+                console.log('Text selection cleared');
+            }, 5000);
+        })
+        .catch(err => {
+            console.error('Failed to copy text: ', err);
+            document.getSelection().removeAllRanges();
+        });
+}
 
 // download as PNG
 function downloadAsPng() {
