@@ -1,85 +1,70 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
-const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+let currentAdjustMode = 'size';
+
+function setAdjustMode(mode) {
+    currentAdjustMode = mode;
+}
+
+function adjustProperty(action) {
+    if (currentAdjustMode === 'size') {
+        changeSize(action);
+    } else if (currentAdjustMode === 'spacing') {
+        changeLetterSpacing(action);
+    } else if (currentAdjustMode === 'stroke') {
+        changeStrokeSize(action);
+    }
+}
+
 function changeLetterSpacing(action) {
     const element = document.getElementById('gokturk');
     const currentSpacingPx = parseFloat(window.getComputedStyle(element).letterSpacing) || 0;
     const fontSize = parseFloat(window.getComputedStyle(element).fontSize);
     let spacingEm = currentSpacingPx / fontSize;
-   
-    const increment = 0.02; // in em
+
+    const increment = 0.02;
     if (action === 'increase') {
         spacingEm = Math.min(0.38, spacingEm + increment);
     } else if (action === 'decrease') {
         spacingEm = Math.max(-0.14, spacingEm - increment);
     }
-   
+
     element.style.letterSpacing = `${spacingEm}em`;
 }
+
 function changeSize(action) {
     const element = document.getElementById('gokturk');
-    let currentSize = window.getComputedStyle(element).fontSize;
-    let sizeNum = parseFloat(currentSize);
+    let sizeNum = parseFloat(window.getComputedStyle(element).fontSize);
     let target;
-   
+
     if (action === 'increase') {
         target = sizeNum * 1.08;
-    } else if (action === 'decrease') {
+    } else {
         target = sizeNum * 0.92;
     }
-  
+
     let newSize = Math.round(target / 2) * 2;
-   
-    if (action === 'increase' && newSize > 800) {
-        newSize = 800;
-    } else if (action === 'decrease' && newSize < 16) {
-        newSize = 14;
-    }
-   
+
+    if (action === 'increase' && newSize > 800) newSize = 800;
+    if (action === 'decrease' && newSize < 16) newSize = 14;
+
     element.style.fontSize = `${newSize}px`;
 }
-function changeFont(fontName) {
-    const element = document.getElementById('gokturk');
-    element.style.fontFamily = fontName;
-}
-document.getElementById('fontRadioGroup').addEventListener('change', function(event) {
-    const fontName = event.target.value;
-    const element = document.getElementById('gokturk');
-    element.style.fontFamily = fontName;
-});
-function copyGokturk() {
-    const element = document.getElementById('gokturk');
-    const textToCopy = element.value;
-   
-    element.select();
-   
-    navigator.clipboard.writeText(textToCopy)
-        .then(() => {
-            console.log('Text copied to clipboard');
-            setTimeout(() => {
-                document.getSelection().removeAllRanges();
-                console.log('Text selection cleared');
-            }, 5000);
-        })
-        .catch(err => {
-            console.error('Failed to copy text: ', err);
-            document.getSelection().removeAllRanges();
-        });
-}
+
 function changeStrokeSize(action) {
     const element = document.getElementById('gokturk');
-    let currentStrokeWidth = window.getComputedStyle(element).webkitTextStrokeWidth || '0px';
-    let strokeNum = parseFloat(currentStrokeWidth) || 0;
-   
+    let strokeNum = parseFloat(window.getComputedStyle(element).webkitTextStrokeWidth) || 0;
+
     if (action === 'increase' && strokeNum < 99) {
         strokeNum += 1;
     } else if (action === 'decrease' && strokeNum > 0) {
         strokeNum -= 1;
     }
-   
+
     element.style.webkitTextStrokeWidth = `${strokeNum}px`;
     element.style.textStrokeWidth = `${strokeNum}px`;
 }
+
 
 // download as PNG
 function downloadAsPng() {
