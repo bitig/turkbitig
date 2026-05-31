@@ -164,6 +164,7 @@ input[type="color"] {
   width: 100%;
   max-width: 1600px;
   font-family:'tbldamga';
+  font-size: 76px;
   padding:0.12em;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
@@ -609,6 +610,7 @@ body, input, textarea {
   .uuu {
     height: 320px;
     min-height: 160px;
+    font-size: 96px;
   }
   .uuuu {
     font-size: 72px;
