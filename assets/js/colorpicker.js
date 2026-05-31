@@ -3,8 +3,8 @@
 // layout
 const tabBarHeight = 22;      
 const colorCellHeight = 9;   
-const gridCols = 14;          
-const gridRows = 6;          
+const gridCols = 18;          
+const gridRows = 8;          
 const colors = generateColors();
 
 const gridHeight = gridRows * colorCellHeight; // 120px
@@ -203,7 +203,7 @@ function setupPickerWithTabs(canvas, updatePreview) {
   // draw the canvas
   function redrawFullCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const specialColumnWidth = 0.2 * canvas.width;
+    const specialColumnWidth = 0.16 * canvas.width;
     const colorGridWidth = canvas.width - specialColumnWidth;
     const colorCellWidth = colorGridWidth / gridCols;
     drawHorizontalTabs(ctx, canvas.width, numberOfTabs);
@@ -214,7 +214,7 @@ function setupPickerWithTabs(canvas, updatePreview) {
   // color picking
   function pickColorAt(x, y) {
     const tabWidth = canvas.width / numberOfTabs;
-    const specialColumnWidth = 0.2 * canvas.width;
+    const specialColumnWidth = 0.16 * canvas.width;
     const colorGridWidth = canvas.width - specialColumnWidth;
     const colorCellWidth = colorGridWidth / gridCols;
 

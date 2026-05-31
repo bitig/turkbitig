@@ -38,7 +38,7 @@ text-stroke-width: 1px;}
 h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .sitenav {position: relative;}
 .content {max-width: 1600px;margin-top:0;background-color:#DCDCDC;}
-.picker-block2{width:56%;padding:0;}
+.colorblock{width:50%;padding:0;}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
@@ -83,34 +83,14 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
 
-<div class="adjust-controls">
-<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
-<tr>
-<td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;&nbsp;+&nbsp;&nbsp;</big></button></td>
-<td>&nbsp;</td>
-<td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;&nbsp;−&nbsp;&nbsp;</big></button></td>
-<td>&nbsp;&nbsp;</td>
-<td nowrap style="vertical-align:middle;"><label>&nbsp;Boy&nbsp;<input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)"></label></td>
-<td></td>
-<td nowrap style="vertical-align:middle;"><label>&nbsp;Kıyı&nbsp;<input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)"></label></td>
-<td></td>
-<td nowrap style="vertical-align:middle;"><label>&nbsp;Ara&nbsp;<input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)"></label></td>
-<td width="90%">&nbsp;</td>
-</tr>
-</table>
-</div>
 
 <table border="0" class="fonttable">
 <tr>
-<td colspan="3">Font seç (30+)</td>
-<td>Renk</td>
-<td style="text-align:right;"><input type="text" id="colorcode" style="font-size:1rem;text-transform:uppercase;width:90%;" maxlength="11" spellcheck="false"></td>
+<td colspan="3">Font ayarları <span style="float:right">Renk&nbsp;</span></td>
+<td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div>
 </tr>
 
-<tr>
-<td colspan="3" class="ft-cell"><button id="fpBtnCurr" class="current"></button></td>
-<td class="ft-cell" rowspan="3" colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div>
-</tr>
+<tr><td colspan="3"><button id="fpBtnCurr" class="current"></button></td></tr>
 
 <tr>
 <td><button id="fpBtnDown">&nbsp;▼&nbsp;</button></td>
@@ -118,6 +98,20 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td><button id="fpBtnReset">Altyazılı</button></td>
 </tr>
 </table>
+
+<div class="adjust-controls">
+<table border="0" class="fonttable">
+<tr>
+<td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;&nbsp;+&nbsp;&nbsp;</big></button></td>
+<td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;&nbsp;−&nbsp;&nbsp;</big></button></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Boy&nbsp;<input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Kıyı&nbsp;<input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Ara&nbsp;<input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)"></label></td>
+<td>&nbsp;&nbsp;</td>
+<td nowrap style="vertical-align:middle;"><input type="text" id="colorcode" style="width:96%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
+</tr>
+</table>
+</div>
 
 <hr>
 
@@ -140,6 +134,8 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <ul>
 <li><a href="/gokturk-alfabesi/gokturkce-turk.html">"Türk" nasıl yazılır?</a></li>
 <li><a href="/isimler/kiz.html">Göktürkçe yazılı isimler</a></li>
+<li><a href="/gokturk-alfabesi/">Göktürkçe kuralları</a></li>
+<li><a href="/orhun-yazitlari/"><green>Orhun Yazıtları</green></a></li>
 <li><a href="/iletisim.html">İletişim / bağış yapın</a></li>
 </ul>
 
