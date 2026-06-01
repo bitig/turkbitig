@@ -43,7 +43,7 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 
 #clearButton {padding:5px;}
 #fpBtnUp, #fpBtnDown, #fpBtnReset {padding:8px;width: 100%; outline: none;}  
-#fpBtnCurr {width: 96%;border: 1px solid #333;background: #EEE;text-align:left;padding:3px;border-radius:5px;}
+#fpBtnCurr {wwidth: 96%;bborder: 1px solid #333;padding:3px;border-radius:5px;}
 .ft-cell {width: 38%;}
 
 .adjust-controls label {
@@ -99,11 +99,11 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td colspan="3">Font seç <span style="float:right">Renk&nbsp;</span></td>
+<td colspan="3">&nbsp;</td>
 <td rowspan="3">&nbsp;</div>
 <td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div>
 </tr>
-<tr><td colspan="3"><div id="fpBtnCurr" class="current"></div></td></tr>
+<tr><td nowrap colspan="3">Font:&nbsp;<b><span id="fpBtnCurr" class="current"></span></b></td></tr>
 <tr>
 <td><button id="fpBtnDown">&nbsp;▼&nbsp;</button></td>
 <td><button id="fpBtnUp">&nbsp;▲&nbsp;</button></td>
