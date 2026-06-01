@@ -1,12 +1,25 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
 
 let currentAdjustMode = 'size';
+let resetTimer = null;
+const DEFAULT_MODE = 'size';
 
 function setAdjustMode(mode) {
     currentAdjustMode = mode;
+    startResetTimer();
+}
+
+function startResetTimer() {
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => {
+        currentAdjustMode = DEFAULT_MODE;
+        const defaultRadio = document.querySelector('input[name="adjustMode"][value="' + DEFAULT_MODE + '"]');
+        if (defaultRadio) defaultRadio.checked = true;
+    }, 10000);
 }
 
 function adjustProperty(action) {
+    startResetTimer();
     if (currentAdjustMode === 'size') {
         changeSize(action);
     } else if (currentAdjustMode === 'spacing') {
