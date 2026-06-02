@@ -178,85 +178,71 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <li><a href="/isimler/kiz.html">Göktürkçe isimler</a></li>
 </ul>
 
-    <script>
-        const fontPicker = document.getElementById('fontPicker');
-        const gokturkTextarea = document.getElementById('gokturk');
-        const controller = document.getElementById('fontController');
-        
-        const btnUp = document.getElementById('btnUp');
-        const btnDown = document.getElementById('btnDown');
-        const btnReset = document.getElementById('btnReset');
+<script>
+  const fontPicker = document.getElementById('fontPicker');
+  const gokturkTextarea = document.getElementById('gokturk');
+  const controller = document.getElementById('fontController');
+  const btnUp = document.getElementById('btnUp');
+  const btnDown = document.getElementById('btnDown');
+  const btnReset = document.getElementById('btnReset');
 
-        let scrollInterval = null;
-        const scrollSpeed = 150; 
+  let scrollInterval = null;
+  let holdTimeout = null;
+  const scrollSpeed = 100; // auto-scroll speed
+  const holdDelay = 250; //  auto-scroll delay
 
-        function applyFont() {
-            gokturkTextarea.style.fontFamily = fontPicker.value;
-        }
+  function applyFont() {
+      gokturkTextarea.style.fontFamily = fontPicker.value;
+  }
 
-        function changeFontIndex(direction) {
-            let currentIndex = fontPicker.selectedIndex;
-            const maxIndex = fontPicker.options.length - 1;
+  function changeFontIndex(direction) {
+      const i = fontPicker.selectedIndex;
+      const max = fontPicker.options.length - 1;
+      if (direction === 'up' && i > 0) { fontPicker.selectedIndex = i - 1; applyFont(); }
+      else if (direction === 'down' && i < max) { fontPicker.selectedIndex = i + 1; applyFont(); }
+      else { stopScroll(); }
+  }
 
-            if (direction === 'up') {
-                fontPicker.selectedIndex = (currentIndex <= 0) ? maxIndex : currentIndex - 1;
-            } else if (direction === 'down') {
-                fontPicker.selectedIndex = (currentIndex >= maxIndex) ? 0 : currentIndex + 1;
-            }
-            applyFont();
-        }
+  function startScroll(direction) {
+      stopScroll();
+      changeFontIndex(direction); // immediate single step on press
+      holdTimeout = setTimeout(() => {
+          scrollInterval = setInterval(() => changeFontIndex(direction), scrollSpeed);
+      }, holdDelay);
+  }
 
-        function startScroll(direction) {
-            stopScroll();
-            changeFontIndex(direction); 
-            scrollInterval = setInterval(() => {
-                changeFontIndex(direction);
-            }, scrollSpeed);
-        }
+  function stopScroll() {
+      if (holdTimeout) { clearTimeout(holdTimeout); holdTimeout = null; }
+      if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; }
+  }
 
-        function stopScroll() {
-            if (scrollInterval) {
-                clearInterval(scrollInterval);
-                scrollInterval = null;
-            }
-        }
+  btnUp.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('up'); });
+  btnDown.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('down'); });
+  document.addEventListener('mouseup', stopScroll);
+  document.addEventListener('mouseleave', stopScroll);
 
-        btnUp.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('up'); });
-        btnDown.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('down'); });
-        
-        document.addEventListener('mouseup', stopScroll);
-        document.addEventListener('mouseleave', stopScroll);
+  btnUp.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('up'); }, {passive: false});
+  btnDown.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('down'); }, {passive: false});
+  document.addEventListener('touchend', stopScroll);
+  document.addEventListener('touchcancel', stopScroll);
 
-        btnUp.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('up'); }, {passive: false});
-        btnDown.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('down'); }, {passive: false});
-        
-        document.addEventListener('touchend', stopScroll);
-        document.addEventListener('touchcancel', stopScroll);
+  function resetFont() {
+      stopScroll();
+      fontPicker.selectedIndex = 0;
+      applyFont();
+  }
 
-        function resetFont() {
-            stopScroll();
-            fontPicker.selectedIndex = 0;
-            applyFont();
-        }
+  btnReset.addEventListener('click', resetFont);
+  btnReset.addEventListener('touchstart', (e) => { e.preventDefault(); resetFont(); }, {passive: false});
 
-        btnReset.addEventListener('click', resetFont);
-        btnReset.addEventListener('touchstart', (e) => { e.preventDefault(); resetFont(); }, {passive: false});
+  controller.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') { e.preventDefault(); changeFontIndex('up'); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); changeFontIndex('down'); }
+  });
 
-
-        controller.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowUp') {
-                e.preventDefault(); 
-                changeFontIndex('up');
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault(); 
-                changeFontIndex('down');
-            }
-        });
-
-        fontPicker.addEventListener('change', applyFont);
-
-        applyFont();
-    </script>
+  fontPicker.addEventListener('change', applyFont);
+  applyFont();
+</script>
 
 <script src="/assets/js/2gokturkce.js"></script>
 <script src="/assets/js/2colorpicker.js"></script>
