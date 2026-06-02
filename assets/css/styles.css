@@ -481,6 +481,8 @@ button {
   user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+ -webkit-tap-highlight-color: transparent;
+ touch-action: manipulation;
 }
 
 button:active {

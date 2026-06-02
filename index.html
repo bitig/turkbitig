@@ -41,9 +41,11 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 #btnUp, #btnDown, #btnReset {padding:8px;width: 100%; outline: none;}  
 #fontPicker {width:100%;padding:4px;background-color:#FFF;border-radius:5px;}
 
-
-button {-webkit-tap-highlight-color: transparent;}
-button:active {background-color: #FFF;}
+button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
+button:active {
+  filter: brightness(110%);
+  box-shadow: 1px 1px 1px #666 inset;
+}
 </style>
 
 <script>
