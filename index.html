@@ -75,26 +75,14 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
 
-<div class="adjust-controls">
-<table border="0" class="fonttable">
-<tr>
+<table border="0" class="fonttable"><tr>
 <td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;&nbsp;+&nbsp;&nbsp;</big></button></td>
 <td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;&nbsp;−&nbsp;&nbsp;</big></button></td>
-
-<td nowrap style="vertical-align:middle;">
-<label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy</label></td>
-
-<td nowrap style="vertical-align:middle;">
-<label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı</label></td>
-
-
-<td nowrap style="vertical-align:middle;">
-<label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
-<td>&nbsp;&nbsp;</td>
-<td nowrap style="vertical-align:middle;"><input type="text" id="colorcode" style="width:96%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
-</tr>
-</table>
-</div>
+<td nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy</label></td>
+<td nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı</label></td>
+<td nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
+<td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="width:80%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
+</tr></table>
 
 <table border="0" class="fonttable">
 <tr>
