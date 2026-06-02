@@ -38,8 +38,8 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#btnUp, #btnDown, #btnReset {padding:8px;width: 100%; outline: none;}  
-#fontPicker {width:100%;padding:4px;background-color:#FFF;border-radius:5px;}
+#btnUp, #btnDown, #btnPlus, #btnMinus {padding:8px 1px;width: 90%; outline: none;}  
+#fontPicker {width:95%;padding:4px;background-color:#FFF;border-radius:5px;}
 
 button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
 button:active {
@@ -75,24 +75,20 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
 
-<table border="0" class="fonttable"><tr>
-<td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;&nbsp;+&nbsp;&nbsp;</big></button></td>
-<td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;&nbsp;−&nbsp;&nbsp;</big></button></td>
-<td nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy</label></td>
-<td nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı</label></td>
-<td nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
-<td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="width:80%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
-</tr></table>
-
 <table border="0" class="fonttable">
 <tr>
-<td colspan="3">Font</td>
-<td rowspan="3">&nbsp;</td>
+<td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;−&nbsp;</button></td>
+<td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="width:80%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
+</tr>
+
+<tr>
+<td colspan="2" nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy</label><label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı</label><label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
 <td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
 
 <tr>
-<td nowrap colspan="3">
+<td nowrap colspan="2">
 <select id="fontPicker" name="fonts">
   <option value="tbldamga">Altyazılı</option>
   <option value="bala">Bala</option>
@@ -140,7 +136,6 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <tr>
 <td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
 <td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
-<td><button id="btnReset">&nbsp;◼&nbsp;</button></td>
 </tr>
 </table>
 
