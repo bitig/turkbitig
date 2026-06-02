@@ -38,14 +38,10 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#btnUp, #btnDown, #btnPlus, #btnMinus, #btnReset {padding:8px 1px;width: 96%; outline: none;}  
+#btnUp, #btnDown, #btnPlus, #btnMinus, #btnReset {padding:6px; width: 96%; outline: none;}  
 #fontPicker {width:99%;padding:4px;background-color:#FFF;border-radius:5px;}
 
 button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
-button:active {
-  filter: brightness(110%);
-  box-shadow: 1px 1px 1px #666 inset;
-}
 </style>
 
 <script>
@@ -83,12 +79,10 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td rowspan="4">&nbsp;</td>
 <td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="width:90%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
 </tr>
-
 <tr>
-<td colspan="3" nowrap style="vertical-align:middle;"><label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy</label><label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı</label><label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
+<td colspan="3" nowrap style="padding:6px 0px;vertical-align:middle;"><label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy&nbsp;&nbsp;</label><label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı&nbsp;&nbsp;</label><label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
 <td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
-
 <tr>
 <td nowrap colspan="3">
 <select id="fontPicker" name="fonts">
@@ -132,9 +126,7 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
   <option value="yaksi">Yakşı</option>
   <option value="yaksib">Yakşı(K)</option>
   <option value="tbldamga2">Öğrenci için</option>
-
 </td></tr>
-
 <tr>
 <td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
 <td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
