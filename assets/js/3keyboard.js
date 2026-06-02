@@ -29,6 +29,33 @@ function adjustProperty(action) {
     }
 }
 
+function resetProperty() {
+    startResetTimer();
+    if (currentAdjustMode === 'size') {
+        resetSize();
+    } else if (currentAdjustMode === 'spacing') {
+        resetLetterSpacing();
+    } else if (currentAdjustMode === 'stroke') {
+        resetStrokeSize();
+    }
+}
+
+function resetSize() {
+    const element = document.getElementById('gokturk');
+    element.style.fontSize = '';
+}
+
+function resetLetterSpacing() {
+    const element = document.getElementById('gokturk');
+    element.style.letterSpacing = '';
+}
+
+function resetStrokeSize() {
+    const element = document.getElementById('gokturk');
+    element.style.webkitTextStrokeWidth = '';
+    element.style.textStrokeWidth = '';
+}
+
 function changeLetterSpacing(action) {
     const element = document.getElementById('gokturk');
     const currentSpacingPx = parseFloat(window.getComputedStyle(element).letterSpacing) || 0;
