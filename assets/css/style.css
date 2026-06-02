@@ -103,10 +103,6 @@ canvas {
   vertical-align: top;
 }
 
-input[type="radio"] {
-  display: none;
-}
-
 input[type="color"] {
   width: 38px;
   height: 53px;

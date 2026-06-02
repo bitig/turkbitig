@@ -42,8 +42,18 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#btnUp, #btnDown, #btnReset {padding:8px;width: 100%; outline: none;}  
-#fontPicker {width: 98%;padding:6px;background-color:#FFF;border-radius:5px;}
+#fpBtnUp, #fpBtnDown, #fpBtnReset {padding:8px;width: 100%; outline: none;}  
+#fpBtnCurr {wwidth: 96%;bborder: 1px solid #333;padding:3px;border-radius:5px;}
+.ft-cell {width: 38%;}
+
+.adjust-controls label {
+  cursor: pointer;
+  padding:5px 1px;
+  border: 2px solid #AAA;
+  border-radius: 4px;
+}
+
+.adjust-controls label:has(input[type="radio"]:checked) {background-color:#EEE;border-color: #C00;}
 </style>
 
 <script>
@@ -78,16 +88,9 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <tr>
 <td nowrap><button type="button" onclick="adjustProperty('increase')"><big>&nbsp;&nbsp;+&nbsp;&nbsp;</big></button></td>
 <td nowrap><button type="button" onclick="adjustProperty('decrease')"><big>&nbsp;&nbsp;−&nbsp;&nbsp;</big></button></td>
-
-<td nowrap style="vertical-align:middle;">
-<label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy</label></td>
-
-<td nowrap style="vertical-align:middle;">
-<label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı</label></td>
-
-
-<td nowrap style="vertical-align:middle;">
-<label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Boy&nbsp;<input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Kıyı&nbsp;<input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)"></label></td>
+<td nowrap style="vertical-align:middle;"><label>&nbsp;Ara&nbsp;<input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)"></label></td>
 <td>&nbsp;&nbsp;</td>
 <td nowrap style="vertical-align:middle;"><input type="text" id="colorcode" style="width:96%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
 </tr>
@@ -96,61 +99,15 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td colspan="3">Font seç:</td>
+<td colspan="3">&nbsp;</td>
 <td rowspan="3">&nbsp;</td>
 <td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
-
+<tr><td nowrap colspan="3">Font:&nbsp;<b><span id="fpBtnCurr" class="current"></span></b></td></tr>
 <tr>
-<td nowrap colspan="3">
-<select id="fontPicker" name="fonts">
-  <option value="tbldamga	">	Altyazılı	</option>
-  <option value="bala	">	Bala	</option>
-  <option value="balab	">	Bala(K)	</option>
-  <option value="balag	">	Bala(G)	</option>
-  <option value="baskurt	">	Başkurt	</option>
-  <option value="bediz	">	Bediz	</option>
-  <option value="bilgekaganyenib	">	Bilge Kağan	</option>
-  <option value="cizgi	">	Çizgi	</option>
-  <option value="damgabb	">	Damga(A)	</option>
-  <option value="damgaregular	">	Damga	</option>
-  <option value="damgagenisbold	">	Damga(GB)	</option>
-  <option value="damgab	">	Damga(K)	</option>
-  <option value="irkbitig	">	Irk Bitig	</option>
-  <option value="gokturkkalem	">	Kalem	</option>
-  <option value="gokturkkalemb	">	Kalem(K)	</option>
-  <option value="gokturkkalemg	">	Kalem(G)	</option>
-  <option value="gokturkkalemwb	">	Kalem(GK)	</option>
-  <option value="karluk	">	Karluk	</option>
-  <option value="kazak	">	Kazak	</option>
-  <option value="kibarbb	">	Kibar(A)	</option>
-  <option value="kibar	">	Kibar	</option>
-  <option value="kibarb	">	Kibar(K)	</option>
-  <option value="kirgiz	">	Kırgız	</option>
-  <option value="koncuy	">	Konçuy	</option>
-  <option value="kultigin	">	Kültiğin	</option>
-  <option value="kultiginbold	">	Kültiğin(K)	</option>
-  <option value="gokturkyeni	">	Kurgu	</option>
-  <option value="gokturkyenib	">	Kurgu(K)	</option>
-  <option value="oguzbold	">	Oğuz (K)	</option>
-  <option value="ozbek	">	Özbek	</option>
-  <option value="damgaroman	">	Roman	</option>
-  <option value="tatarbold	">	Tatar	</option>
-  <option value="tonyukuk	">	Tonyukuk	</option>
-  <option value="tonyukukbold	">	Tonyukuk (K)	</option>
-  <option value="turkbitig	">	Türk Bitig	</option>
-  <option value="turkbitigbold	">	Türk Bitig(K)	</option>
-  <option value="uygur	">	Uygur	</option>
-  <option value="yaksi	">	Yakşı	</option>
-  <option value="yaksib	">	Yakşı(K)	</option>
-  <option value="tbldamga2	">	Öğrenci için	</option>
-
-</td></tr>
-
-<tr>
-<td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
-<td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
-<td><button id="btnReset">&nbsp;◼&nbsp;</button></td>
+<td><button id="fpBtnDown">&nbsp;▼&nbsp;</button></td>
+<td><button id="fpBtnUp">&nbsp;▲&nbsp;</button></td>
+<td><button id="fpBtnReset">&nbsp;◼&nbsp;</button></td>
 </tr>
 </table>
 
@@ -172,10 +129,6 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <hr>
 
-<div id="fontController" tabindex="0">      
-</select>
-</div>
-
 <ul>
 <li><a href="/gokturk-alfabesi/gokturkce-turk.html">"Türk" nasıl yazılır?</a></li>
 <li><a href="/isimler/kiz.html">Göktürkçe isimler</a></li>
@@ -183,85 +136,129 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <li><a href="/gokturk-alfabesi/">Göktürkçe kuralları</a></li>
 </ul>
 
-    <script>
-        const fontPicker = document.getElementById('fontPicker');
-        const gokturkTextarea = document.getElementById('gokturk');
-        const controller = document.getElementById('fontController');
-        
-        const btnUp = document.getElementById('btnUp');
-        const btnDown = document.getElementById('btnDown');
-        const btnReset = document.getElementById('btnReset');
+<script>
+const fonts = [
+  {name:"Altyazılı", font:"tbldamga"},
+  {name:"Bala", font:"bala"},
+  {name:"Bala(K)", font:"balab"},
+  {name:"Bala(G)", font:"balag"},
+  {name:"Başkurt", font:"baskurt"},
+  {name:"Bediz", font:"bediz"},
+  {name:"Bilge Kağan", font:"bilgekaganyenib"},
+  {name:"Çizgi", font:"cizgi"},
+  {name:"Damga(A)", font:"damgabb"},
+  {name:"Damga", font:"damgaregular"},
+  {name:"Damga(GB)", font:"damgagenisbold"},
+  {name:"Damga(K)", font:"damgab"},
+  {name:"Irk Bitig", font:"irkbitig"},
+  {name:"Kalem", font:"gokturkkalem"},
+  {name:"Kalem(K)", font:"gokturkkalemb"},
+  {name:"Kalem(G)", font:"gokturkkalemg"},
+  {name:"Kalem(GK)", font:"gokturkkalemwb"},
+  {name:"Karluk", font:"karluk"},
+  {name:"Kazak", font:"kazak"},
+  {name:"Kibar(A)", font:"kibarbb"},
+  {name:"Kibar", font:"kibar"},
+  {name:"Kibar(K)", font:"kibarb"},
+  {name:"Kırgız", font:"kirgiz"},
+  {name:"Konçuy", font:"koncuy"},
+  {name:"Kültiğin", font:"kultigin"},
+  {name:"Kültiğin(K)", font:"kultiginbold"},
+  {name:"Kurgu", font:"gokturkyeni"},
+  {name:"Kurgu(K)", font:"gokturkyenib"},
+  {name:"Oğuz (K)", font:"oguzbold"},
+  {name:"Özbek", font:"ozbek"},
+  {name:"Roman", font:"damgaroman"},
+  {name:"Tatar", font:"tatarbold"},
+  {name:"Tonyukuk", font:"tonyukuk"},
+  {name:"Tonyukuk (K)", font:"tonyukukbold"},
+  {name:"Türk Bitig", font:"turkbitig"},
+  {name:"Türk Bitig(K)", font:"turkbitigbold"},
+  {name:"Uygur", font:"uygur"},
+  {name:"Yakşı", font:"yaksi"},
+  {name:"Yakşı(K)", font:"yaksib"},
+  {name:"Öğrenci için", font:"tbldamga2"},
+];
 
-        let scrollInterval = null;
-        const scrollSpeed = 150; 
+const HOLD_DELAY_MS = 350;
+const HOLD_REPEAT_MS = 100;
 
-        function applyFont() {
-            gokturkTextarea.style.fontFamily = fontPicker.value;
-        }
+let fp_currentIdx = 0;
 
-        function changeFontIndex(direction) {
-            let currentIndex = fontPicker.selectedIndex;
-            const maxIndex = fontPicker.options.length - 1;
+const fp_btnCurr  = document.getElementById("fpBtnCurr");
+const fp_btnUp    = document.getElementById("fpBtnUp");
+const fp_btnDown  = document.getElementById("fpBtnDown");
+const fp_btnReset = document.getElementById("fpBtnReset");
 
-            if (direction === 'up') {
-                fontPicker.selectedIndex = (currentIndex <= 0) ? maxIndex : currentIndex - 1;
-            } else if (direction === 'down') {
-                fontPicker.selectedIndex = (currentIndex >= maxIndex) ? 0 : currentIndex + 1;
-            }
-            applyFont();
-        }
+function fp_wrap(i) {
+  const n = fonts.length;
+  return i < 0 ? n - 1 : i >= n ? 0 : i;
+}
 
-        function startScroll(direction) {
-            stopScroll();
-            changeFontIndex(direction); 
-            scrollInterval = setInterval(() => {
-                changeFontIndex(direction);
-            }, scrollSpeed);
-        }
+function fp_refresh() {
+  fp_currentIdx = fp_wrap(fp_currentIdx);
+  const currentFontData = fonts[fp_currentIdx];
 
-        function stopScroll() {
-            if (scrollInterval) {
-                clearInterval(scrollInterval);
-                scrollInterval = null;
-            }
-        }
+  fp_btnCurr.textContent = currentFontData.name;
 
-        btnUp.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('up'); });
-        btnDown.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('down'); });
-        
-        document.addEventListener('mouseup', stopScroll);
-        document.addEventListener('mouseleave', stopScroll);
+  const el = document.getElementById("gokturk");
+  if (el) el.style.fontFamily = currentFontData.font;
 
-        btnUp.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('up'); }, {passive: false});
-        btnDown.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('down'); }, {passive: false});
-        
-        document.addEventListener('touchend', stopScroll);
-        document.addEventListener('touchcancel', stopScroll);
+  const inp = document.querySelector('input[name="selectedfont"]');
+  if (inp) inp.value = currentFontData.name;
+}
 
-        function resetFont() {
-            stopScroll();
-            fontPicker.selectedIndex = 0;
-            applyFont();
-        }
+function fp_attachScroll(btn, step) {
+  let to, iv;
+  const go = () => { fp_currentIdx += step; fp_refresh(); };
+  const stop = () => { clearTimeout(to); clearInterval(iv); };
 
-        btnReset.addEventListener('click', resetFont);
-        btnReset.addEventListener('touchstart', (e) => { e.preventDefault(); resetFont(); }, {passive: false});
+  btn.onpointerdown = e => {
+    btn.focus(); 
+    go(); 
+    to = setTimeout(() => iv = setInterval(go, HOLD_REPEAT_MS), HOLD_DELAY_MS);
+  };
+  btn.onpointerup = btn.onpointerleave = btn.onpointercancel = stop;
 
+  btn.onkeydown = e => {
+    if (e.key === "Enter" || e.key === " ") {
+      go();               
+    } 
+    else if (e.key === "ArrowUp") {
+      e.preventDefault(); 
+      fp_currentIdx--;
+      fp_refresh();
+    } 
+    else if (e.key === "ArrowDown") {
+      e.preventDefault(); 
+      fp_currentIdx++;
+      fp_refresh();
+    }
+  };
+}
 
-        controller.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowUp') {
-                e.preventDefault(); 
-                changeFontIndex('up');
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault(); 
-                changeFontIndex('down');
-            }
-        });
+fp_attachScroll(fp_btnUp,   -1);
+fp_attachScroll(fp_btnDown, +1);
+//fp_attachScroll(fp_btnCurr, +1); 
 
-        fontPicker.addEventListener('change', applyFont);
+function fp_resetToFirst() {
+  fp_currentIdx = 0;
+  fp_refresh();
+}
 
-        applyFont();
-    </script>
+fp_btnReset.onpointerdown = e => { 
+  fp_btnReset.focus(); 
+  fp_resetToFirst(); 
+};
+
+fp_btnReset.onkeydown = e => {
+  if (e.key === "Enter" || e.key === " ") {
+    fp_resetToFirst();
+  }
+};
+
+fp_refresh();
+</script>
 
 <script src="/assets/js/2gokturkce.js"></script>
 <script src="/assets/js/2colorpicker.js"></script>
