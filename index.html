@@ -74,11 +74,11 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;<big>+</big>&nbsp;</button></td>
-<td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;<big>−</big>&nbsp;</button></td>
+<td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;＋&nbsp;</button></td>
+<td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;—&nbsp;</button></td>
 <td nowrap>&nbsp;</td>
 <td rowspan="4">&nbsp;</td>
-<td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="width:90%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
+<td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="font-size:1rem;width:90%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
 </tr>
 <tr>
 <td colspan="3" nowrap style="padding-top:6px;"><label><input type="radio" name="adjustMode" value="size" checked onchange="setAdjustMode(this.value)">Boy&nbsp;&nbsp;</label><label><input type="radio" name="adjustMode" value="stroke" onchange="setAdjustMode(this.value)">Kıyı&nbsp;&nbsp;</label><label><input type="radio" name="adjustMode" value="spacing" onchange="setAdjustMode(this.value)">Ara</label></td>
