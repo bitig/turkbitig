@@ -179,93 +179,82 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 </ul>
 
 <script>
-const fontPicker = document.getElementById('fontPicker');
-const gokturkTextarea = document.getElementById('gokturk');
-const controller = document.getElementById('fontController');
+  const fontPicker = document.getElementById('fontPicker');
+  const gokturkTextarea = document.getElementById('gokturk');
+  const controller = document.getElementById('fontController');
+  
+  const btnUp = document.getElementById('btnUp');
+  const btnDown = document.getElementById('btnDown');
+  const btnReset = document.getElementById('btnReset');
 
-const btnUp = document.getElementById('btnUp');
-const btnDown = document.getElementById('btnDown');
-const btnReset = document.getElementById('btnReset');
+  let scrollInterval = null;
+  const scrollSpeed = 100; 
 
-let scrollInterval = null;
-let scrollTimeout = null;
-const scrollSpeed = 100; 
-const initialDelay = 250;
+  function applyFont() {
+      gokturkTextarea.style.fontFamily = fontPicker.value;
+  }
 
-function applyFont() {
-    gokturkTextarea.style.fontFamily = fontPicker.value;
-}
+  function changeFontIndex(direction) {
+      let currentIndex = fontPicker.selectedIndex;
+      const maxIndex = fontPicker.options.length - 1;
 
-function changeFontIndex(direction) {
-    let currentIndex = fontPicker.selectedIndex;
-    const maxIndex = fontPicker.options.length - 1;
+      if (direction === 'up') {
+          fontPicker.selectedIndex = (currentIndex <= 0) ? maxIndex : currentIndex - 1;
+      } else if (direction === 'down') {
+          fontPicker.selectedIndex = (currentIndex >= maxIndex) ? 0 : currentIndex + 1;
+      }
+      applyFont();
+  }
 
-    if (direction === 'up') {
-        if (currentIndex <= 0) {
-            stopScroll();
-            return;
-        }
-        fontPicker.selectedIndex = currentIndex - 1;
-    } else if (direction === 'down') {
-        if (currentIndex >= maxIndex) {
-            stopScroll();
-            return;
-        }
-        fontPicker.selectedIndex = currentIndex + 1;
-    }
-    applyFont();
-}
+  function startScroll(direction) {
+      stopScroll();
+      changeFontIndex(direction); 
+      scrollInterval = setInterval(() => {
+          changeFontIndex(direction);
+      }, scrollSpeed);
+  }
 
-function startScroll(direction) {
-    stopScroll();
-    changeFontIndex(direction);
-    scrollTimeout = setTimeout(() => {
-        scrollInterval = setInterval(() => {
-            changeFontIndex(direction);
-        }, scrollSpeed);
-    }, initialDelay);
-}
+  function stopScroll() {
+      if (scrollInterval) {
+          clearInterval(scrollInterval);
+          scrollInterval = null;
+      }
+  }
 
-function stopScroll() {
-    if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = null;
-    }
-    if (scrollInterval) {
-        clearInterval(scrollInterval);
-        scrollInterval = null;
-    }
-}
+  btnUp.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('up'); });
+  btnDown.addEventListener('mousedown', (e) => { e.preventDefault(); startScroll('down'); });
+  
+  document.addEventListener('mouseup', stopScroll);
+  document.addEventListener('mouseleave', stopScroll);
 
-btnUp.addEventListener('pointerdown', () => startScroll('up'));
-btnDown.addEventListener('pointerdown', () => startScroll('down'));
+  btnUp.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('up'); }, {passive: false});
+  btnDown.addEventListener('touchstart', (e) => { e.preventDefault(); startScroll('down'); }, {passive: false});
+  
+  document.addEventListener('touchend', stopScroll);
+  document.addEventListener('touchcancel', stopScroll);
 
-document.addEventListener('pointerup', stopScroll);
-document.addEventListener('pointercancel', stopScroll);
-window.addEventListener('blur', stopScroll);
+  function resetFont() {
+      stopScroll();
+      fontPicker.selectedIndex = 0;
+      applyFont();
+  }
 
-function resetFont() {
-    stopScroll();
-    fontPicker.selectedIndex = 0;
-    applyFont();
-}
+  btnReset.addEventListener('click', resetFont);
+  btnReset.addEventListener('touchstart', (e) => { e.preventDefault(); resetFont(); }, {passive: false});
 
-btnReset.addEventListener('click', resetFont);
-btnReset.addEventListener('pointerdown', resetFont);
+  controller.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') {
+          e.preventDefault(); 
+          changeFontIndex('up');
+      } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); 
+          changeFontIndex('down');
+      }
+  });
 
-controller.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        changeFontIndex('up');
-    } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        changeFontIndex('down');
-    }
-});
+  fontPicker.addEventListener('change', applyFont);
 
-fontPicker.addEventListener('change', applyFont);
-
-applyFont();
+  applyFont();
 </script>
 
 <script src="/assets/js/2gokturkce.js"></script>
