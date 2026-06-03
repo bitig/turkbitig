@@ -206,14 +206,14 @@ document.addEventListener("DOMContentLoaded", () => {
             let current = parseFloat(textarea.style.letterSpacing) || 0;
             let step = 2; 
             let next = direction === 'up' ? current + step : current - step;
-            next = Math.max(-5, Math.min(next, 50));
+            next = Math.max(-20, Math.min(next, 50));
             textarea.style.letterSpacing = next + 'px';
         } 
         else if (prop === 'textStroke') {
             let current = parseFloat(textarea.style.webkitTextStrokeWidth) || 0;
-            let step = 0.2;
+            let step = 1;
             let next = direction === 'up' ? current + step : current - step;
-            next = Math.max(0, Math.min(next, 5));
+            next = Math.max(0, Math.min(next, 12));
             textarea.style.webkitTextStrokeWidth = next + 'px';
         }
     }
