@@ -105,25 +105,60 @@ function changeStrokeSize(action) {
     element.style.textStrokeWidth = `${strokeNum}px`;
 }
 
-function copyGokturk() {
-    const element = document.getElementById('gokturk');
-    const textToCopy = element.value;
-   
-    element.select();
-   
-    navigator.clipboard.writeText(textToCopy)
-        .then(() => {
-            console.log('Text copied to clipboard');
-            setTimeout(() => {
-                document.getSelection().removeAllRanges();
-                console.log('Text selection cleared');
-            }, 5000);
-        })
-        .catch(err => {
-            console.error('Failed to copy text: ', err);
-            document.getSelection().removeAllRanges();
+
+(function() {
+    const HOLD_DELAY = 400;
+    const HOLD_REPEAT = 100;
+
+    function wireHoldButton(btn, action) {
+        const originalOnclick = btn.onclick;
+
+        btn.onclick = function(e) {
+            if (btn._suppressClick) {
+                btn._suppressClick = false;
+                return;
+            }
+            if (originalOnclick) originalOnclick.call(this, e);
+        };
+
+        btn.style.touchAction = 'manipulation';
+
+        btn.addEventListener('pointerdown', function() {
+            btn._suppressClick = false;
+            btn._holdTimer = setTimeout(function() {
+                btn._suppressClick = true;
+                adjustProperty(action);
+                btn._holdInterval = setInterval(function() {
+                    adjustProperty(action);
+                }, HOLD_REPEAT);
+            }, HOLD_DELAY);
         });
-}
+
+        btn.addEventListener('pointerup', function() {
+            clearTimeout(btn._holdTimer);
+            clearInterval(btn._holdInterval);
+        });
+
+        btn.addEventListener('pointerleave', function() {
+            clearTimeout(btn._holdTimer);
+            clearInterval(btn._holdInterval);
+        });
+
+        btn.addEventListener('pointercancel', function() {
+            clearTimeout(btn._holdTimer);
+            clearInterval(btn._holdInterval);
+        });
+    }
+
+    document.querySelectorAll('button').forEach(function(btn) {
+        const onclick = btn.getAttribute('onclick');
+        if (onclick && onclick.includes("adjustProperty('decrease')")) {
+            wireHoldButton(btn, 'decrease');
+        } else if (onclick && onclick.includes("adjustProperty('increase')")) {
+            wireHoldButton(btn, 'increase');
+        }
+    });
+})();
 
 // download as PNG
 function downloadAsPng() {
@@ -275,3 +310,24 @@ function clearText() {
     document.getElementById('latin').value = '';
     document.getElementById('gokturk').value = '';
 }
+
+function copyGokturk() {
+    const element = document.getElementById('gokturk');
+    const textToCopy = element.value;
+   
+    element.select();
+   
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            console.log('Text copied to clipboard');
+            setTimeout(() => {
+                document.getSelection().removeAllRanges();
+                console.log('Text selection cleared');
+            }, 5000);
+        })
+        .catch(err => {
+            console.error('Failed to copy text: ', err);
+            document.getSelection().removeAllRanges();
+        });
+}
+
