@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (prop === 'fontSize') {
             let current = parseFloat(textarea.style.fontSize);
-            let next = direction === 'up' ? Math.ceil(current * 1.1) : Math.floor(current / 1.1);
+            let next = direction === 'up' ? Math.ceil(current * 1.05) : Math.floor(current / 1.05);
             next = Math.max(12, Math.min(next, 550)); 
             textarea.style.fontSize = next + 'px';
         } 
