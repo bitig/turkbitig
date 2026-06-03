@@ -177,15 +177,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const computedStyle = window.getComputedStyle(textarea);
     const defaults = {
         fontSize: parseFloat(computedStyle.fontSize),
-        textStroke: 0, 
-        letterSpacing: computedStyle.letterSpacing === 'normal' ? 0 : parseFloat(computedStyle.letterSpacing),
+        textStroke: 0,       
+        letterSpacing: 0,    
         fontIndex: 0
     };
 
     textarea.style.fontSize = defaults.fontSize + 'px';
-    textarea.style.letterSpacing = defaults.letterSpacing + 'px';
-    textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'px';
+    textarea.style.letterSpacing = defaults.letterSpacing + 'em'; 
+    textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
     textarea.style.fontFamily = fontPicker.options[defaults.fontIndex].value;
+
+    let radioTimer;
+    function pingRadioActivity() {
+        clearTimeout(radioTimer);
+        radioTimer = setTimeout(() => {
+            document.querySelector('input[name="textProp"][value="fontSize"]').checked = true;
+        }, 10000);
+    }
+
+    for (const radio of radios) {
+        radio.addEventListener('change', pingRadioActivity);
+    }
 
     function getActiveProperty() {
         for (const radio of radios) {
@@ -194,31 +206,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function modifyProperty(direction) {
+        pingRadioActivity(); 
+        
         const prop = getActiveProperty();
         
         if (prop === 'fontSize') {
             let current = parseFloat(textarea.style.fontSize);
             let next = direction === 'up' ? Math.ceil(current * 1.05) : Math.floor(current / 1.05);
-            next = Math.max(12, Math.min(next, 550)); 
+            next = Math.max(12, Math.min(next, 500)); 
             textarea.style.fontSize = next + 'px';
         } 
         else if (prop === 'letterSpacing') {
-            let current = parseFloat(textarea.style.letterSpacing) || 0;
-            let step = 2; 
-            let next = direction === 'up' ? current + step : current - step;
-            next = Math.max(-20, Math.min(next, 50));
-            textarea.style.letterSpacing = next + 'px';
+            let currentStyle = textarea.style.letterSpacing;
+            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
+            
+            let step = 0.05; 
+            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
+            
+            nextEm = Math.max(-0.15, Math.min(nextEm, 0.8)); 
+            textarea.style.letterSpacing = nextEm + 'em';
         } 
         else if (prop === 'textStroke') {
-            let current = parseFloat(textarea.style.webkitTextStrokeWidth) || 0;
-            let step = 1;
-            let next = direction === 'up' ? current + step : current - step;
-            next = Math.max(0, Math.min(next, 12));
-            textarea.style.webkitTextStrokeWidth = next + 'px';
+            let currentStyle = textarea.style.webkitTextStrokeWidth;
+            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
+            
+            let step = 0.01; 
+            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
+            
+            nextEm = Math.max(0, Math.min(nextEm, 0.1));
+            textarea.style.webkitTextStrokeWidth = nextEm + 'em';
         }
     }
 
-function modifyFont(direction) {
+    function modifyFont(direction) {
         let currentIndex = fontPicker.selectedIndex;
         let maxIndex = fontPicker.options.length - 1;
 
@@ -236,8 +256,16 @@ function modifyFont(direction) {
     });
 
     document.getElementById('btnSet').addEventListener('click', () => {
+        pingRadioActivity(); // 3. Listen if they hit the Set button
+        
         const prop = getActiveProperty();
-        textarea.style[prop === 'textStroke' ? 'webkitTextStrokeWidth' : prop] = defaults[prop] + 'px';
+        if (prop === 'textStroke') {
+            textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
+        } else if (prop === 'letterSpacing') {
+            textarea.style.letterSpacing = defaults.letterSpacing + 'em';
+        } else {
+            textarea.style[prop] = defaults[prop] + 'px';
+        }
     });
 
     document.getElementById('btnReset').addEventListener('click', () => {
