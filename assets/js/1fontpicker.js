@@ -1,7 +1,7 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-const fontCellHeight = 20;
+const fontCellHeight = 18;
 const fontGridCols = 6;
-const fontGridRows = 5;
+const fontGridRows = 4;
 const fontFamilies = [
   "tbldamga",
   "tbldamga2",
@@ -95,7 +95,7 @@ function drawFontGrid(ctx, offsetX, offsetY) {
       ctx.strokeRect(x, y, cellWidth, cellHeight);
       // Cell number
       ctx.fillStyle = "#000";
-      ctx.font = "13px sans-serif";
+      ctx.font = "12px sans-serif";
       ctx.fillText(index + 1, x + cellWidth / 2, y + cellHeight / 2);
     }
   }
