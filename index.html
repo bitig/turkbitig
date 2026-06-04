@@ -220,10 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
             let currentStyle = textarea.style.letterSpacing;
             let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
             
-            let step = 0.05; 
+            let step = 0.02; 
             let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
             
-            nextEm = Math.max(-0.15, Math.min(nextEm, 0.8)); 
+            nextEm = Math.max(-0.14, Math.min(nextEm, 0.6)); 
             textarea.style.letterSpacing = nextEm + 'em';
         } 
         else if (prop === 'textStroke') {
