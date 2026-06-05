@@ -318,6 +318,7 @@ td {
 }
 
 .nav {
+  white-space: nowrap;  
   font-weight: bold;
 }
 
@@ -619,11 +620,6 @@ body, input, textarea {
     width:33px;
     height:35px;
   }
-}
-
-red {
-  font-weight:bold;
-  color:#C00;
 }
 
 green {
