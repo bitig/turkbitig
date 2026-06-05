@@ -28,59 +28,10 @@ td, select, option {
 }
 
 @font-face {
-  font-family: 'turkbitig';
-  src: url('/assets/fonts/turkbitig.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'turkbitigbold';
-  src: url('/assets/fonts/turkbitigbold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'tonyukuk';
-  src: url('/assets/fonts/tonyukuk.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'tonyukukbold';
-  src: url('/assets/fonts/tonyukukbold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'tbldamga';
-  src: url('/assets/fonts/tbldamga.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'tbldamga2';
-  src: url('/assets/fonts/tbldamga2.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'irkbitig';
-  src: url('/assets/fonts/irkbitig.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'oguzbold';
-  src: url('/assets/fonts/oguzbold.woff2') format('woff2');
-}
-
-@font-face {
   font-family: 'ozbek';
   src: url('/assets/fonts/ozbek.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'kazak';
-  src: url('/assets/fonts/kazak.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'baskurt';
-  src: url('/assets/fonts/baskurt.woff2') format('woff2');
-}
 
 a:active {
   filter: brightness(106%);
