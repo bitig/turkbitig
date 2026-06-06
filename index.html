@@ -58,6 +58,21 @@ input.selectionStart = input.selectionEnd = input.value.length;
 }}}});
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const latinInput = document.getElementById('latin');
+    const gokturkOutput = document.getElementById('gokturk');
+
+    if (latinInput && gokturkOutput) {
+      latinInput.addEventListener('input', () => {
+        setTimeout(() => {
+          gokturkOutput.scrollTop = gokturkOutput.scrollHeight;
+        }, 0);
+      });
+    }
+  });
+</script>
+
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
 
 <!--ceviri baslar-->
