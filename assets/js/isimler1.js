@@ -34,7 +34,7 @@ document.getElementById('kultiginbold').addEventListener('click', function () {
 });
 
 document.getElementById('gokturkkalembold').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'gokturkkalembold';
+  textContainer.style.fontFamily = 'gokturkkalemg';
   adjustFontSize();
 });
 
