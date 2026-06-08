@@ -12,7 +12,7 @@ body {
 }
 
 body, input, textarea {
-  font-family: sans-serif, damga;
+  font-family: sans-serif, turkbitig;
   font-size: 1.2rem;
 }
 
@@ -21,17 +21,6 @@ button, input, textarea, .colorPicker, .nav a, .path a, .menulink {border-radius
 td, select, option {
   font-size: 1rem;
 }
-
-@font-face {
-  font-family: 'damga';
-  src: url('/assets/fonts/turkbitigweb.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'ozbek';
-  src: url('/assets/fonts/ozbek.woff2') format('woff2');
-}
-
 
 a:active {
   filter: brightness(106%);
