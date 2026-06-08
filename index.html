@@ -24,6 +24,13 @@
 <main>
 
 <style>
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+}
+
 .uuu {color:#059;}
 h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .sitenav {position: relative;}
@@ -73,10 +80,10 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td>Boy</td>
 <td nowrap><button id="bplus" onclick="changeSize('increase')">&nbsp;＋&nbsp;</button></td>
 <td nowrap><button id="bplus" onclick="changeSize('decrease')">&nbsp;—&nbsp;</button></td>
-<td>&nbsp;&nbsp;Kıyı</td>
+<td>&nbsp;Kıyı</td>
 <td nowrap><button id="bplus" onclick="changeStrokeSize('increase')">&nbsp;＋&nbsp;</button></td>
 <td nowrap><button id="bplus" onclick="changeStrokeSize('decrease')">&nbsp;—&nbsp;</button></td>
-<td>&nbsp;&nbsp;Ara</td>
+<td>&nbsp;Ara</td>
 <td nowrap><button id="bplus" onclick="changeLetterSpacing('increase')">&nbsp;＋&nbsp;</button></td>
 <td nowrap><button id="bplus" onclick="changeLetterSpacing('decrease')">&nbsp;—&nbsp;</button></td>
 <td width="90%">&nbsp;</td>
