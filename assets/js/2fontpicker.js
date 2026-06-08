@@ -1,5 +1,5 @@
 // Copyright (C) turkbitig.com. All Rights Reserved.
-const fontCellHeight = 19;
+const fontCellHeight = 20;
 const fontGridCols = 6;
 const fontGridRows = 5;
 
