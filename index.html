@@ -41,7 +41,7 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 
 .fontPicker {cursor: pointer;border:1px solid #666;}
 .colorPicker {cursor: pointer;border:2px solid #777;}
-#bplus {padding:4px 6px;line-height:1;}
+#bplus {padding:6px;line-height:1;}
 #clearButton {padding:5px;}
 </style>
 
@@ -80,12 +80,12 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td>Boy</td>
 <td nowrap><button id="bplus" onclick="changeSize('increase')">&nbsp;＋&nbsp;</button></td>
 <td nowrap><button id="bplus" onclick="changeSize('decrease')">&nbsp;—&nbsp;</button></td>
-<td>&nbsp;Kıyı</td>
-<td nowrap><button id="bplus" onclick="changeStrokeSize('increase')">&nbsp;＋&nbsp;</button></td>
-<td nowrap><button id="bplus" onclick="changeStrokeSize('decrease')">&nbsp;—&nbsp;</button></td>
-<td>&nbsp;Ara</td>
-<td nowrap><button id="bplus" onclick="changeLetterSpacing('increase')">&nbsp;＋&nbsp;</button></td>
-<td nowrap><button id="bplus" onclick="changeLetterSpacing('decrease')">&nbsp;—&nbsp;</button></td>
+<td>&nbsp;&nbsp;Kıyı</td>
+<td nowrap><button id="bplus" onclick="changeStrokeSize('increase')">＋</button></td>
+<td nowrap><button id="bplus" onclick="changeStrokeSize('decrease')">—</button></td>
+<td>&nbsp;&nbsp;Ara</td>
+<td nowrap><button id="bplus" onclick="changeLetterSpacing('increase')">＋</button></td>
+<td nowrap><button id="bplus" onclick="changeLetterSpacing('decrease')">—</button></td>
 <td width="90%">&nbsp;</td>
 </tr>
 </table>
