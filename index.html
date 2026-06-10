@@ -43,8 +43,8 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 .sitenav {position: relative;}
 .content {max-width: 1600px;margin-top:0;background-color:#DCDCDC;}
 
-.picker-block1{width:44%;padding:0;}
-.picker-block2{width:56%;padding:0;}
+.picker-block1{width:50;padding:0;}
+.picker-block2{width:48%;padding:0;}
 
 .fontPicker {cursor: pointer;border:1px solid #666;}
 .colorPicker {cursor: pointer;border:2px solid #777;}
@@ -82,18 +82,17 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
 
-<table border="0" style="margin-bottom:5px;font-size:1.2rem;">
+<table border="0" class="fonttable">
 <tr>
 <td>Boy</td>
 <td nowrap><button id="bplus" onclick="changeSize('increase')">&nbsp;＋&nbsp;</button></td>
 <td nowrap><button id="bplus" onclick="changeSize('decrease')">&nbsp;—&nbsp;</button></td>
-<td>&nbsp;&nbsp;Kıyı</td>
+<td style="width:90%;text-align:right;">Kıyı</td>
 <td nowrap><button id="bplus" onclick="changeStrokeSize('increase')">＋</button></td>
 <td nowrap><button id="bplus" onclick="changeStrokeSize('decrease')">—</button></td>
-<td>&nbsp;&nbsp;Ara</td>
+<td>&nbsp;Aralık</td>
 <td nowrap><button id="bplus" onclick="changeLetterSpacing('increase')">＋</button></td>
 <td nowrap><button id="bplus" onclick="changeLetterSpacing('decrease')">—</button></td>
-<td width="90%">&nbsp;</td>
 </tr>
 </table>
 
@@ -116,8 +115,6 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <!--ceviri biter-->
 
-<hr>
-
 <table border="0" class="fonttable">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
@@ -131,15 +128,16 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <hr>
 
 <ul>
+<li><a href="/gokturk-alfabesi/gokturkce-turk.html">Göktürkçe 'Türk'</a></li>
 <li><a href="/isimler/erkek.html">Göktürkçe isimler</a></li>
-<li><a href="/gokturk-alfabesi/">Göktürkçe kuralları</a></li>
 <li><a href="/orhun-yazitlari/" style="color:#070;"><b>Orhun Yazıtları</b></a></li>
+<li><a href="/gokturk-alfabesi/">Göktürkçe kuralları</a></li>
 <li><a href="/gokturkce/klavye.html"><b>Klavyeli yazıcı</b></a></li>
 </ul>
 
-<script src="/assets/js/2gokturkce.js"></script>
 <script src="/assets/js/2fontpicker.js"></script>
 <script src="/assets/js/2colorpicker.js"></script>
+<script src="/assets/js/2gokturkce.js"></script>
 <script src="/assets/js/2keyboard.js"></script>
 
 <div>

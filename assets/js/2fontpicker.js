@@ -3,7 +3,7 @@ const fontCellHeight = 20;
 const fontGridCols = 6;
 const fontGridRows = 5;
 
-// Single source of truth: each font knows its CSS family and display name
+// fonts
 const fonts = [
   { family: "tbldamga",        name: "Altyazılı" },
   { family: "tbldamga2",       name: "Öğrenci için" },
@@ -39,7 +39,7 @@ const fonts = [
 
 let currentFont = fonts[0].family;
 
-// Font picker grid drawing
+// Font grid
 function drawFontGrid(ctx, offsetX, offsetY) {
   const cellWidth = fontCanvas.width / fontGridCols;
   const cellHeight = fontCellHeight;
@@ -100,7 +100,7 @@ function updateSelectedFontInput() {
   }
 }
 
-// Font picker mouse/touch setup
+// mouse/touch
 function setupFontPicker(canvas, updatePreview) {
   const ctx = canvas.getContext("2d");
   let picking = false;
@@ -165,7 +165,7 @@ function setupFontPicker(canvas, updatePreview) {
     picking = false;
   });
 
-  // Add keyboard navigation
+  // keyboard navigation
   canvas.tabIndex = 0; // Make canvas focusable
   canvas.addEventListener("keydown", function(e) {
     const idx = fonts.findIndex(f => f.family === currentFont);
