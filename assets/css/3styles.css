@@ -99,7 +99,6 @@ input[type="color"] {
   height: 200px;
   min-height: 80px;
   width: 100%;
-  max-width: 1600px;
   font-family:'tbldamga';
   font-size: 60px;
   padding:0.12em;
@@ -122,7 +121,6 @@ input[type="color"] {
   overflow-wrap: break-word;
   min-height: 110px;
   width: 100%;
-  max-width: 1600px;
   font-family:'tbldamga';
   padding:0.12em;
   box-sizing: border-box;
@@ -248,14 +246,11 @@ td {
 }
 
 .sitenav {
-  top: 0px;
+  height:50px;
   width: 100%;
-  position: fixed;
   padding-bottom: 6px;
-  z-index: 1000;
-  box-shadow: 3px 3px 5px #999;
   background-color: #EEE;
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 2px solid #999;
 }
 
 .nav {
@@ -441,9 +436,9 @@ button:active {
 }
 
 .content {
-  margin-top:50px;
+  margin-top:0px;
+  border-top:6px solid #EEE;
   max-width: 700px;
-  padding-top: 9px;
   padding-left: 2%;
   padding-right: 2%;
   background-color: #FFF;
@@ -541,7 +536,7 @@ body, input, textarea {
   }
 
   .uuu {
-    height: 399px;
+    height: 333px;
     min-height: 160px;
     font-size: 96px;
   }
