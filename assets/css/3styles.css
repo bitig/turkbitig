@@ -13,7 +13,7 @@ body {
 
 body, input, textarea {
   font-family: sans-serif, turkbitig;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 button, input, textarea, .colorPicker, .nav a, .path a, .menulink {border-radius:4px;}
@@ -462,13 +462,13 @@ red {
 
 .path {
   font-weight: bold;
-  padding-top: 16px;
+  padding: 10px 0px;
   border-bottom: 1px solid #999;
   margin-bottom: 16px;
 }
 
 .path a {
-  text-decoration: none;
+  ttext-decoration: none;
   padding: 6px 0px;
   padding-bottom: 8px;
   color: #333;
@@ -522,7 +522,7 @@ red {
 @media only screen and (min-width: 600px) {
 
 body, input, textarea {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
   .keytable {
