@@ -197,20 +197,20 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 130%;
+  font-size: 1.4rem;
 }
 
 h2 {
-  font-size: 120%;
+  font-size: 1.3rem;
 }
 
 h3 {
-  font-size: 110%;
+  font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
 h4 {
-  font-size: 100%;
+  font-size: 1.1rem;
   margin-bottom: 5px;
 }
 
@@ -243,30 +243,6 @@ td {
   font-style: oblique;
   padding-left: 1%;
   width: 100%;
-}
-
-.sitenav {
-  height:50px;
-  width: 100%;
-  padding-bottom: 6px;
-  background-color: #E6E6E6;
-  border-bottom: 3px solid #999;
-}
-
-.nav {
-  white-space: nowrap;  
-}
-
-.nav a {
-  padding: 5px 3px;
-  white-space: nowrap;
-  font-weight: bold;
-  border: 1px solid transparent;
-}
-
-.nav a.this {
-  border: 1px solid #999;
-  text-decoration: none;
 }
 
 .ibtr {
@@ -460,18 +436,45 @@ red {
   color: #C00;
 }
 
+.sitenav {
+  height:50px;
+  width: 100%;
+  padding-bottom: 6px;
+  background-color: #E6E6E6;
+  border-bottom: 3px solid #999;
+}
+
 .path {
-  font-weight: bold;
-  padding: 10px 0px;
-  border-bottom: 1px solid #999;
-  margin-bottom: 16px;
+  padding: 3px;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #EEE, #FFF);
 }
 
 .path a {
-  ttext-decoration: none;
+  text-decoration: none;
   padding: 6px 0px;
   padding-bottom: 8px;
   color: #333;
+}
+
+.path a.parent {
+  font-weight: bold;
+}
+
+.nav {
+  white-space: nowrap;  
+}
+
+.nav a {
+  text-decoration: none;
+  padding: 5px 3px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.nav a.this {
+  border: 1px solid #999;
+  text-decoration: none;
 }
 
 .logo {
