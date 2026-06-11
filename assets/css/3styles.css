@@ -255,12 +255,12 @@ td {
 
 .nav {
   white-space: nowrap;  
-  font-weight: bold;
 }
 
 .nav a {
   padding: 5px;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .nav a.this {
