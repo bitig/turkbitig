@@ -18,7 +18,7 @@ body, input, textarea {
 
 button, input, textarea, .colorPicker, .nav a, .path a, .menulink {border-radius:4px;}
 
-td, select, option {
+select, option {
   font-size: 1rem;
 }
 
@@ -265,15 +265,13 @@ td {
 .menu {
   float: right;
   margin-top: 6px;
-  margin-right: 5%;
+  margin-right: 3%;
 }
 
 .menulink {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 1.8em;
   text-decoration: none;
   border: 1px solid #999;
-  padding: 3px;
 }
 
 .menulink:active {
@@ -361,16 +359,18 @@ ul li {
   unicode-bidi: bidi-override;
   font-family: 'damga';
   text-align:right;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
 .tamga {
   direction: rtl;
   unicode-bidi: bidi-override;
   font-family: 'tamga';
-  text-align: center;
+  text-align: right;
   border: 1px solid #999;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 1px 5px;
+  border-radius: 3px;
 }
 
 #isim {
@@ -437,9 +437,9 @@ red {
 }
 
 .sitenav {
+  line-height:1;
   height:50px;
   width: 100%;
-  padding-bottom: 6px;
   background-color: #E6E6E6;
   border-bottom: 3px solid #999;
 }
