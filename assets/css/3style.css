@@ -264,12 +264,12 @@ td {
 
 .menu {
   float: right;
-  margin-top: 6px;
+  margin-top: 8px;
   margin-right: 3%;
 }
 
 .menulink {
-  font-size: 1.8em;
+  font-size: 2rem;
   text-decoration: none;
   border: 1px solid #999;
 }
@@ -478,7 +478,6 @@ red {
 }
 
 .logo {
-  vertical-align: bottom;
   width: 200px;
   height: 46px;
   filter: drop-shadow(1px 1px 0px #FFF);
