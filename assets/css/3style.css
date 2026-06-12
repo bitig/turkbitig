@@ -262,23 +262,6 @@ td {
   max-width: 30%;
 }
 
-.menu {
-  float: right;
-  margin-top: 8px;
-  margin-right: 3%;
-}
-
-.menulink {
-  font-size: 2rem;
-  text-decoration: none;
-  border: 1px solid #999;
-}
-
-.menulink:active {
-  color: #666;
-  background-color: #EEE;
-}
-
 hr {
   height: 2px;
   border: 0px;
@@ -438,10 +421,22 @@ red {
 
 .sitenav {
   line-height:1;
-  height:50px;
   width: 100%;
   background-color: #E6E6E6;
   border-bottom: 3px solid #999;
+}
+
+.menu {
+  width:50%;
+  text-align: right;
+  padding: 8px;
+  padding-right: 3%;
+  font-size: 2rem;
+}
+
+.menulink {
+  text-decoration: none;
+  border: 1px solid #999;
 }
 
 .path {
@@ -479,6 +474,7 @@ red {
 
 .logo {
   width: 200px;
+  min-width: 200px;
   height: 46px;
   filter: drop-shadow(1px 1px 0px #FFF);
 }
