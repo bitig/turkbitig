@@ -426,10 +426,18 @@ red {
   border-bottom: 3px solid #999;
 }
 
+.logo {
+  width: 200px;
+  min-width: 200px;
+  height: 46px;
+  min-height: 46px;
+  filter: drop-shadow(1px 1px 0px #FFF);
+}
+
 .menu {
   width:50%;
   text-align: right;
-  padding: 8px;
+  padding: 10px;
   padding-right: 3%;
   font-size: 2rem;
 }
@@ -470,13 +478,6 @@ red {
 .nav a.this {
   border: 1px solid #999;
   text-decoration: none;
-}
-
-.logo {
-  width: 200px;
-  min-width: 200px;
-  height: 46px;
-  filter: drop-shadow(1px 1px 0px #FFF);
 }
 
 .ar {
