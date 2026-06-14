@@ -4,7 +4,7 @@
 <title>Göktürkçe Çeviri</title>
 <meta name="description" content="Göktürkçe çeviri yazıcı ile isim yazabilirsiniz. Göktürk Alfabesi sağdan sola doğru yazılır. 4 ünlü, 25 ünsüz ve 9 çift sesli olarak toplam 38 harfden oluşur.">
 <meta name="keywords" content="Göktürkçe, Göktürk Alfabesi, Orhun alfabesi, Orhun yazısı, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı, Göktürk alfabesi çeviri, Göktürkçe Türk, eski Türk alfabesi, eski Türk yazısı">
-<link rel="canonical" href="https://www.turkbitig.com/">
+<link rel="canonical" href="https://www.turkbitig.com/gokturkce/">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,30 +32,22 @@ body {
   user-select: none; 
 }
 
-.uuu {
-  color:#09D;
-  -webkit-text-stroke-color: #000000;
-  text-stroke-color: #000000;
-  -webkit-text-stroke-width: 1px;
-  text-stroke-width: 1px;
-}
+.uuu {color:#09D;}
 
 h1, h2, h3 {background:linear-gradient(to right, #DDD, #dddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
 hr {background:linear-gradient(to right, #bbb, #ddd); }
-td {font-size:1rem;}
 
-.content {max-width: 100%;background-color:#dcdcdc;}
-
-.picker-block1{width:50;padding:0;}
-.picker-block2{width:48%;padding:0;}
-
-.fontPicker {cursor: pointer;border:1px solid #666;}
+.sitenav {position: relative;}
+.content {max-width: 1600px;margin-top:0;background-color:#DCDCDC;}
+.colorblock{width:50%;padding:0;}
 .colorPicker {cursor: pointer;border:2px solid #777;}
-#bplus {padding:6px;line-height:1;}
-#clearButton {padding:5px;}
 
-#colorcode {border:1px solid #666; font-size:1rem;text-transform:uppercase;width:90%;}
-#fontbox {border:1px solid #999; font-size:1rem;color:#000;width:90%;}
+#clearButton {padding:5px;}
+#btnUp, #btnDown, #btnReset {padding:6px; width: 94%; outline: none;}  
+#btnPlus, #btnMinus, #btnSet {padding:6px; line-height:1;width: 94%; outline: none;}  
+#fontPicker {width:99%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
+
+button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
 </style>
 
 <script>
@@ -67,16 +59,28 @@ if (input) {
 input.focus();
 if (input.value.length > 0) {
 input.selectionStart = input.selectionEnd = input.value.length;
-}
-}
-}
-});
+}}}});
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const latinInput = document.getElementById('latin');
+    const gokturkOutput = document.getElementById('gokturk');
+
+    if (latinInput && gokturkOutput) {
+      latinInput.addEventListener('input', () => {
+        setTimeout(() => {
+          gokturkOutput.scrollTop = gokturkOutput.scrollHeight;
+        }, 0);
+      });
+    }
+  });
 </script>
 
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
 
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk </textarea></div>
+<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false"></textarea></div>
 
 <script>
 const input = document.getElementById('latin');
@@ -90,34 +94,72 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td>Boy</td>
-<td nowrap><button id="bplus" onclick="changeSize('increase')">&nbsp;＋&nbsp;</button></td>
-<td nowrap><button id="bplus" onclick="changeSize('decrease')">&nbsp;—&nbsp;</button></td>
-<td style="width:90%;text-align:right;">Kıyı</td>
-<td nowrap><button id="bplus" onclick="changeStrokeSize('increase')">＋</button></td>
-<td nowrap><button id="bplus" onclick="changeStrokeSize('decrease')">—</button></td>
-<td>&nbsp;Aralık</td>
-<td nowrap><button id="bplus" onclick="changeLetterSpacing('increase')">＋</button></td>
-<td nowrap><button id="bplus" onclick="changeLetterSpacing('decrease')">—</button></td>
+<td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;＋&nbsp;</button></td>
+<td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;—&nbsp;</button></td>
+<td nowrap><button id="btnSet" type="button" onclick="resetProperty()">&nbsp;＝&nbsp;</button></td>
+<td rowspan="4">&nbsp;</td>
+<td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="font-size:1rem;width:96%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
+</tr>
+<tr>
+<td colspan="3" nowrap style="padding-top:8px;">
+    <div class="controls">
+        <label><input type="radio" name="textProp" value="fontSize" checked>Boy&nbsp;</label>
+        <label><input type="radio" name="textProp" value="textStroke">Kıyı&nbsp;</label>
+        <label><input type="radio" name="textProp" value="letterSpacing">Ara&nbsp;</label>
+    </div>
+</td>
+<td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
+</tr>
+<tr>
+<td nowrap colspan="3" style="padding-bottom:2px;">
+<select id="fontPicker" name="fonts">
+  <option value="tbldamga" selected>Altyazılı</option>
+  <option value="bala">Bala</option>
+  <option value="balab">Bala(K)</option>
+  <option value="balag">Bala(G)</option>
+  <option value="baskurt">Başkurt</option>
+  <option value="bediz">Bediz</option>
+  <option value="bedizb">Bediz(K)</option>
+  <option value="bilgekaganyenib">Bilge Kağan</option>
+  <option value="cizgi">Çizgi</option>
+  <option value="damgaregular">Damga</option>
+  <option value="damgab">Damga(K)</option>
+  <option value="damgagenisbold">Damga(GB)</option>
+  <option value="irkbitig">Irk Bitig</option>
+  <option value="gokturkkalem">Kalem</option>
+  <option value="gokturkkalemb">Kalem(K)</option>
+  <option value="gokturkkalemg">Kalem(G)</option>
+  <option value="gokturkkalemgb">Kalem(GK)</option>
+  <option value="karluk">Karluk</option>
+  <option value="kazak">Kazak</option>
+  <option value="kibar">Kibar</option>
+  <option value="kibarbb">Kibar(A)</option>
+  <option value="kirgiz">Kırgız</option>
+  <option value="koncuy">Konçuy</option>
+  <option value="kultigin">Kültiğin</option>
+  <option value="kultiginbold">Kültiğin(K)</option>
+  <option value="kurgu">Kurgu</option>
+  <option value="kurgub">Kurgu(K)</option>
+  <option value="oguzbold">Oğuz (K)</option>
+  <option value="damgaroman">Roman</option>
+  <option value="tatarbold">Tatar</option>
+  <option value="tonyukuk">Tonyukuk</option>
+  <option value="tonyukukbold">Tonyukuk(K)</option>
+  <option value="turkbitig">Türk Bitig</option>
+  <option value="turkbitigbold">Türk Bitig(K)</option>
+  <option value="uygur">Uygur</option>
+  <option value="yaksi">Yakşı</option>
+  <option value="yaksib">Yakşı(K)</option>
+  <option value="tbldamga2">Öğrenci için</option>
+</td></tr>
+<tr>
+<td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
+<td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
+<td><button id="btnReset">&nbsp;◼&nbsp;</button></td>
 </tr>
 </table>
 
-<table border="0" class="fonttable">
-<tr>
-<td width="10%">Font:</td>
-<td style="text-align:right;"><input type="text" id="fontbox" name="selectedfont" disabled></td>
-<td>&nbsp;</td>
-<td>Renk</td>
-<td style="text-align:right;"><input type="text" id="colorcode" maxlength="11" spellcheck="false"></td>
-</tr>
-
-<tr>
-<td colspan="2" class="picker-block1"><div id="fontPicker" class="fontPicker"></div></td>
-<td>&nbsp;</td>
-<td colspan="2" class="picker-block2"><div id="colorPicker" class="colorPicker"></div></td>
-</tr>
-
-</table>
+<hr>
 
 <!--ceviri biter-->
 
@@ -133,16 +175,158 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <hr>
 
-<ul style="margin-block-start: 0.5em">
+<ul>
 <li><a href="/gokturk-alfabesi/gokturkce-turk.html">Göktürkçe 'Türk'</a></li>
+<li><a href="/isimler/erkek.html">Göktürkçe isimler</a></li>
+<li><a href="/orhun-yazitlari/" style="color:#070;"><b>Orhun Yazıtları</b></a></li>
 <li><a href="/gokturk-alfabesi/">Göktürkçe kuralları</a></li>
 <li><a href="/gokturkce/klavye.html"><b>Klavyeli yazıcı</b></a></li>
 </ul>
 
-<script src="/assets/js/2fontpicker.js"></script>
-<script src="/assets/js/2colorpicker.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const textarea = document.getElementById('gokturk');
+    const fontPicker = document.getElementById('fontPicker');
+    const radios = document.getElementsByName('textProp');
+
+    const computedStyle = window.getComputedStyle(textarea);
+    const defaults = {
+        fontSize: parseFloat(computedStyle.fontSize),
+        textStroke: 0.01,       
+        letterSpacing: 0,    
+        fontIndex: 0
+    };
+
+    textarea.style.fontSize = defaults.fontSize + 'px';
+    textarea.style.letterSpacing = defaults.letterSpacing + 'em'; 
+    textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
+    textarea.style.fontFamily = fontPicker.options[defaults.fontIndex].value;
+
+    let radioTimer;
+    function pingRadioActivity() {
+        clearTimeout(radioTimer);
+        radioTimer = setTimeout(() => {
+            document.querySelector('input[name="textProp"][value="fontSize"]').checked = true;
+        }, 10000);
+    }
+
+    for (const radio of radios) {
+        radio.addEventListener('change', pingRadioActivity);
+    }
+
+    function getActiveProperty() {
+        for (const radio of radios) {
+            if (radio.checked) return radio.value;
+        }
+    }
+
+    function modifyProperty(direction) {
+        pingRadioActivity(); 
+        
+        const prop = getActiveProperty();
+        
+        if (prop === 'fontSize') {
+            let current = parseFloat(textarea.style.fontSize);
+            let next = direction === 'up' ? Math.ceil(current * 1.05) : Math.floor(current / 1.05);
+            next = Math.max(12, Math.min(next, 500)); 
+            textarea.style.fontSize = next + 'px';
+        } 
+        else if (prop === 'letterSpacing') {
+            let currentStyle = textarea.style.letterSpacing;
+            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
+            
+            let step = 0.02; 
+            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
+            
+            nextEm = Math.max(-0.14, Math.min(nextEm, 0.6)); 
+            textarea.style.letterSpacing = nextEm + 'em';
+        } 
+        else if (prop === 'textStroke') {
+            let currentStyle = textarea.style.webkitTextStrokeWidth;
+            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
+            
+            let step = 0.01; 
+            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
+            
+            nextEm = Math.max(0, Math.min(nextEm, 0.1));
+            textarea.style.webkitTextStrokeWidth = nextEm + 'em';
+        }
+    }
+
+    function modifyFont(direction) {
+        let currentIndex = fontPicker.selectedIndex;
+        let maxIndex = fontPicker.options.length - 1;
+
+        if (direction === 'up') {
+            fontPicker.selectedIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
+        } else if (direction === 'down') {
+            fontPicker.selectedIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
+        }
+        
+        textarea.style.fontFamily = fontPicker.value;
+    }
+
+    fontPicker.addEventListener('change', (e) => {
+        textarea.style.fontFamily = e.target.value;
+    });
+
+    document.getElementById('btnSet').addEventListener('click', () => {
+        pingRadioActivity(); // 3. Listen if they hit the Set button
+        
+        const prop = getActiveProperty();
+        if (prop === 'textStroke') {
+            textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
+        } else if (prop === 'letterSpacing') {
+            textarea.style.letterSpacing = defaults.letterSpacing + 'em';
+        } else {
+            textarea.style[prop] = defaults[prop] + 'px';
+        }
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+        fontPicker.selectedIndex = defaults.fontIndex;
+        textarea.style.fontFamily = fontPicker.value;
+    });
+
+    function setupHoldAction(btnId, actionFn) {
+        const btn = document.getElementById(btnId);
+        let intervalId;
+        let timeoutId;
+
+        const startHold = (e) => {
+            if (e.type === 'touchstart' && e.cancelable) {
+                e.preventDefault(); 
+            }
+            actionFn(); 
+            timeoutId = setTimeout(() => {
+                intervalId = setInterval(actionFn, 100); 
+            }, 400);
+        };
+
+        const endHold = () => {
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
+        };
+
+        btn.addEventListener('mousedown', startHold);
+        btn.addEventListener('mouseup', endHold);
+        btn.addEventListener('mouseleave', endHold);
+        
+        btn.addEventListener('touchstart', startHold, { passive: false });
+        btn.addEventListener('touchend', endHold);
+        btn.addEventListener('touchcancel', endHold);
+    }
+
+    setupHoldAction('btnPlus', () => modifyProperty('up'));
+    setupHoldAction('btnMinus', () => modifyProperty('down'));
+    setupHoldAction('btnUp', () => modifyFont('up'));
+    setupHoldAction('btnDown', () => modifyFont('down'));
+});
+</script>
+
 <script src="/assets/js/2gokturkce.js"></script>
-<script src="/assets/js/2keyboard.js"></script>
+<script src="/assets/js/2colorpicker.js"></script>
+<script src="/assets/js/2downloader.js"></script>
 
 <div>
 <span style="font-family:baskurt;">&nbsp;</span>
