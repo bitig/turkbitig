@@ -48,7 +48,6 @@ hr {background:linear-gradient(to right, #bbb, #ddd); }
 #btnPlus, #btnMinus, #btnSet {padding:6px; line-height:1;width: 94%; outline: none;}  
 #fontPicker {width:99%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
 
-.controls {font-size:1rem}
 button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
 </style>
 
@@ -102,14 +101,14 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td rowspan="4">&nbsp;</td>
 <td style="text-align:right;vertical-align:middle;"><input type="text" id="colorcode" style="font-size:1rem;width:96%;text-transform:uppercase;" maxlength="11" spellcheck="false"></td>
 </tr>
+
 <tr>
-<td colspan="3" nowrap style="padding-top:8px;">
-    <div class="controls">
+<td colspan="3" nowrap style="font-size:1rem;padding-top:8px;">
         <label><input type="radio" name="textProp" value="fontSize" checked>Boy&nbsp;</label>
         <label><input type="radio" name="textProp" value="textStroke">Kıyı&nbsp;</label>
         <label><input type="radio" name="textProp" value="letterSpacing">Ara&nbsp;</label>
-    </div>
 </td>
+
 <td rowspan="3" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
 <tr>
