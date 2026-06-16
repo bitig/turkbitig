@@ -420,11 +420,14 @@ red {
 }
 
 .sitenav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   line-height:1;
   width: 100%;
-  background-color: #E6E6E6;
-  border-bottom: 3px solid #999;
-}
+  background-color: #E6E6E6f6; 
+  border-bottom: 1px solid #666;
+  box-shadow: 0 2px 3px 0px #00000060;}
 
 .logo {
   width: 200px;
