@@ -43,7 +43,6 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 <td nowrap>
 <select class="fontselect" onchange="changeFont(this.value)">
   <option value="tbldamga" selected>Altyazılı</option>
-  <option value="tbldamga2">Öğrenci için</option>
   <option value="bala">Bala</option>
   <option value="balab">Bala(K)</option>
   <option value="balag">Bala(G)</option>
@@ -54,7 +53,10 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
   <option value="cizgi">Çizgi</option>
   <option value="damgaregular">Damga</option>
   <option value="damgab">Damga(K)</option>
+  <option value="damgabb">Damga(A)</option>
   <option value="damgagenisbold">Damga(GB)</option>
+  <option value="gezer">Gezer</option>
+  <option value="gezerb">Hazar</option>
   <option value="irkbitig">Irk Bitig</option>
   <option value="gokturkkalem">Kalem</option>
   <option value="gokturkkalemb">Kalem(K)</option>
@@ -62,8 +64,6 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
   <option value="gokturkkalemgb">Kalem(GK)</option>
   <option value="karluk">Karluk</option>
   <option value="kazak">Kazak</option>
-  <option value="kibar">Kibar</option>
-  <option value="kibarbb">Kibar(A)</option>
   <option value="kirgiz">Kırgız</option>
   <option value="koncuy">Konçuy</option>
   <option value="kultigin">Kültiğin</option>
@@ -72,14 +72,22 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
   <option value="kurgub">Kurgu(K)</option>
   <option value="oguzbold">Oğuz (K)</option>
   <option value="damgaroman">Roman</option>
+  <option value="damgaromanb">Roman(K)</option>
   <option value="tatarbold">Tatar</option>
   <option value="tonyukuk">Tonyukuk</option>
   <option value="tonyukukbold">Tonyukuk(K)</option>
+  <option value="tonyukukdar">Tonyukuk(D)</option>
+  <option value="tonyukukdarkalin">Tonyukuk(DK)</option>
+  <option value="tungatigin">Tungatigin</option>
+  <option value="tungatigina">Tungatigin(A)</option>
   <option value="turkbitig">Türk Bitig</option>
   <option value="turkbitigbold">Türk Bitig(K)</option>
+  <option value="turkbitigg">Türk Bitig(G)</option>
+  <option value="turkbitiggb">Türk Bitig(GK)</option>
   <option value="uygur">Uygur</option>
   <option value="yaksi">Yakşı</option>
   <option value="yaksib">Yakşı(K)</option>
+  <option value="tbldamga2">Öğrenci için</option>
 </select>
 </td>
 
@@ -138,51 +146,52 @@ h1, h2, h3, hr {background: linear-gradient(to right, #BBB, #DDD);}
 <script src="/assets/js/keyboard1.js"></script>
 
 <div>
-  <span style="font-family:tbldamga;">&nbsp;</span>
-  <span style="font-family:tbldamga2;">&nbsp;</span>
-  <span style="font-family:bala;">&nbsp;</span>
-  <span style="font-family:balab;">&nbsp;</span>
-  <span style="font-family:balag;">&nbsp;</span>
-  <span style="font-family:basmil;">&nbsp;</span>
-  <span style="font-family:bediz;">&nbsp;</span>
-  <span style="font-family:bilgekagan;">&nbsp;</span>
-  <span style="font-family:bilgekaganbold;">&nbsp;</span>
-  <span style="font-family:cizgi;">&nbsp;</span>
-  <span style="font-family:damgaregular;">&nbsp;</span>
-  <span style="font-family:damgabb;">&nbsp;</span>
-  <span style="font-family:damgagenis;">&nbsp;</span>
-  <span style="font-family:damgagenisbold;">&nbsp;</span>
-  <span style="font-family:gokturkyeni;">&nbsp;</span>
-  <span style="font-family:gokturkyenib;">&nbsp;</span>
-  <span style="font-family:irkbitig;">&nbsp;</span>
-  <span style="font-family:gokturkkalem;">&nbsp;</span>
-  <span style="font-family:gokturkkalemg;">&nbsp;</span>
-  <span style="font-family:gokturkkalembold;">&nbsp;</span>
-  <span style="font-family:gokturkkalemegri;">&nbsp;</span>
-  <span style="font-family:karluk;">&nbsp;</span>
-  <span style="font-family:karlukbold;">&nbsp;</span>
-  <span style="font-family:kirgiz;">&nbsp;</span>
-  <span style="font-family:koncuyi;">&nbsp;</span>
-  <span style="font-family:koncuy;">&nbsp;</span>
-  <span style="font-family:kultigin;">&nbsp;</span>
-  <span style="font-family:kultiginbold;">&nbsp;</span>
-  <span style="font-family:oguz;">&nbsp;</span>
-  <span style="font-family:oguzbold;">&nbsp;</span>
-  <span style="font-family:damgaroman;">&nbsp;</span>
-  <span style="font-family:tatarbold;">&nbsp;</span>
-  <span style="font-family:tonyukuk;">&nbsp;</span>
-  <span style="font-family:tonyukukagir;">&nbsp;</span>
-  <span style="font-family:tonyukukboylu;">&nbsp;</span>
-  <span style="font-family:tonyukukdar;">&nbsp;</span>
-  <span style="font-family:tonyukukdarkalin;">&nbsp;</span>
-  <span style="font-family:tungatigin;">&nbsp;</span>
-  <span style="font-family:tungatigina;">&nbsp;</span>
-  <span style="font-family:turkbitig;">&nbsp;</span>
-  <span style="font-family:turkbitigb;">&nbsp;</span>
-  <span style="font-family:uygur;">&nbsp;</span>
-  <span style="font-family:yaksi;">&nbsp;</span>
-  <span style="font-family:yaksib;">&nbsp;</span>
-  <span style="font-family:yaksib;">&nbsp;</span>
+<span style="font-family:gezer;">&nbsp;</span>
+<span style="font-family:gezerb;">&nbsp;</span>
+<span style="font-family:baskurt;">&nbsp;</span>
+<span style="font-family:bala;">&nbsp;</span>
+<span style="font-family:balab;">&nbsp;</span>
+<span style="font-family:balag;">&nbsp;</span>
+<span style="font-family:bediz;">&nbsp;</span>
+<span style="font-family:bedizb;">&nbsp;</span>
+<span style="font-family:bilgekaganyenib;">&nbsp;</span>
+<span style="font-family:cizgi;">&nbsp;</span>
+<span style="font-family:damgab;">&nbsp;</span>
+<span style="font-family:damgabb;">&nbsp;</span>
+<span style="font-family:damgagenisbold;">&nbsp;</span>
+<span style="font-family:damgaregular;">&nbsp;</span>
+<span style="font-family:damgaroman;">&nbsp;</span>
+<span style="font-family:damgaromanb;">&nbsp;</span>
+<span style="font-family:gokturkkalem;">&nbsp;</span>
+<span style="font-family:gokturkkalemb;">&nbsp;</span>
+<span style="font-family:gokturkkalemg;">&nbsp;</span>
+<span style="font-family:gokturkkalemgb;">&nbsp;</span>
+<span style="font-family:kurgu;">&nbsp;</span>
+<span style="font-family:kurgub;">&nbsp;</span>
+<span style="font-family:irkbitig;">&nbsp;</span>
+<span style="font-family:karluk;">&nbsp;</span>
+<span style="font-family:kazak;">&nbsp;</span>
+<span style="font-family:kirgiz;">&nbsp;</span>
+<span style="font-family:koncuy;">&nbsp;</span>
+<span style="font-family:kultigin;">&nbsp;</span>
+<span style="font-family:kultiginbold;">&nbsp;</span>
+<span style="font-family:oguzbold;">&nbsp;</span>
+<span style="font-family:tatarbold;">&nbsp;</span>
+<span style="font-family:tbldamga;">&nbsp;</span>
+<span style="font-family:tbldamga2;">&nbsp;</span>
+<span style="font-family:tonyukuk;">&nbsp;</span>
+<span style="font-family:tonyukukbold;">&nbsp;</span>
+<span style="font-family:tonyukukdar;">&nbsp;</span>
+<span style="font-family:tonyukukdarkalin;">&nbsp;</span>
+<span style="font-family:tungatigin;">&nbsp;</span>
+<span style="font-family:tungatigina;">&nbsp;</span>
+<span style="font-family:turkbitig;">&nbsp;</span>
+<span style="font-family:turkbitigbold;">&nbsp;</span>
+<span style="font-family:turkbitigg;">&nbsp;</span>
+<span style="font-family:turkbitiggb;">&nbsp;</span>
+<span style="font-family:uygur;">&nbsp;</span>
+<span style="font-family:yaksi;">&nbsp;</span>
+<span style="font-family:yaksib;">&nbsp;</span>
 </div>
 
 </main>
