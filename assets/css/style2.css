@@ -637,3 +637,36 @@ a:hover {
 .hover-highlight.clicked-highlight {
   background-color: #FD0;
 }
+
+
+
+@font-face {
+  font-family: 'turkbitig';
+  src: url('/assets/fonts/turkbitig.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tbldamga';
+  src: url('/assets/fonts/tbldamga.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tbldamga2';
+  src: url('/assets/fonts/tbldamga2.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'kultigin';
+  src: url('/assets/fonts/kultigin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'firca';
+  src: url('/assets/fonts/firca.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'gokturkkalemg';
+  src: url('/assets/fonts/gokturkkalemg.woff2') format('woff2');
+}
+
