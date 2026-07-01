@@ -656,6 +656,11 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'tbkeys';
+  src: url('/assets/fonts/tbkeys.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'kultigin';
   src: url('/assets/fonts/kultigin.woff2') format('woff2');
 }
