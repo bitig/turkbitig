@@ -666,7 +666,127 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'roman';
+  src: url('/assets/fonts/roman.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tatarbold';
+  src: url('/assets/fonts/tatarbold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'gokturkkalem';
+  src: url('/assets/fonts/gokturkkalem.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'gokturkkalemg';
   src: url('/assets/fonts/gokturkkalemg.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'gokturkkurgu';
+  src: url('/assets/fonts/gokturkkurgu.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'kazak';
+  src: url('/assets/fonts/kazak.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'koncuy';
+  src: url('/assets/fonts/koncuy.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'kirgiz';
+  src: url('/assets/fonts/kirgiz.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'irkbitig';
+  src: url('/assets/fonts/irkbitig.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'karluk';
+  src: url('/assets/fonts/karluk.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'hazar';
+  src: url('/assets/fonts/hazar.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'gezer';
+  src: url('/assets/fonts/gezer.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'kece';
+  src: url('/assets/fonts/kece.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'bala';
+  src: url('/assets/fonts/bala.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'balag';
+  src: url('/assets/fonts/balag.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'yaksi';
+  src: url('/assets/fonts/yaksi.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'uygur';
+  src: url('/assets/fonts/uygur.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'oguzbold';
+  src: url('/assets/fonts/oguzbold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tungatigin';
+  src: url('/assets/fonts/tungatigin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tonyukukdar';
+  src: url('/assets/fonts/tonyukukdar.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tonyukuk';
+  src: url('/assets/fonts/tonyukuk.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'bediz';
+  src: url('/assets/fonts/bediz.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'bedizb';
+  src: url('/assets/fonts/bedizb.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'bilgekagan';
+  src: url('/assets/fonts/bilgekagan.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'damga';
+  src: url('/assets/fonts/damga.woff2') format('woff2');
 }
 
