@@ -686,6 +686,11 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'gokturkkalemk';
+  src: url('/assets/fonts/gokturkkalemk.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'gokturkkalemg';
   src: url('/assets/fonts/gokturkkalemg.woff2') format('woff2');
 }
@@ -693,6 +698,11 @@ a:hover {
 @font-face {
   font-family: 'gokturkkurgu';
   src: url('/assets/fonts/gokturkkurgu.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'gokturkkurguk';
+  src: url('/assets/fonts/gokturkkurgukalin.woff2') format('woff2');
 }
 
 @font-face {
@@ -751,6 +761,11 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'yaksik';
+  src: url('/assets/fonts/yaksikalin.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'uygur';
   src: url('/assets/fonts/uygur.woff2') format('woff2');
 }
@@ -763,6 +778,11 @@ a:hover {
 @font-face {
   font-family: 'tungatigin';
   src: url('/assets/fonts/tungatigin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'tungatigink';
+  src: url('/assets/fonts/tungatiginkalin.woff2') format('woff2');
 }
 
 @font-face {
@@ -793,5 +813,20 @@ a:hover {
 @font-face {
   font-family: 'damga';
   src: url('/assets/fonts/damga.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'damgagenis';
+  src: url('/assets/fonts/damgagenis.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'damgaagir';
+  src: url('/assets/fonts/damgaagir.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'baskurt';
+  src: url('/assets/fonts/baskurt.woff2') format('woff2');
 }
 
