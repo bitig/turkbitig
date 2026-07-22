@@ -671,6 +671,11 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'cizgi';
+  src: url('/assets/fonts/firca.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'roman';
   src: url('/assets/fonts/roman.woff2') format('woff2');
 }
