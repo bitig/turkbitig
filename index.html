@@ -30,7 +30,7 @@ body {
 }
 
 #fontColorPicker, #bgColorPicker, #strokeColorPicker {width:30%;height:30px;}
-.uuu {color:#09D;}
+.uuu {color:#05C;}
 .fonttable {font-size:1rem;}
 
 h1, h2, h3 {background:linear-gradient(to right, #DDD, #dddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentStyle = textarea.style.webkitTextStrokeWidth;
         let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
         let nextEm = dir === 'up' ? currentEm + 0.01 : currentEm - 0.01;
-        textarea.style.webkitTextStrokeWidth = Math.max(0, Math.min(nextEm, 0.1)) + 'em';
+        textarea.style.webkitTextStrokeWidth = Math.max(0, Math.min(nextEm, 0.12)) + 'em';
     }
 
     function adjustFont(dir) {
