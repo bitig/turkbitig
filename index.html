@@ -82,7 +82,7 @@ input.selectionStart = input.selectionEnd = input.value.length;
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
 
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false"></textarea></div>
+<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk </textarea></div>
 
 <script>
 const input = document.getElementById('latin');
@@ -153,7 +153,7 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 </tr>
 
 <tr>
-<td nowrap colspan="2"><button id="fontDown">&nbsp;▼&nbsp;</button>&nbsp;<button id="fontUp">&nbsp;▲&nbsp;</button>&nbsp;<button id="btnReset">&nbsp;◼&nbsp;</button></td>
+<td nowrap colspan="2"><button id="fontDown">&nbsp;▼&nbsp;</button>&nbsp;<button id="fontUp">&nbsp;▲&nbsp;</button>&nbsp;<button id="btnReset">&nbsp;Sil&nbsp;</button></td>
 
 <td>Kıyı</td>
 <td><button id="textStrokePlus">+</button>&nbsp;<button id="textStrokeMinus">−</button></td>
@@ -170,7 +170,6 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
 <td width="90%">&nbsp;</td>
 <td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
-<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
 
@@ -186,6 +185,7 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const textarea = document.getElementById('gokturk');
+    const latinTextarea = document.getElementById('latin');
     const fontPicker = document.getElementById('fontPicker');
     
     const fontColorPicker = document.getElementById('fontColorPicker');
@@ -264,6 +264,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reset button
     document.getElementById('btnReset').addEventListener('click', () => {
+        // Clear textareas
+        textarea.value = '';
+        if (latinTextarea) {
+            latinTextarea.value = '';
+            latinTextarea.focus(); // Set focus to latin textarea
+        }
+
+        // Reset styles
         textarea.style.fontSize = defaults.fontSize + 'px';
         textarea.style.letterSpacing = defaults.letterSpacing + 'em';
         textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
