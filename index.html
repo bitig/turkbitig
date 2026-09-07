@@ -29,8 +29,8 @@ body {
   user-select: none; 
 }
 
-#fontColorPicker, #bgColorPicker, #strokeColorPicker {width:30%;height:30px;}
-.uuu {color:#05C;}
+#fontColorPicker, #bgColorPicker, #strokeColorPicker {width:30%;height:26px;}
+.uuu {color:#36D;}
 .fonttable {font-size:1rem;}
 
 h1, h2, h3 {background:linear-gradient(to right, #DDD, #dddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
@@ -42,10 +42,11 @@ hr {background:linear-gradient(to right, #bbb, #ddd); }
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#fontUp, #fontDown, #btnReset {padding:6px; width: 31%; outline: none;} 
+#fontUp, #fontDown {padding:6px; width: 32%; outline: none;} 
+#btnReset {padding:6px; outline: none;} 
  
 #fontSizePlus, #fontSizeMinus, #letterSpacingPlus, #letterSpacingMinus, #textStrokePlus, #textStrokeMinus
-{padding:6px; width: 40%; line-height:1; outline: none;}
+{padding:6px; width: 98%; line-height:1; outline: none;}
 
 #fontPicker {width:97%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
 
@@ -82,7 +83,7 @@ input.selectionStart = input.selectionEnd = input.value.length;
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
 
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="2" maxlength="99999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk </textarea></div>
+<div><textarea class="latin" rows="2" maxlength="33333" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk </textarea></div>
 
 <script>
 const input = document.getElementById('latin');
@@ -100,9 +101,11 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td>Ayarlar&nbsp;</td>
 <td nowrap style="width:49%;"><input type="color" id="fontColorPicker" value="#000000">&nbsp;<input type="color" id="bgColorPicker" value="#ffffff">&nbsp;<input type="color" id="strokeColorPicker" value="#000000"></td>
 
-<td rowspan="3">&nbsp;</td>
+<td rowspan="3" width="10%">&nbsp;</td>
 <td>Boy&nbsp;</td>
-<td style="width:39%;"><button id="fontSizePlus">+</button>&nbsp;<button id="fontSizeMinus">−</button></td>
+<td><button id="fontSizePlus">+</button></td>
+<td></td>
+<td><button id="fontSizeMinus">−</button></td>
 </tr>
 
 <tr>
@@ -148,15 +151,19 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 </select>
 </td>
 
-<td>Ara&nbsp;</td>
-<td><button id="letterSpacingPlus">+</button>&nbsp;<button id="letterSpacingMinus">−</button></td>
+<td width="10%">Ara&nbsp;</td>
+<td><button id="letterSpacingPlus">&nbsp;+&nbsp;</button></td>
+<td></td>
+<td><button id="letterSpacingMinus">&nbsp;−&nbsp;</button></td>
 </tr>
 
 <tr>
-<td nowrap colspan="2"><button id="fontDown">&nbsp;▼&nbsp;</button>&nbsp;<button id="fontUp">&nbsp;▲&nbsp;</button>&nbsp;<button id="btnReset">&nbsp;Sil&nbsp;</button></td>
+<td nowrap colspan="2"><button id="fontDown">&nbsp;▼&nbsp;</button>&nbsp;<button id="fontUp">&nbsp;▲&nbsp;</button></td>
 
 <td>Kıyı</td>
-<td><button id="textStrokePlus">+</button>&nbsp;<button id="textStrokeMinus">−</button></td>
+<td><button id="textStrokePlus">+</button></td>
+<td></td>
+<td><button id="textStrokeMinus">−</button></td>
 </tr>
 </table>
 
@@ -167,9 +174,12 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <table border="0" class="fonttable">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
+<td>&nbsp;</td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
+<td width="50%">&nbsp;</td>
 <td style="padding-left:6px;text-align:center;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
-<td width="45%">&nbsp;</td>
+<td>&nbsp;</td>
+<td><button id="btnReset">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
 
@@ -177,8 +187,8 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <p style="font-size:1rem;">
 <red><b>Notlar</b>:</red>
-    <br> (1) Yurt dışında yaşayanlar, klavyenizde çğıöüş harfleri yok ise; w:öü, x:ş, j:ç, q:ğ, I:ı kullanın.
-    <br> (2) Doğru çeviri için birleşik kelimeleri ayırın; Karabörü > Kara Börü, Metehan > Mete Han, vs..
+    <br> (1) Doğru çeviri için birleşik kelimeleri ayırın; Karabörü > Kara Börü, Metehan > Mete Han, vs..
+    <br> (2) Yurt dışında yaşayanlar, klavyenizde çğıöüş harfleri yok ise; w:öü, x:ş, j:ç, q:ğ, I:ı kullanın.
 </p>
 
 <ul>
@@ -274,7 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.value = '';
         if (latinTextarea) {
             latinTextarea.value = '';
-            latinTextarea.focus(); // Set focus to latin textarea
         }
 
         // Reset styles
