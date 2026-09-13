@@ -27,7 +27,7 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; 
+  user-select: none;
 }
 
 #fontColorPicker, #bgColorPicker, #strokeColorPicker {width:30%;height:26px;}
@@ -43,9 +43,9 @@ hr {background:linear-gradient(to right, #bbb, #ddd); }
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#fontUp, #fontDown {padding:6px; width: 32%; outline: none;} 
-#btnReset {padding:6px; outline: none;} 
- 
+#fontUp, #fontDown {padding:6px; width: 32%; outline: none;}
+#btnReset {padding:6px; outline: none;}
+
 #fontSizePlus, #fontSizeMinus, #letterSpacingPlus, #letterSpacingMinus, #textStrokePlus, #textStrokeMinus
 {padding:6px; width: 98%; line-height:1; outline: none;}
 
@@ -90,7 +90,7 @@ input.selectionStart = input.selectionEnd = input.value.length;
 const input = document.getElementById('latin');
 const charMap = {'W': 'ö', 'w': 'ü', 'X': 'Ş', 'x': 'ş',  'J': 'Ç', 'j': 'ç',  'Q': 'Ğ', 'q': 'ğ'};
 input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxJjQq]/g, matched => charMap[matched]);});
-</script> 
+</script>
 
 <div class="tbs">
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const textarea = document.getElementById('gokturk');
     const latinTextarea = document.getElementById('latin');
     const fontPicker = document.getElementById('fontPicker');
-    
+
     const fontColorPicker = document.getElementById('fontColorPicker');
     const bgColorPicker = document.getElementById('bgColorPicker');
     const strokeColorPicker = document.getElementById('strokeColorPicker');
@@ -222,8 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const defaults = {
         fontSize: parseFloat(computedStyle.fontSize),
-        textStroke: 0.01,       
-        letterSpacing: 0,    
+        textStroke: 0.01,
+        letterSpacing: 0,
         fontIndex: 0,
         fontColor: rgbToHex(computedStyle.color),
         bgColor: rgbToHex(computedStyle.backgroundColor),
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Apply Defaults
     textarea.style.fontSize = defaults.fontSize + 'px';
-    textarea.style.letterSpacing = defaults.letterSpacing + 'em'; 
+    textarea.style.letterSpacing = defaults.letterSpacing + 'em';
     textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
     textarea.style.fontFamily = fontPicker.options[defaults.fontIndex].value;
     textarea.style.color = defaults.fontColor;
@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.style.fontSize = defaults.fontSize + 'px';
         textarea.style.letterSpacing = defaults.letterSpacing + 'em';
         textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
-        
+
         fontPicker.selectedIndex = defaults.fontIndex;
         textarea.style.fontFamily = fontPicker.value;
 
@@ -312,10 +312,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let intervalId, timeoutId;
 
         const startHold = (e) => {
-            if (e.type === 'touchstart' && e.cancelable) e.preventDefault(); 
-            actionFn(); 
+            if (e.type === 'touchstart' && e.cancelable) e.preventDefault();
+            actionFn();
             timeoutId = setTimeout(() => {
-                intervalId = setInterval(actionFn, 100); 
+                intervalId = setInterval(actionFn, 100);
             }, 400);
         };
 
@@ -335,10 +335,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Attach hold actions directly to individual buttons
     setupHoldAction('fontSizePlus', () => adjustFontSize('up'));
     setupHoldAction('fontSizeMinus', () => adjustFontSize('down'));
-    
+
     setupHoldAction('letterSpacingPlus', () => adjustLetterSpacing('up'));
     setupHoldAction('letterSpacingMinus', () => adjustLetterSpacing('down'));
-    
+
     setupHoldAction('textStrokePlus', () => adjustTextStroke('up'));
     setupHoldAction('textStrokeMinus', () => adjustTextStroke('down'));
 
