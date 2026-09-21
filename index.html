@@ -27,12 +27,10 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none; 
 }
 
-#fontColorPicker, #bgColorPicker, #strokeColorPicker {width:30%;height:26px;}
-.uuu {color:#36D;}
-.fonttable {font-size:1rem;}
+.uuu {color:#C00;}
 
 h1, h2, h3 {background:linear-gradient(to right, #DDD, #dddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
 hr {background:linear-gradient(to right, #bbb, #ddd); }
@@ -43,13 +41,9 @@ hr {background:linear-gradient(to right, #bbb, #ddd); }
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#fontUp, #fontDown {padding:6px; width: 32%; outline: none;}
-#btnReset {padding:6px; outline: none;}
-
-#fontSizePlus, #fontSizeMinus, #letterSpacingPlus, #letterSpacingMinus, #textStrokePlus, #textStrokeMinus
-{padding:6px; width: 98%; line-height:1; outline: none;}
-
-#fontPicker {width:97%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
+#btnUp, #btnDown, #btnReset {padding:6px; width: 94%; outline: none;}  
+#btnPlus, #btnMinus, #btnSet {padding:6px; line-height:1;width: 94%; outline: none;}  
+#fontPicker {width:99%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
 
 button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
 </style>
@@ -84,33 +78,21 @@ input.selectionStart = input.selectionEnd = input.value.length;
 <h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
 
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="2" maxlength="33333" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk </textarea></div>
+<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false">Türk </textarea></div>
 
 <script>
 const input = document.getElementById('latin');
 const charMap = {'W': 'ö', 'w': 'ü', 'X': 'Ş', 'x': 'ş',  'J': 'Ç', 'j': 'ç',  'Q': 'Ğ', 'q': 'ğ'};
 input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxJjQq]/g, matched => charMap[matched]);});
-</script>
+</script> 
 
 <div class="tbs">
 <textarea class="uuu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;">𐱅𐰇𐰼𐰜</textarea>
 </div>
 
 <table border="0" class="fonttable">
-
 <tr>
-<td>Ayarlar&nbsp;</td>
-<td nowrap style="width:49%;"><input type="color" id="fontColorPicker" value="#000000">&nbsp;<input type="color" id="bgColorPicker" value="#ffffff">&nbsp;<input type="color" id="strokeColorPicker" value="#000000"></td>
-
-<td rowspan="3" width="8%">&nbsp;</td>
-<td width="1%">Boy&nbsp;</td>
-<td><button id="fontSizePlus">&nbsp;&nbsp;+&nbsp;&nbsp;</button></td>
-<td></td>
-<td><button id="fontSizeMinus">&nbsp;&nbsp;−&nbsp;&nbsp;</button></td>
-</tr>
-
-<tr>
-<td colspan="2" nowrap style="width:59%;padding-bottom:2px;">
+<td nowrap colspan="3" style="padding-bottom:2px;">
 <select id="fontPicker" name="fonts">
   <option value="tbldamga" selected>Altyazılı</option>
   <option value="bala">Bala</option>
@@ -151,21 +133,28 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
   <option value="tbldamga2">Öğrenci için</option>
 </select>
 </td>
-
-<td>Ara&nbsp;</td>
-<td><button id="letterSpacingPlus">+</button></td>
-<td></td>
-<td><button id="letterSpacingMinus">−</button></td>
+<td rowspan="4">&nbsp;</td>
+<td rowspan="4" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
 
 <tr>
-<td nowrap colspan="2"><button id="fontDown">&nbsp;▼&nbsp;</button>&nbsp;<button id="fontUp">&nbsp;▲&nbsp;</button></td>
-
-<td>Kıyı</td>
-<td><button id="textStrokePlus">+</button></td>
-<td></td>
-<td><button id="textStrokeMinus">−</button></td>
+<td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
+<td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
+<td><button id="btnReset">&nbsp;◼&nbsp;</button></td>
 </tr>
+
+<tr>
+<td nowrap style="font-size:1rem;padding-top:8px;"><label><input type="radio" name="textProp" value="fontSize" checked>Boy&nbsp;</label></td>
+<td nowrap style="font-size:1rem;padding-top:8px;"><label><input type="radio" name="textProp" value="textStroke">Kıyı&nbsp;</label></td>
+<td nowrap style="font-size:1rem;padding-top:8px;"><label><input type="radio" name="textProp" value="letterSpacing">Ara&nbsp;</label></td>
+</tr>
+
+<tr>
+<td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;＋&nbsp;</button></td>
+<td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;—&nbsp;</button></td>
+<td nowrap><button id="btnSet" type="button" onclick="resetProperty()">&nbsp;＝&nbsp;</button></td>
+</tr>
+
 </table>
 
 <hr>
@@ -175,22 +164,20 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <table border="0" class="fonttable">
 <tr>
 <td><button onclick="copyGokturk()">Kopyala</button></td>
-<td>&nbsp;</td>
 <td nowrap><button onclick="downloadAsPng()">İndir</button></td>
-<td width="50%">&nbsp;</td>
-<td style="padding-left:6px;text-align:center;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
-<td>&nbsp;</td>
-<td><button id="btnReset">&nbsp;Sil&nbsp;</button></td>
+<td width="90%">&nbsp;</td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
 
 <hr>
 
 <ul>
-<li><a href="/gokturk-alfabesi/gokturkce-turk.html">'<b>Türk</b>' kelimesinin kökeni</a></li>
-<li><a href="/isimler/kiz.html">Göktürkçe isimler</a></li>
-<li><a href="/orhun-yazitlari/">Orhun Yazıtları</a></li>
-<li><a href="/gokturk-alfabesi/">Alfabenin kuralları</a></li>
+<li><a href="/gokturk-alfabesi/gokturkce-turk.html">'Türk' kelimesinin kökeni</a></li>
+<li><a href="/isimler/kiz.html"><b>Göktürkçe isimler</b></a></li>
+<li><a href="/gokturk-alfabesi/">Göktürk alfabesi kuralları</a></li>
+<li><a href="/orhun-yazitlari/"><b>Orhun Yazıtları</b></a></li>
 </ul>
 
 <hr>
@@ -205,118 +192,120 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const textarea = document.getElementById('gokturk');
-    const latinTextarea = document.getElementById('latin');
     const fontPicker = document.getElementById('fontPicker');
-
-    const fontColorPicker = document.getElementById('fontColorPicker');
-    const bgColorPicker = document.getElementById('bgColorPicker');
-    const strokeColorPicker = document.getElementById('strokeColorPicker');
+    const radios = document.getElementsByName('textProp');
 
     const computedStyle = window.getComputedStyle(textarea);
-
-    function rgbToHex(rgbStr) {
-        if (!rgbStr || rgbStr === 'transparent') return '#ffffff';
-        const vals = rgbStr.match(/\d+/g);
-        if (!vals || vals.length < 3) return '#000000';
-        return "#" + vals.slice(0, 3).map(x => parseInt(x).toString(16).padStart(2, '0')).join('');
-    }
-
     const defaults = {
         fontSize: parseFloat(computedStyle.fontSize),
-        textStroke: 0.01,
-        letterSpacing: 0,
-        fontIndex: 0,
-        fontColor: rgbToHex(computedStyle.color),
-        bgColor: rgbToHex(computedStyle.backgroundColor),
-        strokeColor: rgbToHex(computedStyle.webkitTextStrokeColor) || '#000000'
+        textStroke: 0.01,       
+        letterSpacing: 0,    
+        fontIndex: 0
     };
 
-    // Apply Defaults
     textarea.style.fontSize = defaults.fontSize + 'px';
-    textarea.style.letterSpacing = defaults.letterSpacing + 'em';
+    textarea.style.letterSpacing = defaults.letterSpacing + 'em'; 
     textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
     textarea.style.fontFamily = fontPicker.options[defaults.fontIndex].value;
-    textarea.style.color = defaults.fontColor;
-    textarea.style.backgroundColor = defaults.bgColor;
-    textarea.style.webkitTextStrokeColor = defaults.strokeColor;
 
-    fontColorPicker.value = defaults.fontColor;
-    bgColorPicker.value = defaults.bgColor;
-    strokeColorPicker.value = defaults.strokeColor;
-
-    // Property Adjustment Functions
-    function adjustFontSize(dir) {
-        let current = parseFloat(textarea.style.fontSize);
-        let next = dir === 'up' ? Math.ceil(current * 1.05) : Math.floor(current / 1.05);
-        textarea.style.fontSize = Math.max(12, Math.min(next, 500)) + 'px';
+    let radioTimer;
+    function pingRadioActivity() {
+        clearTimeout(radioTimer);
+        radioTimer = setTimeout(() => {
+            document.querySelector('input[name="textProp"][value="fontSize"]').checked = true;
+        }, 10000);
     }
 
-    function adjustLetterSpacing(dir) {
-        let currentStyle = textarea.style.letterSpacing;
-        let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
-        let nextEm = dir === 'up' ? currentEm + 0.02 : currentEm - 0.02;
-        textarea.style.letterSpacing = Math.max(-0.14, Math.min(nextEm, 0.6)) + 'em';
+    for (const radio of radios) {
+        radio.addEventListener('change', pingRadioActivity);
     }
 
-    function adjustTextStroke(dir) {
-        let currentStyle = textarea.style.webkitTextStrokeWidth;
-        let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
-        let nextEm = dir === 'up' ? currentEm + 0.01 : currentEm - 0.01;
-        textarea.style.webkitTextStrokeWidth = Math.max(0, Math.min(nextEm, 0.12)) + 'em';
+    function getActiveProperty() {
+        for (const radio of radios) {
+            if (radio.checked) return radio.value;
+        }
     }
 
-    function adjustFont(dir) {
+    function modifyProperty(direction) {
+        pingRadioActivity(); 
+        
+        const prop = getActiveProperty();
+        
+        if (prop === 'fontSize') {
+            let current = parseFloat(textarea.style.fontSize);
+            let next = direction === 'up' ? Math.ceil(current * 1.05) : Math.floor(current / 1.05);
+            next = Math.max(12, Math.min(next, 500)); 
+            textarea.style.fontSize = next + 'px';
+        } 
+        else if (prop === 'letterSpacing') {
+            let currentStyle = textarea.style.letterSpacing;
+            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
+            
+            let step = 0.02; 
+            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
+            
+            nextEm = Math.max(-0.14, Math.min(nextEm, 0.6)); 
+            textarea.style.letterSpacing = nextEm + 'em';
+        } 
+        else if (prop === 'textStroke') {
+            let currentStyle = textarea.style.webkitTextStrokeWidth;
+            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
+            
+            let step = 0.01; 
+            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
+            
+            nextEm = Math.max(0, Math.min(nextEm, 0.1));
+            textarea.style.webkitTextStrokeWidth = nextEm + 'em';
+        }
+    }
+
+    function modifyFont(direction) {
         let currentIndex = fontPicker.selectedIndex;
         let maxIndex = fontPicker.options.length - 1;
-        if (dir === 'up') {
+
+        if (direction === 'up') {
             fontPicker.selectedIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
-        } else {
+        } else if (direction === 'down') {
             fontPicker.selectedIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
         }
+        
         textarea.style.fontFamily = fontPicker.value;
     }
 
-    // Color listeners
-    fontColorPicker.addEventListener('input', (e) => textarea.style.color = e.target.value);
-    bgColorPicker.addEventListener('input', (e) => textarea.style.backgroundColor = e.target.value);
-    strokeColorPicker.addEventListener('input', (e) => textarea.style.webkitTextStrokeColor = e.target.value);
-    fontPicker.addEventListener('change', (e) => textarea.style.fontFamily = e.target.value);
-
-    // Reset button
-    document.getElementById('btnReset').addEventListener('click', () => {
-        // Clear textareas
-        textarea.value = '';
-        if (latinTextarea) {
-            latinTextarea.value = '';
-        }
-
-        // Reset styles
-        textarea.style.fontSize = defaults.fontSize + 'px';
-        textarea.style.letterSpacing = defaults.letterSpacing + 'em';
-        textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
-
-        fontPicker.selectedIndex = defaults.fontIndex;
-        textarea.style.fontFamily = fontPicker.value;
-
-        fontColorPicker.value = defaults.fontColor;
-        textarea.style.color = defaults.fontColor;
-        bgColorPicker.value = defaults.bgColor;
-        textarea.style.backgroundColor = defaults.bgColor;
-        strokeColorPicker.value = defaults.strokeColor;
-        textarea.style.webkitTextStrokeColor = defaults.strokeColor;
+    fontPicker.addEventListener('change', (e) => {
+        textarea.style.fontFamily = e.target.value;
     });
 
-    // Reusable Press-and-Hold function
+    document.getElementById('btnSet').addEventListener('click', () => {
+        pingRadioActivity(); // 3. Listen if they hit the Set button
+        
+        const prop = getActiveProperty();
+        if (prop === 'textStroke') {
+            textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
+        } else if (prop === 'letterSpacing') {
+            textarea.style.letterSpacing = defaults.letterSpacing + 'em';
+        } else {
+            textarea.style[prop] = defaults[prop] + 'px';
+        }
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+        fontPicker.selectedIndex = defaults.fontIndex;
+        textarea.style.fontFamily = fontPicker.value;
+    });
+
     function setupHoldAction(btnId, actionFn) {
         const btn = document.getElementById(btnId);
-        if (!btn) return;
-        let intervalId, timeoutId;
+        let intervalId;
+        let timeoutId;
 
         const startHold = (e) => {
-            if (e.type === 'touchstart' && e.cancelable) e.preventDefault();
-            actionFn();
+            if (e.type === 'touchstart' && e.cancelable) {
+                e.preventDefault(); 
+            }
+            actionFn(); 
             timeoutId = setTimeout(() => {
-                intervalId = setInterval(actionFn, 100);
+                intervalId = setInterval(actionFn, 100); 
             }, 400);
         };
 
@@ -328,27 +317,21 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener('mousedown', startHold);
         btn.addEventListener('mouseup', endHold);
         btn.addEventListener('mouseleave', endHold);
+        
         btn.addEventListener('touchstart', startHold, { passive: false });
         btn.addEventListener('touchend', endHold);
         btn.addEventListener('touchcancel', endHold);
     }
 
-    // Attach hold actions directly to individual buttons
-    setupHoldAction('fontSizePlus', () => adjustFontSize('up'));
-    setupHoldAction('fontSizeMinus', () => adjustFontSize('down'));
-
-    setupHoldAction('letterSpacingPlus', () => adjustLetterSpacing('up'));
-    setupHoldAction('letterSpacingMinus', () => adjustLetterSpacing('down'));
-
-    setupHoldAction('textStrokePlus', () => adjustTextStroke('up'));
-    setupHoldAction('textStrokeMinus', () => adjustTextStroke('down'));
-
-    setupHoldAction('fontUp', () => adjustFont('up'));
-    setupHoldAction('fontDown', () => adjustFont('down'));
+    setupHoldAction('btnPlus', () => modifyProperty('up'));
+    setupHoldAction('btnMinus', () => modifyProperty('down'));
+    setupHoldAction('btnUp', () => modifyFont('up'));
+    setupHoldAction('btnDown', () => modifyFont('down'));
 });
 </script>
 
 <script src="/assets/js/2gokturkce.js"></script>
+<script src="/assets/js/2colorpicker.js"></script>
 <script src="/assets/js/2downloader.js"></script>
 
 <div>
