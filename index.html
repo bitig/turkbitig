@@ -41,7 +41,7 @@ hr {background:linear-gradient(to right, #bbb, #ddd); }
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#btnUp, #btnDown, #btnPlus, #btnMinus {line-height:1;width: 90%; outline: none;}  
+#btnUp, #btnDown, #btnPlus, #btnMinus {width: 92%; outline: none;}  
 #fontPicker {width:99%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
 
 button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
@@ -141,8 +141,8 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 </tr>
 
 <tr>
-<td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;＋&nbsp;</button></td>
-<td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;—&nbsp;</button></td>
+<td nowrap style="vertical-align:middle;"><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;＋&nbsp;</button></td>
+<td nowrap style="vertical-align:middle;"><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;—&nbsp;</button></td>
 
 <td style="font-size:1rem;padding-top:8px;"><label>Boy<input type="radio" name="textProp" value="fontSize" checked></label></td>
 <td style="font-size:1rem;padding-top:8px;"><label>Kıyı<input type="radio" name="textProp" value="textStroke"></label></td>
