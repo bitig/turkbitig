@@ -30,18 +30,18 @@ body {
   user-select: none; 
 }
 
-.uuu {color:#C00;}
+.uuu {color:#000;}
 
 h1, h2, h3 {background:linear-gradient(to right, #DDD, #dddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
 hr {background:linear-gradient(to right, #bbb, #ddd); }
 
 .content {max-width: 100%;background-color:#dcdcdc;}
 
-.colorblock{width:50%;padding:0;}
+.colorblock{width:40%;padding:0;}
 .colorPicker {cursor: pointer;border:2px solid #777;}
 
 #clearButton {padding:5px;}
-#btnUp, #btnDown, #btnReset, #btnPlus, #btnMinus, #btnSet {line-height:1;width: 90%; outline: none;}  
+#btnUp, #btnDown, #btnPlus, #btnMinus {line-height:1;width: 90%; outline: none;}  
 #fontPicker {width:99%;padding:2px;font-size:1rem;background-color:#FFF;border-radius:5px;}
 
 button {-webkit-tap-highlight-color: transparent;touch-action: manipulation;}
@@ -91,7 +91,10 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 
 <table border="0" class="fonttable">
 <tr>
-<td nowrap colspan="3" style="padding-bottom:2px;">
+<td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
+<td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
+
+<td nowrap colspan="4" style="padding-bottom:2px;">
 <select id="fontPicker" name="fonts">
   <option value="tbldamga" selected>Altyazılı</option>
   <option value="bala">Bala</option>
@@ -132,26 +135,18 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
   <option value="tbldamga2">Öğrenci için</option>
 </select>
 </td>
-<td rowspan="4">&nbsp;</td>
-<td rowspan="4" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
-</tr>
 
-<tr>
-<td><button id="btnDown">&nbsp;▼&nbsp;</button></td>
-<td><button id="btnUp">&nbsp;▲&nbsp;</button></td>
-<td><button id="btnReset">&nbsp;◼&nbsp;</button></td>
-</tr>
-
-<tr>
-<td nowrap style="font-size:1rem;padding-top:8px;"><label><input type="radio" name="textProp" value="fontSize" checked>Boy&nbsp;</label></td>
-<td nowrap style="font-size:1rem;padding-top:8px;"><label><input type="radio" name="textProp" value="textStroke">Kıyı&nbsp;</label></td>
-<td nowrap style="font-size:1rem;padding-top:8px;"><label><input type="radio" name="textProp" value="letterSpacing">Ara&nbsp;</label></td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2" class="colorblock"><div id="colorPicker" class="colorPicker"></div></td>
 </tr>
 
 <tr>
 <td nowrap><button id="btnPlus" type="button" onclick="adjustProperty('increase')">&nbsp;＋&nbsp;</button></td>
 <td nowrap><button id="btnMinus" type="button" onclick="adjustProperty('decrease')">&nbsp;—&nbsp;</button></td>
-<td nowrap><button id="btnSet" type="button" onclick="resetProperty()">&nbsp;＝&nbsp;</button></td>
+
+<td style="font-size:1rem;padding-top:8px;"><label>Boy<input type="radio" name="textProp" value="fontSize" checked></label></td>
+<td style="font-size:1rem;padding-top:8px;"><label>Kıyı<input type="radio" name="textProp" value="textStroke"></label></td>
+<td style="font-size:1rem;padding-top:8px;"><label>Ara<input type="radio" name="textProp" value="letterSpacing"></label></td>
 </tr>
 
 </table>
@@ -275,24 +270,6 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.style.fontFamily = e.target.value;
     });
 
-    document.getElementById('btnSet').addEventListener('click', () => {
-        pingRadioActivity(); // 3. Listen if they hit the Set button
-        
-        const prop = getActiveProperty();
-        if (prop === 'textStroke') {
-            textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
-        } else if (prop === 'letterSpacing') {
-            textarea.style.letterSpacing = defaults.letterSpacing + 'em';
-        } else {
-            textarea.style[prop] = defaults[prop] + 'px';
-        }
-    });
-
-    document.getElementById('btnReset').addEventListener('click', () => {
-        fontPicker.selectedIndex = defaults.fontIndex;
-        textarea.style.fontFamily = fontPicker.value;
-    });
-
     function setupHoldAction(btnId, actionFn) {
         const btn = document.getElementById(btnId);
         let intervalId;
@@ -330,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script src="/assets/js/2gokturkce.js"></script>
-<script src="/assets/js/2colorpicker.js"></script>
+<script src="/assets/js/3colorpicker.js"></script>
 <script src="/assets/js/2downloader.js"></script>
 
 <div>
