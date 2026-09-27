@@ -216,6 +216,8 @@ function latinToGokturk(input) {
     .replace(/𐱅𐰀𐰭𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜')
+    .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/gu, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜')
+
   ;
   return result;
 }
