@@ -194,12 +194,15 @@ function latinToGokturk(input) {
 
     .replace(/𐰃𐰴/gu, '𐰃𐰶')
     .replace(/(?<=\p{L}{2})𐰃𐰶/gu, '𐰶')
+    .replace(/(?<!\p{L}{2})𐰴𐰃/gu, '𐰶𐰃')
+    .replace(/(?<=\p{L}{2})𐰶𐰃/gu, '𐰶')
+
     .replace(/𐰆𐰴/gu, '𐰆𐰸')
     .replace(/(?<=\p{L}{2})𐰆𐰸/gu, '𐰸')
-    .replace(/(?<=\p{L}{2})𐰇𐰚/gu, '𐰜')
+    .replace(/(?<!\p{L}{2})𐰴𐰆/gu, '𐰸𐰆')
+    .replace(/(?<=\p{L}{2})𐰸𐰆/gu, '𐰸')
 
-    .replace(/𐰴𐰃/gu, '𐰶𐰃')
-    .replace(/𐰴𐰆/gu, '𐰸𐰆')
+    .replace(/(?<=\p{L}{2})𐰇𐰚/gu, '𐰜')
 
     // vowels
     .replace(/(\S𐰀|𐰀\S)𐰀(?=\S)/gu, '$1')
