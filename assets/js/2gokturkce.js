@@ -186,7 +186,7 @@ function latinToGokturk(input) {
   }
 
   result = result
-    // ligatures
+    // ligatures & vowels
     .replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦')
     .replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡')
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
@@ -195,20 +195,19 @@ function latinToGokturk(input) {
     .replace(/𐰃𐰴/gu, '𐰃𐰶')
     .replace(/(?<=\p{L}{2})𐰃𐰶/gu, '𐰶')
     .replace(/(?<!\p{L}{2})𐰴𐰃/gu, '𐰶𐰃')
-    .replace(/(?<=\p{L}{2})𐰶𐰃/gu, '𐰶')
 
     .replace(/𐰆𐰴/gu, '𐰆𐰸')
     .replace(/(?<=\p{L}{2})𐰆𐰸/gu, '𐰸')
     .replace(/(?<!\p{L}{2})𐰴𐰆/gu, '𐰸𐰆')
-    .replace(/(?<=\p{L}{2})𐰸𐰆/gu, '𐰸')
-
     .replace(/(?<=\p{L}{2})𐰇𐰚/gu, '𐰜')
 
-    // vowels
-    .replace(/(\S𐰀|𐰀\S)𐰀(?=\S)/gu, '$1')
-    .replace(/(\S𐰆|𐰆\S)𐰆(?=\S)/gu, '$1')
-    .replace(/(\S𐰃|𐰃\S)𐰃(?=\S)/gu, '$1')
-    .replace(/(\S𐰇|𐰇\S)𐰇(?=\S)/gu, '$1')
+    .replace(/(?<=𐰀\S)𐰀(?=\S)/gu, '')
+    .replace(/(?<=𐰆\S)𐰆(?=\S)/gu, '')
+    .replace(/(?<=𐰃\S)𐰃(?=\S)/gu, '')
+    .replace(/(?<=𐰇\S)𐰇(?=\S)/gu, '')
+
+    .replace(/(?<=\p{L}{2})𐰶𐰃(?=\S)/gu, '𐰶')
+    .replace(/(?<=\p{L}{2})𐰸𐰆(?=\S)/gu, '𐰸')
 
     // special cases
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
