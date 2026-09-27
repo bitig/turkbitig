@@ -192,13 +192,19 @@ function latinToGokturk(input) {
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
 
-    .replace(/(?<!\S)𐰴𐰃/gu, '𐰶𐰃')   
-    .replace(/(?<=\p{L}{1})𐰃𐰴/gu, '𐰃𐰶')
-    .replace(/(?<=\p{L}{2})𐰃𐰶/gu, '𐰶')
+    .replace(/𐰃𐰴/gu, '𐰃𐰶')
+    .replace(/𐰴𐰃/gu, '𐰶𐰃')
 
-    .replace(/(?<!\S)𐰴𐰆/gu, '𐰸𐰆')   
-    .replace(/(?<=\p{L}{1})𐰆𐰴/gu, '𐰆𐰸')
-    .replace(/(?<=\p{L}{2})𐰆𐰸/gu, '𐰸')
+//    .replace(/(?<!\S)𐰴𐰃/gu, '𐰶𐰃')   
+//    .replace(/(?<=\p{L}{1})𐰃𐰴/gu, '𐰃𐰶')
+//    .replace(/(?<!\p{L}{1})𐰃𐰶/gu, '𐰶')
+//    .replace(/(?<=\p{L}{1})𐰃𐰶/gu, '𐰶')
+
+    .replace(/𐰆𐰴/gu, '𐰆𐰸')
+    .replace(/𐰴𐰆/gu, '𐰸𐰆')
+//    .replace(/(?<!\S)𐰴𐰆/gu, '𐰸𐰆')   
+//    .replace(/(?<=\p{L}{1})𐰆𐰴/gu, '𐰆𐰸')
+//    .replace(/(?<=\p{L}{2})𐰆𐰸/gu, '𐰸')
 
     .replace(/(?<=\p{L}{1})𐰇𐰚/gu, '𐰇𐰜')
     .replace(/(?<=\p{L}{2})𐰇𐰜/gu, '𐰜')
