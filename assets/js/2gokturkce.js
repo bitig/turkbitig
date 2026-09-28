@@ -185,31 +185,29 @@ function latinToGokturk(input) {
     result += processWord(currentWord);
   }
 
+
+// specials & ligatures
+
   result = result
-    // ligatures & vowels
-    .replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦')
-    .replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡')
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
 
-    .replace(/𐰃𐰴/gu, '𐰃𐰶')
-    .replace(/(?<=\p{L}{2})𐰃𐰶/gu, '𐰶')
-    .replace(/(?<!\p{L}{2})𐰴𐰃/gu, '𐰶𐰃')
+    .replace(/[𐰤𐰣][𐰓𐰑](?=[𐰀])/gu, '𐰦')
+    .replace(/[𐰞𐰠][𐰓𐰑](?=[𐰶𐰃𐰜𐰇𐰸𐰆])/gu, '𐰡')
 
-    .replace(/𐰆𐰴/gu, '𐰆𐰸')
-    .replace(/(?<=\p{L}{2})𐰆𐰸/gu, '𐰸')
+    .replace(/(?<=\p{L}{2})𐰃𐰴/gu, '𐰶')
+    .replace(/(?<!\p{L}{2})𐰴𐰃/gu, '𐰶𐰃')
+    .replace(/(?<=\p{L}{2})𐰆𐰴/gu, '𐰸')
     .replace(/(?<!\p{L}{2})𐰴𐰆/gu, '𐰸𐰆')
     .replace(/(?<=\p{L}{2})𐰇𐰚/gu, '𐰜')
 
-    .replace(/(?<=𐰀\S)𐰀(?=\S)/gu, '')
-    .replace(/(?<=𐰆\S)𐰆(?=\S)/gu, '')
-    .replace(/(?<=𐰃\S)𐰃(?=\S)/gu, '')
-    .replace(/(?<=𐰇\S)𐰇(?=\S)/gu, '')
+    .replace(/(?<=𐰀[\u{10C00}-\u{10C4F}])𐰀(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=𐰆[\u{10C00}-\u{10C4F}])𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=𐰃[\u{10C00}-\u{10C4F}])𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=𐰇[\u{10C00}-\u{10C4F}])𐰇(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2})𐰶𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '𐰶')
+    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2})𐰸𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '𐰸')
 
-    .replace(/(?<=\p{L}{2})𐰶𐰃(?=\S)/gu, '𐰶')
-    .replace(/(?<=\p{L}{2})𐰸𐰆(?=\S)/gu, '𐰸')
-
-    // special cases
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐱃𐰀𐰭𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰤𐰏𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
@@ -222,7 +220,7 @@ function latinToGokturk(input) {
   return result;
 }
 
-// dom...
+// DOM
 document.addEventListener('DOMContentLoaded', () => {
   const latinInput    = document.getElementById('latin');
   const gokturkOutput = document.getElementById('gokturk');
