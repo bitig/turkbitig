@@ -1165,30 +1165,28 @@ function latinToGokturk(input) {
   }
 
   result = result
-    // ligatures
-    .replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦')
-    .replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡')
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
-    .replace(/[𐰤𐰣]𐰖/gu, '𐰪')
-    .replace(/(?<!\S)𐰴𐰃/gu, '𐰶𐰃')   
-    .replace(/𐰃𐰴/gu, '𐰶')   
-    .replace(/(?<!\S)𐰴𐰆/gu, '𐰸𐰆')   
-    .replace(/𐰆𐰴/gu, '𐰸')   
-    .replace(/𐰇[𐰚𐰜]/gu, '𐰜')
-
-    // vowels
-    .replace(/(\S𐰀|𐰀\S)𐰀(?=\S)/gu, '$1')
-    .replace(/(\S𐰆|𐰆\S)𐰆(?=\S)/gu, '$1')
-    .replace(/(\S𐰃|𐰃\S)𐰃(?=\S)/gu, '$1')
-    .replace(/(\S𐰇|𐰇\S)𐰇(?=\S)/gu, '$1')
-
-    // special cases
+    .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
+    .replace(/[𐰤𐰣][𐰓𐰑](?=[𐰀])/gu, '𐰦')
+    .replace(/[𐰞𐰠][𐰓𐰑](?=[𐰶𐰃𐰜𐰇𐰸𐰆])/gu, '𐰡')
+    .replace(/(?<=\p{L}{2})𐰃𐰴/gu, '𐰶')
+    .replace(/(?<!\p{L}{2})𐰴𐰃/gu, '𐰶𐰃')
+    .replace(/(?<=\p{L}{2})𐰆𐰴/gu, '𐰸')
+    .replace(/(?<!\p{L}{2})𐰴𐰆/gu, '𐰸𐰆')
+    .replace(/(?<=\p{L}{2})𐰇𐰚/gu, '𐰜')
+    .replace(/(?<=𐰀[\u{10C00}-\u{10C4F}])𐰀(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=𐰆[\u{10C00}-\u{10C4F}])𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=𐰃[\u{10C00}-\u{10C4F}])𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=𐰇[\u{10C00}-\u{10C4F}])𐰇(?=[\u{10C00}-\u{10C4F}])/gu, '')
+    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2})𐰶𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '𐰶')
+    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2})𐰸𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '𐰸')
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐱃𐰀𐰭𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰤𐰏𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰭𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
-    .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜');
+    .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜')
+    .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/gu, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜');
 
   return result;
 }
