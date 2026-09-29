@@ -30,7 +30,7 @@ body {
   user-select: none; 
 }
 
-.uuu {color:#000;}
+.uuu {color:#086;}
 
 h1, h2, h3 {background:linear-gradient(to right, #DDD, #dddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
 hr {background:linear-gradient(to right, #bbb, #ddd); }
@@ -160,7 +160,7 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">İndir</button></td>
 <td width="90%">&nbsp;</td>
-<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Göktürk Alfabesi (38 harf)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶𐰸𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Alfabe</button></td>
 <td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
@@ -183,131 +183,10 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
     <li>Öğretmenler: Okullarda internetsiz ortamda kullanabilmek için programı <a href="/turkbitig_gokturkce.html" download>şuradan</a> indirebilirsiniz.</li>
 </ol>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const textarea = document.getElementById('gokturk');
-    const fontPicker = document.getElementById('fontPicker');
-    const radios = document.getElementsByName('textProp');
-
-    const computedStyle = window.getComputedStyle(textarea);
-    const defaults = {
-        fontSize: parseFloat(computedStyle.fontSize),
-        textStroke: 0.01,       
-        letterSpacing: 0,    
-        fontIndex: 0
-    };
-
-    textarea.style.fontSize = defaults.fontSize + 'px';
-    textarea.style.letterSpacing = defaults.letterSpacing + 'em'; 
-    textarea.style.webkitTextStrokeWidth = defaults.textStroke + 'em';
-    textarea.style.fontFamily = fontPicker.options[defaults.fontIndex].value;
-
-    let radioTimer;
-    function pingRadioActivity() {
-        clearTimeout(radioTimer);
-        radioTimer = setTimeout(() => {
-            document.querySelector('input[name="textProp"][value="fontSize"]').checked = true;
-        }, 10000);
-    }
-
-    for (const radio of radios) {
-        radio.addEventListener('change', pingRadioActivity);
-    }
-
-    function getActiveProperty() {
-        for (const radio of radios) {
-            if (radio.checked) return radio.value;
-        }
-    }
-
-    function modifyProperty(direction) {
-        pingRadioActivity(); 
-        
-        const prop = getActiveProperty();
-        
-        if (prop === 'fontSize') {
-            let current = parseFloat(textarea.style.fontSize);
-            let next = direction === 'up' ? Math.ceil(current * 1.05) : Math.floor(current / 1.05);
-            next = Math.max(12, Math.min(next, 500)); 
-            textarea.style.fontSize = next + 'px';
-        } 
-        else if (prop === 'letterSpacing') {
-            let currentStyle = textarea.style.letterSpacing;
-            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
-            
-            let step = 0.02; 
-            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
-            
-            nextEm = Math.max(-0.14, Math.min(nextEm, 0.6)); 
-            textarea.style.letterSpacing = nextEm + 'em';
-        } 
-        else if (prop === 'textStroke') {
-            let currentStyle = textarea.style.webkitTextStrokeWidth;
-            let currentEm = currentStyle.includes('em') ? parseFloat(currentStyle) : 0;
-            
-            let step = 0.01; 
-            let nextEm = direction === 'up' ? currentEm + step : currentEm - step;
-            
-            nextEm = Math.max(0, Math.min(nextEm, 0.1));
-            textarea.style.webkitTextStrokeWidth = nextEm + 'em';
-        }
-    }
-
-    function modifyFont(direction) {
-        let currentIndex = fontPicker.selectedIndex;
-        let maxIndex = fontPicker.options.length - 1;
-
-        if (direction === 'up') {
-            fontPicker.selectedIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
-        } else if (direction === 'down') {
-            fontPicker.selectedIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
-        }
-        
-        textarea.style.fontFamily = fontPicker.value;
-    }
-
-    fontPicker.addEventListener('change', (e) => {
-        textarea.style.fontFamily = e.target.value;
-    });
-
-    function setupHoldAction(btnId, actionFn) {
-        const btn = document.getElementById(btnId);
-        let intervalId;
-        let timeoutId;
-
-        const startHold = (e) => {
-            if (e.type === 'touchstart' && e.cancelable) {
-                e.preventDefault(); 
-            }
-            actionFn(); 
-            timeoutId = setTimeout(() => {
-                intervalId = setInterval(actionFn, 100); 
-            }, 400);
-        };
-
-        const endHold = () => {
-            clearTimeout(timeoutId);
-            clearInterval(intervalId);
-        };
-
-        btn.addEventListener('mousedown', startHold);
-        btn.addEventListener('mouseup', endHold);
-        btn.addEventListener('mouseleave', endHold);
-        
-        btn.addEventListener('touchstart', startHold, { passive: false });
-        btn.addEventListener('touchend', endHold);
-        btn.addEventListener('touchcancel', endHold);
-    }
-
-    setupHoldAction('btnPlus', () => modifyProperty('up'));
-    setupHoldAction('btnMinus', () => modifyProperty('down'));
-    setupHoldAction('btnUp', () => modifyFont('up'));
-    setupHoldAction('btnDown', () => modifyFont('down'));
-});
-</script>
 
 <script src="/assets/js/2gokturkce.js"></script>
 <script src="/assets/js/3colorpicker.js"></script>
+<script src="/assets/js/2ayarlar.js"></script>
 <script src="/assets/js/2downloader.js"></script>
 
 <div>
