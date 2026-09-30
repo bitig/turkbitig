@@ -595,11 +595,15 @@ a:hover {
 }
 
 .kalin {
-  background: #d5e5ff;
+  background: #def;
 }
 
 .ince {
-  background: #ffd5d5;
+  background: #fdd;
+}
+
+.diger {
+  background: #ded;
 }
 
 .normal {
@@ -615,18 +619,18 @@ a:hover {
   background: linear-gradient(to right,
 #eee,
 #eee 0%,
-#d5e5ff 0%,
-#d5e5ff 50%,
-#ffd5d5 0%);
+#def 0%,
+#def 50%,
+#fdd 0%);
 }
 
 .ii {
   background: linear-gradient(to right,
 #eee,
 #eee 0%,
-#d5e5ff 0%,
-#d5e5ff 50%,
-#ffd5d5 0%);
+#def 0%,
+#def 50%,
+#fdd 0%);
 }
 
 .hover-highlight {
