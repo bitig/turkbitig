@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<title>Göktürk Alfabesi Çeviri</title>
+<meta name="description" content="Göktürkçe çeviri yazıcı ve Göktürk Alfabesi ile isim yazabilirsiniz. Bu alfabe 4 ünlü, 25 ünsüz ve 9 çift sesli toplam 38 harfden oluşur ve sağdan sola doğru yazılır.">
+<meta name="keywords" content="Göktürkçe, Göktürk Alfabesi, Orhun alfabesi, Orhun yazısı, Göktürk harfleri, Göktürk yazısı, Göktürkçe yazı, Göktürk alfabesi çeviri, Göktürkçe Türk, eski Türk alfabesi, eski Türk yazısı">
+<link rel="canonical" href="https://www.turkbitig.com/gokturkce/klavye.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/assets/css/style8.css">
+<link rel="icon" href="/assets/image/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/assets/image/apple-touch-icon.png">
+</head>
+<body>
+
+<table class="sitenav"><tr>
+<td><a href="/"><img class="logo" title="Türk Bitig" alt="Türk Bitig" src="/assets/image/logo.png"></a></td>
+<td class="menu"><a class="menulink" href="/icerik.html">&nbsp;≡&nbsp;</a></td>
+</tr></table><!--sitenav end-->
+
+<div class="content">
+<main>
+
+<h1><small>Göktürkçe Çeviri</small> <span style="float:right;font-size:0.9rem;font-weight:normal;background-color:#eee;padding:3px;">w:öü x:ş j:ç q:ğ I:ı</span></h1>
+
+<style>
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h1, h2, h3 {background: linear-gradient(to right, #dcdcdc, #ddd);   margin-top: 0px; margin-bottom: 0px;padding-left:0px;}
+hr {background: linear-gradient(to right, #bbb, #ddd); }
+.content {max-width: 100%;background-color:#dcdcdc;}
+td {font-size:1rem;}
+</style>
+
+<style>
+#clearButton {padding:5px;}
+.uuu {color:#0091bd;background-color:#FFFFFF;}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+if (!isMobile) {
+const input = document.getElementById('latin');
+if (input) {
+input.focus();
+}
+}
+});
+</script>
+
+<!--ceviri baslar-->
+<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false"></textarea></div>
+
+<script>
+const input = document.getElementById('latin');
+const charMap = {'W': 'ö', 'w': 'ü', 'X': 'Ş', 'x': 'ş',  'J': 'Ç', 'j': 'ç',  'Q': 'Ğ', 'q': 'ğ'};
+input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxJjQq]/g, matched => charMap[matched]);});
+</script>
+
+<table class="fonttable" id="fontRadioGroup">
+<tr>
+<td>Font&nbsp;</td>
+<td width="99%" >
+<select class="fontselect" onchange="changeFont(this.value)">
+  <option value="tbldamga" selected>Altyazılı</option>
+  <option value="tbldamga2">Öğrenci için</option>
+  <option value="bala">Bala</option>
+  <option value="balag">Bala(G)</option>
+  <option value="bediz">Bediz</option>
+  <option value="bedizb">Bediz(K)</option>
+  <option value="bilgekagan">Bilge Kağan</option>
+  <option value="damga">Damga</option>
+  <option value="firca">Fırça</option>
+  <option value="gezer">Gezer</option>
+  <option value="hazar">Hazar</option>
+  <option value="irkbitig">Irk Bitig</option>
+  <option value="kece">Keçe</option>
+  <option value="gokturkkalem">Kalem</option>
+  <option value="gokturkkalemg">Kalem(G)</option>
+  <option value="gokturkkurgu">Göktürk Kurgu</option>
+  <option value="karluk">Karluk</option>
+  <option value="kazak">Kazak</option>
+  <option value="kirgiz">Kırgız</option>
+  <option value="koncuy">Konçuy</option>
+  <option value="kultigin">Kültiğin</option>
+  <option value="oguzbold">Oğuz (K)</option>
+  <option value="roman">Roman</option>
+  <option value="tatarbold">Tatar</option>
+  <option value="tonyukuk">Tonyukuk</option>
+  <option value="tonyukukdar">Tonyukuk(D)</option>
+  <option value="tungatigin">Tungatigin</option>
+  <option value="turkbitig">Türk Bitig</option>
+  <option value="uygur">Uygur</option>
+  <option value="yaksi">Yakşı</option>
+</select>
+</td>
+<td width="90%">&nbsp;</td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+</tr>
+</table>
+
+<table class="colortable" border="0" style="margin-bottom:5px;">
+<tr>
+<td>Boy&nbsp;</td>
+<td nowrap><button onclick="changeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap>&nbsp;</td>
+<td nowrap><button onclick="changeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td style="padding-left:10px;">Aralık</td>
+<td nowrap><button onclick="changeLetterSpacing('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap>&nbsp;</td>
+<td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
+<td width="90%">&nbsp;</td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
+</tr>
+</table>
+
+<style>
+.uu {
+-webkit-text-stroke-color: #000000;
+text-stroke-color: #000000;
+-webkit-text-stroke-width: 0px;
+text-stroke-width: 0px;
+}
+</style>
+
+<div class="tbs">
+<textarea class="uu" id="gokturk" spellcheck="false" dir="rtl" style="background-color:#FFF;" inputmode="none" virtualkeyboardpolicy="manual" ></textarea>
+</div>
+
+<script>
+const gokturkDiv = document.getElementById("gokturk");
+gokturkDiv.addEventListener("input", () => {
+if (gokturkDiv.innerHTML === "<br>") {
+gokturkDiv.innerHTML = ""; // Remove the <br> tag
+}
+});
+
+const div = document.getElementById('gokturk');
+div.addEventListener('paste', (event) => {
+event.preventDefault();
+const text = event.clipboardData.getData('text/plain');
+document.execCommand('insertText', false, text);
+});
+</script>
+
+<table border="0" class="colortable">
+<tbody><tr><td width="3%">Renk</td>
+<td width="3%"><input type="color" oninput="changeColor(this.value)" id="fontColor" value="#00EEDD"></td>
+
+<td width="3%" style="padding-left:8px;text-align:right;">Arka</td>
+<td width="3%"><input type="color" oninput="changeBgColor(this.value)" id="bgColor" value="#FFFFFF"></td>
+
+<td style="padding-left:8px;text-align:right;">Kıyı</td>
+<td><input type="color" oninput="changeStrokeColor(this.value)" title="Pick stroke color" id="strokeColorPicker"></td>
+<td nowrap><button onclick="changeStrokeSize('increase')">&nbsp;+&nbsp;</button></td>
+<td nowrap><button onclick="changeStrokeSize('decrease')">&nbsp;-&nbsp;</button></td>
+<td width="50%"></td>
+
+</tr>
+
+</tbody></table>
+<!--ceviri biter-->
+
+<hr>
+
+<table border="0" id="keyboard" class="keytable">
+<tr>
+
+<td><button class="key ae" data-key="𐰀">𐰀</button></td>
+<td><button class="key ii" data-key="𐰃">𐰃</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key kalin" data-key="𐰆">𐰆</button></td>
+<td><button class="key ince" data-key="𐰇">𐰇</button></td>
+
+<td rowspan="7">&nbsp;</td>
+
+<td><button class="key diger" data-key="𐰲">𐰲</button></td>
+<td><button class="key sil" data-key="delete">X</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰉">𐰉</button></td>
+<td><button class="key ince" data-key="𐰋">𐰋</button></td>
+
+<td><button class="key kalin" data-key="𐰺">𐰺</button></td>
+<td><button class="key ince" data-key="𐰼">𐰼</button></td>
+
+<td><button class="key diger" data-key="𐰢">𐰢</button></td>
+<td><button class="delete key sil" data-key="backspace">&gt;</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰑">𐰑</button></td>
+<td><button class="key ince" data-key="𐰓">𐰓</button></td>
+
+<td><button class="key kalin" data-key="𐰽">𐰽</button></td>
+<td><button class="key ince" data-key="𐰾">𐰾</button></td>
+
+<td><button class="key diger" data-key="𐰯">𐰯</button></td>
+
+<td><button class="key normal" data-key=" "> &nbsp; </button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰍">𐰍</button></td>
+<td><button class="key ince" data-key="𐰏">𐰏</button></td>
+
+<td><button class="key kalin" data-key="𐱃">𐱃</button></td>
+<td><button class="key ince" data-key="𐱅">𐱅</button></td>
+
+<td><button class="key diger" data-key="𐱁">𐱁</button></td>
+<td><button class="key normal" data-key=":">: </button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰴">𐰴</button></td>
+<td><button class="key ince" data-key="𐰚">𐰚</button></td>
+
+<td><button class="key kalin" data-key="𐰖">𐰖</button></td>
+<td><button class="key ince" data-key="𐰘">𐰘</button></td>
+
+<td><button class="key diger" data-key="𐰔">𐰔</button></td>
+<td><button class="key diger" data-key="𐰨">𐰨</button></td>
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰞">𐰞</button></td>
+<td><button class="key ince" data-key="𐰠">𐰠</button></td>
+
+<td><button class="key kalin" data-key="𐰶">𐰶</button></td>
+<td><button class="key ince" data-key="𐰱">𐰱</button></td>
+
+<td><button class="key diger" data-key="𐰭">𐰭</button></td>
+<td><button class="key diger" data-key="𐰦">𐰦</button></td>
+
+</tr>
+<tr>
+
+<td><button class="key kalin" data-key="𐰣">𐰣</button></td>
+<td><button class="key ince" data-key="𐰤">𐰤</button></td>
+
+<td><button class="key kalin" data-key="𐰸">𐰸</button></td>
+<td><button class="key ince" data-key="𐰜">𐰜</button></td>
+
+<td><button class="key diger" data-key="𐰪">𐰪</button></td>
+<td><button class="key diger" data-key="𐰡">𐰡</button></td>
+
+</tr>
+</table>
+
+<hr>
+
+<table border="0" style="font-size:1.2rem;max-width:500px;">
+<tr>
+<td><button onclick="copyGokturk()">Kopyala</button></td>
+<td nowrap><button onclick="downloadAsPng()">İndir</button></td>
+<td width="90%">&nbsp;</td>
+</tr>
+</table>
+
+<hr>
+
+<ul>
+<li><a href="/gokturk-alfabesi/gokturkce-turk.html">'Türk' kelimesinin kökeni</a></li>
+<li><a href="/isimler/kiz.html"><b>Göktürkçe isimler</b></a></li>
+<li><a href="/gokturk-alfabesi/">Göktürk alfabesi kuralları</a></li>
+<li><a href="/orhun-yazitlari/"><b>Orhun Yazıtları</b></a></li>
+<li><a href="/irkbitig/"><b>Irk Bitig</b></a></li>
+<li><a href="/">Klavyesiz yazıcı</a></li>
+</ul>
+
+<script src='/assets/js/2gokturkce.js'></script>
+<script src="/assets/js/keyboard1.js"></script>
+
+<div>
+<span style="font-family:kece;">&nbsp;</span>
+<span style="font-family:gezer;">&nbsp;</span>
+<span style="font-family:hazar;">&nbsp;</span>
+<span style="font-family:bala;">&nbsp;</span>
+<span style="font-family:balag;">&nbsp;</span>
+<span style="font-family:bediz;">&nbsp;</span>
+<span style="font-family:bedizb;">&nbsp;</span>
+<span style="font-family:bilgekagan;">&nbsp;</span>
+<span style="font-family:firca;">&nbsp;</span>
+<span style="font-family:damga;">&nbsp;</span>
+<span style="font-family:roman;">&nbsp;</span>
+<span style="font-family:gokturkkalem;">&nbsp;</span>
+<span style="font-family:gokturkkalemg;">&nbsp;</span>
+<span style="font-family:gokturkkurgu;">&nbsp;</span>
+<span style="font-family:irkbitig;">&nbsp;</span>
+<span style="font-family:karluk;">&nbsp;</span>
+<span style="font-family:kazak;">&nbsp;</span>
+<span style="font-family:kirgiz;">&nbsp;</span>
+<span style="font-family:koncuy;">&nbsp;</span>
+<span style="font-family:kultigin;">&nbsp;</span>
+<span style="font-family:oguzbold;">&nbsp;</span>
+<span style="font-family:tatarbold;">&nbsp;</span>
+<span style="font-family:tbldamga;">&nbsp;</span>
+<span style="font-family:tbldamga2;">&nbsp;</span>
+<span style="font-family:tonyukuk;">&nbsp;</span>
+<span style="font-family:tonyukukdar;">&nbsp;</span>
+<span style="font-family:tungatigin;">&nbsp;</span>
+<span style="font-family:turkbitig;">&nbsp;</span>
+<span style="font-family:uygur;">&nbsp;</span>
+<span style="font-family:yaksi;">&nbsp;</span>
+</div>
+
+</main>
+</div>
+
+<footer>
+  <div class="footer"><a href="/isimler/">isimler</a> | <a href="/icerik.html">içerik</a> | <a href="/iletisim.html">iletişim</a></div>
+</footer>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XB6M7JR5GW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XB6M7JR5GW');
+</script>
+
+</body>
+</html>
