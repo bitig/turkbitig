@@ -29,10 +29,11 @@ a:active {
 }
 
 .key {
+  line-height:1;
   width: 100%;
   font-family: 'tbkeys';
   cursor: pointer;
-  font-size: 130%;
+  font-size: 1.7rem;
   font-weight: normal;
   padding: 2px;
   padding-left: 1px;
