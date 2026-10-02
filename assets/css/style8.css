@@ -280,7 +280,7 @@ ul li {
 }
 
 .d {
-  margin-top: 1em;
+  font-family: monospace;
   color: #900;
 }
 
@@ -312,7 +312,6 @@ ul li {
 .mtr {
   font-size: 1rem;
   cursor: pointer;
-  border-bottom: solid 2px #999;
 }
 
 .irk {

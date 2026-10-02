@@ -111,29 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     result = result
-    .replace(/[𐰤𐰣][𐰓𐰑𐱃𐱅]/gu, '𐰦')
-    .replace(/[𐰞𐰠][𐰓𐰑𐱃𐱅]/gu, '𐰡')
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
-
-    .replace(/𐰃𐰴/gu, '𐰃𐰶')
-    .replace(/(?<=\p{L}{2})𐰃𐰶/gu, '𐰶')
+    .replace(/[𐰤𐰣][𐰓𐰑](?=[𐰀])/gu, '𐰦')
+    .replace(/[𐰞𐰠][𐰓𐰑](?=[𐰶𐰃𐰜𐰇𐰸𐰆])/gu, '𐰡')
+    .replace(/(?<=\p{L}{2})𐰃𐰴/gu, '𐰶')
     .replace(/(?<!\p{L}{2})𐰴𐰃/gu, '𐰶𐰃')
-
-    .replace(/𐰆𐰴/gu, '𐰆𐰸')
-    .replace(/(?<=\p{L}{2})𐰆𐰸/gu, '𐰸')
+    .replace(/(?<=\p{L}{2})𐰆𐰴/gu, '𐰸')
     .replace(/(?<!\p{L}{2})𐰴𐰆/gu, '𐰸𐰆')
     .replace(/(?<=\p{L}{2})𐰇𐰚/gu, '𐰜')
 
-    .replace(/(?<=𐰀\S)𐰀(?=\S)/gu, '')
-    .replace(/(?<=𐰆\S)𐰆(?=\S)/gu, '')
-    .replace(/(?<=𐰃\S)𐰃(?=\S)/gu, '')
-    .replace(/(?<=𐰇\S)𐰇(?=\S)/gu, '')
+//    .replace(/𐰀(𐰀*)(?=[\u{10C01}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<![𐰃𐰆𐰇][^𐰀\s]{0,50})(?<=[\u{10C00}-\u{10C4F}]{2})𐰀(𐰀*)(?=[\u{10C01}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<![𐰀𐰆𐰇][^𐰃\s]{0,50})(?<=[\u{10C00}-\u{10C4F}]{2})𐰃(𐰃*)(?=[\u{10C01}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<![𐰀𐰃𐰇][^𐰆\s]{0,50})(?<=[\u{10C00}-\u{10C4F}]{2})𐰆(𐰆*)(?=[\u{10C01}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<![𐰀𐰆𐰃][^𐰇\s]{0,50})(?<=[\u{10C00}-\u{10C4F}]{2})𐰇(𐰇*)(?=[\u{10C01}-\u{10C4F}])/gu, '$1')
 
-    .replace(/(?<=\p{L}{2})𐰶𐰃(?=\S)/gu, '𐰶')
-    .replace(/(?<=\p{L}{2})𐰸𐰆(?=\S)/gu, '𐰸')
-
-    // special cases
+    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2})𐰶𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '𐰶')
+    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2})𐰸𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '𐰸')
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐱃𐰀𐰭𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰤𐰏𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
@@ -212,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let output = convertToOldTurkic(preprocessed);
-    output = output.replace(/\n/g, '<br>');
+    output = output.replace(/\n/g, '\n');
     gokturkDiv.innerHTML = output;
   });
 });
