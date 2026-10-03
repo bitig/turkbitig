@@ -187,7 +187,6 @@ function latinToGokturk(input) {
     result += processWord(currentWord);
   }
 
-
 // specials & ligatures
 
   result = result

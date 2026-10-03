@@ -662,6 +662,11 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'tbldamga0';
+  src: url('/assets/fonts/tbldamga0.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'tbkeys';
   src: url('/assets/fonts/tbkeys.woff2') format('woff2');
 }
