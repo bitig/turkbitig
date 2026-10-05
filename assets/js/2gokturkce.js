@@ -196,16 +196,8 @@ function latinToGokturk(input) {
     .replace(/[𐰞𐰠][𐰓𐰑](?=[𐰶𐰃𐰜𐰇𐰸𐰆])/gu, '𐰡')
 
     .replace(/𐰃𐰴/gu, '𐰶')
-    .replace(/(?<!\p{L}{0})𐰴𐰃/gu, '𐰶𐰃')
-    .replace(/𐰶𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '𐰶𐰃𐰃')
-
     .replace(/𐰆𐰴/gu, '𐰸')
-    .replace(/(?<!\p{L}{0})𐰴𐰆/gu, '𐰸𐰆')
-    .replace(/𐰸𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '𐰸𐰆𐰆')
-
     .replace(/𐰇𐰚/gu, '𐰜')
-    .replace(/(?<!\p{L}{0})𐰜𐰇/gu, '𐰜𐰇')
-    .replace(/𐰜𐰇(?=[\u{10C00}-\u{10C4F}])/gu, '𐰜𐰇𐰇')
 
   //  .replace(/𐰀(𐰀*)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=𐰀[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
