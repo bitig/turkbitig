@@ -1173,18 +1173,9 @@ function latinToGokturk(input) {
     .replace(/[𐰤𐰣][𐰓𐰑](?=[𐰀])/gu, '𐰦')
     .replace(/[𐰞𐰠][𐰓𐰑](?=[𐰶𐰃𐰜𐰇𐰸𐰆])/gu, '𐰡')
 
-    .replace(/𐰃𐰴/gu, '𐰶')
-    .replace(/(?<!\p{L}{0})𐰴𐰃/gu, '𐰶𐰃')
-    .replace(/𐰶𐰃(?=[\u{10C00}-\u{10C4F}])/gu, '𐰶𐰃𐰃')
-
-    .replace(/𐰆𐰴/gu, '𐰸')
-    .replace(/(?<!\p{L}{0})𐰴𐰆/gu, '𐰸𐰆')
-    .replace(/𐰸𐰆(?=[\u{10C00}-\u{10C4F}])/gu, '𐰸𐰆𐰆')
-
-    .replace(/𐰇𐰚/gu, '𐰜')
-    .replace(/(?<!\p{L}{0})𐰜𐰇/gu, '𐰜𐰇')
-    .replace(/𐰜𐰇(?=[\u{10C00}-\u{10C4F}])/gu, '𐰜𐰇𐰇')
-
+    .replace(/𐰃𐰴/gu, '𐰃𐰶')
+    .replace(/𐰆𐰴/gu, '𐰆𐰸')
+    .replace(/𐰇𐰚/gu, '𐰇𐰜')
 
   //  .replace(/𐰀(𐰀*)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=𐰀[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
@@ -1192,6 +1183,9 @@ function latinToGokturk(input) {
     .replace(/(?<=𐰆[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰆(𐰆*)(?!𐰆)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=𐰇[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰇(𐰇*)(?!𐰇)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
 
+    .replace(/𐰃𐰶/gu, '𐰶')
+    .replace(/𐰆𐰸/gu, '𐰸')
+    .replace(/𐰇𐰜/gu, '𐰜')
 
     .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐱃𐰀𐰭𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
@@ -1200,6 +1194,7 @@ function latinToGokturk(input) {
     .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/gu, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜')
+    .replace(/𐰴𐰃𐰺𐰍𐰔/gu, '𐰶𐰃𐰺𐰴𐰔')
   ;
   return result;
 }
