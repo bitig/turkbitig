@@ -100,11 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (nextDist < prevDist) {
       return frontVowels.has(nextVowel) ? 'front' : 'back';
     } else {
-      const prevIsBack = prevVowel && backVowels.has(prevVowel);
-      const nextIsBack = nextVowel && backVowels.has(nextVowel);
-
-      if (prevIsBack || nextIsBack) {
-        return 'back';
+      if (nextDist === 1 && nextVowel) {
+         return frontVowels.has(nextVowel) ? 'front' : 'back';
+      }
+      if (prevVowel) {
+        return frontVowels.has(prevVowel) ? 'front' : 'back';
       }
       
       return 'front';
