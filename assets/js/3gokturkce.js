@@ -67,49 +67,29 @@ document.addEventListener('DOMContentLoaded', () => {
     'ök': '𐰜'
   };
 
-  function getVowelHarmony(text, index) {
-    let prevVowel = null;
-    let prevDist = Infinity;
-    let nextVowel = null;
-    let nextDist = Infinity;
+function getVowelHarmony(text, index) {
+  // 1. Nearest FOLLOWING vowel
+  for (let j = index + 1; j < text.length; j++) {
+    const char = text[j];
 
-    const isAlphabet = /[a-zıİşçöüğş]/i;
+    if (frontVowels.has(char)) return 'front';
+    if (backVowels.has(char)) return 'back';
 
-    for (let j = index - 1; j >= 0; j--) {
-      const char = text[j];
-      if (frontVowels.has(char) || backVowels.has(char)) {
-        prevVowel = char;
-        prevDist = index - j;
-        break;
-      }
-      if (!isAlphabet.test(char)) break;
-    }
-
-    for (let j = index + 1; j < text.length; j++) {
-      const char = text[j];
-      if (frontVowels.has(char) || backVowels.has(char)) {
-        nextVowel = char;
-        nextDist = j - index;
-        break;
-      }
-      if (!isAlphabet.test(char)) break;
-    }
-
-    if (prevDist < nextDist) {
-      return frontVowels.has(prevVowel) ? 'front' : 'back';
-    } else if (nextDist < prevDist) {
-      return frontVowels.has(nextVowel) ? 'front' : 'back';
-    } else {
-      if (nextDist === 1 && nextVowel) {
-         return frontVowels.has(nextVowel) ? 'front' : 'back';
-      }
-      if (prevVowel) {
-        return frontVowels.has(prevVowel) ? 'front' : 'back';
-      }
-      
-      return 'front';
-    }
+    if (/\s|[^\wçğıöşüñŋ]/i.test(char)) break;
   }
+
+  // 2. Fallback: nearest preceding vowel
+  for (let j = index - 1; j >= 0; j--) {
+    const char = text[j];
+
+    if (frontVowels.has(char)) return 'front';
+    if (backVowels.has(char)) return 'back';
+
+    if (/\s|[^\wçğıöşüñŋ]/i.test(char)) break;
+  }
+
+  return 'back';
+}
 
   function convertToGokturk(text) {
     const output = []; 
