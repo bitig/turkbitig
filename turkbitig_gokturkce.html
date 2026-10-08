@@ -1027,7 +1027,7 @@ for (const [standard, alts] of Object.entries(replacements)) {
 const replacementKeys = Object.keys(replacementMap).sort((a, b) => b.length - a.length);
 
 const VOWELS = 'aeıioöuü';
-const NEUTRAL_CONSONANTS = 'çmpsşzñ';
+const NEUTRAL_CONSONANTS = 'çmpşzñ';
 
 const convertibleSet = new Set([
   ...Object.keys(backVowelMap),
@@ -1177,12 +1177,15 @@ function latinToGokturk(input) {
     .replace(/𐰆𐰴/gu, '𐰆𐰸')
     .replace(/𐰇𐰚/gu, '𐰇𐰜')
 
-  //  .replace(/𐰀(𐰀*)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
-    .replace(/(?<![𐰆𐰃𐰇][^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
-//    .replace(/(?<=𐰀[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
-    .replace(/(?<=𐰃[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
-    .replace(/(?<=𐰆[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰆(𐰆*)(?!𐰆)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
-    .replace(/(?<=𐰇[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰇(𐰇*)(?!𐰇)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+//    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') // trim a/e ignores vowel shift
+//.replace(/(?<=𐰀[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') // trim 2nd onward
+
+//    .replace(/(?<=[\u{10C00}-\u{10C4F}])(?<!𐰆[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') 
+//    .replace(/(?<![𐰆𐰃𐰇][^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') // sound shift
+    .replace(/(?<=[𐰃𐰶][^𐰀𐰃𐰆𐰇𐰶\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<=[𐰆𐰸][^𐰀𐰃𐰆𐰇𐰸\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰆(𐰆*)(?!𐰆)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<=[𐰇𐰜][^𐰀𐰃𐰆𐰇𐰜\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰇(𐰇*)(?!𐰇)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
 
     .replace(/𐰃𐰶/gu, '𐰶')
     .replace(/𐰆𐰸/gu, '𐰸')
