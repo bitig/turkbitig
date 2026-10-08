@@ -49,7 +49,7 @@ for (const [standard, alts] of Object.entries(replacements)) {
 const replacementKeys = Object.keys(replacementMap).sort((a, b) => b.length - a.length);
 
 const VOWELS = 'aeıioöuü';
-const NEUTRAL_CONSONANTS = 'çmpsşzñ';
+const NEUTRAL_CONSONANTS = 'çmpşzñ';
 
 const convertibleSet = new Set([
   ...Object.keys(backVowelMap),
