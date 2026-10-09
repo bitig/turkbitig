@@ -13,11 +13,11 @@ const frontVowelMap = {
 };
 
 const replacements = {
-    'a':  ['а', 'ا', 'آ', 'ى'],                         // a as in car (Ah)
+    'a':  ['â', 'а', 'ا', 'آ', 'ى'],                         // a as in car (Ah)
     'e':  ['ä', 'ə', 'э', 'ә', 'е', 'є', 'ە', 'ع', 'ې'], // e as in egg or bed
     'ı':  ['ы'],                                        // i as in cousin (back throat i)
-    'i':  ['İ', 'і', 'ي', 'ئ', 'ى'],                     // i as in machine (ee)
-    'o':  ['u', 'ū', 'ұ', 'у', 'о', 'و', 'وُ'],               // o as in more (w) 
+    'i':  ['İ', 'і', 'î', 'ي', 'ئ', 'ى'],                     // i as in machine (ee)
+    'o':  ['u', 'û', 'ū', 'ұ', 'у', 'о', 'و', 'وُ'],               // o as in more (w) 
     'ö':  ['ü', 'ү', 'ө', 'ۆ', 'ۈ'],                     // u as in fur 
     'b':  ['v', 'w', 'б', 'в', 'ب',  'ۋ'],           // b as in boy (v)
     'ç':  ['c', 'j', 'ч', 'ћ', 'چ', 'ج'],               // ch as in chip (j)
@@ -61,6 +61,7 @@ function isNeutralConsonant(ch) {
 }
 
 // syllabify
+
 function syllabify(word) {
   const vowelIndices = [];
   for (let i = 0; i < word.length; i++) {
@@ -77,6 +78,7 @@ function syllabify(word) {
     const leftVowelPos  = vowelIndices[i];
     const rightVowelPos = vowelIndices[i + 1];
     const consonantCount = rightVowelPos - leftVowelPos - 1;
+    const isLastSpan = (i === vowelIndices.length - 2);
 
     if (consonantCount === 0) {
       syllables.push(word.slice(start, leftVowelPos + 1));
@@ -88,8 +90,29 @@ function syllabify(word) {
       start = splitPos;
     }
     else {
-      const isFirstSpanOfVowelStart = startsWithVowel && (i === 0);
-      const moveRight = !isFirstSpanOfVowelStart;
+      let v2HasTrailing = false;
+
+      if (isLastSpan) {
+        for (let k = rightVowelPos + 1; k < word.length; k++) {
+          if (!VOWELS.includes(word[k]) && !isNeutralConsonant(word[k])) {
+            v2HasTrailing = true;
+            break;
+          }
+        }
+      } else {
+        const nextVowelPos = vowelIndices[i + 2];
+        const consonantsInNextGap = nextVowelPos - rightVowelPos - 1;
+        if (consonantsInNextGap >= 2) {
+          v2HasTrailing = true;
+        }
+      }
+
+      let moveRight = true;
+      if (i === 0) {
+        if (startsWithVowel || v2HasTrailing) {
+          moveRight = false;
+        }
+      }
 
       if (moveRight) {
         syllables.push(word.slice(start, leftVowelPos + 1));
