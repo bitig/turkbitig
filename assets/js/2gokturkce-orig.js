@@ -61,6 +61,7 @@ function isNeutralConsonant(ch) {
 }
 
 // syllabify
+
 function syllabify(word) {
   const vowelIndices = [];
   for (let i = 0; i < word.length; i++) {
@@ -72,11 +73,13 @@ function syllabify(word) {
   const syllables = [];
   let start = 0;
   const startsWithVowel = VOWELS.includes(word[0]);
+  const isOnlySpan = (vowelIndices.length === 2);
 
   for (let i = 0; i < vowelIndices.length - 1; i++) {
     const leftVowelPos  = vowelIndices[i];
     const rightVowelPos = vowelIndices[i + 1];
     const consonantCount = rightVowelPos - leftVowelPos - 1;
+    const isLastSpan = (i === vowelIndices.length - 2);
 
     if (consonantCount === 0) {
       syllables.push(word.slice(start, leftVowelPos + 1));
@@ -88,8 +91,26 @@ function syllabify(word) {
       start = splitPos;
     }
     else {
-      const isFirstSpanOfVowelStart = startsWithVowel && (i === 0);
-      const moveRight = !isFirstSpanOfVowelStart;
+      let v2HasTrailing = false;
+
+      if (isLastSpan) {
+        for (let k = rightVowelPos + 1; k < word.length; k++) {
+          if (!VOWELS.includes(word[k]) && !isNeutralConsonant(word[k])) {
+            v2HasTrailing = true;
+            break;
+          }
+        }
+      } else {
+        const nextVowelPos = vowelIndices[i + 2];
+        for (let k = rightVowelPos + 1; k < nextVowelPos; k++) {
+          if (!VOWELS.includes(word[k]) && !isNeutralConsonant(word[k])) {
+            v2HasTrailing = true;
+            break;
+          }
+        }
+      }
+
+      const moveRight = !v2HasTrailing && !(startsWithVowel && isOnlySpan);
 
       if (moveRight) {
         syllables.push(word.slice(start, leftVowelPos + 1));
