@@ -100,7 +100,6 @@ input[type="color"] {
   height: 200px;
   min-height: 80px;
   width: 100%;
-  font-family:'tbldamga';
   font-size: 60px;
   padding:0.12em;
   box-sizing: border-box;
@@ -125,7 +124,6 @@ input[type="color"] {
   overflow-wrap: break-word;
   min-height: 110px;
   width: 100%;
-  font-family:'tbldamga';
   padding:0.12em;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
@@ -146,7 +144,6 @@ input[type="color"] {
   height: 399px;
   min-height: 160px;
   width: 100%;
-  font-family:'tbldamga';
   padding:0.12em;
   box-sizing: border-box;
   -webkit-text-stroke-color: #000000;
