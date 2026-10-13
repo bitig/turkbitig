@@ -679,6 +679,16 @@ a:hover {
 }
 
 @font-face {
+  font-family: 'kultigink';
+  src: url('/assets/fonts/kultiginkoyu.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'kultiginkoyu';
+  src: url('/assets/fonts/kultiginkoyu.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'kultiginbold';
   src: url('/assets/fonts/kultiginkoyu.woff2') format('woff2');
 }
