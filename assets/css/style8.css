@@ -677,6 +677,12 @@ a:hover {
   font-family: 'kultiginagir';
   src: url('/assets/fonts/kultiginagir.woff2') format('woff2');
 }
+
+@font-face {
+  font-family: 'kultiginbold';
+  src: url('/assets/fonts/kultiginkoyu.woff2') format('woff2');
+}
+
 @font-face {
   font-family: 'firca';
   src: url('/assets/fonts/firca.woff2') format('woff2');
