@@ -44,7 +44,7 @@ document.getElementById('cizgi').addEventListener('click', function () {
 });
 
 document.getElementById('tamga').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'tbldamga';
+  textContainer.style.fontFamily = 'tbldamga2';
   adjustFontSize();
 });
 
