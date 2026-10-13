@@ -28,8 +28,8 @@ function adjustFontSize() {
 }
 
 // select font
-document.getElementById('kultiginbold').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'kultiginbold';
+document.getElementById('kultigink').addEventListener('click', function () {
+  textContainer.style.fontFamily = 'kultigink';
   adjustFontSize();
 });
 
