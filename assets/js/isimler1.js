@@ -29,7 +29,7 @@ function adjustFontSize() {
 
 // select font
 document.getElementById('kultiginbold').addEventListener('click', function () {
-  textContainer.style.fontFamily = 'kultigin';
+  textContainer.style.fontFamily = 'kultiginagir';
   adjustFontSize();
 });
 
