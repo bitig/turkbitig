@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const computedStyle = window.getComputedStyle(textarea);
     const defaults = {
         fontSize: parseFloat(computedStyle.fontSize),
-        textStroke: 0.01,       
+        textStroke: 0.0,       
         letterSpacing: 0,    
         fontIndex: 0
     };
