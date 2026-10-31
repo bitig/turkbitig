@@ -235,10 +235,22 @@ if (document.getElementById('oldStyle').checked) {
 document.addEventListener('DOMContentLoaded', () => {
   const latinInput    = document.getElementById('latin');
   const gokturkOutput = document.getElementById('gokturk');
+  
+  const oldStyleRadio = document.getElementById('oldStyle');
+  const newStyleRadio = document.getElementById('newStyle');
 
   if (latinInput && gokturkOutput) {
-    latinInput.addEventListener('input', (e) => {
-      gokturkOutput.value = latinToGokturk(e.target.value);
-    });
+    const updateOutput = () => {
+      gokturkOutput.value = latinToGokturk(latinInput.value);
+    };
+
+    latinInput.addEventListener('input', updateOutput);
+    
+    if (oldStyleRadio) {
+      oldStyleRadio.addEventListener('change', updateOutput);
+    }
+    if (newStyleRadio) {
+      newStyleRadio.addEventListener('change', updateOutput);
+    }
   }
 });
