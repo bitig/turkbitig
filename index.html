@@ -85,6 +85,16 @@ const charMap = {'W': 'ö', 'w': 'ü', 'X': 'Ş', 'x': 'ş',  'J': 'Ç', 'j': '�
 input.addEventListener('input', function() {this.value = this.value.replace(/[WwXxJjQq]/g, matched => charMap[matched]);});
 </script> 
 
+<div>Ünlüler: 
+<label>
+    <input type="radio" id="oldStyle" name="style" checked> yazma
+</label>
+<label>
+    <input type="radio" id="newStyle" name="style"> yaz
+</label>
+
+</div>
+
 <div class="tbs">
 <textarea class="uuu" id="gokturk" maxlength="18000" spellcheck="false" dir="rtl" style="background-color:#FFF;"></textarea>
 </div>

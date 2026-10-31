@@ -191,6 +191,7 @@ function latinToGokturk(input) {
 
 // specials & ligatures
 
+
   result = result
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
@@ -200,12 +201,19 @@ function latinToGokturk(input) {
     .replace(/𐰃𐰴/gu, '𐰶')
     .replace(/𐰆𐰴/gu, '𐰸')
     .replace(/𐰇𐰚/gu, '𐰜')
+  ;
 
+
+
+if (document.getElementById('oldStyle').checked) {
+    result = result
     .replace(/(?<=[𐰃𐰶𐰀][^𐰀𐰃𐰆𐰇𐰶\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') 
     .replace(/(?<=[𐰆𐰸][^𐰀𐰃𐰆𐰇𐰸\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰆(𐰆*)(?!𐰆)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[𐰇𐰜][^𐰀𐰃𐰆𐰇𐰜\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰇(𐰇*)(?!𐰇)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+};
 
+  result = result
     .replace(/𐱃𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰣𐰍𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
@@ -218,6 +226,8 @@ function latinToGokturk(input) {
     .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/gu, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜')
     .replace(/𐰴𐰃𐰺𐰍𐰔/gu, '𐰶𐰃𐰺𐰴𐰔')
   ;
+
+
   return result;
 }
 
