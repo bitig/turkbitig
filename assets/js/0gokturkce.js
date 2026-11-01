@@ -192,6 +192,9 @@ function latinToGokturk(input) {
 // specials & ligatures
 
 
+
+if (document.getElementById('oldStyle').checked) {
+
   result = result
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
@@ -203,9 +206,6 @@ function latinToGokturk(input) {
     .replace(/𐰇𐰚/gu, '𐰜')
   ;
 
-
-
-if (document.getElementById('oldStyle').checked) {
     result = result
     .replace(/(?<=[𐰃𐰶𐰀][^𐰀𐰃𐰆𐰇𐰶\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') 
@@ -226,7 +226,6 @@ if (document.getElementById('oldStyle').checked) {
     .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/gu, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜')
     .replace(/𐰴𐰃𐰺𐰍𐰔/gu, '𐰶𐰃𐰺𐰴𐰔')
   ;
-
 
   return result;
 }
