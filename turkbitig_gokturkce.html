@@ -656,7 +656,7 @@ input.focus();
 <h1><small>Göktürkçe Çeviri</small><span style="float:right;font-size:1.2rem;">(<a href="https://www.turkbitig.com/turkbitig_gokturkce.html" download>yeni indir</a>)</span></h1>
 
 <!--ceviri baslar-->
-<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" oninput="updateDiv()" spellcheck="false"></textarea></div>
+<div><textarea class="latin" rows="2" maxlength="9999" placeholder="buna yaz..." id="latin" spellcheck="false"></textarea></div>
 
 <script>
 const input = document.getElementById('latin');
@@ -667,9 +667,9 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <table class="fonttable" id="fontRadioGroup">
 <tr>
 <td>Font&nbsp;</td>
-<td width="99%" >
+<td>
 <select class="fontselect" onchange="changeFont(this.value)">
-  <option value="tbldamga2" selected>Öğrenci için</option>
+  <option value="tbldamga2" selected>Altyazılı</option>
   <option value="bilgekaganyenib">Bilge Kağan</option>
   <option value="bala">Bala</option>
   <option value="balab">Bala(K)</option>
@@ -708,8 +708,14 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
   <option value="yaksib">Yakşı(K)</option>
 </select>
 </td>
-<td width="90%">&nbsp;</td>
-<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td style="width:90%;font-size:1rem;">Ünlüler:
+<label>
+    <input type="radio" id="oldStyle" name="style">Yazma
+</label>
+<label>
+    <input type="radio" id="newStyle" name="style" checked>Yaz
+</label>
+</td>
 </tr>
 </table>
 
@@ -724,7 +730,6 @@ input.addEventListener('input', function() {this.value = this.value.replace(/[Ww
 <td nowrap>&nbsp;</td>
 <td nowrap><button onclick="changeLetterSpacing('decrease')">&nbsp;-&nbsp;</button></td>
 <td width="90%">&nbsp;</td>
-<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
 
@@ -875,6 +880,8 @@ document.execCommand('insertText', false, text);
 <td><button onclick="copyGokturk()">Kopyala</button></td>
 <td nowrap><button onclick="downloadAsPng()">Kaydet</button></td>
 <td width="90%">&nbsp;</td>
+<td style="padding-left:6px;"><button id="copyButton" onclick="copyDifferentValues(this)" data-latin-text="Tüm alfabe (38 harfli)" data-gokturk-text="𐰀𐰃 𐰉𐰋 𐰲𐰱 𐰑𐰓 𐰍𐰏 𐰴𐰚 𐰶 𐰸 𐰜 𐰞𐰠 𐰢 𐰣𐰤𐰭 𐰆𐰇 𐰯 𐰺𐰼 𐰽𐰾𐱁 𐱃𐱅 𐰖𐰘 𐰔 𐰪𐰨 𐰦𐰡">Tüm&nbsp;Harfler</button></td>
+<td nowrap><button id="clearButton" onclick="clearText()">&nbsp;Sil&nbsp;</button></td>
 </tr>
 </table>
 
@@ -952,31 +959,31 @@ const frontVowelMap = {
 };
 
 const replacements = {
-  'a':  ['а'],
-  'b':  ['v', 'w', 'б', 'в'],
-  'ç':  ['c', 'j', 'ч'],
-  'd':  ['д'],
-  'e':  ['ä', 'ə', 'э', 'ә', 'е'],
-  'g':  ['ğ', 'г', 'ғ'],
-  'ı':  ['ы'],
-  'i':  ['İ', 'і'],
-  'iy': ['и'],
-  'k':  ['h', 'x', 'q', 'қ', 'к', 'һ', 'х'],
-  'l':  ['л'],
-  'm':  ['м'],
-  'n':  ['н'],
-  'ŋ':  ['ң', 'ň', 'ñ'],
-  'o':  ['u', 'ū', 'ұ', 'у', 'о'],
-  'ö':  ['ü', 'ү', 'ө'],
-  'p':  ['f', 'ф', 'п'],
-  'r':  ['р'],
-  's':  ['с', 'ц'],
-  'ş':  ['ш'],
-  't':  ['т'],
-  'y':  ['ý', 'ж', 'й', 'ž'],
-  'ya': ['я', 'û'],
-  'yo': ['ё', 'ю', 'û'],
-  'z':  ['з']
+    'a':  ['â', 'а', 'ا', 'آ', 'ى'],                         // a as in car (Ah)
+    'e':  ['ä', 'ə', 'э', 'ә', 'е', 'є', 'ە', 'ع', 'ې'], // e as in egg or bed
+    'ı':  ['ы'],                                        // i as in cousin (back throat i)
+    'i':  ['İ', 'і', 'î', 'ي', 'ئ', 'ى'],                     // i as in machine (ee)
+    'o':  ['u', 'û', 'ū', 'ұ', 'у', 'о', 'و', 'وُ'],               // o as in more (w) 
+    'ö':  ['ü', 'ү', 'ө', 'ۆ', 'ۈ'],                     // u as in fur 
+    'b':  ['v', 'w', 'б', 'в', 'ب',  'ۋ'],           // b as in boy (v)
+    'ç':  ['c', 'j', 'ч', 'ћ', 'چ', 'ج'],               // ch as in chip (j)
+    'd':  ['д', 'ђ', 'د', 'ض'],                          // d as in dog
+    'g':  ['ğ', 'г', 'ғ', 'گ', 'غ'],                     // g as in gap 
+    'k':  ['h', 'x', 'q', 'қ', 'к', 'ќ', 'һ', 'х', 'ك', 'ک', 'ق', 'خ', 'ح', 'ه', 'ھ'], // k as in king (h)
+    'l':  ['л', 'љ', 'ل'],                              // l as in log
+    'm':  ['м', 'م'],                                   // m as in man
+    'n':  ['н', 'ن'],                                   // n as in no
+    'ŋ':  ['ң', 'ň', 'ñ', 'ҥ', 'ڭ'],                    // ng as in king
+    'p':  ['f', 'ф', 'п', 'پ', 'ف'],                    // p as in pan (f)
+    'r':  ['р', 'ر'],                                   // r as in run 
+    's':  ['с', 'ц', 'س', 'ص', 'ث'],                    // s as in sit
+    'ş':  ['ш', 'ش'],                                   // sh as in ship
+    't':  ['т', 'ت', 'ط', 'ة'],                         // t as in top
+    'y':  ['ý', 'ж', 'й', 'ž', 'ي', 'ژ'],                // y as in yes (zh)
+    'z':  ['з', 'ز', 'ظ', 'ذ'],                          // z as in zoo
+    'iy': ['и'],                                        // ignored
+    'ya': ['я', 'û'],                                  // ignored
+    'yo': ['ё', 'ю', 'û']                              // ignored
 };
 
 const replacementMap = {};
@@ -1012,7 +1019,6 @@ function syllabify(word) {
   const syllables = [];
   let start = 0;
   const startsWithVowel = VOWELS.includes(word[0]);
-  const isOnlySpan = (vowelIndices.length === 2);
 
   for (let i = 0; i < vowelIndices.length - 1; i++) {
     const leftVowelPos  = vowelIndices[i];
@@ -1041,15 +1047,18 @@ function syllabify(word) {
         }
       } else {
         const nextVowelPos = vowelIndices[i + 2];
-        for (let k = rightVowelPos + 1; k < nextVowelPos; k++) {
-          if (!VOWELS.includes(word[k]) && !isNeutralConsonant(word[k])) {
-            v2HasTrailing = true;
-            break;
-          }
+        const consonantsInNextGap = nextVowelPos - rightVowelPos - 1;
+        if (consonantsInNextGap >= 2) {
+          v2HasTrailing = true;
         }
       }
 
-      const moveRight = !v2HasTrailing && !(startsWithVowel && isOnlySpan);
+      let moveRight = true;
+      if (i === 0) {
+        if (startsWithVowel || v2HasTrailing) {
+          moveRight = false;
+        }
+      }
 
       if (moveRight) {
         syllables.push(word.slice(start, leftVowelPos + 1));
@@ -1128,39 +1137,40 @@ function latinToGokturk(input) {
 
 // specials & ligatures
 
+
+
+if (document.getElementById('oldStyle').checked) {
+
   result = result
     .replace(/[𐰤𐰣]𐰲/gu, '𐰨')
     .replace(/[𐰤𐰣][𐰘𐰖]/gu, '𐰪')
-    .replace(/[𐰤𐰣][𐰓𐰑](?=[𐰀])/gu, '𐰦')
+    .replace(/[𐰤𐰣][𐰓𐰑](?=[𐰀𐰃])/gu, '𐰦')
     .replace(/[𐰞𐰠][𐰓𐰑](?=[𐰶𐰃𐰜𐰇𐰸𐰆])/gu, '𐰡')
 
-    .replace(/𐰃𐰴/gu, '𐰃𐰶')
-    .replace(/𐰆𐰴/gu, '𐰆𐰸')
-    .replace(/𐰇𐰚/gu, '𐰇𐰜')
+    .replace(/𐰃𐰴/gu, '𐰶')
+    .replace(/𐰆𐰴/gu, '𐰸')
+    .replace(/𐰇𐰚/gu, '𐰜')
 
-//    .replace(/(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') // trim a/e ignores vowel shift
-//.replace(/(?<=𐰀[^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') // trim 2nd onward
-
-//    .replace(/(?<=[\u{10C00}-\u{10C4F}])(?<!𐰆[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+    .replace(/(?<=[𐰃𐰶𐰀][^𐰀𐰃𐰆𐰇𐰶\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') 
-//    .replace(/(?<![𐰆𐰃𐰇][^𐰀𐰃𐰆𐰇\s]{0,29})(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') // sound shift
-    .replace(/(?<=[𐰃𐰶][^𐰀𐰃𐰆𐰇𐰶\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[𐰆𐰸][^𐰀𐰃𐰆𐰇𐰸\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰆(𐰆*)(?!𐰆)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[𐰇𐰜][^𐰀𐰃𐰆𐰇𐰜\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰇(𐰇*)(?!𐰇)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
+};
 
-    .replace(/𐰃𐰶/gu, '𐰶')
-    .replace(/𐰆𐰸/gu, '𐰸')
-    .replace(/𐰇𐰜/gu, '𐰜')
-
-    .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
+  result = result
+    .replace(/𐱃𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
+    .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
+    .replace(/𐱃𐰣𐰍𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱃𐰀𐰭𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰤𐰏𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
     .replace(/𐱅𐰀𐰭𐰼𐰃/gu, '𐱅𐰭𐰼𐰃')
-    .replace(/𐱃𐰀𐰣𐰺𐰃/gu, '𐱅𐰭𐰼𐰃')
+
+    .replace(/𐱅𐰼𐰚/gu, '𐱅𐰇𐰼𐰜')
     .replace(/[𐱅𐱃]𐰇𐰼[𐰴𐰚𐰶𐰸]/gu, '𐱅𐰇𐰼𐰜')
     .replace(/𐰀𐱃𐱅𐰇𐰼𐰜/gu, '𐰀𐱃𐰀𐱅𐰇𐰼𐰜')
     .replace(/𐰴𐰃𐰺𐰍𐰔/gu, '𐰶𐰃𐰺𐰴𐰔')
   ;
+
   return result;
 }
 
@@ -1168,11 +1178,23 @@ function latinToGokturk(input) {
 document.addEventListener('DOMContentLoaded', () => {
   const latinInput    = document.getElementById('latin');
   const gokturkOutput = document.getElementById('gokturk');
+  
+  const oldStyleRadio = document.getElementById('oldStyle');
+  const newStyleRadio = document.getElementById('newStyle');
 
   if (latinInput && gokturkOutput) {
-    latinInput.addEventListener('input', (e) => {
-      gokturkOutput.value = latinToGokturk(e.target.value);
-    });
+    const updateOutput = () => {
+      gokturkOutput.value = latinToGokturk(latinInput.value);
+    };
+
+    latinInput.addEventListener('input', updateOutput);
+    
+    if (oldStyleRadio) {
+      oldStyleRadio.addEventListener('change', updateOutput);
+    }
+    if (newStyleRadio) {
+      newStyleRadio.addEventListener('change', updateOutput);
+    }
   }
 });
 

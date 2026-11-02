@@ -204,9 +204,7 @@ if (document.getElementById('oldStyle').checked) {
     .replace(/𐰃𐰴/gu, '𐰶')
     .replace(/𐰆𐰴/gu, '𐰸')
     .replace(/𐰇𐰚/gu, '𐰜')
-  ;
 
-    result = result
     .replace(/(?<=[𐰃𐰶𐰀][^𐰀𐰃𐰆𐰇𐰶\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰃(𐰃*)(?!𐰃)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
     .replace(/(?<=[\u{10C00}-\u{10C4F}])𐰀(𐰀*)(?!𐰀)(?=[\u{10C00}-\u{10C4F}])/gu, '$1') 
     .replace(/(?<=[𐰆𐰸][^𐰀𐰃𐰆𐰇𐰸\s]{0,29})(?<=[\u{10C00}-\u{10C4F}]{2,30})𐰆(𐰆*)(?!𐰆)(?=[\u{10C00}-\u{10C4F}])/gu, '$1')
